@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E0FDC26282D6900C545B0 /* SearchService.swift */; };
 		8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */; };
 		831607152625B4780090D203 /* UIImageView+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607142625B4780090D203 /* UIImageView+loadImage.swift */; };
 		831607182625C32B0090D203 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607172625C32B0090D203 /* MovieDetailView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830E0FDC26282D6900C545B0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponceTableViewCell.swift; sourceTree = "<group>"; };
 		831607142625B4780090D203 /* UIImageView+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadImage.swift"; sourceTree = "<group>"; };
 		831607172625C32B0090D203 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
+				830E0FDC26282D6900C545B0 /* SearchService.swift */,
 				831607142625B4780090D203 /* UIImageView+loadImage.swift */,
 			);
 			path = Network;
@@ -222,6 +225,7 @@
 				8316071B2625C33F0090D203 /* SongDetailView.swift in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
+				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
 				8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */,
 			);
