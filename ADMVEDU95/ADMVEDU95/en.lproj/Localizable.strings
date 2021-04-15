@@ -1,0 +1,16 @@
+/* 
+  Localizable.string.strings
+  ADMVEDU95
+
+  Created by Satsishur on 15.04.2021.
+  
+*/
+
+"Start searching" = "Start searching";
+"song" = "song";
+"feature-movie" = "feature-movie";
+"Song" = "Song: %@";
+"Artist" = "Artist: %@";
+"Album" = "Album: %@";
+"Director" = "Director: %@";
+"Movie" = "Movie: %@";

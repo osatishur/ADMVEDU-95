@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     
     struct Constants {
         static let searchCellIdentifier = "SearchResponceTableViewCell"
-        static let searhBarPlaceholder = "Start searching"
+        static let searhBarPlaceholder = NSLocalizedString("Start searching", comment: "")
     }
     //MARK: Views
     internal var searchController = UISearchController(searchResultsController: nil)

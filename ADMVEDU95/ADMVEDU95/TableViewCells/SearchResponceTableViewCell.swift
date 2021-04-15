@@ -8,7 +8,6 @@
 import UIKit
 
 class SearchResponceTableViewCell: UITableViewCell {
-    
     struct Constants {
         static let sideConstraint: CGFloat = 8
         static let kindLabelTopConstraint: CGFloat = 16
@@ -67,7 +66,8 @@ class SearchResponceTableViewCell: UITableViewCell {
     }
     // MARK: - Model configure
     public func configure(model: iTunesResult) {
-        kindLabel.text = model.kind ?? "no info"
+        let kindLabelText = NSLocalizedString(model.kind ?? "no info", comment: "")
+        kindLabel.text = kindLabelText//model.kind ?? "no info"
         artistAndTrackNameLabel.text = "\(model.artistName ?? "no info") - \(model.trackName ?? "no info")"
     }
 }

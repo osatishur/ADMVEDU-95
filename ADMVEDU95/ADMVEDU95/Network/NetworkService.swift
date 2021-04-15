@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public enum iTunesSearchError: Error {
     case emptyData
@@ -13,54 +14,64 @@ public enum iTunesSearchError: Error {
     case unknown(Error?)
 }
 
-public enum Endpoint {
-    case search
-    
-    var endpoint: String {
-        switch self {
-        case .search:
-            return "/search?"
+class NetworkService {
+    struct NetworkConstants {
+        static let baseUrl = "https://itunes.apple.com/"
+        
+        enum Endpoint: String {
+            case search = "search?"
         }
     }
-}
-
-class NetworkService {
-    struct Constants {
-        static let baseUrl = "https://itunes.apple.com"
-    }
     
-    let decoder: JSONDecoder = {
+    static var shared: NetworkService = NetworkService()
+    
+    private init() {}
+    
+    private let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
     
-    public func getResults<T: Codable>(endpoint: Endpoint,
+    public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
                                        parameters: [String: String],
                                        completion: @escaping (Result<T, iTunesSearchError>) -> Void) {
-        let url = buildURL(endpoint: endpoint, parameters: parameters)
+        guard let url = buildURL(endpoint: endpoint, parameters: parameters) else {
+            return
+        }
         print(url)
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            let result = self.parseResponse(data: data,
-                                            response: response,
-                                            error: error, type: T.self)
+        AF.request(url).responseJSON(completionHandler: { (response) in
+            let result = self.parseResponse(data: response.data,
+                                            response: response.response,
+                                            error: response.error,
+                                            type: T.self)
             DispatchQueue.main.async {
                 completion(result)
             }
-        }
-        task.resume()
+        })
+//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//            let result = self.parseResponse(data: data,
+//                                            response: response,
+//                                            error: error, type: T.self)
+//            DispatchQueue.main.async {
+//                completion(result)
+//            }
+//        }
+//        task.resume()
     }
 
-    private func buildURL(endpoint: Endpoint, parameters: [String : String]) -> URL {
-        let path = Constants.baseUrl + endpoint.endpoint
+    private func buildURL(endpoint: NetworkConstants.Endpoint,
+                          parameters: [String : String]) -> URL? {
+        let path = NetworkConstants.baseUrl + endpoint.rawValue
         var urlComponents = URLComponents(string: path)
         for (key, value) in parameters {
             let item = URLQueryItem(name: key, value: value)
             urlComponents?.queryItems?.append(item)
         }
-        
+       
         guard let url = urlComponents?.url else {
-            fatalError("Error: expected iTunes URL but instead it is nil")
+            //fatalError("Error: expected iTunes URL but instead it is nil")
+            return nil
         }
         return url
     }
