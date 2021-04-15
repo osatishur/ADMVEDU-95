@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E0FDC26282D6900C545B0 /* SearchService.swift */; };
 		8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */; };
 		831607152625B4780090D203 /* UIImageView+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607142625B4780090D203 /* UIImageView+loadImage.swift */; };
 		831607182625C32B0090D203 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607172625C32B0090D203 /* MovieDetailView.swift */; };
@@ -20,16 +21,17 @@
 		8355601C26249A6D00C77316 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355601B26249A6D00C77316 /* NetworkService.swift */; };
 		8355601F26249D7700C77316 /* iTunesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355601E26249D7700C77316 /* iTunesResponse.swift */; };
 		83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */; };
-		83A78BC026270A58009C3807 /* iTunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BBF26270A58009C3807 /* iTunesResult.swift */; };
-		83A78BC626270B08009C3807 /* UIImageView+staticImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BC526270B08009C3807 /* UIImageView+staticImages.swift */; };
+		83A78BDE26276263009C3807 /* iTunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BDD26276263009C3807 /* iTunesResult.swift */; };
+		83A78BE12627628B009C3807 /* UIImageView+staticImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		830E0FDC26282D6900C545B0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponceTableViewCell.swift; sourceTree = "<group>"; };
 		831607142625B4780090D203 /* UIImageView+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadImage.swift"; sourceTree = "<group>"; };
 		831607172625C32B0090D203 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		8316071A2625C33F0090D203 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
-		83555FF72624905C00C77316 /* FirstWorkProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstWorkProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83555FF72624905C00C77316 /* ADMVEDU95.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADMVEDU95.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83555FFA2624905C00C77316 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83555FFC2624905C00C77316 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		83555FFE2624905C00C77316 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -40,8 +42,8 @@
 		8355601B26249A6D00C77316 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8355601E26249D7700C77316 /* iTunesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResponse.swift; sourceTree = "<group>"; };
 		83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableViewMethods.swift"; sourceTree = "<group>"; };
-		83A78BBF26270A58009C3807 /* iTunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = iTunesResult.swift; path = FirstWorkProject/iTunesResult.swift; sourceTree = SOURCE_ROOT; };
-		83A78BC526270B08009C3807 /* UIImageView+staticImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+staticImages.swift"; path = "FirstWorkProject/UIImageView+staticImages.swift"; sourceTree = SOURCE_ROOT; };
+		83A78BDD26276263009C3807 /* iTunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResult.swift; sourceTree = "<group>"; };
+		83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+staticImages.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,7 @@
 		83555FEE2624905C00C77316 = {
 			isa = PBXGroup;
 			children = (
-				83555FF92624905C00C77316 /* FirstWorkProject */,
+				83555FF92624905C00C77316 /* ADMVEDU95 */,
 				83555FF82624905C00C77316 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,12 +68,12 @@
 		83555FF82624905C00C77316 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				83555FF72624905C00C77316 /* FirstWorkProject.app */,
+				83555FF72624905C00C77316 /* ADMVEDU95.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		83555FF92624905C00C77316 /* FirstWorkProject */ = {
+		83555FF92624905C00C77316 /* ADMVEDU95 */ = {
 			isa = PBXGroup;
 			children = (
 				83555FFA2624905C00C77316 /* AppDelegate.swift */,
@@ -86,7 +88,7 @@
 				835560052624905D00C77316 /* LaunchScreen.storyboard */,
 				835560082624905D00C77316 /* Info.plist */,
 			);
-			path = FirstWorkProject;
+			path = ADMVEDU95;
 			sourceTree = "<group>";
 		};
 		83A78BAD2626C77D009C3807 /* ViewControllers */ = {
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
+				830E0FDC26282D6900C545B0 /* SearchService.swift */,
 				831607142625B4780090D203 /* UIImageView+loadImage.swift */,
 			);
 			path = Network;
@@ -121,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				8355601E26249D7700C77316 /* iTunesResponse.swift */,
-				83A78BBF26270A58009C3807 /* iTunesResult.swift */,
+				83A78BDD26276263009C3807 /* iTunesResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,7 +140,7 @@
 		83A78BC426270ACE009C3807 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				83A78BC526270B08009C3807 /* UIImageView+staticImages.swift */,
+				83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		83555FF62624905C00C77316 /* FirstWorkProject */ = {
+		83555FF62624905C00C77316 /* ADMVEDU95 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8355600B2624905D00C77316 /* Build configuration list for PBXNativeTarget "FirstWorkProject" */;
+			buildConfigurationList = 8355600B2624905D00C77316 /* Build configuration list for PBXNativeTarget "ADMVEDU95" */;
 			buildPhases = (
 				83555FF32624905C00C77316 /* Sources */,
 				83555FF42624905C00C77316 /* Frameworks */,
@@ -157,9 +160,9 @@
 			);
 			dependencies = (
 			);
-			name = FirstWorkProject;
+			name = ADMVEDU95;
 			productName = FirstWorkProject;
-			productReference = 83555FF72624905C00C77316 /* FirstWorkProject.app */;
+			productReference = 83555FF72624905C00C77316 /* ADMVEDU95.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -176,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83555FF22624905C00C77316 /* Build configuration list for PBXProject "FirstWorkProject" */;
+			buildConfigurationList = 83555FF22624905C00C77316 /* Build configuration list for PBXProject "ADMVEDU95" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -189,7 +192,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				83555FF62624905C00C77316 /* FirstWorkProject */,
+				83555FF62624905C00C77316 /* ADMVEDU95 */,
 			);
 		};
 /* End PBXProject section */
@@ -215,13 +218,14 @@
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				831607182625C32B0090D203 /* MovieDetailView.swift in Sources */,
-				83A78BC026270A58009C3807 /* iTunesResult.swift in Sources */,
+				83A78BDE26276263009C3807 /* iTunesResult.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* iTunesResponse.swift in Sources */,
-				83A78BC626270B08009C3807 /* UIImageView+staticImages.swift in Sources */,
+				83A78BE12627628B009C3807 /* UIImageView+staticImages.swift in Sources */,
 				8316071B2625C33F0090D203 /* SongDetailView.swift in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
+				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
 				8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */,
 			);
@@ -364,7 +368,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUMQJ6NHNZ;
-				INFOPLIST_FILE = FirstWorkProject/Info.plist;
+				INFOPLIST_FILE = ADMVEDU95/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TUMQJ6NHNZ;
-				INFOPLIST_FILE = FirstWorkProject/Info.plist;
+				INFOPLIST_FILE = ADMVEDU95/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -398,7 +402,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		83555FF22624905C00C77316 /* Build configuration list for PBXProject "FirstWorkProject" */ = {
+		83555FF22624905C00C77316 /* Build configuration list for PBXProject "ADMVEDU95" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				835560092624905D00C77316 /* Debug */,
@@ -407,7 +411,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8355600B2624905D00C77316 /* Build configuration list for PBXNativeTarget "FirstWorkProject" */ = {
+		8355600B2624905D00C77316 /* Build configuration list for PBXNativeTarget "ADMVEDU95" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8355600C2624905D00C77316 /* Debug */,

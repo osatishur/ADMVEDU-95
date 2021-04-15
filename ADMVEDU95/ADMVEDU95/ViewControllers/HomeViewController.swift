@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     }()
     //MARK: Properties
     internal var dataSource: [iTunesResult]  = []
-    private let networkService = NetworkService()
+    private let searchService = SearchService()
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,16 +71,16 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     private func searchITunes(searchTerm: String) {
-        networkService.getResults(searchTerm: searchTerm) { (result) in
+        searchService.searchResults(searchTerm: searchTerm) { (result: Result<iTunesResponse, iTunesSearchError>) in
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
             case .failure(.unknown(let error)):
-                print("unknown error", error)
+                print("unknown error", error ?? "error")
             case .failure(.emptyData):
                 print("no data")
             case .failure(.parsingData(let error)):
-                print("json error", error)
+                print("json error", error ?? "error")
             }
         }
     }

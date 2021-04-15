@@ -1,6 +1,6 @@
 //
 //  UIImageView+staticImages.swift
-//  FirstWorkProject
+//  ADMVEDU95
 //
 //  Created by Satsishur on 14.04.2021.
 //
