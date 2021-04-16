@@ -16,6 +16,6 @@ class SearchService {
                        completion: @escaping (Result<iTunesResponse, iTunesSearchError>)-> Void) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm],
-                                         completion: completion)
+                                  completion: completion)
     }
 }

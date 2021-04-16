@@ -9,18 +9,13 @@ import UIKit
 import AVFoundation
 import AVKit
 
-enum iTunesDataType {
-    case song
-    case movie
-}
-
 class DetailViewController: UIViewController {
     private struct Localizable {
-//        static func convertTextToLocalizable(text: String) -> String {
-//            let text = NSLocalizedString(text, comment: "")
-//            return text
-//        }
-        static let songTitle = NSLocalizedString("Song: ", comment: "")
+        static func localise(key: String, argument: String?) -> String {
+            let noInfoString = NSLocalizedString("no info", comment: "")
+            let str = String(format: NSLocalizedString(key, comment: ""), argument ?? noInfoString)
+            return str
+        }
     }
     //MARK: Views
     lazy var songView = SongDetailView()
@@ -29,7 +24,7 @@ class DetailViewController: UIViewController {
     let playerViewController = AVPlayerViewController()
     var player: AVPlayer?
     var playerItem:AVPlayerItem?
-    var iTunesDataType: iTunesDataType = .song
+    var iTunesDataType: ResponseDataKind = .song
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +45,7 @@ class DetailViewController: UIViewController {
               let url = URL(string: imageURL) else {
             return
         }
-        if model.kind == "feature-movie" {
+        if model.kind == ResponseDataKind.movie.rawValue {
             configureMovieView(model: model, url: url)
         } else {
             configureSongView(model: model, url: url)
@@ -58,9 +53,9 @@ class DetailViewController: UIViewController {
     }
     
     private func configureSongView(model: iTunesResult, url: URL) {
-        songView.songNameLabel.text = String(format: NSLocalizedString("Song", comment: ""), model.trackName ?? "no info")
-        songView.artistNameLabel.text = String(format: NSLocalizedString("Artist", comment: ""), model.artistName ?? "no info")
-        songView.albumNameLabel.text = String(format: NSLocalizedString("Album", comment: ""), model.collectionName ?? "no info")
+        songView.songNameLabel.text = Localizable.localise(key: "Song", argument: model.trackName)
+        songView.artistNameLabel.text = Localizable.localise(key: "Artist", argument: model.artistName)
+        songView.albumNameLabel.text = Localizable.localise(key: "Album", argument: model.collectionName)
         songView.albumImageView.loadImage(url: url)
         initAudioPlayer(songUrl: model.previewUrl)
         songView.playPauseButton.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
@@ -68,8 +63,8 @@ class DetailViewController: UIViewController {
     
     private func configureMovieView(model: iTunesResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
-        movieView.authorNameLabel.text = String(format: NSLocalizedString("Director", comment: ""), model.artistName ?? "no info")
-        movieView.movieNameLabel.text = String(format: NSLocalizedString("Movie", comment: ""), model.trackName ?? "no info")
+        movieView.authorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
+        movieView.movieNameLabel.text = Localizable.localise(key: "Movie", argument: model.trackName)
         initVideoPlayer(movieUrl: model.previewUrl)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playVideo))
@@ -98,23 +93,16 @@ class DetailViewController: UIViewController {
     }
 
     @objc private func playMusic() {
-        print("play Button")
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            if self.player?.rate == 0 {
-                self.player?.play()
-                self.songView.playPauseButton.setBackgroundImage(UIImageView.pauseButtonImage, for: UIControl.State.normal)
-            } else {
-                self.player?.pause()
-                self.songView.playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: UIControl.State.normal)
-            }
+        if self.player?.rate == 0 {
+            self.player?.play()
+            self.songView.playPauseButton.setBackgroundImage(UIImageView.pauseButtonImage, for: UIControl.State.normal)
+        } else {
+            self.player?.pause()
+            self.songView.playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: UIControl.State.normal)
         }
     }
     
     @objc private func playVideo() {
-        print("play Button")
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return

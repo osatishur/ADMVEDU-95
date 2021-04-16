@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306668C262983F000BD694B /* ResponseDataKind.swift */; };
+		830666902629868A00BD694B /* String+LocaliseMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306668F2629868A00BD694B /* String+LocaliseMethod.swift */; };
 		830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E0FDC26282D6900C545B0 /* SearchService.swift */; };
 		830E0FE726286B1100C545B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 830E0FE926286B1100C545B0 /* Localizable.strings */; };
 		8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */; };
-		831607152625B4780090D203 /* UIImageView+loadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607142625B4780090D203 /* UIImageView+loadImage.swift */; };
+		831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607142625B4780090D203 /* UIImageView+LoadImage.swift */; };
 		831607182625C32B0090D203 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831607172625C32B0090D203 /* MovieDetailView.swift */; };
 		8316071B2625C33F0090D203 /* SongDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316071A2625C33F0090D203 /* SongDetailView.swift */; };
 		83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83555FFA2624905C00C77316 /* AppDelegate.swift */; };
@@ -23,17 +25,19 @@
 		8355601F26249D7700C77316 /* iTunesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355601E26249D7700C77316 /* iTunesResponse.swift */; };
 		83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */; };
 		83A78BDE26276263009C3807 /* iTunesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BDD26276263009C3807 /* iTunesResult.swift */; };
-		83A78BE12627628B009C3807 /* UIImageView+staticImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */; };
+		83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */; };
 		B2169C11D26F7C89DE7F9D49 /* Pods_ADMVEDU95.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9BAD675F415DBCB41CED58D /* Pods_ADMVEDU95.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8306668C262983F000BD694B /* ResponseDataKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataKind.swift; sourceTree = "<group>"; };
+		8306668F2629868A00BD694B /* String+LocaliseMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocaliseMethod.swift"; sourceTree = "<group>"; };
 		830E0FDC26282D6900C545B0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		830E0FE22628695F00C545B0 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		830E0FE826286B1100C545B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		830E0FEB26286B2600C545B0 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponceTableViewCell.swift; sourceTree = "<group>"; };
-		831607142625B4780090D203 /* UIImageView+loadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+loadImage.swift"; sourceTree = "<group>"; };
+		831607142625B4780090D203 /* UIImageView+LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+LoadImage.swift"; sourceTree = "<group>"; };
 		831607172625C32B0090D203 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		8316071A2625C33F0090D203 /* SongDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailView.swift; sourceTree = "<group>"; };
 		83555FF72624905C00C77316 /* ADMVEDU95.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADMVEDU95.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +52,7 @@
 		8355601E26249D7700C77316 /* iTunesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResponse.swift; sourceTree = "<group>"; };
 		83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableViewMethods.swift"; sourceTree = "<group>"; };
 		83A78BDD26276263009C3807 /* iTunesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesResult.swift; sourceTree = "<group>"; };
-		83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+staticImages.swift"; sourceTree = "<group>"; };
+		83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+StaticImages.swift"; sourceTree = "<group>"; };
 		86B56142A567E26F1132CEE2 /* Pods-ADMVEDU95.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADMVEDU95.debug.xcconfig"; path = "Target Support Files/Pods-ADMVEDU95/Pods-ADMVEDU95.debug.xcconfig"; sourceTree = "<group>"; };
 		D9BAD675F415DBCB41CED58D /* Pods_ADMVEDU95.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADMVEDU95.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE204D331F28701E15CD4B98 /* Pods-ADMVEDU95.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADMVEDU95.release.xcconfig"; path = "Target Support Files/Pods-ADMVEDU95/Pods-ADMVEDU95.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,7 +140,7 @@
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
-				831607142625B4780090D203 /* UIImageView+loadImage.swift */,
+				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -146,6 +150,7 @@
 			children = (
 				8355601E26249D7700C77316 /* iTunesResponse.swift */,
 				83A78BDD26276263009C3807 /* iTunesResult.swift */,
+				8306668C262983F000BD694B /* ResponseDataKind.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -161,7 +166,8 @@
 		83A78BC426270ACE009C3807 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				83A78BE02627628B009C3807 /* UIImageView+staticImages.swift */,
+				83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */,
+				8306668F2629868A00BD694B /* String+LocaliseMethod.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,14 +295,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831607152625B4780090D203 /* UIImageView+loadImage.swift in Sources */,
+				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
+				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				831607182625C32B0090D203 /* MovieDetailView.swift in Sources */,
+				830666902629868A00BD694B /* String+LocaliseMethod.swift in Sources */,
 				83A78BDE26276263009C3807 /* iTunesResult.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* iTunesResponse.swift in Sources */,
-				83A78BE12627628B009C3807 /* UIImageView+staticImages.swift in Sources */,
+				83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */,
 				8316071B2625C33F0090D203 /* SongDetailView.swift in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,

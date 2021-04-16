@@ -34,13 +34,13 @@ class NetworkService {
     }()
     
     public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
-                                       parameters: [String: String],
-                                       completion: @escaping (Result<T, iTunesSearchError>) -> Void) {
-        guard let url = buildURL(endpoint: endpoint, parameters: parameters) else {
+                                parameters: [String: String],
+                                completion: @escaping (Result<T, iTunesSearchError>) -> Void) {
+        guard let url = buildURL(endpoint: endpoint) else {
             return
         }
         print(url)
-        AF.request(url).responseJSON(completionHandler: { (response) in
+        AF.request(url, parameters: parameters).responseJSON { (response) in
             let result = self.parseResponse(data: response.data,
                                             response: response.response,
                                             error: response.error,
@@ -48,29 +48,13 @@ class NetworkService {
             DispatchQueue.main.async {
                 completion(result)
             }
-        })
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            let result = self.parseResponse(data: data,
-//                                            response: response,
-//                                            error: error, type: T.self)
-//            DispatchQueue.main.async {
-//                completion(result)
-//            }
-//        }
-//        task.resume()
+        }
     }
 
-    private func buildURL(endpoint: NetworkConstants.Endpoint,
-                          parameters: [String : String]) -> URL? {
+    private func buildURL(endpoint: NetworkConstants.Endpoint) -> URL? {
         let path = NetworkConstants.baseUrl + endpoint.rawValue
-        var urlComponents = URLComponents(string: path)
-        for (key, value) in parameters {
-            let item = URLQueryItem(name: key, value: value)
-            urlComponents?.queryItems?.append(item)
-        }
-       
+        let urlComponents = URLComponents(string: path)
         guard let url = urlComponents?.url else {
-            //fatalError("Error: expected iTunes URL but instead it is nil")
             return nil
         }
         return url

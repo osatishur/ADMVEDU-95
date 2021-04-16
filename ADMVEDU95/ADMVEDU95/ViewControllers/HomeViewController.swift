@@ -8,21 +8,23 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
     struct Constants {
         static let searchCellIdentifier = "SearchResponceTableViewCell"
-        static let searhBarPlaceholder = NSLocalizedString("Start searching", comment: "")
+        static let estimatedRowHeight: CGFloat = 200
+        static let topViewHeight: CGFloat = 44
     }
     //MARK: Views
     internal var searchController = UISearchController(searchResultsController: nil)
     
     private var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView()
         tableView.register(SearchResponceTableViewCell.self, forCellReuseIdentifier: Constants.searchCellIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 200
+        tableView.estimatedRowHeight = Constants.estimatedRowHeight
         return tableView
     }()
+    
+    private let topView = UIView()
     //MARK: Properties
     internal var dataSource: [iTunesResult]  = []
     private let searchService = SearchService()
@@ -37,28 +39,37 @@ class HomeViewController: UIViewController {
     private func setupLayout() {
         setupSubviews()
         setupTableView()
+        setupTopView()
     }
     
     private func setupSubviews() {
-        view.addSubview(searchController.searchBar)
+        view.addSubview(topView)
+        topView.addSubview(searchController.searchBar)
         view.addSubview(tableView)
+    }
+    
+    private func setupTopView() {
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        topView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        topView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
     }
     
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.tableHeaderView = searchController.searchBar
     }
     
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = Constants.searhBarPlaceholder
+        searchController.searchBar.placeholder = NSLocalizedString("Start searching", comment: "")
     }
 }
 //MARK: SearchBarDelegate
