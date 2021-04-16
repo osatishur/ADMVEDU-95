@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306668C262983F000BD694B /* ResponseDataKind.swift */; };
-		830666902629868A00BD694B /* String+LocaliseMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306668F2629868A00BD694B /* String+LocaliseMethod.swift */; };
 		830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830E0FDC26282D6900C545B0 /* SearchService.swift */; };
 		830E0FE726286B1100C545B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 830E0FE926286B1100C545B0 /* Localizable.strings */; };
 		8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316071026257BAF0090D203 /* SearchResponceTableViewCell.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		8306668C262983F000BD694B /* ResponseDataKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataKind.swift; sourceTree = "<group>"; };
-		8306668F2629868A00BD694B /* String+LocaliseMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+LocaliseMethod.swift"; sourceTree = "<group>"; };
 		830E0FDC26282D6900C545B0 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		830E0FE22628695F00C545B0 /* ru-RU */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "ru-RU"; path = "ru-RU.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		830E0FE826286B1100C545B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */,
-				8306668F2629868A00BD694B /* String+LocaliseMethod.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				831607182625C32B0090D203 /* MovieDetailView.swift in Sources */,
-				830666902629868A00BD694B /* String+LocaliseMethod.swift in Sources */,
 				83A78BDE26276263009C3807 /* iTunesResult.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* iTunesResponse.swift in Sources */,

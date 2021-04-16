@@ -29,7 +29,7 @@ class MovieDetailView: UIView {
         return label
     }()
     
-    lazy var authorNameLabel: UILabel = {
+    lazy var directorNameLabel: UILabel = {
         let label = createLabel(numberOfLines: 0, textAlighment: .center)
         return label
     }()
@@ -51,7 +51,7 @@ class MovieDetailView: UIView {
     
     private func setupSubviews() {
         addSubview(albumImageView)
-        addSubview(authorNameLabel)
+        addSubview(directorNameLabel)
         addSubview(movieNameLabel)
     }
     
@@ -69,14 +69,14 @@ class MovieDetailView: UIView {
     }
     
     private func setupAuthorName() {
-        authorNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        authorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        authorNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        authorNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        directorNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
+        directorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        directorNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
+        directorNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func setupMovieName() {
-        movieNameLabel.topAnchor.constraint(equalTo: authorNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
+        movieNameLabel.topAnchor.constraint(equalTo: directorNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
         movieNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
         movieNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         movieNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true

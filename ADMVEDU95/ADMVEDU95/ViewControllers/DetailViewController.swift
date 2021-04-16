@@ -63,7 +63,7 @@ class DetailViewController: UIViewController {
     
     private func configureMovieView(model: iTunesResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
-        movieView.authorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
+        movieView.directorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
         movieView.movieNameLabel.text = Localizable.localise(key: "Movie", argument: model.trackName)
         initVideoPlayer(movieUrl: model.previewUrl)
         
