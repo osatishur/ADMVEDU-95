@@ -14,6 +14,7 @@ class MovieDetailView: UIView {
         static let labelHeight: CGFloat = 22
         static let smallInterval: CGFloat = 20
         static let bigInterval: CGFloat = 30
+        static let sideInterval: CGFloat = 8
     }
     
     var albumImageView: UIImageView = {
@@ -69,13 +70,15 @@ class MovieDetailView: UIView {
     
     private func setupAuthorName() {
         authorNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        authorNameLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight).isActive = true
+        authorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        authorNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         authorNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func setupMovieName() {
         movieNameLabel.topAnchor.constraint(equalTo: authorNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        movieNameLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight).isActive = true
+        movieNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        movieNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         movieNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     

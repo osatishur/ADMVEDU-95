@@ -15,6 +15,7 @@ class SongDetailView: UIView {
         static let labelHeight: CGFloat = 22
         static let smallInterval: CGFloat = 20
         static let bigInterval: CGFloat = 30
+        static let sideInterval: CGFloat = 8
     }
     
     let albumImageView: UIImageView = {
@@ -80,19 +81,22 @@ class SongDetailView: UIView {
     
     private func setupArtistName() {
         artistNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        artistNameLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight).isActive = true
+        artistNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        artistNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         artistNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func setupSongName() {
         songNameLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        songNameLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight).isActive = true
+        songNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        songNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         songNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func setupAlbumName() {
         albumNameLabel.topAnchor.constraint(equalTo: songNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        albumNameLabel.heightAnchor.constraint(equalToConstant: Constants.labelHeight).isActive = true
+        albumNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
+        albumNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
         albumNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     

@@ -15,6 +15,13 @@ enum iTunesDataType {
 }
 
 class DetailViewController: UIViewController {
+    private struct Localizable {
+//        static func convertTextToLocalizable(text: String) -> String {
+//            let text = NSLocalizedString(text, comment: "")
+//            return text
+//        }
+        static let songTitle = NSLocalizedString("Song: ", comment: "")
+    }
     //MARK: Views
     lazy var songView = SongDetailView()
     lazy var movieView = MovieDetailView()
@@ -51,9 +58,9 @@ class DetailViewController: UIViewController {
     }
     
     private func configureSongView(model: iTunesResult, url: URL) {
-        songView.songNameLabel.text = model.trackName
-        songView.artistNameLabel.text = model.artistName
-        songView.albumNameLabel.text = model.collectionName
+        songView.songNameLabel.text = String(format: NSLocalizedString("Song", comment: ""), model.trackName ?? "no info")
+        songView.artistNameLabel.text = String(format: NSLocalizedString("Artist", comment: ""), model.artistName ?? "no info")
+        songView.albumNameLabel.text = String(format: NSLocalizedString("Album", comment: ""), model.collectionName ?? "no info")
         songView.albumImageView.loadImage(url: url)
         initAudioPlayer(songUrl: model.previewUrl)
         songView.playPauseButton.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
@@ -61,8 +68,8 @@ class DetailViewController: UIViewController {
     
     private func configureMovieView(model: iTunesResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
-        movieView.authorNameLabel.text = model.artistName
-        movieView.movieNameLabel.text = model.trackName
+        movieView.authorNameLabel.text = String(format: NSLocalizedString("Director", comment: ""), model.artistName ?? "no info")
+        movieView.movieNameLabel.text = String(format: NSLocalizedString("Movie", comment: ""), model.trackName ?? "no info")
         initVideoPlayer(movieUrl: model.previewUrl)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playVideo))

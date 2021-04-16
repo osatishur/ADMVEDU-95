@@ -8,12 +8,14 @@
 import Foundation
 
 class SearchService {
-    let networkManager = NetworkService()
+    private struct Constants {
+        static let searchParameter = "term"
+    }
+    
     func searchResults(searchTerm: String,
                        completion: @escaping (Result<iTunesResponse, iTunesSearchError>)-> Void) {
-        networkManager.getResults(endpoint: .search,
-                                  parameters: ["term": searchTerm]) { (result: Result<iTunesResponse, iTunesSearchError>) in
-            completion(result)
-        }
+        NetworkService.shared.get(endpoint: .search,
+                                  parameters: [Constants.searchParameter: searchTerm],
+                                         completion: completion)
     }
 }
