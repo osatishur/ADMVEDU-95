@@ -8,8 +8,8 @@
 import UIKit
 
 extension HomeViewController: CategoryDelegate  {
-    func fetchCategory(category: iTunesCategory) {
+    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
         categoryTitle = category
-        categoryLabel.text = category.rawValue
+        categoryView.configureView(categoryTitle: NSLocalizedString(categoryTitle.rawValue, comment: ""))
     }
 }

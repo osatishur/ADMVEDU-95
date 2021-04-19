@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CategoryDelegate {
-    func fetchCategory(category: iTunesCategory)
+    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category)
 }
 
 class CategoryViewController: UIViewController {
@@ -16,17 +16,16 @@ class CategoryViewController: UIViewController {
         static let categoryCellIdentifier = "CategoryTableViewCell"
     }
     
-    var dataSource: [iTunesCategory] = {
-        var data = [iTunesCategory]()
-        for category in iTunesCategory.allCases {
+    private let dataSource: [Category] = {
+        var data: [Category] = []
+        for category in Category.allCases {
             data.append(category)
         }
         return data
     }()
     
     var delegate: CategoryDelegate?
-    
-    var categoryChosed: iTunesCategory?
+    var categoryChosed: Category?
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -44,10 +43,12 @@ class CategoryViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, 
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         left: view.safeAreaLayoutGuide.leftAnchor,
+                         right: view.safeAreaLayoutGuide.rightAnchor,
+                         width: 0,
+                         height: 0)
     }
 }
 
@@ -66,7 +67,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.fetchCategory(category: dataSource[indexPath.row])
+        delegate?.fetchCategory(self, category: dataSource[indexPath.row])
         self.dismiss(animated: true, completion: nil)
     }
 }

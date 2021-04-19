@@ -9,7 +9,7 @@ import Foundation
 
 import Foundation
 
-struct iTunesResult: Codable {
+struct ApiResult: Codable {
     let wrapperType: String?
     let kind: String?
     let artistName: String?

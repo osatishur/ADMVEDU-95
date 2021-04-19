@@ -15,7 +15,7 @@ class SearchService {
     
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<iTunesResponse, iTunesSearchError>)-> Void) {
+                       completion: @escaping (Result<Response, iTunesSearchError>)-> Void) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm,
                                                Constants.filterParameter: filter],

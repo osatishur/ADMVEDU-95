@@ -72,40 +72,45 @@ class AudioDetailView: UIView {
     }
     
     private func setupAlbumImage() {
-        albumImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: Constants.smallInterval).isActive = true
-        albumImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        albumImageView.widthAnchor.constraint(equalToConstant: Constants.albumImageSize).isActive = true
-        albumImageView.heightAnchor.constraint(equalToConstant: Constants.albumImageSize).isActive = true
+        albumImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor, paddingTop: Constants.smallInterval,
+                              centerX: self.centerXAnchor,
+                              width: Constants.albumImageSize,
+                              height: Constants.albumImageSize)
     }
     
     private func setupArtistName() {
-        artistNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        artistNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        artistNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        artistNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        artistNameLabel.anchor(top: albumImageView.bottomAnchor, paddingTop: Constants.bigInterval,
+                               left: self.leftAnchor, paddingLeft: Constants.sideInterval,
+                               right: self.rightAnchor, paddingRight: -Constants.sideInterval,
+                               centerX: self.centerXAnchor,
+                               width: 0,
+                               height: 0)
     }
     
     private func setupSongName() {
-        songNameLabel.topAnchor.constraint(equalTo: artistNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        songNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        songNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        songNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        songNameLabel.anchor(top: artistNameLabel.bottomAnchor, paddingTop: Constants.smallInterval,
+                               left: self.leftAnchor, paddingLeft: Constants.sideInterval,
+                               right: self.rightAnchor, paddingRight: -Constants.sideInterval,
+                               centerX: self.centerXAnchor,
+                               width: 0,
+                               height: 0)
     }
     
     private func setupAlbumName() {
-        albumNameLabel.topAnchor.constraint(equalTo: songNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        albumNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        albumNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        albumNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        albumNameLabel.anchor(top: songNameLabel.bottomAnchor, paddingTop: Constants.smallInterval,
+                               left: self.leftAnchor, paddingLeft: Constants.sideInterval,
+                               right: self.rightAnchor, paddingRight: -Constants.sideInterval,
+                               centerX: self.centerXAnchor,
+                               width: 0,
+                               height: 0)
     }
     
     private func setupplayPauseButton() {
-        playPauseButton.translatesAutoresizingMaskIntoConstraints = false
-        playPauseButton.topAnchor.constraint(equalTo: albumNameLabel.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        playPauseButton.widthAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
-        playPauseButton.heightAnchor.constraint(equalToConstant: Constants.buttonSize).isActive = true
-        playPauseButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: .normal)
+        playPauseButton.anchor(top: albumNameLabel.bottomAnchor, paddingTop: Constants.bigInterval,
+                               centerX: self.centerXAnchor,
+                               width: Constants.buttonSize,
+                               height: Constants.buttonSize)
     }
     
     private func createLabel(numberOfLines: Int, textAlighment: NSTextAlignment) -> UILabel {

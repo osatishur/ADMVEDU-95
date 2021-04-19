@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
         }
     }
     //MARK: Configure View
-    public func configureView(model: iTunesResult) {
+    public func configureView(model: ApiResult) {
         guard let imageURL = model.artworkUrl100,
               let url = URL(string: imageURL) else {
             return
@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func configureAudioView(model: iTunesResult, url: URL) {
+    private func configureAudioView(model: ApiResult, url: URL) {
         songView.songNameLabel.text = Localizable.localise(key: "Song", argument: model.trackName)
         songView.artistNameLabel.text = Localizable.localise(key: "Artist", argument: model.artistName)
         songView.albumNameLabel.text = Localizable.localise(key: "Album", argument: model.collectionName)
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
         songView.playPauseButton.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
     }
     
-    private func configureVideoView(model: iTunesResult, url: URL) {
+    private func configureVideoView(model: ApiResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
         movieView.directorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
         movieView.movieNameLabel.text = Localizable.localise(key: "Movie", argument: model.trackName)
