@@ -18,8 +18,8 @@ class DetailViewController: UIViewController {
         }
     }
     //MARK: Views
-    lazy var songView = SongDetailView()
-    lazy var movieView = MovieDetailView()
+    lazy var songView = AudioDetailView()
+    lazy var movieView = VideoDetailView()
     //MARK: Properties
     let playerViewController = AVPlayerViewController()
     var player: AVPlayer?
@@ -46,13 +46,13 @@ class DetailViewController: UIViewController {
             return
         }
         if model.kind == ResponseDataKind.movie.rawValue {
-            configureMovieView(model: model, url: url)
+            configureVideoView(model: model, url: url)
         } else {
-            configureSongView(model: model, url: url)
+            configureAudioView(model: model, url: url)
         }
     }
     
-    private func configureSongView(model: iTunesResult, url: URL) {
+    private func configureAudioView(model: iTunesResult, url: URL) {
         songView.songNameLabel.text = Localizable.localise(key: "Song", argument: model.trackName)
         songView.artistNameLabel.text = Localizable.localise(key: "Artist", argument: model.artistName)
         songView.albumNameLabel.text = Localizable.localise(key: "Album", argument: model.collectionName)
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
         songView.playPauseButton.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
     }
     
-    private func configureMovieView(model: iTunesResult, url: URL) {
+    private func configureVideoView(model: iTunesResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
         movieView.directorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
         movieView.movieNameLabel.text = Localizable.localise(key: "Movie", argument: model.trackName)

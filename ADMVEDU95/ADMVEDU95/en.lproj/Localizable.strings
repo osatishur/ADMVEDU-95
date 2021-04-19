@@ -15,3 +15,14 @@
 "Director" = "Director: %@";
 "Movie" = "Movie: %@";
 "no info" = "no info";
+"all" = "all";
+"music" = "music";
+"movie" = "movie";
+"podcast" = "podcast";
+"tvShow" = "tvShow";
+"ebook" = "ebook";
+"audiobook" = "audiobook";
+"musicVideo" = "musicVideo";
+"music-video" = "music-video";
+"No data" = "No data";
+"Please, check for correct request" = "Please, check for correct request";

@@ -7,8 +7,7 @@
 
 import UIKit
 
-class MovieDetailView: UIView {
-    
+class VideoDetailView: UIView {
     struct Constants {
         static let albumImageSize =  UIScreen.main.bounds.width * 0.7
         static let labelHeight: CGFloat = 22

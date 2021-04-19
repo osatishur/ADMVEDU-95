@@ -1,5 +1,5 @@
 //
-//  ResponseDataKind.swift
+//  iTunesCategory.swift
 //  ADMVEDU95
 //
 //  Created by Satsishur on 16.04.2021.
@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum ResponseDataKind: String {
-    case song = "song"
-    case movie = "feature-movie"
+enum iTunesCategory: String, CaseIterable {
+    case all = "all"
+    case music = "music"
+    case movie = "movie"
     case podcast = "podcast"
     case tvShow = "tvShow"
     case ebook = "ebook"
