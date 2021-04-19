@@ -11,7 +11,3 @@ struct Response: Codable {
     let resultCount: Int
     let results: [ApiResult]
 }
-
-
-
-

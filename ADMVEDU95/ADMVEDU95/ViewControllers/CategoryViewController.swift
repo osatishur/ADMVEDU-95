@@ -46,9 +46,7 @@ class CategoryViewController: UIViewController {
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, 
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          left: view.safeAreaLayoutGuide.leftAnchor,
-                         right: view.safeAreaLayoutGuide.rightAnchor,
-                         width: 0,
-                         height: 0)
+                         right: view.safeAreaLayoutGuide.rightAnchor)
     }
 }
 
@@ -60,7 +58,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.categoryCellIdentifier, for: indexPath)
         let category = dataSource[indexPath.row].rawValue
-        cell.textLabel?.text = NSLocalizedString(category, comment: "")
+        cell.textLabel?.text = category.localized()
         cell.accessoryType = dataSource[indexPath.row] == categoryChosed ? .checkmark : .none
         return cell
     }

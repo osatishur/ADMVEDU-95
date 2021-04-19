@@ -47,27 +47,33 @@ class SearchResponceTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        kindLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.kindLabelTopConstraint).isActive = true
-        kindLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.sideConstraint).isActive = true
-        kindLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.sideConstraint).isActive = true
-        
-        artistAndTrackNameLabel.topAnchor.constraint(equalTo: kindLabel.bottomAnchor, constant: Constants.artistLabelTopConstraint).isActive = true
-        artistAndTrackNameLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.sideConstraint).isActive = true
-        artistAndTrackNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -Constants.sideConstraint).isActive = true
-        artistAndTrackNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -Constants.artistLabelBottomConstraint).isActive = true
+        kindLabel.anchor(top: contentView.topAnchor,
+                         paddingTop: Constants.kindLabelTopConstraint,
+                         left: contentView.leftAnchor,
+                         paddingLeft: Constants.sideConstraint,
+                         right: contentView.rightAnchor,
+                         paddingRight: Constants.sideConstraint)
+                
+        artistAndTrackNameLabel.anchor(top: kindLabel.bottomAnchor,
+                                       paddingTop: Constants.artistLabelTopConstraint,
+                                       bottom: contentView.bottomAnchor,
+                                       paddingBottom: Constants.artistLabelBottomConstraint,
+                                       left: contentView.leftAnchor,
+                                       paddingLeft: Constants.sideConstraint,
+                                       right: contentView.rightAnchor,
+                                       paddingRight: Constants.sideConstraint)
     }
     
     private func createLabel(fontSize: CGFloat, numberOfLines: Int) -> UILabel {
         let label = UILabel()
         label.font = .systemFont(ofSize: fontSize)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = numberOfLines
         return label
     }
     // MARK: - Model configure
     public func configure(model: ApiResult) {
-        let kindLabelText = NSLocalizedString(model.kind ?? "no info", comment: "")
-        kindLabel.text = kindLabelText//NSLocalizedString(kindLabelText, comment: "")
+        let kindLabelText = model.kind ?? "no info"
+        kindLabel.text = kindLabelText.localized()
         artistAndTrackNameLabel.text = "\(model.artistName ?? "no info") - \(model.trackName ?? "no info")"
     }
 }

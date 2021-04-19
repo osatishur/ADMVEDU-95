@@ -62,10 +62,10 @@ class VideoDetailView: UIView {
     
     private func setupAlbumImage() {
         albumImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor,
-                              paddingTop: Constants.smallInterval,
-                              centerX: self.centerXAnchor,
-                              width: Constants.albumImageSize,
-                              height: Constants.albumImageSize)
+                              paddingTop: Constants.smallInterval)
+        albumImageView.centerAnchor(centerX: self.centerXAnchor)
+        albumImageView.dimension(width: Constants.albumImageSize,
+                                 height: Constants.albumImageSize)
     }
     
     private func setupAuthorName() {
@@ -74,10 +74,8 @@ class VideoDetailView: UIView {
                                  left: self.leftAnchor,
                                  paddingLeft: Constants.sideInterval,
                                  right: self.rightAnchor,
-                                 paddingRight: Constants.sideInterval,
-                                 centerX: self.centerXAnchor,
-                                 width: 0,
-                                 height: 0)
+                                 paddingRight: Constants.sideInterval)
+        directorNameLabel.centerAnchor(centerX: self.centerXAnchor)
     }
     
     private func setupMovieName() {
@@ -86,15 +84,12 @@ class VideoDetailView: UIView {
                               left: self.leftAnchor,
                               paddingLeft: Constants.sideInterval,
                               right: self.rightAnchor,
-                              paddingRight: Constants.sideInterval,
-                              centerX: self.centerXAnchor,
-                              width: 0,
-                              height: 0)
+                              paddingRight: Constants.sideInterval)
+        movieNameLabel.centerAnchor(centerX: self.centerXAnchor)
     }
     
     private func createLabel(numberOfLines: Int, textAlighment: NSTextAlignment) -> UILabel {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = numberOfLines
         label.textAlignment = textAlighment
         return label

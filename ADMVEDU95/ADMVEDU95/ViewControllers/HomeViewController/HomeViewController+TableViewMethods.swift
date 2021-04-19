@@ -37,5 +37,3 @@ extension HomeViewController: UITableViewDelegate {
         present(vc, animated: true)
     }
 }
-
-
