@@ -7,8 +7,7 @@
 
 import UIKit
 
-class SongDetailView: UIView {
-    
+class AudioDetailView: UIView {
     struct Constants {
         static let albumImageSize =  UIScreen.main.bounds.width * 0.7
         static let buttonSize: CGFloat = 70

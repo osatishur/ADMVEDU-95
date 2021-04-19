@@ -25,8 +25,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
         let model = dataSource[indexPath.row]
         vc.configureView(model: model)
-        if model.kind == ResponseDataKind.movie.rawValue {
+        switch model.kind {
+        case ResponseDataKind.movie.rawValue,
+             ResponseDataKind.musicVideo.rawValue:
             vc.iTunesDataType = .movie
+        default:
+            vc.iTunesDataType = .song
         }
         present(vc, animated: true)
     }

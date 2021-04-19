@@ -10,12 +10,15 @@ import Foundation
 class SearchService {
     private struct Constants {
         static let searchParameter = "term"
+        static let filterParameter = "media"
     }
     
     func searchResults(searchTerm: String,
+                       filter: String,
                        completion: @escaping (Result<iTunesResponse, iTunesSearchError>)-> Void) {
         NetworkService.shared.get(endpoint: .search,
-                                  parameters: [Constants.searchParameter: searchTerm],
+                                  parameters: [Constants.searchParameter: searchTerm,
+                                               Constants.filterParameter: filter],
                                   completion: completion)
     }
 }

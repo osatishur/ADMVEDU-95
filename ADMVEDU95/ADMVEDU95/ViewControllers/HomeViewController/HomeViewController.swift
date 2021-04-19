@@ -11,7 +11,10 @@ class HomeViewController: UIViewController {
     struct Constants {
         static let searchCellIdentifier = "SearchResponceTableViewCell"
         static let estimatedRowHeight: CGFloat = 200
-        static let topViewHeight: CGFloat = 44
+        static let topViewHeight: CGFloat = 56
+        static let categoryViewHeight: CGFloat = 32
+        static let categoryViewSideConstraint: CGFloat = 8
+        static let categoryViewColor = UIColor(red: 52/255, green: 59/255, blue: 70/255, alpha: 1)
     }
     //MARK: Views
     internal var searchController = UISearchController(searchResultsController: nil)
@@ -25,9 +28,12 @@ class HomeViewController: UIViewController {
     }()
     
     private let topView = UIView()
+    private let categoryView = UIView()
+    let categoryLabel = UILabel()
     //MARK: Properties
-    internal var dataSource: [iTunesResult]  = []
+    var dataSource: [iTunesResult]  = []
     private let searchService = SearchService()
+    var categoryTitle: iTunesCategory = iTunesCategory.all
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +41,24 @@ class HomeViewController: UIViewController {
         setupLayout()
         setupSearchBar()
     }
+    
+    override func viewDidLayoutSubviews() {
+        categoryLabel.text = NSLocalizedString(categoryTitle.rawValue, comment: "")
+    }
     //MARK: Setup Layout
     private func setupLayout() {
         setupSubviews()
         setupTableView()
         setupTopView()
+        setupCategoryView()
+        setupCategoryLabel()
     }
     
     private func setupSubviews() {
         view.addSubview(topView)
+        view.addSubview(categoryView)
         topView.addSubview(searchController.searchBar)
+        categoryView.addSubview(categoryLabel)
         view.addSubview(tableView)
     }
     
@@ -56,11 +70,39 @@ class HomeViewController: UIViewController {
         topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
     }
     
+    private func setupCategoryView() {
+        categoryView.translatesAutoresizingMaskIntoConstraints = false
+        categoryView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
+        categoryView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        categoryView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        categoryView.heightAnchor.constraint(equalToConstant: Constants.categoryViewHeight).isActive = true
+        categoryView.backgroundColor = Constants.categoryViewColor
+        
+        let arrowLabel = UILabel()
+        categoryView.addSubview(arrowLabel)
+        arrowLabel.translatesAutoresizingMaskIntoConstraints = false
+        arrowLabel.trailingAnchor.constraint(equalTo: categoryView.trailingAnchor, constant: -Constants.categoryViewSideConstraint).isActive = true
+        arrowLabel.centerYAnchor.constraint(equalTo: categoryView.centerYAnchor).isActive = true
+        arrowLabel.textColor = UIColor.white
+        arrowLabel.text = ">"
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
+        categoryView.isUserInteractionEnabled = true
+        categoryView.addGestureRecognizer(tap)
+    }
+    
+    private func setupCategoryLabel() {
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        categoryLabel.centerYAnchor.constraint(equalTo: categoryView.centerYAnchor).isActive = true
+        categoryLabel.leftAnchor.constraint(equalTo: categoryView.leftAnchor, constant: Constants.categoryViewSideConstraint).isActive = true
+        categoryLabel.textColor = .white
+    }
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: categoryView.bottomAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
@@ -70,6 +112,13 @@ class HomeViewController: UIViewController {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = NSLocalizedString("Start searching", comment: "")
+    }
+    //MARK: goToCategory method
+    @objc func goToCategories() {
+        let vc = CategoryViewController()
+        vc.delegate = self
+        vc.categoryChosed = categoryTitle
+        present(vc, animated: true)
     }
 }
 //MARK: SearchBarDelegate
@@ -82,7 +131,9 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     private func searchITunes(searchTerm: String) {
-        searchService.searchResults(searchTerm: searchTerm) { (result: Result<iTunesResponse, iTunesSearchError>) in
+        searchService.searchResults(searchTerm: searchTerm,
+                                    filter: self.categoryTitle.rawValue) { (result: Result<iTunesResponse, iTunesSearchError>) in
+            print(result)
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
@@ -106,11 +157,17 @@ extension HomeViewController: UISearchBarDelegate {
                 self.dataSource.append(result)
             }
         }
+        if dataSource.isEmpty {
+            Alerts.showAlert(viewController: self,
+                             titleMessage: NSLocalizedString("No data", comment: ""),
+                             message: NSLocalizedString("Please, check for correct request", comment: ""))
+        }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
 }
+
 
 
 

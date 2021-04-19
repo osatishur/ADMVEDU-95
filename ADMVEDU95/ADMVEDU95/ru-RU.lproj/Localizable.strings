@@ -15,3 +15,14 @@
 "Director" = "Режиссер: %@";
 "Movie" = "Фильм: %@";
 "no info" = "нет данных";
+"all" = "все";
+"music" = "музыка";
+"movie" = "фильмы";
+"podcast" = "подкасты";
+"tvShow" = "ТВ-шоу";
+"ebook" = "е-книга";
+"audiobook" = "аудиокнига";
+"musicVideo" = "клипы";
+"music-video" = "клип";
+"No data" = "Нет данных";
+"Please, check for correct request" = "Пожалуйста, проверьте правильность запроса";
