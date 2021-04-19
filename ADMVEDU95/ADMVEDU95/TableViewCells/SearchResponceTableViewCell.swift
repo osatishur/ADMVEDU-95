@@ -65,9 +65,9 @@ class SearchResponceTableViewCell: UITableViewCell {
         return label
     }
     // MARK: - Model configure
-    public func configure(model: iTunesResult) {
+    public func configure(model: ApiResult) {
         let kindLabelText = NSLocalizedString(model.kind ?? "no info", comment: "")
-        kindLabel.text = NSLocalizedString(kindLabelText, comment: "")
+        kindLabel.text = kindLabelText//NSLocalizedString(kindLabelText, comment: "")
         artistAndTrackNameLabel.text = "\(model.artistName ?? "no info") - \(model.trackName ?? "no info")"
     }
 }

@@ -61,24 +61,35 @@ class VideoDetailView: UIView {
     }
     
     private func setupAlbumImage() {
-        albumImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: Constants.smallInterval).isActive = true
-        albumImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        albumImageView.widthAnchor.constraint(equalToConstant: Constants.albumImageSize).isActive = true
-        albumImageView.heightAnchor.constraint(equalToConstant: Constants.albumImageSize).isActive = true
+        albumImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor,
+                              paddingTop: Constants.smallInterval,
+                              centerX: self.centerXAnchor,
+                              width: Constants.albumImageSize,
+                              height: Constants.albumImageSize)
     }
     
     private func setupAuthorName() {
-        directorNameLabel.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: Constants.bigInterval).isActive = true
-        directorNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        directorNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        directorNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        directorNameLabel.anchor(top: albumImageView.bottomAnchor,
+                                 paddingTop: Constants.bigInterval,
+                                 left: self.leftAnchor,
+                                 paddingLeft: Constants.sideInterval,
+                                 right: self.rightAnchor,
+                                 paddingRight: Constants.sideInterval,
+                                 centerX: self.centerXAnchor,
+                                 width: 0,
+                                 height: 0)
     }
     
     private func setupMovieName() {
-        movieNameLabel.topAnchor.constraint(equalTo: directorNameLabel.bottomAnchor, constant: Constants.smallInterval).isActive = true
-        movieNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: Constants.sideInterval).isActive = true
-        movieNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -Constants.sideInterval).isActive = true
-        movieNameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        movieNameLabel.anchor(top: directorNameLabel.bottomAnchor,
+                              paddingTop: Constants.smallInterval,
+                              left: self.leftAnchor,
+                              paddingLeft: Constants.sideInterval,
+                              right: self.rightAnchor,
+                              paddingRight: Constants.sideInterval,
+                              centerX: self.centerXAnchor,
+                              width: 0,
+                              height: 0)
     }
     
     private func createLabel(numberOfLines: Int, textAlighment: NSTextAlignment) -> UILabel {

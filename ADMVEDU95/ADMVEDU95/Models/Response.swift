@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct iTunesResponse: Codable {
+struct Response: Codable {
     let resultCount: Int
-    let results: [iTunesResult]
+    let results: [ApiResult]
 }
 
 
