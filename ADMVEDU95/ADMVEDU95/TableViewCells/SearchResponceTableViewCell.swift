@@ -73,7 +73,7 @@ class SearchResponceTableViewCell: UITableViewCell {
     // MARK: - Model configure
     public func configure(model: ApiResult) {
         let kindLabelText = model.kind ?? "no info"
-        kindLabel.text = kindLabelText.localized()
+        kindLabel.text = kindLabelText
         artistAndTrackNameLabel.text = "\(model.artistName ?? "no info") - \(model.trackName ?? "no info")"
     }
 }
