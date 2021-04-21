@@ -10,13 +10,6 @@ import AVFoundation
 import AVKit
 
 class DetailViewController: UIViewController {
-    private struct Localizable {
-        static func localise(key: String, argument: String?) -> String {
-            let noInfoString = NSLocalizedString("no info", comment: "")
-            let str = String(format: NSLocalizedString(key, comment: ""), argument ?? noInfoString)
-            return str
-        }
-    }
     //MARK: Views
     lazy var songView = AudioDetailView()
     lazy var movieView = VideoDetailView()
@@ -53,9 +46,9 @@ class DetailViewController: UIViewController {
     }
     
     private func configureAudioView(model: ApiResult, url: URL) {
-        songView.songNameLabel.text = Localizable.localise(key: "Song", argument: model.trackName)
-        songView.artistNameLabel.text = Localizable.localise(key: "Artist", argument: model.artistName)
-        songView.albumNameLabel.text = Localizable.localise(key: "Album", argument: model.collectionName)
+        songView.songNameLabel.text = String(format: "Song".localized(), model.trackName ?? "no info".localized())
+        songView.artistNameLabel.text = String(format: "Artist".localized(), model.artistName ?? "no info".localized())
+        songView.albumNameLabel.text = String(format: "Album".localized(), model.collectionName ?? "no info".localized())
         songView.albumImageView.loadImage(url: url)
         initAudioPlayer(songUrl: model.previewUrl)
         songView.playPauseButton.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
@@ -63,8 +56,8 @@ class DetailViewController: UIViewController {
     
     private func configureVideoView(model: ApiResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
-        movieView.directorNameLabel.text = Localizable.localise(key: "Director", argument: model.artistName)
-        movieView.movieNameLabel.text = Localizable.localise(key: "Movie", argument: model.trackName)
+        movieView.directorNameLabel.text = String(format: "Director".localized(), model.artistName ?? "no info".localized())
+        movieView.movieNameLabel.text = String(format: "Movie".localized(), model.trackName ?? "no info".localized())  
         initVideoPlayer(movieUrl: model.previewUrl)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(playVideo))

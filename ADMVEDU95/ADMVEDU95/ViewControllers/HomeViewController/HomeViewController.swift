@@ -57,17 +57,17 @@ class HomeViewController: UIViewController {
     private func setupTopView() {
         topView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                        left: view.leftAnchor,
-                       right: view.rightAnchor,
-                       width: 0,
-                       height: Constants.topViewHeight)
+                       right: view.rightAnchor)
+        topView.dimension(width: .zero,
+                          height: Constants.topViewHeight)
     }
     
     private func setupCategoryView() {
         categoryView.anchor(top: topView.bottomAnchor,
                             left: view.leftAnchor,
-                            right: view.rightAnchor,
-                            width: 0,
-                            height: Constants.categoryViewHeight)
+                            right: view.rightAnchor)
+        categoryView.dimension(width: .zero,
+                               height: Constants.categoryViewHeight)
         categoryView.backgroundColor = UIColor.categoryViewColor
         categoryView.configureView(categoryTitle: NSLocalizedString(categoryTitle.rawValue, comment: ""))
                 
@@ -82,15 +82,13 @@ class HomeViewController: UIViewController {
         tableView.anchor(top: categoryView.bottomAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          left: view.leftAnchor,
-                         right: view.rightAnchor,
-                         width: 0,
-                         height: 0)
+                         right: view.rightAnchor)
     }
     
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = NSLocalizedString("Start searching", comment: "")
+        searchController.searchBar.placeholder = "Start searching".localized() 
     }
     //MARK: goToCategory method
     @objc func goToCategories() {
@@ -111,7 +109,7 @@ extension HomeViewController: UISearchBarDelegate {
     
     private func searchITunes(searchTerm: String) {
         searchService.searchResults(searchTerm: searchTerm,
-                                    filter: self.categoryTitle.rawValue) { (result: Result<Response, iTunesSearchError>) in
+                                    filter: self.categoryTitle.rawValue) { result in
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
@@ -136,8 +134,8 @@ extension HomeViewController: UISearchBarDelegate {
             }
         }
         if dataSource.isEmpty {
-            showAlert(titleMessage: NSLocalizedString("No data", comment: ""),
-                      message: NSLocalizedString("Please, check for correct request", comment: ""))
+            showAlert(titleMessage: "No data".localized(),
+                      message: "Please, check for correct request".localized())
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -148,13 +146,7 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController {
     private func showAlert(titleMessage: String, message: String) {
         let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default))
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-
-
-
-
-

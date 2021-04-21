@@ -10,6 +10,6 @@ import UIKit
 extension HomeViewController: CategoryDelegate  {
     func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
         categoryTitle = category
-        categoryView.configureView(categoryTitle: NSLocalizedString(categoryTitle.rawValue, comment: ""))
+        categoryView.configureView(categoryTitle: category.rawValue.localized())
     }
 }

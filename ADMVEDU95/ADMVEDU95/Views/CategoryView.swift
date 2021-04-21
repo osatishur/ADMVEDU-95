@@ -38,21 +38,17 @@ class CategoryView: UIView {
     
     private func setupCategoryLabel() {
         categoryLabel.textColor = .white
-        categoryLabel.anchor( left: self.leftAnchor,
-                              paddingLeft: Constants.categoryViewSideConstraint,
-                              centerY: self.centerYAnchor,
-                              width: 0,
-                              height: 0)
+        categoryLabel.anchor(left: self.leftAnchor,
+                             paddingLeft: Constants.categoryViewSideConstraint)
+        categoryLabel.centerAnchor(centerY: self.centerYAnchor)
     }
     
     private func setupArrorLabel() {
         arrowLabel.textColor = UIColor.white
         arrowLabel.text = ">"
         arrowLabel.anchor(right: self.rightAnchor,
-                          paddingRight: Constants.categoryViewSideConstraint,
-                          centerY: self.centerYAnchor,
-                          width: 0,
-                          height: 0)
+                          paddingRight: Constants.categoryViewSideConstraint)
+        arrowLabel.centerAnchor(centerY: self.centerYAnchor)
     }
     
     func configureView(categoryTitle: String) {
