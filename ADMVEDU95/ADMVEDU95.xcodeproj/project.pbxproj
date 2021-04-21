@@ -24,6 +24,14 @@
 		835560192624999400C77316 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835560182624999400C77316 /* DetailViewController.swift */; };
 		8355601C26249A6D00C77316 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355601B26249A6D00C77316 /* NetworkService.swift */; };
 		8355601F26249D7700C77316 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8355601E26249D7700C77316 /* Response.swift */; };
+		837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837C02A7262F76C500BE31C7 /* UIFont+StaticFontSize.swift */; };
+		838E24C3262EBBE2002C6C7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 838E24C2262EBBE2002C6C7A /* GoogleService-Info.plist */; };
+		838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24D2262EBFA5002C6C7A /* SignInViewController.swift */; };
+		838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24D5262EBFB1002C6C7A /* LoginViewController.swift */; };
+		838E24D9262EBFDC002C6C7A /* SingInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24D8262EBFDC002C6C7A /* SingInView.swift */; };
+		838E24DC262EBFE7002C6C7A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24DB262EBFE7002C6C7A /* LoginView.swift */; };
+		838E24DF262ECD92002C6C7A /* AuthViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24DE262ECD92002C6C7A /* AuthViewBuilder.swift */; };
+		838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */; };
 		83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */; };
 		83A78BDE26276263009C3807 /* ApiResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BDD26276263009C3807 /* ApiResult.swift */; };
 		83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */; };
@@ -57,6 +65,14 @@
 		835560182624999400C77316 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8355601B26249A6D00C77316 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8355601E26249D7700C77316 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		837C02A7262F76C500BE31C7 /* UIFont+StaticFontSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+StaticFontSize.swift"; sourceTree = "<group>"; };
+		838E24C2262EBBE2002C6C7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		838E24D2262EBFA5002C6C7A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		838E24D5262EBFB1002C6C7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		838E24D8262EBFDC002C6C7A /* SingInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingInView.swift; sourceTree = "<group>"; };
+		838E24DB262EBFE7002C6C7A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		838E24DE262ECD92002C6C7A /* AuthViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewBuilder.swift; sourceTree = "<group>"; };
+		838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSevice.swift; sourceTree = "<group>"; };
 		83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableViewMethods.swift"; sourceTree = "<group>"; };
 		83A78BDD26276263009C3807 /* ApiResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResult.swift; sourceTree = "<group>"; };
 		83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+StaticImages.swift"; sourceTree = "<group>"; };
@@ -134,6 +150,7 @@
 				835560032624905D00C77316 /* Assets.xcassets */,
 				835560052624905D00C77316 /* LaunchScreen.storyboard */,
 				835560082624905D00C77316 /* Info.plist */,
+				838E24C2262EBBE2002C6C7A /* GoogleService-Info.plist */,
 			);
 			path = ADMVEDU95;
 			sourceTree = "<group>";
@@ -144,6 +161,8 @@
 				8306669C2629C62F00BD694B /* HomeViewController */,
 				835560182624999400C77316 /* DetailViewController.swift */,
 				830666942629B12900BD694B /* CategoryViewController.swift */,
+				838E24D2262EBFA5002C6C7A /* SignInViewController.swift */,
+				838E24D5262EBFB1002C6C7A /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -154,6 +173,9 @@
 				8316071A2625C33F0090D203 /* AudioDetailView.swift */,
 				831607172625C32B0090D203 /* VideoDetailView.swift */,
 				83E76999262D74C3008826CB /* CategoryView.swift */,
+				838E24D8262EBFDC002C6C7A /* SingInView.swift */,
+				838E24DB262EBFE7002C6C7A /* LoginView.swift */,
+				838E24DE262ECD92002C6C7A /* AuthViewBuilder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,7 +185,9 @@
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
+				838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */,
 				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
+				837C02A7262F76C500BE31C7 /* UIFont+StaticFontSize.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -267,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				835560072624905D00C77316 /* LaunchScreen.storyboard in Resources */,
+				838E24C3262EBBE2002C6C7A /* GoogleService-Info.plist in Resources */,
 				830E0FE726286B1100C545B0 /* Localizable.strings in Resources */,
 				835560042624905D00C77316 /* Assets.xcassets in Resources */,
 			);
@@ -321,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				838E24DF262ECD92002C6C7A /* AuthViewBuilder.swift in Sources */,
 				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
@@ -328,20 +354,26 @@
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
+				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
 				831607182625C32B0090D203 /* VideoDetailView.swift in Sources */,
 				83A78BDE26276263009C3807 /* ApiResult.swift in Sources */,
 				83E769A5262D9FFE008826CB /* UIColor+StaticColors.swift in Sources */,
+				838E24DC262EBFE7002C6C7A /* LoginView.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
+				838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* Response.swift in Sources */,
 				83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */,
 				8316071B2625C33F0090D203 /* AudioDetailView.swift in Sources */,
 				83E76992262D5DAE008826CB /* HomeViewController+CategoryDelegate.swift in Sources */,
+				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
 				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
+				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,
+				838E24D9262EBFDC002C6C7A /* SingInView.swift in Sources */,
 				8316071126257BAF0090D203 /* SearchResponceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Thesis.FirstWorkProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itransition.ADMVEDU95;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Thesis.FirstWorkProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.itransition.ADMVEDU95;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

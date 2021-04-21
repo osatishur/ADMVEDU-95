@@ -31,6 +31,9 @@ class HomeViewController: UIViewController {
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
     private let searchService = SearchService()
+    private let firebaseService = FirebaseService()
+    
+    //weak var coordinator: MainCoordinator?
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,7 @@ class HomeViewController: UIViewController {
     //MARK: Setup Layout
     private func setupLayout() {
         setupSubviews()
+        setupNavigationBar()
         setupTableView()
         setupTopView()
         setupCategoryView()
@@ -52,6 +56,17 @@ class HomeViewController: UIViewController {
         view.addSubview(categoryView)
         topView.addSubview(searchController.searchBar)
         view.addSubview(tableView)
+    }
+    
+    private func setupNavigationBar() {
+        //navigationItem.title = "Home"
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+        navigationItem.rightBarButtonItem  = logoutBarButtonItem
+    }
+    
+    @objc func logoutUser() {
+        firebaseService.logOut()
+        navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
     private func setupTopView() {
