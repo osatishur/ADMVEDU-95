@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     let signView = SingInView()
@@ -28,6 +29,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
 
 extension SignInViewController: SignInDelegate {
@@ -40,37 +46,40 @@ extension SignInViewController: SignInDelegate {
     }
     
     func signIn() {
-        guard let email = signView.mailTF.text,
+        guard let email = signView.emailTF.text,
               let password = signView.passwordTF.text,
               let passwordRepeat = signView.repeatPasswordTF.text
         else {
             return
         }
         if password != passwordRepeat {
-            showAlert(titleMessage: "Error", message: "Passwords don't match")
+            handlePasswordMatchError()
             return
         }
         firebaseService.createUser(email: email, password: password) {[weak self] (result) in
             guard let self = self else {
                 return
             }
-            var message: String = ""
             switch result {
             case .success:
-                self.showAlert(titleMessage: "OK", message: "Sign in is succesful")
+                self.showAlert(titleMessage: "OK".localized(), message: "Sign In is succesful".localized())
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: HomeViewController()))
             case .failure(let error):
-                message = error.localizedDescription
-                self.showAlert(titleMessage: "Error", message: message)
+                let error = AuthErrorCode(rawValue: error._code)
+                self.handleSignInError(error: error)
             }
         }
     }
-}
-
-extension SignInViewController {
-    private func showAlert(titleMessage: String, message: String) {
-        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default))
-        self.present(alert, animated: true, completion: nil)
+    
+    func handlePasswordMatchError() {
+        signView.setErrorLabelText(text: "Password doesn't match".localized())
+    }
+    
+    func handleSignInError(error: AuthErrorCode?) {
+        guard let text = error?.errorMessage else {
+            return
+        }
+        signView.setErrorLabelText(text: text)
+        signView.changeErrorLabelVisibility(isHidden: false)
     }
 }

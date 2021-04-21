@@ -10,7 +10,7 @@ import UIKit
 protocol AuthViewBuilder {
     func buildTextField(placegolder: String, isSecureTextEnter: Bool, sideWidth: CGFloat) -> UITextField
     func buildLabel(text: String, font: UIFont) -> UILabel
-    func buildButton(title: String, titleColor: UIColor, backgroundColor: UIColor) -> UIButton
+    func buildButton(title: String, titleColor: UIColor, backgroundColor: UIColor, font: UIFont?) -> UIButton
 }
 
 extension AuthViewBuilder {
@@ -27,7 +27,7 @@ extension AuthViewBuilder {
                                                    width: sideWidth,
                                                    height: textField.frame.height))
         textField.rightViewMode = .always
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = CGFloat.regularCornerRadius
         textField.placeholder = placegolder
         textField.isSecureTextEntry = isSecureTextEnter
         textField.font = UIFont.regularFont
@@ -45,14 +45,14 @@ extension AuthViewBuilder {
         return label
     }
     
-    func buildButton(title: String, titleColor: UIColor, backgroundColor: UIColor) -> UIButton {
+    func buildButton(title: String, titleColor: UIColor, backgroundColor: UIColor, font: UIFont? = UIFont.regularFont) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = CGFloat.regularCornerRadius
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
+        button.titleLabel?.font = font
         button.backgroundColor = backgroundColor
-        button.titleLabel?.font = UIFont.regularFont
         return button
     }
 }

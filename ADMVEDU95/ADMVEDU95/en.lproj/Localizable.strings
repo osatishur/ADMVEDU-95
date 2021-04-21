@@ -27,3 +27,39 @@
 "No data" = "No data";
 "Please, check for correct request" = "Please, check for correct request";
 "OK" = "OK";
+
+//Auth Views
+"Log in" = "Log in";
+"Sign in" = "Sign in";
+"Email" = "Email";
+"Password" = "Password";
+
+//SignInView
+"Registration" = "Registration";
+"Repeat password" = "Repeat password";
+"Already have an account?  " = "Already have an account?  ";
+"Passwords don't match" = "Passwords don't match";
+"Sign In is succesful" = "Sign In is succesful";
+
+//LogInView
+"Authorization" = "Authorization";
+"Forgot password" = "Forgot password";
+"Don't have an account?  " = "Don't have an account?  ";
+
+//ResetPasswordView
+"Please, enter your email" = "Please, enter your email";
+"Send" = "Send";
+"Success" = "Success";
+"Check your email for the next step"; = "Check your email for the next step";
+"Password recovery" = "Password recovery";
+
+
+//AuthErrorCode
+"The email is already in use with another account" = "The email is already in use with another account";
+"Account not found for the specified user. Please check and try again" = "Account not found for the specified user. Please check and try again";
+"Your account has been disabled. Please contact support." = "Your account has been disabled. Please contact support.";
+"Please enter a valid email" = "Please enter a valid email";
+"Network error. Please try again." = "Network error. Please try again.";
+"The password must be 6 characters long or more." = "The password must be 6 characters long or more.";
+"Your password is incorrect. Please try again or use 'Forgot password'" = "Your password is incorrect. Please try again or use 'Forgot password'";
+"Unknown error occurred" = "Unknown error occurred";

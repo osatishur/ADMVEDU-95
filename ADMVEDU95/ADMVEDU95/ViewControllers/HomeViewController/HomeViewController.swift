@@ -62,6 +62,7 @@ class HomeViewController: UIViewController {
         //navigationItem.title = "Home"
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
         navigationItem.rightBarButtonItem  = logoutBarButtonItem
+        navigationItem.title = "Search"
     }
     
     @objc func logoutUser() {
@@ -155,13 +156,5 @@ extension HomeViewController: UISearchBarDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-    }
-}
-
-extension HomeViewController {
-    private func showAlert(titleMessage: String, message: String) {
-        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default))
-        self.present(alert, animated: true, completion: nil)
     }
 }

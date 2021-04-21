@@ -21,13 +21,13 @@ class FirebaseService {
         }
     }
     
-    func logIn(email: String, pass: String, completionBlock: @escaping (Result<Bool, Error>) -> Void) {
+    func logIn(email: String, pass: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: pass) { (result, error) in
             if let error = error {
-                completionBlock(.failure(error))
+                completion(.failure(error))
             } else {
                 print("Successfully signed in")
-                completionBlock(.success(true))
+                completion(.success(true))
             }
         }
     }
@@ -39,6 +39,17 @@ class FirebaseService {
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
         } catch let error {
             print("failed to log out with error", error.localizedDescription)
+        }
+    }
+    
+    func sendPasswordReset(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            } else {
+                completion(.success(true))
+            }
         }
     }
 }

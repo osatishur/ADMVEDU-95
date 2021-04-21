@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private let loginView = LoginView()
     
@@ -28,9 +29,18 @@ class LoginViewController: UIViewController {
         super.viewWillDisappear(true)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
 
 extension LoginViewController: LogInDelegate {
+    func resetPasswordClicked() {
+        navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
+    }
+    
     func signInClicked() {
         navigationController?.pushViewController(SignInViewController(), animated: true)
     }
@@ -40,7 +50,7 @@ extension LoginViewController: LogInDelegate {
     }
     
     func logIn() {
-        guard let email = loginView.mailTF.text,
+        guard let email = loginView.emailTF.text,
               let password = loginView.passwordTF.text
         else {
             return
@@ -49,23 +59,22 @@ extension LoginViewController: LogInDelegate {
             guard let self = self else {
                 return
             }
-            var message: String = ""
             switch result {
             case .success:
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: HomeViewController()))
             case .failure(let error):
-                message = error.localizedDescription
-
-                self.showAlert(titleMessage: "OK", message: message)
+                let error = AuthErrorCode(rawValue: error._code)
+                self.handleLogInError(error: error)
             }
         }
     }
-}
-
-extension LoginViewController {
-    private func showAlert(titleMessage: String, message: String) {
-        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default))
-        self.present(alert, animated: true, completion: nil)
+    
+    func handleLogInError(error: AuthErrorCode?) {
+        guard let text = error?.errorMessage else {
+            return
+        }
+        print(text)
+        loginView.setErrorLabelText(text: text)
+        loginView.changeErrorLabelVisibility(isHidden: false)
     }
 }
