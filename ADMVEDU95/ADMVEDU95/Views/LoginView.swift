@@ -8,13 +8,13 @@
 import UIKit
 
 protocol LogInDelegate {
-    func logInClicked()
-    func signInClicked()
-    func resetPasswordClicked()
+    func logInClicked(_ loginView: LoginView)
+    func signInClicked(_ loginView: LoginView)
+    func resetPasswordClicked(_ loginView: LoginView)
 }
 
 class LoginView: UIView, AuthViewBuilder {
-    struct Constants {
+    private struct Constants {
         static let textFieldInnerSpace: CGFloat = 20
         static let topLabelVerticalSpace: CGFloat = UIScreen.main.bounds.height * 0.1
         static let textFieldWidth: CGFloat = UIScreen.main.bounds.width * 0.8
@@ -150,7 +150,7 @@ class LoginView: UIView, AuthViewBuilder {
                               paddingTop: Constants.topLabelVerticalSpace)
         loginButton.centerAnchor(centerX: self.centerXAnchor)
         loginButton.dimension(width: Constants.registerButtonWidth,
-                                 height: Constants.registerButtonHeight)
+                              height: Constants.registerButtonHeight)
     }
     
     private func setupResetPasswordButton() {
@@ -199,14 +199,14 @@ class LoginView: UIView, AuthViewBuilder {
     }
     //MARK: Button actions
     @objc func logInButtonTapped() {
-        delegate?.logInClicked()
+        delegate?.logInClicked(self)
     }
     
     @objc func signInButtonTapped() {
-        delegate?.signInClicked()
+        delegate?.signInClicked(self)
     }
     
     @objc func ResetPasswordButtonTapped() {
-        delegate?.resetPasswordClicked()
+        delegate?.resetPasswordClicked(self)
     }
 }

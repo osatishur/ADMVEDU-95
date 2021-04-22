@@ -20,7 +20,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Password recovery"
+        navigationItem.title = "Password recovery".localized()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -34,11 +34,12 @@ extension ResetPasswordViewController: ResetPasswordDelegate {
         guard let email = resetPasswordView.emailTF.text else {
             return
         }
-        firebaseService.sendPasswordReset(email: email) { (result) in
+        firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
                 DispatchQueue.main.async {
-                    self.showAlert(titleMessage: "Success".localized(), message: "Check your email for the next step".localized())
+                    self.showAlert(titleMessage: "Success".localized(),
+                                   message: "Check your email for the next step".localized())
                 }
                 self.navigationController?.popViewController(animated: true)
             case .failure(let error):

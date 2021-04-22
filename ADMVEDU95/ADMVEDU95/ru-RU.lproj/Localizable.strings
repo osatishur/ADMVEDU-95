@@ -27,6 +27,15 @@
 "No data" = "Нет данных";
 "Please, check for correct request" = "Пожалуйста, проверьте правильность запроса";
 "OK" = "Ок";
+"Error" = "Ошибка";
+
+//HomeVC
+"Logout" = "Выйти";
+"Failed to get data from server" = "Не удалось получить данные от сервера";
+"No data" = "Данные отсуствуют";
+"Unknown error" = "Неизвестная ошибка";
+"Failed to log out" = "Не удалось выйти из аккаунта";
+"Search" = "Поиск";
 
 //Auth Views
 "Log in" = "Войти";
@@ -50,11 +59,11 @@
 "Please, enter your email" = "Пожалуйста, введите адрес вашей почты";
 "Send" = "Отправить";
 "Success" = "Success";
-"Check your email for the next step"; = "Проверьте вашу почту для дальнейших шагов";
+"Check your email for the next step" = "Проверьте вашу почту для дальнейших шагов";
 "Password recovery" = "Восстановление пароля";
 
 //AuthErrorCode
-"The email is already in use with another account" = "АДрес указанной почты уже используется";
+"The email is already in use with another account" = "Адрес указанной почты уже используется";
 "Account not found for the specified user. Please check and try again" = "Аккаунт данного пользователя не найден. Проверь корректность данных и попробуйте еще раз";
 "Your account has been disabled. Please contact support." = "Ваш аккаунт был удален. Пожалуйста, свяжитесь с поддержкой.";
 "Please enter a valid email" = "Введите корректный адрес почты";

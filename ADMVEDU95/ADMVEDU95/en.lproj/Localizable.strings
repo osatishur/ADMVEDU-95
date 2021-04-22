@@ -27,6 +27,15 @@
 "No data" = "No data";
 "Please, check for correct request" = "Please, check for correct request";
 "OK" = "OK";
+"Error" = "Error";
+
+//HomeVC
+"Logout" = "Logout";
+"Failed to get data from server" = "Failed to get data from server";
+"No data" = "No data";
+"Unknown error" = "Unknown error";
+"Failed to log out" = "Failed to log out";
+"Search" = "Search";
 
 //Auth Views
 "Log in" = "Log in";
@@ -50,7 +59,7 @@
 "Please, enter your email" = "Please, enter your email";
 "Send" = "Send";
 "Success" = "Success";
-"Check your email for the next step"; = "Check your email for the next step";
+"Check your email for the next step" = "Check your email for the next step";
 "Password recovery" = "Password recovery";
 
 

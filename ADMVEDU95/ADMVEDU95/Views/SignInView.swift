@@ -8,11 +8,11 @@
 import UIKit
 
 protocol SignInDelegate {
-    func signInClicked()
-    func logInClicked()
+    func signInClicked(_ signInView: SignInView)
+    func logInClicked(_ signInView: SignInView)
 }
 
-class SingInView: UIView, AuthViewBuilder {
+class SignInView: UIView, AuthViewBuilder {
     struct Constants {
         static let textFieldInnerSpace: CGFloat = 20
         static let topLabelVerticalSpace: CGFloat = UIScreen.main.bounds.height * 0.1
@@ -187,10 +187,10 @@ class SingInView: UIView, AuthViewBuilder {
     }
     //MARK: Button actions
     @objc func registerButtonTapped() {
-        delegate?.signInClicked()
+        delegate?.signInClicked(self)
     }
     
     @objc func logInButtonTapped() {
-        delegate?.logInClicked()
+        delegate?.logInClicked(self)
     }
 }

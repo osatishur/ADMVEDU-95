@@ -9,14 +9,18 @@ import Foundation
 import FirebaseAuth
 
 class FirebaseService {
-    func createUser(email: String, password: String, completionBlock: @escaping (Result<Bool, Error>) -> Void) {
+    func createUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
             if let error = error {
                 print("failed to sign up user", error.localizedDescription)
-                completionBlock(.failure(error))
+                completion(.failure(error))
             }
             if let _ = authResult?.user {
-                completionBlock(.success(true))
+                completion(.success(true))
+            }
+            
+            if error == nil && authResult?.user == nil {
+                completion(.success(false))
             }
         }
     }
@@ -25,20 +29,23 @@ class FirebaseService {
         Auth.auth().signIn(withEmail: email, password: pass) { (result, error) in
             if let error = error {
                 completion(.failure(error))
-            } else {
-                print("Successfully signed in")
+            }
+            if let _ = result {
+                print("Successfully logged in")
                 completion(.success(true))
+            }
+            if error == nil && result == nil {
+                completion(.success(false))
             }
         }
     }
     
-    func logOut() {
+    func logOut() -> Bool {
         do {
             try Auth.auth().signOut()
-            let navVC = UINavigationController(rootViewController: LoginViewController())
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
-        } catch let error {
-            print("failed to log out with error", error.localizedDescription)
+            return true
+        } catch {
+            return false
         }
     }
     

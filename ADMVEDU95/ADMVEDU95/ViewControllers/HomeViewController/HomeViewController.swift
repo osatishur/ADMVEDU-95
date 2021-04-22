@@ -59,15 +59,9 @@ class HomeViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        //navigationItem.title = "Home"
-        let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutUser))
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout".localized(), style: .done, target: self, action: #selector(logoutUser))
         navigationItem.rightBarButtonItem  = logoutBarButtonItem
-        navigationItem.title = "Search"
-    }
-    
-    @objc func logoutUser() {
-        firebaseService.logOut()
-        navigationController?.pushViewController(LoginViewController(), animated: true)
+        navigationItem.title = "Search".localized()
     }
     
     private func setupTopView() {
@@ -113,12 +107,25 @@ class HomeViewController: UIViewController {
         vc.categoryChosed = categoryTitle
         present(vc, animated: true)
     }
+    //MARK: log out method
+    @objc func logoutUser() {
+        let isLoggedOut = firebaseService.logOut()
+        if isLoggedOut {
+            let navVC = UINavigationController(rootViewController: LoginViewController())
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
+        } else {
+            self.showAlert(titleMessage: "Error".localized(), message: "Failed to log out".localized())
+        }
+    }
 }
 //MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchBar = searchController.searchBar
-        guard let searchTerm = searchBar.text else {return}
+        guard let searchTerm = searchBar.text
+        else {
+            return
+        }
         searchITunes(searchTerm: searchTerm)
         searchController.isActive = false
     }
@@ -129,12 +136,12 @@ extension HomeViewController: UISearchBarDelegate {
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
-            case .failure(.unknown(let error)):
-                print("unknown error", error ?? "error")
+            case .failure(.unknown):
+                self.showAlert(titleMessage: "Error".localized(), message: "Unknown error".localized())
             case .failure(.emptyData):
-                print("no data")
-            case .failure(.parsingData(let error)):
-                print("json error", error ?? "error")
+                self.showAlert(titleMessage: "Error".localized(), message: "No data".localized())
+            case .failure(.parsingData):
+                self.showAlert(titleMessage: "Error".localized(), message: "Failed to get data from server".localized())
             }
         }
     }

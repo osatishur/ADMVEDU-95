@@ -37,15 +37,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension LoginViewController: LogInDelegate {
-    func resetPasswordClicked() {
+    func resetPasswordClicked(_ loginView: LoginView) {
         navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
     }
     
-    func signInClicked() {
+    func signInClicked(_ loginView: LoginView) {
         navigationController?.pushViewController(SignInViewController(), animated: true)
     }
     
-    func logInClicked() {
+    func logInClicked(_ loginView: LoginView) {
         logIn()
     }
     
@@ -55,26 +55,33 @@ extension LoginViewController: LogInDelegate {
         else {
             return
         }
-        firebaseService.logIn(email: email, pass: password) {[weak self] (result) in
+        firebaseService.logIn(email: email, pass: password) { [weak self] result in
             guard let self = self else {
                 return
             }
             switch result {
-            case .success:
+            case .success(true):
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: HomeViewController()))
             case .failure(let error):
-                let error = AuthErrorCode(rawValue: error._code)
                 self.handleLogInError(error: error)
+            case .success(false):
+                self.handleFailedToSuccessError()
             }
         }
     }
     
-    func handleLogInError(error: AuthErrorCode?) {
+    func handleLogInError(error: Error) {
+        let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
             return
         }
         print(text)
         loginView.setErrorLabelText(text: text)
+        loginView.changeErrorLabelVisibility(isHidden: false)
+    }
+    
+    func handleFailedToSuccessError() {
+        loginView.setErrorLabelText(text: "Unknown error occurred".localized())
         loginView.changeErrorLabelVisibility(isHidden: false)
     }
 }

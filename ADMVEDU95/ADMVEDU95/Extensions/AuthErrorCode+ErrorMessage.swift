@@ -6,26 +6,27 @@
 //
 
 import Firebase
+import UIKit
 
 extension AuthErrorCode {
     var errorMessage: String {
         switch self {
         case .emailAlreadyInUse:
-            return "The email is already in use with another account"
+            return "The email is already in use with another account".localized()
         case .userNotFound:
-            return "Account not found for the specified user. Please check and try again"
+            return "Account not found for the specified user. Please check and try again".localized()
         case .userDisabled:
-            return "Your account has been disabled. Please contact support."
+            return "Your account has been disabled. Please contact support.".localized()
         case .invalidEmail, .invalidSender, .invalidRecipientEmail:
-            return "Please enter a valid email"
+            return "Please enter a valid email".localized()
         case .networkError:
-            return "Network error. Please try again."
+            return "Network error. Please try again.".localized()
         case .weakPassword:
-            return "The password must be 6 characters long or more."
+            return "The password must be 6 characters long or more.".localized()
         case .wrongPassword:
-            return "Your password is incorrect. Please try again or use 'Forgot password'"
+            return "Your password is incorrect. Please try again or use 'Forgot password'".localized()
         default:
-            return "Unknown error occurred"
+            return "Unknown error occurred".localized()
         }
     }
 }

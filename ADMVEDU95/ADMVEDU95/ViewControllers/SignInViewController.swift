@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
-    let signView = SingInView()
+    let signView = SignInView()
     
     let firebaseService = FirebaseService()
     
@@ -37,11 +37,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension SignInViewController: SignInDelegate {
-    func logInClicked() {
+    func logInClicked(_ signInView: SignInView) {
         navigationController?.popViewController(animated: true)
     }
     
-    func signInClicked() {
+    func signInClicked(_ signInView: SignInView) {
         signIn()
     }
     
@@ -54,25 +54,32 @@ extension SignInViewController: SignInDelegate {
         }
         if password != passwordRepeat {
             handlePasswordMatchError()
-            return
+        } else {
+            createUser(email: email, password: password)
         }
-        firebaseService.createUser(email: email, password: password) {[weak self] (result) in
+    }
+    
+    func createUser(email: String, password: String) {
+        firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
                 return
             }
             switch result {
-            case .success:
+            case .success(true):
                 self.showAlert(titleMessage: "OK".localized(), message: "Sign In is succesful".localized())
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: HomeViewController()))
             case .failure(let error):
                 let error = AuthErrorCode(rawValue: error._code)
                 self.handleSignInError(error: error)
+            case .success(false): 
+                self.handleFailedToSuccessError()
             }
         }
     }
     
     func handlePasswordMatchError() {
         signView.setErrorLabelText(text: "Password doesn't match".localized())
+        signView.changeErrorLabelVisibility(isHidden: false)
     }
     
     func handleSignInError(error: AuthErrorCode?) {
@@ -80,6 +87,11 @@ extension SignInViewController: SignInDelegate {
             return
         }
         signView.setErrorLabelText(text: text)
+        signView.changeErrorLabelVisibility(isHidden: false)
+    }
+    
+    func handleFailedToSuccessError() {
+        signView.setErrorLabelText(text: "Unknown error occurred".localized())
         signView.changeErrorLabelVisibility(isHidden: false)
     }
 }
