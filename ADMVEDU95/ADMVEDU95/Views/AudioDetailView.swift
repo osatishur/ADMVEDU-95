@@ -25,17 +25,17 @@ class AudioDetailView: UIView {
     }()
     
     lazy var songNameLabel: UILabel = {
-        let label = createLabel(numberOfLines: 0, textAlighment: .center)
+        let label = createLabel(numberOfLines: .zero, textAlighment: .center)
         return label
     }()
     
     lazy var artistNameLabel: UILabel = {
-        let label = createLabel(numberOfLines: 0, textAlighment: .center)
+        let label = createLabel(numberOfLines: .zero, textAlighment: .center)
         return label
     }()
     
     lazy var albumNameLabel: UILabel = {
-        let label = createLabel(numberOfLines: 0, textAlighment: .center)
+        let label = createLabel(numberOfLines: .zero, textAlighment: .center)
         return label
     }()
     var playPauseButton = UIButton()
@@ -74,9 +74,9 @@ class AudioDetailView: UIView {
     private func setupAlbumImage() {
         albumImageView.anchor(top: self.safeAreaLayoutGuide.topAnchor,
                               paddingTop: Constants.smallInterval)
-        albumImageView.centerAnchor(centerX: self.centerXAnchor)
         albumImageView.dimension(width: Constants.albumImageSize,
                                  height: Constants.albumImageSize)
+        albumImageView.centerAnchor(centerX: self.centerXAnchor)
     }
     
     private func setupArtistName() {
@@ -102,20 +102,20 @@ class AudioDetailView: UIView {
     private func setupAlbumName() {
         albumNameLabel.anchor(top: songNameLabel.bottomAnchor,
                               paddingTop: Constants.smallInterval,
-                               left: self.leftAnchor,
-                               paddingLeft: Constants.sideInterval,
-                               right: self.rightAnchor,
-                               paddingRight: -Constants.sideInterval)
+                              left: self.leftAnchor,
+                              paddingLeft: Constants.sideInterval,
+                              right: self.rightAnchor,
+                              paddingRight: -Constants.sideInterval)
         albumNameLabel.centerAnchor(centerX: self.centerXAnchor)
     }
     
     private func setupplayPauseButton() {
-        playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: .normal)
         playPauseButton.anchor(top: albumNameLabel.bottomAnchor,
                                paddingTop: Constants.bigInterval)
-        playPauseButton.centerAnchor(centerX: self.centerXAnchor)
         playPauseButton.dimension(width: Constants.buttonSize,
                                   height: Constants.buttonSize)
+        playPauseButton.centerAnchor(centerX: self.centerXAnchor)
+        playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: .normal)
     }
     
     private func createLabel(numberOfLines: Int, textAlighment: NSTextAlignment) -> UILabel {

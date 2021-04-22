@@ -31,7 +31,7 @@
 		83E7699A262D74C3008826CB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E76999262D74C3008826CB /* CategoryView.swift */; };
 		83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E769A1262D89FD008826CB /* UIView+Anchor.swift */; };
 		83E769A5262D9FFE008826CB /* UIColor+StaticColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E769A4262D9FFE008826CB /* UIColor+StaticColors.swift */; };
-		83E769A8262DB104008826CB /* String+Localised.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E769A7262DB104008826CB /* String+Localised.swift */; };
+		83E769A8262DB104008826CB /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E769A7262DB104008826CB /* String+Localized.swift */; };
 		B2169C11D26F7C89DE7F9D49 /* Pods_ADMVEDU95.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9BAD675F415DBCB41CED58D /* Pods_ADMVEDU95.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 		83E76999262D74C3008826CB /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		83E769A1262D89FD008826CB /* UIView+Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Anchor.swift"; sourceTree = "<group>"; };
 		83E769A4262D9FFE008826CB /* UIColor+StaticColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+StaticColors.swift"; sourceTree = "<group>"; };
-		83E769A7262DB104008826CB /* String+Localised.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localised.swift"; sourceTree = "<group>"; };
+		83E769A7262DB104008826CB /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		86B56142A567E26F1132CEE2 /* Pods-ADMVEDU95.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADMVEDU95.debug.xcconfig"; path = "Target Support Files/Pods-ADMVEDU95/Pods-ADMVEDU95.debug.xcconfig"; sourceTree = "<group>"; };
 		D9BAD675F415DBCB41CED58D /* Pods_ADMVEDU95.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADMVEDU95.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE204D331F28701E15CD4B98 /* Pods-ADMVEDU95.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADMVEDU95.release.xcconfig"; path = "Target Support Files/Pods-ADMVEDU95/Pods-ADMVEDU95.release.xcconfig"; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				83A78BE02627628B009C3807 /* UIImageView+StaticImages.swift */,
 				83E769A1262D89FD008826CB /* UIView+Anchor.swift */,
 				83E769A4262D9FFE008826CB /* UIColor+StaticColors.swift */,
-				83E769A7262DB104008826CB /* String+Localised.swift */,
+				83E769A7262DB104008826CB /* String+Localized.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 			files = (
 				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
-				83E769A8262DB104008826CB /* String+Localised.swift in Sources */,
+				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,

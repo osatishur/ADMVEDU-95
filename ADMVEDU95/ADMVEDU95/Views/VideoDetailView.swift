@@ -24,12 +24,12 @@ class VideoDetailView: UIView {
     }()
     
     lazy var movieNameLabel: UILabel = {
-        let label = createLabel(numberOfLines: 0, textAlighment: .center)
+        let label = createLabel(numberOfLines: .zero, textAlighment: .center)
         return label
     }()
     
     lazy var directorNameLabel: UILabel = {
-        let label = createLabel(numberOfLines: 0, textAlighment: .center)
+        let label = createLabel(numberOfLines: .zero, textAlighment: .center)
         return label
     }()
     
