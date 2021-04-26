@@ -8,29 +8,49 @@
 import UIKit
 
 class CategoryView: UIView {
-    private struct Constants {
-        static let nibName = "CategoryView"
+    struct Constants {
+        static let categoryViewSideConstraint: CGFloat = 8
     }
     
-    @IBOutlet weak var categoryLabel: UILabel!
-    
+    let categoryLabel = UILabel()
+    let arrowLabel = UILabel()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        setupLayout()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        setupLayout()
     }
     
-    private func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed(Constants.nibName, owner: self, options: nil)![0] as! UIView
-        viewFromXib.frame = self.bounds
-        viewFromXib.backgroundColor = UIColor.categoryViewColor
-        addSubview(viewFromXib)
+    private func setupLayout() {
+        setupSubviews()
+        setupCategoryLabel()
+        setupArrorLabel()
     }
-
+    
+    private func setupSubviews() {
+        self.addSubview(categoryLabel)
+        self.addSubview(arrowLabel)
+    }
+    
+    private func setupCategoryLabel() {
+        categoryLabel.textColor = .white
+        categoryLabel.anchor(left: self.leftAnchor,
+                             paddingLeft: Constants.categoryViewSideConstraint)
+        categoryLabel.centerAnchor(centerY: self.centerYAnchor)
+    }
+    
+    private func setupArrorLabel() {
+        arrowLabel.textColor = UIColor.white
+        arrowLabel.text = ">"
+        arrowLabel.anchor(right: self.rightAnchor,
+                          paddingRight: Constants.categoryViewSideConstraint)
+        arrowLabel.centerAnchor(centerY: self.centerYAnchor)
+    }
+    
     func configureView(categoryTitle: String) {
         categoryLabel.text = categoryTitle
     }

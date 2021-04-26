@@ -9,27 +9,31 @@ import UIKit
 
 class HomeViewController: UIViewController {
     struct Constants {
-        static let searchCellIdentifier = "SearchTableViewCell"
+        static let searchCellIdentifier = "SearchResponceTableViewCell"
         static let estimatedRowHeight: CGFloat = 200
         static let topViewHeight: CGFloat = 56
         static let categoryViewHeight: CGFloat = 32
         static let categoryViewSideConstraint: CGFloat = 8
     }
+    //MARK: Views
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(SearchResponceTableViewCell.self, forCellReuseIdentifier: Constants.searchCellIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = Constants.estimatedRowHeight
+        return tableView
+    }()
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var categoryView: CategoryView!
-    @IBOutlet weak var tableView: UITableView!
-    
+    private let topView = UIView()
+    var searchController = UISearchController(searchResultsController: nil)
+    let categoryView = CategoryView()
     //MARK: Properties
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
     private let searchService = SearchService()
     private let firebaseService = FirebaseService()
     
-<<<<<<< HEAD
     //weak var coordinator: MainCoordinator?
-=======
->>>>>>> ADMVEDU105
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +44,13 @@ class HomeViewController: UIViewController {
     
     //MARK: Setup Layout
     private func setupLayout() {
-<<<<<<< HEAD
         setupSubviews()
-=======
->>>>>>> ADMVEDU105
         setupNavigationBar()
         setupTableView()
+        setupTopView()
         setupCategoryView()
     }
     
-<<<<<<< HEAD
     private func setupSubviews() {
         view.addSubview(topView)
         view.addSubview(categoryView)
@@ -57,13 +58,10 @@ class HomeViewController: UIViewController {
         view.addSubview(tableView)
     }
     
-=======
->>>>>>> ADMVEDU105
     private func setupNavigationBar() {
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout".localized(), style: .done, target: self, action: #selector(logoutUser))
         navigationItem.rightBarButtonItem  = logoutBarButtonItem
         navigationItem.title = "Search".localized()
-<<<<<<< HEAD
     }
     
     private func setupTopView() {
@@ -72,11 +70,15 @@ class HomeViewController: UIViewController {
                        right: view.rightAnchor)
         topView.dimension(width: .zero,
                           height: Constants.topViewHeight)
-=======
->>>>>>> ADMVEDU105
     }
     
     private func setupCategoryView() {
+        categoryView.anchor(top: topView.bottomAnchor,
+                            left: view.leftAnchor,
+                            right: view.rightAnchor)
+        categoryView.dimension(width: .zero,
+                               height: Constants.categoryViewHeight)
+        categoryView.backgroundColor = UIColor.categoryViewColor
         categoryView.configureView(categoryTitle: NSLocalizedString(categoryTitle.rawValue, comment: ""))
                 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
@@ -87,13 +89,16 @@ class HomeViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let cell = UINib(nibName: Constants.searchCellIdentifier, bundle: nil)
-        tableView.register(cell, forCellReuseIdentifier: Constants.searchCellIdentifier)
+        tableView.anchor(top: categoryView.bottomAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         left: view.leftAnchor,
+                         right: view.rightAnchor)
     }
     
     private func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.placeholder = "Start searching".localized()
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Start searching".localized() 
     }
     //MARK: goToCategory method
     @objc func goToCategories() {
@@ -116,17 +121,13 @@ class HomeViewController: UIViewController {
 //MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-<<<<<<< HEAD
         let searchBar = searchController.searchBar
-=======
-        //let searchBar = searchController.searchBar
->>>>>>> ADMVEDU105
         guard let searchTerm = searchBar.text
         else {
             return
         }
         searchITunes(searchTerm: searchTerm)
-        searchBar.endEditing(true)
+        searchController.isActive = false
     }
     
     private func searchITunes(searchTerm: String) {

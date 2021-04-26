@@ -10,29 +10,19 @@ import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
-<<<<<<< HEAD
     let resetPasswordView = ResetPasswordView()
-=======
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var emailTF: AuthTextField!
-    
->>>>>>> ADMVEDU105
     let firebaseService = FirebaseService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         view = resetPasswordView
         resetPasswordView.configureView(viewController: self)
-=======
->>>>>>> ADMVEDU105
     }
     
     private func setupNavigationBar() {
         navigationItem.title = "Password recovery".localized()
     }
     
-<<<<<<< HEAD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -42,15 +32,6 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 extension ResetPasswordViewController: ResetPasswordDelegate {
     func requestRecovery() {
         guard let email = resetPasswordView.emailTF.text else {
-=======
-    
-    @IBAction func didTapSendButton(_ sender: Any) {
-        requestRecovery()
-    }
-    
-    func requestRecovery() {
-        guard let email = emailTF.text else {
->>>>>>> ADMVEDU105
             return
         }
         firebaseService.sendPasswordReset(email: email) { result in
@@ -66,14 +47,6 @@ extension ResetPasswordViewController: ResetPasswordDelegate {
             }
         }
     }
-<<<<<<< HEAD
-=======
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
->>>>>>> ADMVEDU105
 }
 
 extension ResetPasswordViewController {
