@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,9 +17,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        let initialVC = HomeViewController()
-                
-        window?.rootViewController = initialVC
+        
+        if Auth.auth().currentUser == nil {
+            let navController = UINavigationController(rootViewController: LoginViewController())
+            self.window?.rootViewController = navController
+        } else {
+            self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        }
+        
         window?.makeKeyAndVisible()
+    }
+    
+    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+        guard let window = self.window else {
+            return
+        }
+        window.rootViewController = vc
+        UIView.transition(with: window,
+                          duration: 0.8,
+                          options: [.transitionCrossDissolve],
+                          animations: nil,
+                          completion: nil)
     }
 }

@@ -10,8 +10,8 @@ import Alamofire
 
 public enum iTunesSearchError: Error {
     case emptyData
-    case parsingData(Error?)
-    case unknown(Error?)
+    case parsingData
+    case unknown
 }
 
 class NetworkService {
@@ -67,15 +67,15 @@ class NetworkService {
             return .failure(iTunesSearchError.emptyData)
         }
 
-        if let error = error {
-            return .failure(iTunesSearchError.unknown(error))
+        if error != nil {
+            return .failure(iTunesSearchError.unknown)
         }
 
         do {
             let searchResponse = try decoder.decode(type, from: jsonData)
             return .success(searchResponse)
-        } catch let jsonError {
-            return .failure(iTunesSearchError.parsingData(jsonError))
+        } catch {
+            return .failure(iTunesSearchError.parsingData)
         }
     }
 }
