@@ -31,6 +31,9 @@ class HomeViewController: UIViewController {
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
     private let searchService = SearchService()
+    private let firebaseService = FirebaseService()
+    
+    //weak var coordinator: MainCoordinator?
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,7 @@ class HomeViewController: UIViewController {
     //MARK: Setup Layout
     private func setupLayout() {
         setupSubviews()
+        setupNavigationBar()
         setupTableView()
         setupTopView()
         setupCategoryView()
@@ -52,6 +56,12 @@ class HomeViewController: UIViewController {
         view.addSubview(categoryView)
         topView.addSubview(searchController.searchBar)
         view.addSubview(tableView)
+    }
+    
+    private func setupNavigationBar() {
+        let logoutBarButtonItem = UIBarButtonItem(title: "Logout".localized(), style: .done, target: self, action: #selector(logoutUser))
+        navigationItem.rightBarButtonItem  = logoutBarButtonItem
+        navigationItem.title = "Search".localized()
     }
     
     private func setupTopView() {
@@ -97,12 +107,25 @@ class HomeViewController: UIViewController {
         vc.categoryChosed = categoryTitle
         present(vc, animated: true)
     }
+    //MARK: log out method
+    @objc func logoutUser() {
+        let isLoggedOut = firebaseService.logOut()
+        if isLoggedOut {
+            let navVC = UINavigationController(rootViewController: LoginViewController())
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
+        } else {
+            self.showAlert(titleMessage: "Error".localized(), message: "Failed to log out".localized())
+        }
+    }
 }
 //MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchBar = searchController.searchBar
-        guard let searchTerm = searchBar.text else {return}
+        guard let searchTerm = searchBar.text
+        else {
+            return
+        }
         searchITunes(searchTerm: searchTerm)
         searchController.isActive = false
     }
@@ -113,12 +136,12 @@ extension HomeViewController: UISearchBarDelegate {
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
-            case .failure(.unknown(let error)):
-                print("unknown error", error ?? "error")
+            case .failure(.unknown):
+                self.showAlert(titleMessage: "Error".localized(), message: "Unknown error".localized())
             case .failure(.emptyData):
-                print("no data")
-            case .failure(.parsingData(let error)):
-                print("json error", error ?? "error")
+                self.showAlert(titleMessage: "Error".localized(), message: "No data".localized())
+            case .failure(.parsingData):
+                self.showAlert(titleMessage: "Error".localized(), message: "Failed to get data from server".localized())
             }
         }
     }
@@ -140,13 +163,5 @@ extension HomeViewController: UISearchBarDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-    }
-}
-
-extension HomeViewController {
-    private func showAlert(titleMessage: String, message: String) {
-        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default))
-        self.present(alert, animated: true, completion: nil)
     }
 }
