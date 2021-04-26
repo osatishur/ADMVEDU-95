@@ -9,15 +9,20 @@ import UIKit
 import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
-    let signView = SignInView()
+    
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var emailTF: AuthTextField!
+    @IBOutlet weak var passwordTF: AuthTextField!
+    @IBOutlet weak var repeatPasswordTF: AuthTextField!
+    @IBOutlet weak var bottomButton: AuthBotomButton!
     
     let firebaseService = FirebaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view = signView
-        signView.configureView(viewcontroller: self)
+        setupLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,25 +35,25 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-}
-
-extension SignInViewController: SignInDelegate {
-    func logInClicked(_ signInView: SignInView) {
-        navigationController?.popViewController(animated: true)
+    func setupLayout() {
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
+        attributedTitle.append(NSAttributedString(string: "Log in".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
-    func signInClicked(_ signInView: SignInView) {
+    @IBAction func didTapSignInButton(_ sender: Any) {
         signIn()
     }
     
+    
+    @IBAction func didTapBottomButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func signIn() {
-        guard let email = signView.emailTF.text,
-              let password = signView.passwordTF.text,
-              let passwordRepeat = signView.repeatPasswordTF.text
+        guard let email = emailTF.text,
+              let password = passwordTF.text,
+              let passwordRepeat = repeatPasswordTF.text
         else {
             return
         }
@@ -71,27 +76,33 @@ extension SignInViewController: SignInDelegate {
             case .failure(let error):
                 let error = AuthErrorCode(rawValue: error._code)
                 self.handleSignInError(error: error)
-            case .success(false): 
+            case .success(false):
                 self.handleFailedToSuccessError()
             }
         }
     }
     
     func handlePasswordMatchError() {
-        signView.setErrorLabelText(text: "Password doesn't match".localized())
-        signView.changeErrorLabelVisibility(isHidden: false)
+        errorLabel.text = "Password doesn't match".localized()
+        errorLabel.isHidden = false
     }
     
     func handleSignInError(error: AuthErrorCode?) {
         guard let text = error?.errorMessage else {
             return
         }
-        signView.setErrorLabelText(text: text)
-        signView.changeErrorLabelVisibility(isHidden: false)
+        errorLabel.text = text.localized()
+        errorLabel.isHidden = false
     }
     
     func handleFailedToSuccessError() {
-        signView.setErrorLabelText(text: "Unknown error occurred".localized())
-        signView.changeErrorLabelVisibility(isHidden: false)
+        errorLabel.text = "Unknown error occurred".localized()
+        errorLabel.isHidden = false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
+

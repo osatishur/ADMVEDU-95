@@ -39,7 +39,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didTapLogInButton(_ sender: Any) {
-        print(1)
+        logIn()
     }
     
     @IBAction func didTapForgorPasswordButton(_ sender: Any) {
@@ -89,20 +89,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false
     }
-}
-
-extension LoginViewController: LogInDelegate {
-    func resetPasswordClicked(_ loginView: LoginView) {
-        navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
-    }
-    
-    func signInClicked(_ loginView: LoginView) {
-        navigationController?.pushViewController(SignInViewController(), animated: true)
-    }
-    
-    func logInClicked(_ loginView: LoginView) {
-        //logIn()
-    }
-    
-
 }

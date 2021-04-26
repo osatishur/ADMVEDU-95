@@ -51,7 +51,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTA-hu-t95" customClass="AuthButton" customModule="ADMVEDU95" customModuleProvider="target">
-                    <rect key="frame" x="70" y="323.5" width="274" height="54"/>
+                    <rect key="frame" x="70" y="363.5" width="274" height="54"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="54" id="wHN-EN-GlK"/>
                     </constraints>
@@ -98,7 +98,7 @@
                 <constraint firstItem="vxW-8h-Lni" firstAttribute="top" secondItem="Ukd-k5-ZD6" secondAttribute="bottom" constant="20" id="SNV-YP-eLq"/>
                 <constraint firstItem="bIh-a3-Oh0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="T5H-7c-X6W"/>
                 <constraint firstItem="9WL-rR-xK8" firstAttribute="top" secondItem="Ukd-k5-ZD6" secondAttribute="bottom" constant="20" id="TcS-EY-JFx"/>
-                <constraint firstItem="TTA-hu-t95" firstAttribute="top" secondItem="Ukd-k5-ZD6" secondAttribute="bottom" constant="60" id="YB8-aQ-7Km"/>
+                <constraint firstItem="TTA-hu-t95" firstAttribute="top" secondItem="Ukd-k5-ZD6" secondAttribute="bottom" constant="100" id="YB8-aQ-7Km"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TTA-hu-t95" secondAttribute="trailing" constant="70" id="aZ9-Kg-yMc"/>
                 <constraint firstItem="TTA-hu-t95" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="70" id="brA-9X-y0y"/>
                 <constraint firstItem="Ukd-k5-ZD6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="eCx-xy-aAr"/>

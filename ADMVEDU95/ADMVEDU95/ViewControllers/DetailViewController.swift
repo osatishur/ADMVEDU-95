@@ -11,8 +11,14 @@ import AVKit
 
 class DetailViewController: UIViewController {
     //MARK: Views
-    lazy var songView = AudioDetailView()
-    lazy var movieView = VideoDetailView()
+    lazy var songView: AudioDetailView = {
+        let view = AudioDetailView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        return view
+    }()
+    lazy var movieView: VideoDetailView = {
+        let view = VideoDetailView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        return view
+    }()
     //MARK: Properties
     let playerViewController = AVPlayerViewController()
     var player: AVPlayer?
@@ -30,6 +36,7 @@ class DetailViewController: UIViewController {
             view = songView
         } else {
             view = movieView
+            print("movie")
         }
     }
     //MARK: Configure View
@@ -57,9 +64,9 @@ class DetailViewController: UIViewController {
     private func configureVideoView(model: ApiResult, url: URL) {
         movieView.albumImageView.loadImage(url: url)
         movieView.directorNameLabel.text = String(format: "Director".localized(), model.artistName ?? "no info".localized())
-        movieView.movieNameLabel.text = String(format: "Movie".localized(), model.trackName ?? "no info".localized())  
+        movieView.movieNameLabel.text = String(format: "Movie".localized(), model.trackName ?? "no info".localized())
         initVideoPlayer(movieUrl: model.previewUrl)
-        
+
         let tap = UITapGestureRecognizer(target: self, action: #selector(playVideo))
         movieView.albumImageView.isUserInteractionEnabled = true
         movieView.albumImageView.addGestureRecognizer(tap)
