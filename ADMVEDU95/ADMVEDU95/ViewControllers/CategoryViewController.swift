@@ -16,6 +16,9 @@ class CategoryViewController: UIViewController {
         static let categoryCellIdentifier = "CategoryTableViewCell"
     }
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     private let dataSource: [Category] = {
         var data: [Category] = []
         for category in Category.allCases {
@@ -27,26 +30,15 @@ class CategoryViewController: UIViewController {
     var delegate: CategoryDelegate?
     var categoryChosed: Category?
     
-    private var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.categoryCellIdentifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewLayout()
     }
     
     private func setupTableViewLayout() {
-        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, 
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         left: view.safeAreaLayoutGuide.leftAnchor,
-                         right: view.safeAreaLayoutGuide.rightAnchor)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.categoryCellIdentifier)
     }
 }
 

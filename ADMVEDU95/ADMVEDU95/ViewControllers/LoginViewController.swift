@@ -9,15 +9,27 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+<<<<<<< HEAD
     
     private let loginView = LoginView()
+=======
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var EmailTF: AuthTextField!
+    @IBOutlet weak var PasswordTF: AuthTextField!
+    @IBOutlet weak var bottomButton: AuthBotomButton!
+>>>>>>> ADMVEDU105
     
     let firebaseService = FirebaseService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         view = loginView
         loginView.configureView(viewcontroller: self)
+=======
+        setupLayout()
+>>>>>>> ADMVEDU105
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+<<<<<<< HEAD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -52,6 +65,29 @@ extension LoginViewController: LogInDelegate {
     func logIn() {
         guard let email = loginView.emailTF.text,
               let password = loginView.passwordTF.text
+=======
+    func setupLayout() {
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
+        attributedTitle.append(NSAttributedString(string: "Sign in".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        bottomButton.setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
+    @IBAction func didTapLogInButton(_ sender: Any) {
+        logIn()
+    }
+    
+    @IBAction func didTapForgorPasswordButton(_ sender: Any) {
+        navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
+    }
+    
+    @IBAction func didTapBottomButton(_ sender: Any) {
+        navigationController?.pushViewController(SignInViewController(), animated: true)
+    }
+    
+    func logIn() {
+        guard let email = EmailTF.text,
+              let password = PasswordTF.text
+>>>>>>> ADMVEDU105
         else {
             return
         }
@@ -75,6 +111,7 @@ extension LoginViewController: LogInDelegate {
         guard let text = error?.errorMessage else {
             return
         }
+<<<<<<< HEAD
         print(text)
         loginView.setErrorLabelText(text: text)
         loginView.changeErrorLabelVisibility(isHidden: false)
@@ -83,5 +120,19 @@ extension LoginViewController: LogInDelegate {
     func handleFailedToSuccessError() {
         loginView.setErrorLabelText(text: "Unknown error occurred".localized())
         loginView.changeErrorLabelVisibility(isHidden: false)
+=======
+        errorLabel.text = text
+        errorLabel.isHidden = false
+    }
+    
+    func handleFailedToSuccessError() {
+        errorLabel.text = "Unknown error occurred".localized()
+        errorLabel.isHidden = false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+>>>>>>> ADMVEDU105
     }
 }
