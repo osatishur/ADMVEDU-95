@@ -12,6 +12,7 @@
 		0E40CED22636C2820067D7D5 /* AudioDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED12636C2820067D7D5 /* AudioDetailView.xib */; };
 		0E40CED92636CFA90067D7D5 /* VideoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */; };
 		0E40CEDD2636D29A0067D7D5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */; };
+		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01C2632B29100C4C059 /* AuthTextField.swift */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
@@ -62,6 +63,7 @@
 		0E40CED12636C2820067D7D5 /* AudioDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDetailView.xib; sourceTree = "<group>"; };
 		0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailView.xib; sourceTree = "<group>"; };
 		0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
+		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01C2632B29100C4C059 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */,
 				0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */,
 				0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */,
+				0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				0E957A0F26307ED800A42206 /* CGFloat+StaticProperties.swift in Sources */,
 				83A78BDE26276263009C3807 /* ApiResult.swift in Sources */,
 				83E769A5262D9FFE008826CB /* UIColor+StaticColors.swift in Sources */,
+				0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,

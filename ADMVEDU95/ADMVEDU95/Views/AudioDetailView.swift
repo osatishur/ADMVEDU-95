@@ -20,17 +20,11 @@ class AudioDetailView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        commonInit(nibName: Constants.nibName)
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
-        let viewFromXib = Bundle.main.loadNibNamed(Constants.nibName, owner: self, options: nil)![0] as! UIView
-        viewFromXib.frame = self.bounds
-        addSubview(viewFromXib)
+        commonInit(nibName: Constants.nibName)
     }
 }

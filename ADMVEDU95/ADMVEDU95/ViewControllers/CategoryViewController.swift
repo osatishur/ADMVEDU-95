@@ -17,7 +17,7 @@ class CategoryViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     private let dataSource: [Category] = {
         var data: [Category] = []
@@ -32,10 +32,10 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableViewLayout()
+        setupTableView()
     }
     
-    private func setupTableViewLayout() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.categoryCellIdentifier)

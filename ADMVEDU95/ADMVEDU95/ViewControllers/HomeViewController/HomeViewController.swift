@@ -8,17 +8,10 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    struct Constants {
-        static let searchCellIdentifier = "SearchTableViewCell"
-        static let estimatedRowHeight: CGFloat = 200
-        static let topViewHeight: CGFloat = 56
-        static let categoryViewHeight: CGFloat = 32
-        static let categoryViewSideConstraint: CGFloat = 8
-    }
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet weak var categoryView: CategoryView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: Properties
     var dataSource: [ApiResult]  = []
@@ -30,12 +23,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupLayout()
+        setupViews()
         setupSearchBar()
     }
     
     //MARK: Setup Layout
-    private func setupLayout() {
+    private func setupViews() {
         setupNavigationBar()
         setupTableView()
         setupCategoryView()
@@ -58,8 +51,8 @@ class HomeViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let cell = UINib(nibName: Constants.searchCellIdentifier, bundle: nil)
-        tableView.register(cell, forCellReuseIdentifier: Constants.searchCellIdentifier)
+        let cell = UINib(nibName: SearchTableViewCell.reuseIdentifire, bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifire)
     }
     
     private func setupSearchBar() {
@@ -87,7 +80,6 @@ class HomeViewController: UIViewController {
 //MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //let searchBar = searchController.searchBar
         guard let searchTerm = searchBar.text
         else {
             return

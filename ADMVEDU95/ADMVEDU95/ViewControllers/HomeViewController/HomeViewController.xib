@@ -27,7 +27,7 @@
                 </searchBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scf-31-AAZ" customClass="CategoryView" customModule="ADMVEDU95" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="100" width="414" height="30"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" red="0.20392156862745098" green="0.23137254901960785" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="ynJ-O9-3uY"/>
                     </constraints>

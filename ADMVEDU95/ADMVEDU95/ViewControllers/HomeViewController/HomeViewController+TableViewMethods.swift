@@ -13,11 +13,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.searchCellIdentifier, for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifire, for: indexPath) as? SearchTableViewCell
         let model = dataSource[indexPath.row]
-        cell.configure(model: model)
-        cell.accessoryType = .disclosureIndicator
-        return cell
+        cell?.configure(model: model)
+        cell?.accessoryType = .disclosureIndicator
+        return cell ?? UITableViewCell()
     }
 }
 

@@ -34,8 +34,6 @@ class AuthTextField: UITextField {
                                          height: frame.height))
         rightViewMode = .always
         layer.cornerRadius = CGFloat.regularCornerRadius
-//        placeholder = placegolder
-//        isSecureTextEntry = isSecureTextEnter
         font = UIFont.regularFont
         backgroundColor = UIColor.textFieldAuth
     }

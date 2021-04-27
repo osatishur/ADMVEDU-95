@@ -10,8 +10,8 @@ import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var emailTF: AuthTextField!
+    @IBOutlet private weak var topLabel: UILabel!
+    @IBOutlet private weak var emailTextField: AuthTextField!
     
     let firebaseService = FirebaseService()
 
@@ -24,12 +24,12 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func didTapSendButton(_ sender: Any) {
+    @IBAction private func didTapSendButton(_ sender: Any) {
         requestRecovery()
     }
     
-    func requestRecovery() {
-        guard let email = emailTF.text else {
+    private func requestRecovery() {
+        guard let email = emailTextField.text else {
             return
         }
         firebaseService.sendPasswordReset(email: email) { result in

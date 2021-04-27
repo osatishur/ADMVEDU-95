@@ -11,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="ADMVEDU95" customModuleProvider="target">
             <connections>
                 <outlet property="bottomButton" destination="PpS-0V-Lhl" id="uQ1-Us-0uS"/>
-                <outlet property="emailTF" destination="Z1K-5W-uvS" id="VCl-Zq-Dds"/>
+                <outlet property="emailTextField" destination="Z1K-5W-uvS" id="VCl-Zq-Dds"/>
                 <outlet property="errorLabel" destination="qDW-J9-baW" id="C4t-iJ-sh3"/>
-                <outlet property="passwordTF" destination="bwc-dK-EJu" id="nTH-XQ-s1d"/>
-                <outlet property="repeatPasswordTF" destination="HpR-Gr-jEy" id="Nb8-DQ-AKd"/>
+                <outlet property="passwordTextField" destination="bwc-dK-EJu" id="nTH-XQ-s1d"/>
+                <outlet property="repeatPasswordTextField" destination="HpR-Gr-jEy" id="Nb8-DQ-AKd"/>
                 <outlet property="topLabel" destination="zUD-sX-Op3" id="oE3-Xy-sDF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="emF-uk-Cro"/>
             </connections>

@@ -10,12 +10,12 @@ import Firebase
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var emailTF: AuthTextField!
-    @IBOutlet weak var passwordTF: AuthTextField!
-    @IBOutlet weak var repeatPasswordTF: AuthTextField!
-    @IBOutlet weak var bottomButton: AuthBotomButton!
+    @IBOutlet private weak var topLabel: UILabel!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var emailTextField: AuthTextField!
+    @IBOutlet private weak var passwordTextField: AuthTextField!
+    @IBOutlet private weak var repeatPasswordTextField: AuthTextField!
+    @IBOutlet private weak var bottomButton: AuthBotomButton!
     
     let firebaseService = FirebaseService()
     
@@ -41,19 +41,19 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
-    @IBAction func didTapSignInButton(_ sender: Any) {
+    @IBAction private func didTapSignInButton(_ sender: Any) {
         signIn()
     }
     
     
-    @IBAction func didTapBottomButton(_ sender: Any) {
+    @IBAction private func didTapBottomButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
-    func signIn() {
-        guard let email = emailTF.text,
-              let password = passwordTF.text,
-              let passwordRepeat = repeatPasswordTF.text
+    private func signIn() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let passwordRepeat = repeatPasswordTextField.text
         else {
             return
         }
@@ -64,7 +64,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func createUser(email: String, password: String) {
+    private func createUser(email: String, password: String) {
         firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
                 return
@@ -82,12 +82,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func handlePasswordMatchError() {
+    private func handlePasswordMatchError() {
         errorLabel.text = "Password doesn't match".localized()
         errorLabel.isHidden = false
     }
     
-    func handleSignInError(error: AuthErrorCode?) {
+    private func handleSignInError(error: AuthErrorCode?) {
         guard let text = error?.errorMessage else {
             return
         }
@@ -95,7 +95,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         errorLabel.isHidden = false
     }
     
-    func handleFailedToSuccessError() {
+    private func handleFailedToSuccessError() {
         errorLabel.text = "Unknown error occurred".localized()
         errorLabel.isHidden = false
     }

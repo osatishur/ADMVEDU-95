@@ -9,11 +9,11 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var EmailTF: AuthTextField!
-    @IBOutlet weak var PasswordTF: AuthTextField!
-    @IBOutlet weak var bottomButton: AuthBotomButton!
+    @IBOutlet private weak var topLabel: UILabel!
+    @IBOutlet private weak var errorLabel: UILabel!
+    @IBOutlet private weak var emailTextField: AuthTextField!
+    @IBOutlet private weak var passwordTextField: AuthTextField!
+    @IBOutlet private weak var bottomButton: AuthBotomButton!
     
     let firebaseService = FirebaseService()
 
@@ -38,21 +38,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
-    @IBAction func didTapLogInButton(_ sender: Any) {
+    @IBAction private func didTapLogInButton(_ sender: Any) {
         logIn()
     }
     
-    @IBAction func didTapForgorPasswordButton(_ sender: Any) {
+    @IBAction private func didTapForgorPasswordButton(_ sender: Any) {
         navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
     }
     
-    @IBAction func didTapBottomButton(_ sender: Any) {
+    @IBAction private func didTapBottomButton(_ sender: Any) {
         navigationController?.pushViewController(SignInViewController(), animated: true)
     }
     
-    func logIn() {
-        guard let email = EmailTF.text,
-              let password = PasswordTF.text
+    private func logIn() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
         else {
             return
         }
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func handleLogInError(error: Error) {
+    private func handleLogInError(error: Error) {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
             return
@@ -80,7 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         errorLabel.isHidden = false
     }
     
-    func handleFailedToSuccessError() {
+    private func handleFailedToSuccessError() {
         errorLabel.text = "Unknown error occurred".localized()
         errorLabel.isHidden = false
     }
