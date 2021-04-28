@@ -8,7 +8,14 @@
 import Foundation
 import FirebaseAuth
 
-class FirebaseService {
+protocol FirebaseServiceProtocol {
+    func createUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func logIn(email: String, pass: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func logOut() -> Bool
+    func sendPasswordReset(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
+}
+
+class FirebaseService: FirebaseServiceProtocol {
     func createUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
             if let error = error {

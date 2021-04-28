@@ -9,12 +9,12 @@ import UIKit
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return presenter.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifire, for: indexPath) as? SearchTableViewCell
-        let model = dataSource[indexPath.row]
+        let model = presenter.dataSource[indexPath.row]
         cell?.configure(model: model)
         cell?.accessoryType = .disclosureIndicator
         return cell ?? UITableViewCell()
@@ -24,16 +24,17 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = DetailViewController()
-        let model = dataSource[indexPath.row]
-        vc.configureView(model: model)
+        let dataKind: ResponseDataKind
+        let model = presenter.dataSource[indexPath.row]
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
              ResponseDataKind.musicVideo.rawValue:
-            vc.iTunesDataType = .movie
+            dataKind = .movie
         default:
-            vc.iTunesDataType = .song
+            dataKind = .song
         }
-        present(vc, animated: true)
+        let vc = ModuleBuilder.createDetailModule(dataKind: dataKind) as? DetailViewController
+        vc?.configureView(model: model)
+        present(vc ?? UIViewController(), animated: true)
     }
 }

@@ -12,6 +12,9 @@
 		0E40CED22636C2820067D7D5 /* AudioDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED12636C2820067D7D5 /* AudioDetailView.xib */; };
 		0E40CED92636CFA90067D7D5 /* VideoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */; };
 		0E40CEDD2636D29A0067D7D5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */; };
+		0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E8F263945B4000122C6 /* SignInPresenter.swift */; };
+		0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E93263956FF000122C6 /* LogInPresenter.swift */; };
+		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01C2632B29100C4C059 /* AuthTextField.swift */; };
@@ -21,6 +24,10 @@
 		0E66C0292632F30400C4C059 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */; };
 		0E66C02E2633089700C4C059 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C02D2633089700C4C059 /* HomeViewController.xib */; };
 		0E66C0402633135D00C4C059 /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C03F2633135D00C4C059 /* CategoryViewController.xib */; };
+		0E768E37263885FA0048E512 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E36263885FA0048E512 /* HomePresenter.swift */; };
+		0E768E3A26388D990048E512 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E3926388D990048E512 /* ModuleBuilder.swift */; };
+		0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E3D263891E00048E512 /* DetailPresenter.swift */; };
+		0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E4026389F390048E512 /* CategoryPresenter.swift */; };
 		0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A012630510C00A42206 /* ResetPasswordViewController.swift */; };
 		0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */; };
 		0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */; };
@@ -63,6 +70,9 @@
 		0E40CED12636C2820067D7D5 /* AudioDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDetailView.xib; sourceTree = "<group>"; };
 		0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailView.xib; sourceTree = "<group>"; };
 		0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
+		0E495E8F263945B4000122C6 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		0E495E93263956FF000122C6 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
+		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01C2632B29100C4C059 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -72,6 +82,10 @@
 		0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		0E66C02D2633089700C4C059 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0E66C03F2633135D00C4C059 /* CategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
+		0E768E36263885FA0048E512 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		0E768E3926388D990048E512 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		0E768E3D263891E00048E512 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		0E768E4026389F390048E512 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
 		0E957A012630510C00A42206 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthErrorCode+ErrorMessage.swift"; sourceTree = "<group>"; };
 		0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ShowAlert.swift"; sourceTree = "<group>"; };
@@ -135,7 +149,84 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8306669C2629C62F00BD694B /* HomeViewController */ = {
+		0E495E8C26393CD3000122C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E768E4026389F390048E512 /* CategoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E495E8E263945A3000122C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E8F263945B4000122C6 /* SignInPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E495E92263956EB000122C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E93263956FF000122C6 /* LogInPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E495E9626395D98000122C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E768E26263884B40048E512 /* HomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E768E2B263885060048E512 /* View */,
+				0E768E2C2638850B0048E512 /* Presenter */,
+			);
+			path = HomeModule;
+			sourceTree = "<group>";
+		};
+		0E768E27263884CE0048E512 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E768E3C263891CA0048E512 /* Presenter */,
+				0E768E2E2638853B0048E512 /* View */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		0E768E28263884D80048E512 /* CategoryModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E8C26393CD3000122C6 /* Presenter */,
+				0E768E2F263885520048E512 /* View */,
+			);
+			path = CategoryModule;
+			sourceTree = "<group>";
+		};
+		0E768E29263884EE0048E512 /* SignInModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E8E263945A3000122C6 /* Presenter */,
+				0E768E302638855F0048E512 /* View */,
+			);
+			path = SignInModule;
+			sourceTree = "<group>";
+		};
+		0E768E2A263884F50048E512 /* LogInModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E92263956EB000122C6 /* Presenter */,
+				0E768E312638856D0048E512 /* View */,
+			);
+			path = LogInModule;
+			sourceTree = "<group>";
+		};
+		0E768E2B263885060048E512 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				83555FFE2624905C00C77316 /* HomeViewController.swift */,
@@ -143,7 +234,76 @@
 				83A78BA52626C56D009C3807 /* HomeViewController+TableViewMethods.swift */,
 				83E76991262D5DAE008826CB /* HomeViewController+CategoryDelegate.swift */,
 			);
-			path = HomeViewController;
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E2C2638850B0048E512 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E768E36263885FA0048E512 /* HomePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E768E2E2638853B0048E512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				835560182624999400C77316 /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E2F263885520048E512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				830666942629B12900BD694B /* CategoryViewController.swift */,
+				0E66C03F2633135D00C4C059 /* CategoryViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E302638855F0048E512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				838E24D2262EBFA5002C6C7A /* SignInViewController.swift */,
+				0E66C0252632D02800C4C059 /* SignInViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E312638856D0048E512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				838E24D5262EBFB1002C6C7A /* LoginViewController.swift */,
+				0E66C0192632B23C00C4C059 /* LoginViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E32263885780048E512 /* ResetPasswordModule */ = {
+			isa = PBXGroup;
+			children = (
+				0E495E9626395D98000122C6 /* Presenter */,
+				0E768E33263885890048E512 /* View */,
+			);
+			path = ResetPasswordModule;
+			sourceTree = "<group>";
+		};
+		0E768E33263885890048E512 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E957A012630510C00A42206 /* ResetPasswordViewController.swift */,
+				0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E768E3C263891CA0048E512 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E768E3D263891E00048E512 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		83555FEE2624905C00C77316 = {
@@ -169,8 +329,14 @@
 			children = (
 				83555FFA2624905C00C77316 /* AppDelegate.swift */,
 				83555FFC2624905C00C77316 /* SceneDelegate.swift */,
-				83A78BAD2626C77D009C3807 /* ViewControllers */,
-				83A78BAF2626C79A009C3807 /* Views */,
+				0E768E3926388D990048E512 /* ModuleBuilder.swift */,
+				0E768E32263885780048E512 /* ResetPasswordModule */,
+				0E768E2A263884F50048E512 /* LogInModule */,
+				0E768E29263884EE0048E512 /* SignInModule */,
+				0E768E28263884D80048E512 /* CategoryModule */,
+				0E768E27263884CE0048E512 /* DetailModule */,
+				0E768E26263884B40048E512 /* HomeModule */,
+				83A78BAF2626C79A009C3807 /* CustomViews */,
 				83A78BB22626C7EA009C3807 /* Network */,
 				83A78BC426270ACE009C3807 /* Extensions */,
 				83A78BB42626C818009C3807 /* Models */,
@@ -184,24 +350,7 @@
 			path = ADMVEDU95;
 			sourceTree = "<group>";
 		};
-		83A78BAD2626C77D009C3807 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				8306669C2629C62F00BD694B /* HomeViewController */,
-				835560182624999400C77316 /* DetailViewController.swift */,
-				830666942629B12900BD694B /* CategoryViewController.swift */,
-				0E66C03F2633135D00C4C059 /* CategoryViewController.xib */,
-				838E24D2262EBFA5002C6C7A /* SignInViewController.swift */,
-				0E66C0252632D02800C4C059 /* SignInViewController.xib */,
-				838E24D5262EBFB1002C6C7A /* LoginViewController.swift */,
-				0E66C0192632B23C00C4C059 /* LoginViewController.xib */,
-				0E957A012630510C00A42206 /* ResetPasswordViewController.swift */,
-				0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		83A78BAF2626C79A009C3807 /* Views */ = {
+		83A78BAF2626C79A009C3807 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				8316071A2625C33F0090D203 /* AudioDetailView.swift */,
@@ -214,7 +363,7 @@
 				0E66C01F2632B7DE00C4C059 /* AuthButton.swift */,
 				0E66C0222632CBCB00C4C059 /* AuthBotomButton.swift */,
 			);
-			path = Views;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		83A78BB22626C7EA009C3807 /* Network */ = {
@@ -404,6 +553,7 @@
 				830666982629B1A600BD694B /* Category.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
+				0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
 				831607182625C32B0090D203 /* VideoDetailView.swift in Sources */,
@@ -414,18 +564,24 @@
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
+				0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */,
 				838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* Response.swift in Sources */,
 				0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */,
 				83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */,
 				8316071B2625C33F0090D203 /* AudioDetailView.swift in Sources */,
 				83E76992262D5DAE008826CB /* HomeViewController+CategoryDelegate.swift in Sources */,
+				0E768E3A26388D990048E512 /* ModuleBuilder.swift in Sources */,
 				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
 				0E66C0232632CBCB00C4C059 /* AuthBotomButton.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */,
+				0E768E37263885FA0048E512 /* HomePresenter.swift in Sources */,
+				0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */,
+				0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
+				0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */,
 				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,

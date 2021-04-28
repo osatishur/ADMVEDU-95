@@ -7,7 +7,13 @@
 
 import Foundation
 
-class SearchService {
+protocol SearchServiceProtocol {
+    func searchResults(searchTerm: String,
+                       filter: String,
+                       completion: @escaping (Result<Response, iTunesSearchError>)-> Void)
+}
+
+class SearchService: SearchServiceProtocol {
     private struct Constants {
         static let searchParameter = "term"
         static let filterParameter = "media"

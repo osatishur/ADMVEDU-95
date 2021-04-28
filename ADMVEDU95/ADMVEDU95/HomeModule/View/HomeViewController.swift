@@ -14,10 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     //MARK: Properties
-    var dataSource: [ApiResult]  = []
-    var categoryTitle: Category = Category.all
-    private let searchService = SearchService()
-    private let firebaseService = FirebaseService()
+    var presenter: HomeViewPresenterProtocol!
     
     //MARK: Life cycle
     override func viewDidLoad() {
@@ -41,7 +38,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupCategoryView() {
-        categoryView.configureView(categoryTitle: NSLocalizedString(categoryTitle.rawValue, comment: ""))
+        categoryView.configureView(categoryTitle: presenter.categoryTitle.rawValue.localized())
                 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
         categoryView.isUserInteractionEnabled = true
@@ -61,14 +58,12 @@ class HomeViewController: UIViewController {
     }
     //MARK: goToCategory method
     @objc func goToCategories() {
-        let vc = CategoryViewController()
-        vc.delegate = self
-        vc.categoryChosed = categoryTitle
+        let vc = ModuleBuilder.createCategoryModule(categoryChosed: presenter.categoryTitle, delegate: self)
         present(vc, animated: true)
     }
     //MARK: log out method
     @objc func logoutUser() {
-        let isLoggedOut = firebaseService.logOut()
+        let isLoggedOut = presenter.logOutFromFirebase()
         if isLoggedOut {
             let navVC = UINavigationController(rootViewController: LoginViewController())
             (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
@@ -84,42 +79,31 @@ extension HomeViewController: UISearchBarDelegate {
         else {
             return
         }
-        searchITunes(searchTerm: searchTerm)
+        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.categoryTitle.rawValue)
         searchBar.endEditing(true)
     }
-    
-    private func searchITunes(searchTerm: String) {
-        searchService.searchResults(searchTerm: searchTerm,
-                                    filter: self.categoryTitle.rawValue) { result in
-            switch result {
-            case .success(let response):
-                self.fetchDataFromResponse(response: response)
-            case .failure(.unknown):
-                self.showAlert(titleMessage: "Error".localized(), message: "Unknown error".localized())
-            case .failure(.emptyData):
-                self.showAlert(titleMessage: "Error".localized(), message: "No data".localized())
-            case .failure(.parsingData):
-                self.showAlert(titleMessage: "Error".localized(), message: "Failed to get data from server".localized())
-            }
-        }
-    }
-    
-    private func fetchDataFromResponse(response: Response) {
-        if !self.dataSource.isEmpty {
-            self.dataSource = []
-        }
-        let results = response.results
-        for result in results {
-            if !(result.kind == nil || result.artistName == nil || result.trackName == nil) { //check for insufficient data
-                self.dataSource.append(result)
-            }
-        }
-        if dataSource.isEmpty {
-            showAlert(titleMessage: "No data".localized(),
-                      message: "Please, check for correct request".localized())
-        }
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func success() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    func failure(error: iTunesSearchError) {
+        switch error {
+        case .unknown:
+            self.showAlert(titleMessage: "Error".localized(), message: "Unknown error".localized())
+        case .emptyData:
+            self.showAlert(titleMessage: "Error".localized(), message: "No data".localized())
+        case .parsingData:
+            self.showAlert(titleMessage: "Error".localized(), message: "Failed to get data from server".localized())
+        }
+    }
+    
+    func noData() {
+        showAlert(titleMessage: "No data".localized(),
+                  message: "Please, check for correct request".localized())
     }
 }

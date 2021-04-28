@@ -19,12 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         if Auth.auth().currentUser == nil {
-            let navController = UINavigationController(rootViewController: LoginViewController())
-            self.window?.rootViewController = navController
+            initialVC = ModuleBuilder.createLogInModule()
         } else {
-            self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
+            initialVC = ModuleBuilder.createHomeModule()
         }
-        
+        self.window?.rootViewController = UINavigationController(rootViewController: initialVC)
         window?.makeKeyAndVisible()
     }
     

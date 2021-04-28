@@ -9,7 +9,7 @@ import UIKit
 
 extension HomeViewController: CategoryDelegate  {
     func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
-        categoryTitle = category
+        presenter.categoryTitle = category
         categoryView.configureView(categoryTitle: category.rawValue.localized())
     }
 }

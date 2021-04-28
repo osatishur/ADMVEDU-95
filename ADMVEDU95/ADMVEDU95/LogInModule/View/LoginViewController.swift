@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var passwordTextField: AuthTextField!
     @IBOutlet private weak var bottomButton: AuthBotomButton!
     
-    let firebaseService = FirebaseService()
+    var presenter: LogInViewPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,39 +39,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapLogInButton(_ sender: Any) {
-        logIn()
-    }
-    
-    @IBAction private func didTapForgorPasswordButton(_ sender: Any) {
-        navigationController?.pushViewController(ResetPasswordViewController(), animated: true)
-    }
-    
-    @IBAction private func didTapBottomButton(_ sender: Any) {
-        navigationController?.pushViewController(SignInViewController(), animated: true)
-    }
-    
-    private func logIn() {
         guard let email = emailTextField.text,
               let password = passwordTextField.text
         else {
             return
         }
-        firebaseService.logIn(email: email, pass: password) { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case .success(true):
-                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: HomeViewController()))
-            case .failure(let error):
-                self.handleLogInError(error: error)
-            case .success(false):
-                self.handleFailedToSuccessError()
-            }
-        }
+        presenter.logIn(email: email, password: password)
     }
     
-    private func handleLogInError(error: Error) {
+    @IBAction private func didTapForgorPasswordButton(_ sender: Any) {
+        let vc = ModuleBuilder.createResetPasswordModule()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction private func didTapBottomButton(_ sender: Any) {
+        let vc = ModuleBuilder.createSignInModule()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
+extension LoginViewController: LogInViewProtocol {
+    func successLogIn() {
+        let vc = ModuleBuilder.createHomeModule()
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: vc))
+    }
+    
+    func handleLogInError(error: Error) {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
             return
@@ -80,13 +78,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         errorLabel.isHidden = false
     }
     
-    private func handleFailedToSuccessError() {
+    func handleFailedToSuccessError() {
         errorLabel.text = "Unknown error occurred".localized()
         errorLabel.isHidden = false
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
     }
 }

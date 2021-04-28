@@ -14,6 +14,8 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var emailTextField: AuthTextField!
     
     let firebaseService = FirebaseService()
+    
+    var presenter: ResetPasswordPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,36 +25,28 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = "Password recovery".localized()
     }
     
-    
     @IBAction private func didTapSendButton(_ sender: Any) {
-        requestRecovery()
-    }
-    
-    private func requestRecovery() {
         guard let email = emailTextField.text else {
             return
         }
-        firebaseService.sendPasswordReset(email: email) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.showAlert(titleMessage: "Success".localized(),
-                                   message: "Check your email for the next step".localized())
-                }
-                self.navigationController?.popViewController(animated: true)
-            case .failure(let error):
-                self.handleAuthError(error)
-            }
-        }
+        presenter.requestRecovery(email: email)
     }
-    
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
 }
 
-extension ResetPasswordViewController {
+extension ResetPasswordViewController: ResetPasswordViewProtocol {
+    func successRequest() {
+        DispatchQueue.main.async {
+            self.showAlert(titleMessage: "Success".localized(),
+                           message: "Check your email for the next step".localized())
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     func handleAuthError(_ error: Error) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             print(errorCode.errorMessage)

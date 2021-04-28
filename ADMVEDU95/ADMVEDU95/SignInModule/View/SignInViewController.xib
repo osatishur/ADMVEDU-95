@@ -47,7 +47,7 @@
                                 <constraint firstAttribute="height" constant="54" id="SJz-ap-Vu2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HpR-Gr-jEy" customClass="AuthTextField" customModule="ADMVEDU95" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="148" width="314" height="54"/>
@@ -55,7 +55,7 @@
                                 <constraint firstAttribute="height" constant="54" id="w5D-dn-7o2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
                     </subviews>
                 </stackView>
@@ -64,7 +64,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="54" id="7o4-Hw-ch3"/>
                     </constraints>
-                    <state key="normal" title="Log In"/>
+                    <state key="normal" title="Sign In"/>
                     <connections>
                         <action selector="didTapSignInButton:" destination="-1" eventType="touchUpInside" id="IKH-Ch-0S2"/>
                     </connections>
