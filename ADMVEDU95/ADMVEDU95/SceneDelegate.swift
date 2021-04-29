@@ -19,9 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         if Auth.auth().currentUser == nil {
-            initialVC = ModuleBuilder.createLogInModule()
+            initialVC = ViewBuilder.createLogInView()
         } else {
-            initialVC = ModuleBuilder.createHomeModule()
+            initialVC = ViewBuilder.createHomeView()
         }
         self.window?.rootViewController = UINavigationController(rootViewController: initialVC)
         window?.makeKeyAndVisible()

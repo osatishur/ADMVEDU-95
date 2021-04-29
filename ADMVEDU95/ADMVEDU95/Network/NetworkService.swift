@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-public enum iTunesSearchError: Error {
+public enum SearchError: Error {
     case emptyData
     case parsingData
     case unknown
@@ -35,7 +35,7 @@ class NetworkService {
     
     public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
                                 parameters: [String: String],
-                                completion: @escaping (Result<T, iTunesSearchError>) -> Void) {
+                                completion: @escaping (Result<T, SearchError>) -> Void) {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
@@ -62,20 +62,20 @@ class NetworkService {
     
     private func parseResponse<T: Codable>(data: Data?,
                                            response _: URLResponse?,
-                                           error: Error?, type: T.Type) -> Result<T, iTunesSearchError> {
+                                           error: Error?, type: T.Type) -> Result<T, SearchError> {
         guard let jsonData = data else {
-            return .failure(iTunesSearchError.emptyData)
+            return .failure(SearchError.emptyData)
         }
 
         if error != nil {
-            return .failure(iTunesSearchError.unknown)
+            return .failure(SearchError.unknown)
         }
 
         do {
             let searchResponse = try decoder.decode(type, from: jsonData)
             return .success(searchResponse)
         } catch {
-            return .failure(iTunesSearchError.parsingData)
+            return .failure(SearchError.parsingData)
         }
     }
 }
