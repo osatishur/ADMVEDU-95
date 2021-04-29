@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController {
+extension DetailViewController: DetailViewProtocol {
     func configureView(model: ApiResult) {
         guard let imageURL = model.artworkUrl100,
               let url = URL(string: imageURL) else {
@@ -76,9 +76,7 @@ extension DetailViewController {
     @objc private func playVideo() {
         presenter?.playVideo()
     }
-}
-
-extension DetailViewController: DetailViewProtocol {
+    
     func setButtonImage(isPlayed: Bool) {
         if isPlayed {
             songView.setPauseImage()

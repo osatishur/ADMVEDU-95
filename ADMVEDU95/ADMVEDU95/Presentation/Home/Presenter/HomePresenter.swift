@@ -14,24 +14,28 @@ protocol HomeViewProtocol: class {
 }
 
 protocol HomeViewPresenterProtocol: class {
-    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol)
+    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol)
     var dataSource: [ApiResult] { get set }
     var categoryTitle: Category { get set }
     func searchITunes(searchTerm: String, filter: String)
     func logOutFromFirebase() -> Bool
+    func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate)
+    func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
 }
 
 class HomePresenter: HomeViewPresenterProtocol {
     weak var view: HomeViewProtocol?
     let searchService: SearchServiceProtocol!
     let firebaseService: FirebaseServiceProtocol!
+    var router: HomeRouterProtocol?
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
     
-    required init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol) {
+    required init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
+        self.router = router
     }
     
     func searchITunes(searchTerm: String, filter: String) {
@@ -64,5 +68,13 @@ class HomePresenter: HomeViewPresenterProtocol {
     
     func logOutFromFirebase() -> Bool {
         return firebaseService.logOut()
+    }
+    
+    func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult) {
+        router?.showDetail(dataKind: dataKind, model: model)
+    }
+    
+    func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate) {
+        router?.showCategory(categoryChosed: categoryTitle, delegate: delegate)
     }
 }

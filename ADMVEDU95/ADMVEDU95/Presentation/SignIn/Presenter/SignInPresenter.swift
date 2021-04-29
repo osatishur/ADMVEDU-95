@@ -16,17 +16,20 @@ protocol SignInViewProtocol: class {
 }
 
 protocol SignInViewPresenterProtocol: class {
-    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol)
+    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter)
     func signIn(email: String, password: String, repeatPassword: String)
+    func navigateToLogIn()
 }
 
 class SignInPresenter: SignInViewPresenterProtocol {
     weak var view: SignInViewProtocol?
+    var router: AuthFlowRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol) {
+    required init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter) {
         self.view = view
         self.firebaseService = firebaseService
+        self.router = router
     }
     
     func signIn(email: String, password: String, repeatPassword: String) {
@@ -52,5 +55,9 @@ class SignInPresenter: SignInViewPresenterProtocol {
                 self.view?.handleFailedToSuccessError()
             }
         }
+    }
+    
+    func navigateToLogIn() {
+        router?.popToLogIn()
     }
 }

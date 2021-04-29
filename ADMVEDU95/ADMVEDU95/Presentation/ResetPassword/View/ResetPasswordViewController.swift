@@ -41,7 +41,7 @@ extension ResetPasswordViewController: ResetPasswordViewProtocol {
             self.showAlert(titleMessage: "Success".localized(),
                            message: "Check your email for the next step".localized())
         }
-        self.navigationController?.popViewController(animated: true)
+        presenter?.navigateToLogIn()
     }
     
     func handleAuthError(_ error: Error) {

@@ -51,7 +51,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapBottomButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        presenter?.navigateToLogIn()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -62,9 +62,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
 extension SignInViewController: SignInViewProtocol {
     func successSignIn() {
-        self.showAlert(titleMessage: "OK".localized(), message: "Sign In is succesful".localized())
-        let vc = ViewBuilder.createHomeView()
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: vc))
+        let sceneDelegate = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)
+        guard let builder = sceneDelegate?.builder else {
+            return
+        }
+        let navVC = UINavigationController()
+        let router = HomeRouter(navigationController: navVC, builder: builder)
+        sceneDelegate?.changeRootViewController(navigationController: navVC, router: router)
     }
     
     func handlePasswordMatchError() {

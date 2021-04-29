@@ -13,17 +13,20 @@ protocol ResetPasswordViewProtocol: class {
 }
 
 protocol ResetPasswordViewPresenterProtocol: class {
-    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol)
+    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter)
     func requestRecovery(email: String)
+    func navigateToLogIn()
 }
 
 class ResetPasswordPresenter: ResetPasswordViewPresenterProtocol {
     weak var view: ResetPasswordViewProtocol?
+    var router: AuthFlowRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol) {
+    required init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter) {
         self.view = view
         self.firebaseService = firebaseService
+        self.router = router
     }
     
     func requestRecovery(email: String) {
@@ -35,5 +38,9 @@ class ResetPasswordPresenter: ResetPasswordViewPresenterProtocol {
                 self.view?.handleAuthError(error)
             }
         }
+    }
+    
+    func navigateToLogIn() {
+        router?.popToLogIn()
     }
 }

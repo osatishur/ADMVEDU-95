@@ -63,15 +63,19 @@ class HomeViewController: UIViewController {
         guard let presenter = presenter else {
             return
         }
-        let vc = ViewBuilder.createCategoryView(categoryChosed: presenter.categoryTitle, delegate: self)
-        present(vc, animated: true)
+        presenter.navigateToCategory(categoryChosed: presenter.categoryTitle, delegate: self)
     }
     //MARK: log out method
     @objc func logoutUser() {
         let isLoggedOut = presenter?.logOutFromFirebase() ?? false
         if isLoggedOut {
-            let navVC = UINavigationController(rootViewController: LoginViewController())
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(navVC)
+            let sceneDelegate = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)
+            guard let builder = sceneDelegate?.builder else {
+                return
+            }
+            let navVC = UINavigationController()
+            let router = AuthFlowRouter(navigationController: navVC, builder: builder)
+            sceneDelegate?.changeRootViewController(navigationController: navVC, router: router)
         } else {
             self.showAlert(titleMessage: "Error".localized(), message: "Failed to log out".localized())
         }

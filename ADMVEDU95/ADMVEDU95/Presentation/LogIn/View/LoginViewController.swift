@@ -48,13 +48,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapForgorPasswordButton(_ sender: Any) {
-        let vc = ViewBuilder.createResetPasswordView()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.navigateToResetPassword()
     }
     
     @IBAction private func didTapBottomButton(_ sender: Any) {
-        let vc = ViewBuilder.createSignInView()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.navigateToSignIn()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -65,8 +63,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 extension LoginViewController: LogInViewProtocol {
     func successLogIn() {
-        let vc = ViewBuilder.createHomeView()
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: vc))
+        let sceneDelegate = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)
+        guard let builder = sceneDelegate?.builder else {
+            return
+        }
+        let navVC = UINavigationController()
+        let router = HomeRouter(navigationController: navVC, builder: builder)
+        sceneDelegate?.changeRootViewController(navigationController: navVC, router: router)
     }
     
     func handleLogInError(error: Error) {
