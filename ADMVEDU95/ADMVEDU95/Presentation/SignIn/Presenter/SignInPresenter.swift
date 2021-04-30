@@ -15,7 +15,7 @@ protocol SignInViewProtocol: class {
     func handleFailedToSuccessError()
 }
 
-protocol SignInViewPresenterProtocol: class {
+protocol SignInViewPresenterProtocol: class, BaseAuthPresenterProtocol {
     init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter)
     func signIn(email: String, password: String, repeatPassword: String)
     func navigateToLogIn()

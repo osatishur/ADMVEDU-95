@@ -7,18 +7,6 @@
 
 import UIKit
 
-protocol RouterMain {
-    var navigationController: UINavigationController? { get set }
-    var builder: BuilderProtocol? { get set }
-    func initialViewController()
-}
-
-//extension RouterMain {
-//    var navigationController: UINavigationController {
-//        return UINavigationController()
-//    }
-//}
-
 protocol HomeRouterProtocol: RouterMain {
     func showCategory(categoryChosed: Category, delegate: CategoryDelegate)
     func showDetail(dataKind: ResponseDataKind, model: ApiResult)

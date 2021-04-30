@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: AuthBaseViewController, UITextFieldDelegate {
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var emailTextField: AuthTextField!
@@ -33,8 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupLayout() {
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
-        attributedTitle.append(NSAttributedString(string: "Sign in".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        let attributedTitle = createAttributedTitle(firstTtitle: "Don't have an account?  ".localized(), secondTitle: "Sign in".localized())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
@@ -63,13 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 extension LoginViewController: LogInViewProtocol {
     func successLogIn() {
-        let sceneDelegate = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)
-        guard let builder = sceneDelegate?.builder else {
-            return
-        }
-        let navVC = UINavigationController()
-        let router = HomeRouter(navigationController: navVC, builder: builder)
-        sceneDelegate?.changeRootViewController(navigationController: navVC, router: router)
+        presenter?.navigateToHome()
     }
     
     func handleLogInError(error: Error) {
