@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol HomeRouterProtocol: RouterMain {
+protocol HomeRouterProtocol: MainRouterProtocol {
     func showCategory(categoryChosed: Category, delegate: CategoryDelegate)
     func showDetail(dataKind: ResponseDataKind, model: ApiResult)
     func popToHome()

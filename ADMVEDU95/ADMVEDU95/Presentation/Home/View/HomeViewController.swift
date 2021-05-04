@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     //MARK: Properties
-    var presenter: HomeViewPresenterProtocol?
+    var presenter: HomePresenterProtocol?
     
     //MARK: Life cycle
     override func viewDidLoad() {
@@ -69,13 +69,7 @@ class HomeViewController: UIViewController {
     @objc func logoutUser() {
         let isLoggedOut = presenter?.logOutFromFirebase() ?? false
         if isLoggedOut {
-            let sceneDelegate = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)
-            guard let builder = sceneDelegate?.builder else {
-                return
-            }
-            let navVC = UINavigationController()
-            let router = AuthFlowRouter(navigationController: navVC, builder: builder)
-            sceneDelegate?.changeRootViewController(navigationController: navVC, router: router)
+            presenter?.navigateToAuth()
         } else {
             self.showAlert(titleMessage: "Error".localized(), message: "Failed to log out".localized())
         }

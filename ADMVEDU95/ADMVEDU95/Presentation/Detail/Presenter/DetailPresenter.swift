@@ -9,12 +9,12 @@ import Foundation
 import AVFoundation
 import AVKit
 
-protocol DetailViewProtocol: class {
+protocol DetailViewProtocol: AnyObject {
     func setButtonImage(isPlayed: Bool)
     func configureView(model: ApiResult)
 }
 
-protocol DetailViewPresenterProtocol: class {
+protocol DetailPresenterProtocol: AnyObject {
     init(view: DetailViewProtocol, dataKind: ResponseDataKind, model: ApiResult, router: HomeRouterProtocol)
     var dataKind: ResponseDataKind { get set }
     var playerViewController: AVPlayerViewController { get set }
@@ -27,7 +27,7 @@ protocol DetailViewPresenterProtocol: class {
     func navigateToHome()
 }
 
-class DetailPresenter: DetailViewPresenterProtocol {
+class DetailPresenter: DetailPresenterProtocol {
     weak var view: DetailViewProtocol?
     var router: HomeRouterProtocol?
     var dataKind: ResponseDataKind = .song

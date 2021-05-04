@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol AuthFlowRouterProtocol: RouterMain {
+protocol AuthRouterProtocol: MainRouterProtocol {
     func initialViewController()
     func showSignIn()
     func showResetPassword()
     func popToLogIn()
 }
 
-class AuthFlowRouter: AuthFlowRouterProtocol {
+class AuthRouter: AuthRouterProtocol {
     var navigationController: UINavigationController?
     var builder: BuilderProtocol?
     

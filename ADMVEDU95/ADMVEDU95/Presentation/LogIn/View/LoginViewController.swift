@@ -15,7 +15,7 @@ class LoginViewController: AuthBaseViewController, UITextFieldDelegate {
     @IBOutlet private weak var passwordTextField: AuthTextField!
     @IBOutlet private weak var bottomButton: AuthBottomButton!
     
-    var presenter: LogInViewPresenterProtocol?
+    var presenter: LogInPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

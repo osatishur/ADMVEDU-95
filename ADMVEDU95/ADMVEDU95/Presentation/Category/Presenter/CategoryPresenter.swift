@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CategoryViewPresenterProtocol: class {
+protocol CategoryPresenterProtocol: AnyObject {
     init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol)
     var dataSource: [Category] { get set }
     var categoryChosed: Category! { get set }
@@ -15,7 +15,7 @@ protocol CategoryViewPresenterProtocol: class {
     func naviagateToHome()
 }
 
-class CategoryPresenter: CategoryViewPresenterProtocol {
+class CategoryPresenter: CategoryPresenterProtocol {
     weak var view: CategoryViewController?
     var router: HomeRouterProtocol?
     var categoryChosed: Category!

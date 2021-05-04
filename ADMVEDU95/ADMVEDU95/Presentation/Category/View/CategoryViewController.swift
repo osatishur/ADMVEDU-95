@@ -18,7 +18,7 @@ class CategoryViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    var presenter: CategoryViewPresenterProtocol?
+    var presenter: CategoryPresenterProtocol?
         
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,25 +8,26 @@
 import Foundation
 import FirebaseAuth
 
-protocol SignInViewProtocol: class {
+protocol SignInViewProtocol: AnyObject {
     func successSignIn()
     func handlePasswordMatchError()
     func handleSignInError(error: AuthErrorCode?)
     func handleFailedToSuccessError()
 }
 
-protocol SignInViewPresenterProtocol: class, BaseAuthPresenterProtocol {
-    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter)
+protocol SignInPresenterProtocol: AnyObject {
+    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter)
     func signIn(email: String, password: String, repeatPassword: String)
     func navigateToLogIn()
+    func navigateToHome()
 }
 
-class SignInPresenter: SignInViewPresenterProtocol {
+class SignInPresenter: SignInPresenterProtocol {
     weak var view: SignInViewProtocol?
-    var router: AuthFlowRouter?
+    var router: AuthRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthFlowRouter) {
+    required init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
@@ -59,5 +60,9 @@ class SignInPresenter: SignInViewPresenterProtocol {
     
     func navigateToLogIn() {
         router?.popToLogIn()
+    }
+    
+    func navigateToHome() {
+        router?.navigateToHome()
     }
 }

@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol HomeViewProtocol: class {
+protocol HomeViewProtocol: AnyObject {
     func success()
     func failure(error: SearchError)
     func noData()
 }
 
-protocol HomeViewPresenterProtocol: class {
+protocol HomePresenterProtocol: AnyObject, BaseRouterProtocol {
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol)
     var dataSource: [ApiResult] { get set }
     var categoryTitle: Category { get set }
@@ -23,7 +23,7 @@ protocol HomeViewPresenterProtocol: class {
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
 }
 
-class HomePresenter: HomeViewPresenterProtocol {
+class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     let searchService: SearchServiceProtocol!
     let firebaseService: FirebaseServiceProtocol!

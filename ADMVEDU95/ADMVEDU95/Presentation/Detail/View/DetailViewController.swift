@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
         return view
     }()
     
-    var presenter: DetailViewPresenterProtocol?
+    var presenter: DetailPresenterProtocol?
     //MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

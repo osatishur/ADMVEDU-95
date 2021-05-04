@@ -8,7 +8,6 @@
 import UIKit
 
 class AuthBaseViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

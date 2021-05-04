@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E2CC761263BEE8F005B97B8 /* RouterMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* RouterMain.swift */; };
+		0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */; };
 		0E2CC767263BF210005B97B8 /* AuthBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC766263BF210005B97B8 /* AuthBaseViewController.swift */; };
-		0E2CC76A263BF2C0005B97B8 /* BaseAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC769263BF2C0005B97B8 /* BaseAuthPresenter.swift */; };
+		0E2CC76A263BF2C0005B97B8 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */; };
 		0E40CEC92636A65C0067D7D5 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40CEC72636A65C0067D7D5 /* SearchTableViewCell.swift */; };
 		0E40CECA2636A65C0067D7D5 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEC82636A65C0067D7D5 /* SearchTableViewCell.xib */; };
 		0E40CED22636C2820067D7D5 /* AudioDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED12636C2820067D7D5 /* AudioDetailView.xib */; };
@@ -37,7 +37,8 @@
 		0E957A0F26307ED800A42206 /* CGFloat+StaticProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */; };
 		0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1B8263ABCA400FBC00E /* XibView.swift */; };
 		0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */; };
-		0EDDA1C0263B26DF00FBC00E /* AuthFlowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthFlowRouter.swift */; };
+		0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */; };
+		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306668C262983F000BD694B /* ResponseDataKind.swift */; };
 		830666952629B12900BD694B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830666942629B12900BD694B /* CategoryViewController.swift */; };
 		830666982629B1A600BD694B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830666972629B1A600BD694B /* Category.swift */; };
@@ -70,9 +71,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E2CC760263BEE8F005B97B8 /* RouterMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMain.swift; sourceTree = "<group>"; };
+		0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		0E2CC766263BF210005B97B8 /* AuthBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBaseViewController.swift; sourceTree = "<group>"; };
-		0E2CC769263BF2C0005B97B8 /* BaseAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthPresenter.swift; sourceTree = "<group>"; };
+		0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterProtocol.swift; sourceTree = "<group>"; };
 		0E40CEC72636A65C0067D7D5 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		0E40CEC82636A65C0067D7D5 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		0E40CED12636C2820067D7D5 /* AudioDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDetailView.xib; sourceTree = "<group>"; };
@@ -100,7 +101,8 @@
 		0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+StaticProperties.swift"; sourceTree = "<group>"; };
 		0EDDA1B8263ABCA400FBC00E /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		0EDDA1BF263B26DF00FBC00E /* AuthFlowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowRouter.swift; sourceTree = "<group>"; };
+		0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		8306668C262983F000BD694B /* ResponseDataKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataKind.swift; sourceTree = "<group>"; };
 		830666942629B12900BD694B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		830666972629B1A600BD694B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -170,9 +172,11 @@
 		0E2CC763263BEEA1005B97B8 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
-				0E2CC760263BEE8F005B97B8 /* RouterMain.swift */,
+				0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */,
+				0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */,
+				0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */,
 				0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */,
-				0EDDA1BF263B26DF00FBC00E /* AuthFlowRouter.swift */,
+				0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -377,7 +381,6 @@
 				83555FFC2624905C00C77316 /* SceneDelegate.swift */,
 				0E768E3926388D990048E512 /* ViewBuilder.swift */,
 				0E2CC766263BF210005B97B8 /* AuthBaseViewController.swift */,
-				0E2CC769263BF2C0005B97B8 /* BaseAuthPresenter.swift */,
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
 				83A78BAF2626C79A009C3807 /* CustomViews */,
@@ -594,9 +597,9 @@
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */,
-				0E2CC76A263BF2C0005B97B8 /* BaseAuthPresenter.swift in Sources */,
+				0E2CC76A263BF2C0005B97B8 /* BaseRouterProtocol.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
-				0EDDA1C0263B26DF00FBC00E /* AuthFlowRouter.swift in Sources */,
+				0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
 				831607182625C32B0090D203 /* VideoDetailView.swift in Sources */,
 				0E957A0F26307ED800A42206 /* CGFloat+StaticProperties.swift in Sources */,
@@ -604,7 +607,7 @@
 				83E769A5262D9FFE008826CB /* UIColor+StaticColors.swift in Sources */,
 				0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
-				0E2CC761263BEE8F005B97B8 /* RouterMain.swift in Sources */,
+				0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */,
 				0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
 				0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */,
@@ -614,6 +617,7 @@
 				0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */,
 				83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */,
 				8316071B2625C33F0090D203 /* AudioDetailView.swift in Sources */,
+				0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */,
 				0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */,
 				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
 				0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */,

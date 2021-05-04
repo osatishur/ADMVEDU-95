@@ -11,9 +11,9 @@ protocol BuilderProtocol {
     func createHomeView(router: HomeRouterProtocol) -> UIViewController
     func createDetailView(dataKind: ResponseDataKind, model: ApiResult, router: HomeRouterProtocol) -> UIViewController
     func createCategoryView(categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) -> UIViewController
-    func createSignInView(router: AuthFlowRouter) -> UIViewController
-    func createLogInView(router: AuthFlowRouter) -> UIViewController
-    func createResetPasswordView(router: AuthFlowRouter) -> UIViewController
+    func createSignInView(router: AuthRouter) -> UIViewController
+    func createLogInView(router: AuthRouter) -> UIViewController
+    func createResetPasswordView(router: AuthRouter) -> UIViewController
 }
 
 class ViewBuilder: BuilderProtocol {
@@ -49,7 +49,7 @@ class ViewBuilder: BuilderProtocol {
         return view
     }
     
-    func createSignInView(router: AuthFlowRouter) -> UIViewController {
+    func createSignInView(router: AuthRouter) -> UIViewController {
         let view = SignInViewController()
         let firebaseService = FirebaseService()
         let presenter = SignInPresenter(view: view,
@@ -59,7 +59,7 @@ class ViewBuilder: BuilderProtocol {
         return view
     }
     
-    func createLogInView(router: AuthFlowRouter) -> UIViewController {
+    func createLogInView(router: AuthRouter) -> UIViewController {
         let view = LoginViewController()
         let firebaseService = FirebaseService()
         let presenter = LogInPresenter(view: view,
@@ -69,7 +69,7 @@ class ViewBuilder: BuilderProtocol {
         return view
     }
     
-    func createResetPasswordView(router: AuthFlowRouter) -> UIViewController {
+    func createResetPasswordView(router: AuthRouter) -> UIViewController {
         let view = ResetPasswordViewController()
         let firebaseService = FirebaseService()
         let presenter = ResetPasswordPresenter(view: view,

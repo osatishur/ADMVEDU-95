@@ -17,7 +17,7 @@ class SignInViewController: AuthBaseViewController, UITextFieldDelegate {
     @IBOutlet private weak var repeatPasswordTextField: AuthTextField!
     @IBOutlet private weak var bottomButton: AuthBottomButton!
     
-    var presenter: SignInViewPresenterProtocol?
+    var presenter: SignInPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
