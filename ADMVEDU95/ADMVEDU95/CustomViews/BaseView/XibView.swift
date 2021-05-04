@@ -17,5 +17,4 @@ class XibView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
-
 }

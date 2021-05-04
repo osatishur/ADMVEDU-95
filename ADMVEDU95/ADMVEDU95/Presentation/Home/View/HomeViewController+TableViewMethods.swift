@@ -39,8 +39,6 @@ extension HomeViewController: UITableViewDelegate {
         default:
             dataKind = .song
         }
-        let vc = ViewBuilder.createDetailView(dataKind: dataKind) as? DetailViewController
-        vc?.configureView(model: model)
-        present(vc ?? UIViewController(), animated: true)
+        presenter.navigateToDetail(dataKind: dataKind, model: model)
     }
 }

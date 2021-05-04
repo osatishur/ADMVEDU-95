@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: AuthBaseViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var errorLabel: UILabel!
@@ -17,7 +17,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var repeatPasswordTextField: AuthTextField!
     @IBOutlet private weak var bottomButton: AuthBottomButton!
     
-    var presenter: SignInViewPresenterProtocol?
+    var presenter: SignInPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupLayout() {
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
-        attributedTitle.append(NSAttributedString(string: "Log in".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        let attributedTitle = createAttributedTitle(firstTtitle: "Already have an account?  ".localized(), secondTitle: "Log in".localized())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
@@ -51,7 +50,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapBottomButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        presenter?.navigateToLogIn()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -62,9 +61,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 
 extension SignInViewController: SignInViewProtocol {
     func successSignIn() {
-        self.showAlert(titleMessage: "OK".localized(), message: "Sign In is succesful".localized())
-        let vc = ViewBuilder.createHomeView()
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: vc))
+        presenter?.navigateToHome()
     }
     
     func handlePasswordMatchError() {

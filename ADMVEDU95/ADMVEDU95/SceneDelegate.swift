@@ -9,29 +9,33 @@ import UIKit
 import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
-    var initialVC = UIViewController()
+    let builder = ViewBuilder()
+    var applicationRouter: ApplicationRouter?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
-        
+
         if Auth.auth().currentUser == nil {
-            initialVC = ViewBuilder.createLogInView()
+            applicationRouter = ApplicationRouter(isHomeInitial: false)
         } else {
-            initialVC = ViewBuilder.createHomeView()
+            applicationRouter = ApplicationRouter(isHomeInitial: true)
         }
-        self.window?.rootViewController = UINavigationController(rootViewController: initialVC)
+        
+        applicationRouter?.mainRouter?.initialViewController()
+        self.window?.rootViewController = applicationRouter?.mainNavigationController
         window?.makeKeyAndVisible()
     }
     
-    func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
+    func changeRootViewController(router: MainRouterProtocol, animated: Bool = true) {
         guard let window = self.window else {
             return
         }
-        window.rootViewController = vc
+        router.initialViewController()
+        
+        window.rootViewController = router.navigationController
         UIView.transition(with: window,
                           duration: 0.8,
                           options: [.transitionCrossDissolve],

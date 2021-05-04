@@ -7,15 +7,17 @@
 
 import Foundation
 
-protocol CategoryViewPresenterProtocol: class {
-    init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate)
+protocol CategoryPresenterProtocol: AnyObject {
+    init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol)
     var dataSource: [Category] { get set }
     var categoryChosed: Category! { get set }
     var delegate: CategoryDelegate { get set }
+    func naviagateToHome()
 }
 
-class CategoryPresenter: CategoryViewPresenterProtocol {
+class CategoryPresenter: CategoryPresenterProtocol {
     weak var view: CategoryViewController?
+    var router: HomeRouterProtocol?
     var categoryChosed: Category!
     var delegate: CategoryDelegate
     var dataSource: [Category] = {
@@ -26,9 +28,14 @@ class CategoryPresenter: CategoryViewPresenterProtocol {
         return data
     }()
     
-    required init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate) {
+    required init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
         self.view = view
         self.categoryChosed = categoryChosed
         self.delegate = delegate
+        self.router = router
+    }
+    
+    func naviagateToHome() {
+        router?.popToHome()
     }
 }

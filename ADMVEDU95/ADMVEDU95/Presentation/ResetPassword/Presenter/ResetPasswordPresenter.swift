@@ -7,23 +7,26 @@
 
 import Foundation
 
-protocol ResetPasswordViewProtocol: class {
+protocol ResetPasswordViewProtocol: AnyObject {
     func successRequest()
     func handleAuthError(_ error: Error)
 }
 
-protocol ResetPasswordViewPresenterProtocol: class {
-    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol)
+protocol ResetPasswordPresenterProtocol: AnyObject {
+    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter)
     func requestRecovery(email: String)
+    func navigateToLogIn()
 }
 
-class ResetPasswordPresenter: ResetPasswordViewPresenterProtocol {
+class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
     weak var view: ResetPasswordViewProtocol?
+    var router: AuthRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol) {
+    required init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
+        self.router = router
     }
     
     func requestRecovery(email: String) {
@@ -35,5 +38,9 @@ class ResetPasswordPresenter: ResetPasswordViewPresenterProtocol {
                 self.view?.handleAuthError(error)
             }
         }
+    }
+    
+    func navigateToLogIn() {
+        router?.popToLogIn()
     }
 }

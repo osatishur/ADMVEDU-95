@@ -7,25 +7,29 @@
 
 import Foundation
 
-protocol LogInViewProtocol: class {
+protocol LogInViewProtocol: AnyObject {
     func successLogIn()
     func handleLogInError(error: Error)
     func handleFailedToSuccessError()
 }
 
-protocol LogInViewPresenterProtocol: class {
-    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol)
+protocol LogInPresenterProtocol: AnyObject {
+    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter)
     func logIn(email: String, password: String)
+    func navigateToSignIn()
+    func navigateToResetPassword()
+    func navigateToHome()
 }
 
-class LogInPresenter: LogInViewPresenterProtocol {
-    
+class LogInPresenter: LogInPresenterProtocol {
     weak var view: LogInViewProtocol?
+    var router: AuthRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol) {
+    required init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
+        self.router = router
     }
     
     func logIn(email: String, password: String) {
@@ -42,5 +46,17 @@ class LogInPresenter: LogInViewPresenterProtocol {
                 self.view?.handleFailedToSuccessError()
             }
         }
+    }
+    
+    func navigateToResetPassword() {
+        router?.showResetPassword()
+    }
+    
+    func navigateToSignIn() {
+        router?.showSignIn()
+    }
+    
+    func navigateToHome() {
+        router?.navigateToHome()
     }
 }

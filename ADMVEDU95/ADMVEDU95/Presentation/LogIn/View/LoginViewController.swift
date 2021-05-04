@@ -8,14 +8,14 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: AuthBaseViewController, UITextFieldDelegate {
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var emailTextField: AuthTextField!
     @IBOutlet private weak var passwordTextField: AuthTextField!
     @IBOutlet private weak var bottomButton: AuthBottomButton!
     
-    var presenter: LogInViewPresenterProtocol?
+    var presenter: LogInPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func setupLayout() {
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
-        attributedTitle.append(NSAttributedString(string: "Sign in".localized(), attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        let attributedTitle = createAttributedTitle(firstTtitle: "Don't have an account?  ".localized(), secondTitle: "Sign in".localized())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
     
@@ -48,13 +47,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapForgorPasswordButton(_ sender: Any) {
-        let vc = ViewBuilder.createResetPasswordView()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.navigateToResetPassword()
     }
     
     @IBAction private func didTapBottomButton(_ sender: Any) {
-        let vc = ViewBuilder.createSignInView()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.navigateToSignIn()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -65,8 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
 extension LoginViewController: LogInViewProtocol {
     func successLogIn() {
-        let vc = ViewBuilder.createHomeView()
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(UINavigationController(rootViewController: vc))
+        presenter?.navigateToHome()
     }
     
     func handleLogInError(error: Error) {

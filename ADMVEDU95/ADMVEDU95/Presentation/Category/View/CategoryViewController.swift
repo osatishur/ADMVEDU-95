@@ -18,7 +18,7 @@ class CategoryViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    var presenter: CategoryViewPresenterProtocol?
+    var presenter: CategoryPresenterProtocol?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         presenter.delegate.fetchCategory(self, category: presenter.dataSource[indexPath.row])
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        presenter.naviagateToHome()
     }
 }
