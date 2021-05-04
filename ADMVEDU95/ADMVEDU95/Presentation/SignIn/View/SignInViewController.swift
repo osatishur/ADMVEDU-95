@@ -8,7 +8,14 @@
 import UIKit
 import Firebase
 
-class SignInViewController: AuthBaseViewController, UITextFieldDelegate {
+protocol SignInViewProtocol: AnyObject {
+    func successSignIn()
+    func handlePasswordMatchError(errorText: String)
+    func handleSignInError(error: AuthErrorCode?)
+    func handleFailedToSuccessError(errorText: String)
+}
+
+class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var errorLabel: UILabel!
@@ -64,8 +71,8 @@ extension SignInViewController: SignInViewProtocol {
         presenter?.navigateToHome()
     }
     
-    func handlePasswordMatchError() {
-        errorLabel.text = "Password doesn't match".localized()
+    func handlePasswordMatchError(errorText: String) {
+        errorLabel.text = errorText
         errorLabel.isHidden = false
     }
     
@@ -77,8 +84,8 @@ extension SignInViewController: SignInViewProtocol {
         errorLabel.isHidden = false
     }
     
-    func handleFailedToSuccessError() {
-        errorLabel.text = "Unknown error occurred".localized()
+    func handleFailedToSuccessError(errorText: String) {
+        errorLabel.text = errorText
         errorLabel.isHidden = false
     }
 }

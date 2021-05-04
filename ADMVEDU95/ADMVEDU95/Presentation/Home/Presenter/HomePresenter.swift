@@ -7,17 +7,14 @@
 
 import Foundation
 
-protocol HomeViewProtocol: AnyObject {
-    func success()
-    func failure(error: SearchError)
-    func noData()
-}
-
 protocol HomePresenterProtocol: AnyObject, BaseRouterProtocol {
-    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol)
     var dataSource: [ApiResult] { get set }
     var categoryTitle: Category { get set }
     func searchITunes(searchTerm: String, filter: String)
+    func getResult(indexPath: IndexPath) -> ApiResult
+    func getNumberOfResults() -> Int
+    func getDataKind(model: ApiResult) -> ResponseDataKind
+    func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String)
     func logOutFromFirebase() -> Bool
     func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate)
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
@@ -31,7 +28,7 @@ class HomePresenter: HomePresenterProtocol {
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
     
-    required init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
+    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
@@ -44,9 +41,10 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
-                self.view?.success()
+                self.view?.successToGetData()
             case .failure(let error):
-                self.view?.failure(error: error)
+                let alertMessage = self.setErrorAlertMessage(error: error)
+                self.view?.failedToGetData(title: alertMessage.title, message: alertMessage.messge)
             }
         }
     }
@@ -57,17 +55,51 @@ class HomePresenter: HomePresenterProtocol {
         }
         let results = response.results
         for result in results {
-            if !(result.kind == nil || result.artistName == nil || result.trackName == nil) { //check for insufficient data
+            if isResultPropertiesNotNil(result: result) { //check for insufficient data
                 self.dataSource.append(result)
             }
         }
         if dataSource.isEmpty {
-            self.view?.noData()
+            self.view?.noDataFromRequest(title: "No data".localized(),
+                                         message: "Please, check for correct request".localized())
         }
     }
     
-    func logOutFromFirebase() -> Bool {
-        return firebaseService.logOut()
+    private func isResultPropertiesNotNil(result: ApiResult) -> Bool {
+        if !(result.kind == nil || result.artistName == nil || result.trackName == nil) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func getDataKind(model: ApiResult) -> ResponseDataKind {
+        switch model.kind {
+        case ResponseDataKind.movie.rawValue,
+             ResponseDataKind.musicVideo.rawValue:
+            return .movie
+        default:
+            return .song
+        }
+    }
+    
+    func getResult(indexPath: IndexPath) -> ApiResult {
+        return dataSource[indexPath.row]
+    }
+    
+    func getNumberOfResults() -> Int {
+        return dataSource.count
+    }
+    
+    func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String) {
+        switch error {
+        case .unknown:
+            return ("Error".localized(), "Unknown error".localized())
+        case .emptyData:
+            return ("Error".localized(), "No data".localized())
+        case .parsingData:
+            return ("Error".localized(), "Failed to get data from server".localized())
+        }
     }
     
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult) {
@@ -76,5 +108,9 @@ class HomePresenter: HomePresenterProtocol {
     
     func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate) {
         router?.showCategory(categoryChosed: categoryTitle, delegate: delegate)
+    }
+    
+    func logOutFromFirebase() -> Bool {
+        return firebaseService.logOut()
     }
 }

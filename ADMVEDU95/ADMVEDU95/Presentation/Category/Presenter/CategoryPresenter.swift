@@ -8,18 +8,19 @@
 import Foundation
 
 protocol CategoryPresenterProtocol: AnyObject {
-    init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol)
-    var dataSource: [Category] { get set }
-    var categoryChosed: Category! { get set }
-    var delegate: CategoryDelegate { get set }
+    var selectedCategory: Category { get set }
+    var delegate: CategoryDelegate? {get set}
     func naviagateToHome()
+    func getCategory(indexPath: IndexPath) -> Category
+    func getSelectedCategory() -> Category
+    func numberOfCategories() -> Int
 }
 
 class CategoryPresenter: CategoryPresenterProtocol {
     weak var view: CategoryViewController?
     var router: HomeRouterProtocol?
-    var categoryChosed: Category!
-    var delegate: CategoryDelegate
+    var selectedCategory: Category
+    weak var delegate: CategoryDelegate?
     var dataSource: [Category] = {
         var data: [Category] = []
         for category in Category.allCases {
@@ -28,11 +29,23 @@ class CategoryPresenter: CategoryPresenterProtocol {
         return data
     }()
     
-    required init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
+    init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
         self.view = view
-        self.categoryChosed = categoryChosed
+        self.selectedCategory = categoryChosed
         self.delegate = delegate
         self.router = router
+    }
+    
+    func getCategory(indexPath: IndexPath) -> Category {
+        return dataSource[indexPath.row]
+    }
+    
+    func getSelectedCategory() -> Category {
+        return selectedCategory
+    }
+    
+    func numberOfCategories() -> Int {
+        return dataSource.count
     }
     
     func naviagateToHome() {

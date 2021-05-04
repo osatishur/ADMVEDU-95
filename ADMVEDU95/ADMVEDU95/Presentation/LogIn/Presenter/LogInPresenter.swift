@@ -6,15 +6,9 @@
 //
 
 import Foundation
-
-protocol LogInViewProtocol: AnyObject {
-    func successLogIn()
-    func handleLogInError(error: Error)
-    func handleFailedToSuccessError()
-}
+import FirebaseAuth
 
 protocol LogInPresenterProtocol: AnyObject {
-    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter)
     func logIn(email: String, password: String)
     func navigateToSignIn()
     func navigateToResetPassword()
@@ -26,7 +20,7 @@ class LogInPresenter: LogInPresenterProtocol {
     var router: AuthRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
@@ -43,7 +37,7 @@ class LogInPresenter: LogInPresenterProtocol {
             case .failure(let error):
                 self.view?.handleLogInError(error: error)
             case .success(false):
-                self.view?.handleFailedToSuccessError()
+                self.view?.handleFailedToSuccessError(errorText: "Unknown error occurred".localized())
             }
         }
     }

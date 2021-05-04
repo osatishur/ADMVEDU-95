@@ -8,6 +8,11 @@
 import UIKit
 import FirebaseAuth
 
+protocol ResetPasswordViewProtocol: AnyObject {
+    func successRequest(title: String, message: String)
+    func handleAuthError(_ error: Error, alertTitle: String)
+}
+
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var emailTextField: AuthTextField!
@@ -36,22 +41,16 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension ResetPasswordViewController: ResetPasswordViewProtocol {
-    func successRequest() {
+    func successRequest(title: String, message: String) {
         DispatchQueue.main.async {
-            self.showAlert(titleMessage: "Success".localized(),
-                           message: "Check your email for the next step".localized())
+            self.showAlert(titleMessage: title, message: message)
         }
         presenter?.navigateToLogIn()
     }
     
-    func handleAuthError(_ error: Error) {
+    func handleAuthError(_ error: Error, alertTitle: String) {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
-            print(errorCode.errorMessage)
-            let alert = UIAlertController(title: "Error".localized(), message: errorCode.errorMessage, preferredStyle: .alert)
-
-            let okAction = UIAlertAction(title: "OK".localized(), style: .default, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
+            showAlert(titleMessage: alertTitle, message: errorCode.errorMessage.localized())
         }
     }
 }

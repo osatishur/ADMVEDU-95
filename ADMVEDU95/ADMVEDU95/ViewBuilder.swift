@@ -1,5 +1,5 @@
 //
-//  ModuleBuilder.swift
+//  ViewBuilder.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 27.04.2021.
@@ -31,11 +31,17 @@ class ViewBuilder: BuilderProtocol {
     
     func createDetailView(dataKind: ResponseDataKind, model: ApiResult, router: HomeRouterProtocol) -> UIViewController {
         let view = DetailViewController()
-        let presenter = DetailPresenter(view: view,
-                                        dataKind: dataKind, model: model,
-                                        router: router)
+        let presenter: DetailPresenterProtocol
+        if dataKind == .song {
+            presenter = AudioPresenter(view: view,
+                                       model: model,
+                                       router: router)
+        } else {
+            presenter = VideoPresenter(view: view,
+                                       model: model,
+                                       router: router)
+        }
         view.presenter = presenter
-        view.configureView(model: model)
         return view
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CategoryDelegate {
+protocol CategoryDelegate: AnyObject {
     func fetchCategory(_ categoryViewController: CategoryViewController, category: Category)
 }
 
@@ -34,14 +34,15 @@ class CategoryViewController: UIViewController {
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.dataSource.count ?? 0
+        return presenter?.numberOfCategories() ?? .zero
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.categoryCellIdentifier, for: indexPath)
-        let category = presenter?.dataSource[indexPath.row].rawValue
-        cell.textLabel?.text = category?.localized()
-        cell.accessoryType = presenter?.dataSource[indexPath.row] == presenter?.categoryChosed ? .checkmark : .none
+        let category = presenter?.getCategory(indexPath: indexPath)
+        let selectedCategory = presenter?.getSelectedCategory()
+        cell.textLabel?.text = category?.rawValue.localized()
+        cell.accessoryType = category == selectedCategory ? .checkmark : .none
         return cell
     }
     
@@ -50,8 +51,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         guard let presenter = presenter else {
             return
         }
-        presenter.delegate.fetchCategory(self, category: presenter.dataSource[indexPath.row])
-        //self.dismiss(animated: true, completion: nil)
+        let category = presenter.getCategory(indexPath: indexPath)
+        presenter.delegate?.fetchCategory(self, category: category)
         presenter.naviagateToHome()
     }
 }

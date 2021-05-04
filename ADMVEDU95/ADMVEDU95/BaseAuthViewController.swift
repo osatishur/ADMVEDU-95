@@ -1,5 +1,5 @@
 //
-//  AuthBaseViewController.swift
+//  BaseAuthViewController.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 30.04.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthBaseViewController: UIViewController {
+class BaseAuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

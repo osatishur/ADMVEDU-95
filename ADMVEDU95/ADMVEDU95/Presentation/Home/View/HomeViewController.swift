@@ -7,23 +7,28 @@
 
 import UIKit
 
+protocol HomeViewProtocol: AnyObject {
+    func successToGetData()
+    func failedToGetData(title: String, message: String)
+    func noDataFromRequest(title: String, message: String)
+}
+
 class HomeViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var categoryView: CategoryView!
     @IBOutlet private weak var tableView: UITableView!
     
-    //MARK: Properties
+    // MARK: Properties
     var presenter: HomePresenterProtocol?
     
-    //MARK: Life cycle
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
         setupSearchBar()
     }
-        
-    //MARK: Setup Layout
+    // MARK: Setup Layout
     private func setupViews() {
         setupNavigationBar()
         setupTableView()
@@ -58,14 +63,14 @@ class HomeViewController: UIViewController {
         searchBar.delegate = self
         searchBar.placeholder = "Start searching".localized()
     }
-    //MARK: goToCategory method
+    // MARK: goToCategory method
     @objc func goToCategories() {
         guard let presenter = presenter else {
             return
         }
         presenter.navigateToCategory(categoryChosed: presenter.categoryTitle, delegate: self)
     }
-    //MARK: log out method
+    // MARK: log out method
     @objc func logoutUser() {
         let isLoggedOut = presenter?.logOutFromFirebase() ?? false
         if isLoggedOut {
@@ -75,7 +80,7 @@ class HomeViewController: UIViewController {
         }
     }
 }
-//MARK: SearchBarDelegate
+    // MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text,
@@ -88,29 +93,21 @@ extension HomeViewController: UISearchBarDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func success() {
+    func successToGetData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    func failure(error: SearchError) {
-        switch error {
-        case .unknown:
-            self.showAlert(titleMessage: "Error".localized(), message: "Unknown error".localized())
-        case .emptyData:
-            self.showAlert(titleMessage: "Error".localized(), message: "No data".localized())
-        case .parsingData:
-            self.showAlert(titleMessage: "Error".localized(), message: "Failed to get data from server".localized())
-        }
+    func failedToGetData(title: String, message: String) {
+        showAlert(titleMessage: title, message: message)
     }
     
-    func noData() {
-        showAlert(titleMessage: "No data".localized(),
-                  message: "Please, check for correct request".localized())
+    func noDataFromRequest(title: String, message: String) {
+        showAlert(titleMessage: title, message: message)
     }
 }
-//MARK: HomeVC + CategoryDelegate
+    // MARK: HomeVC + CategoryDelegate
 extension HomeViewController: CategoryDelegate  {
     func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
         presenter?.categoryTitle = category

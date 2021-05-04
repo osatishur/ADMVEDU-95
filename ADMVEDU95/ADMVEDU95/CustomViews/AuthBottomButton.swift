@@ -1,5 +1,5 @@
 //
-//  AuthBotomButton.swift
+//  AuthBottomButton.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 23.04.2021.

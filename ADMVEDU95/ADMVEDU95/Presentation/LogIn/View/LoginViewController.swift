@@ -8,7 +8,13 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: AuthBaseViewController, UITextFieldDelegate {
+protocol LogInViewProtocol: AnyObject {
+    func successLogIn()
+    func handleLogInError(error: Error)
+    func handleFailedToSuccessError(errorText: String)
+}
+
+class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var emailTextField: AuthTextField!
@@ -74,8 +80,8 @@ extension LoginViewController: LogInViewProtocol {
         errorLabel.isHidden = false
     }
     
-    func handleFailedToSuccessError() {
-        errorLabel.text = "Unknown error occurred".localized()
+    func handleFailedToSuccessError(errorText: String) {
+        errorLabel.text = errorText
         errorLabel.isHidden = false
     }
 }

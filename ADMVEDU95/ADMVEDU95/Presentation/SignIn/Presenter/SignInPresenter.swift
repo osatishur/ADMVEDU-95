@@ -8,15 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol SignInViewProtocol: AnyObject {
-    func successSignIn()
-    func handlePasswordMatchError()
-    func handleSignInError(error: AuthErrorCode?)
-    func handleFailedToSuccessError()
-}
-
 protocol SignInPresenterProtocol: AnyObject {
-    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter)
     func signIn(email: String, password: String, repeatPassword: String)
     func navigateToLogIn()
     func navigateToHome()
@@ -27,7 +19,7 @@ class SignInPresenter: SignInPresenterProtocol {
     var router: AuthRouter?
     let firebaseService: FirebaseServiceProtocol!
 
-    required init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
@@ -35,7 +27,7 @@ class SignInPresenter: SignInPresenterProtocol {
     
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            self.view?.handlePasswordMatchError()
+            self.view?.handlePasswordMatchError(errorText: "Password doesn't match".localized())
         } else {
             createUser(email: email, password: password)
         }
@@ -53,7 +45,7 @@ class SignInPresenter: SignInPresenterProtocol {
                 let error = AuthErrorCode(rawValue: error._code)
                 self.view?.handleSignInError(error: error)
             case .success(false):
-                self.view?.handleFailedToSuccessError()
+                self.view?.handleFailedToSuccessError(errorText: "Unknown error occurred".localized())
             }
         }
     }

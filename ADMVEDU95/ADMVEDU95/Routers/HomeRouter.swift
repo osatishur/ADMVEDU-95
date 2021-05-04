@@ -1,5 +1,5 @@
 //
-//  Router.swift
+//  HomeRouter.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 29.04.2021.

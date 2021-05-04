@@ -14,26 +14,26 @@ class AudioDetailView: XibView {
     @IBOutlet private weak var albumNameLabel: UILabel!
     @IBOutlet private weak var playPauseButton: UIButton!
     
-    var playMusic: (() -> ())?
+    private var playMusicHandler: (() -> ())?
     
     func configureView(albumImageURL: URL, artistName: String, songName: String, albumName: String, buttonAction: @escaping () -> ()) {
         albumImageView.loadImage(url: albumImageURL)
         artistNameLabel.text = artistName
         songNameLabel.text = songName
         albumNameLabel.text = albumName
-        playMusic = buttonAction
+        playMusicHandler = buttonAction
         playPauseButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     func setPauseImage() {
-        playPauseButton.setBackgroundImage(UIImageView.pauseButtonImage, for: UIControl.State.normal)
+        playPauseButton.setBackgroundImage(UIImageView.pauseButtonImage, for: .normal)
     }
     
     func setPlayImage() {
-        playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: UIControl.State.normal)
+        playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: .normal)
     }
     
-    @objc func buttonTapped() {
-        playMusic?()
+    @objc private func buttonTapped() {
+        playMusicHandler?()
     }
 }
