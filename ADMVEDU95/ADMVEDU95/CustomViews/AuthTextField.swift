@@ -2,7 +2,7 @@
 //  AuthTextField.swift
 //  ADMVEDU95
 //
-//  Created by Satishur, Oleg on 23.04.2021.
+//  Created by Satishur, Oleg on 04.05.2021.
 //
 
 import UIKit
@@ -37,5 +37,4 @@ class AuthTextField: UITextField {
         font = UIFont.regularFont
         backgroundColor = UIColor.textFieldAuth
     }
-
 }

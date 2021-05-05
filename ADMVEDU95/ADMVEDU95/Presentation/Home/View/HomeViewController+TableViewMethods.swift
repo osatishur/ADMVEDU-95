@@ -20,14 +20,12 @@ extension HomeViewController: UITableViewDataSource {
         }
         let model = presenter.getResult(indexPath: indexPath)
         cell.configure(model: model)
-        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         guard let presenter = presenter else {
             return
         }

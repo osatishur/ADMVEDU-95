@@ -11,6 +11,7 @@ protocol HomeViewProtocol: AnyObject {
     func successToGetData()
     func failedToGetData(title: String, message: String)
     func noDataFromRequest(title: String, message: String)
+    func updateCategory(category: Category)
 }
 
 class HomeViewController: UIViewController {
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController {
         guard let presenter = presenter else {
             return
         }
-        presenter.navigateToCategory(categoryChosed: presenter.categoryTitle, delegate: self)
+        presenter.navigateToCategory(categoryChosed: presenter.categoryTitle)
     }
     // MARK: log out method
     @objc func logoutUser() {
@@ -93,6 +94,10 @@ extension HomeViewController: UISearchBarDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func updateCategory(category: Category) {
+        categoryView.configureView(categoryTitle: category.rawValue.localized())
+    }
+    
     func successToGetData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -107,10 +112,10 @@ extension HomeViewController: HomeViewProtocol {
         showAlert(titleMessage: title, message: message)
     }
 }
-    // MARK: HomeVC + CategoryDelegate
-extension HomeViewController: CategoryDelegate  {
-    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
-        presenter?.categoryTitle = category
-        categoryView.configureView(categoryTitle: category.rawValue.localized())
-    }
-}
+//    // MARK: HomeVC + CategoryDelegate
+//extension HomeViewController: CategoryDelegate  {
+//    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
+//        presenter?.categoryTitle = category
+//        categoryView.configureView(categoryTitle: category.rawValue.localized())
+//    }
+//}

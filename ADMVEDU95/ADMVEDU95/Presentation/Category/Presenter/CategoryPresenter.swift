@@ -9,15 +9,15 @@ import Foundation
 
 protocol CategoryPresenterProtocol: AnyObject {
     var selectedCategory: Category { get set }
-    var delegate: CategoryDelegate? {get set}
-    func naviagateToHome()
     func getCategory(indexPath: IndexPath) -> Category
     func getSelectedCategory() -> Category
     func numberOfCategories() -> Int
+    func onCellSelected(category: Category)
+    func navigateToHome()
 }
 
 class CategoryPresenter: CategoryPresenterProtocol {
-    weak var view: CategoryViewController?
+    weak var view: CategoryViewProtocol?
     var router: HomeRouterProtocol?
     var selectedCategory: Category
     weak var delegate: CategoryDelegate?
@@ -29,7 +29,7 @@ class CategoryPresenter: CategoryPresenterProtocol {
         return data
     }()
     
-    init(view: CategoryViewController, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
+    init(view: CategoryViewProtocol, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
         self.view = view
         self.selectedCategory = categoryChosed
         self.delegate = delegate
@@ -48,7 +48,14 @@ class CategoryPresenter: CategoryPresenterProtocol {
         return dataSource.count
     }
     
-    func naviagateToHome() {
+    func onCellSelected(category: Category) {
+        guard let view = view else {
+            return
+        }
+        delegate?.fetchCategory(view, category: category)
+    }
+    
+    func navigateToHome() {
         router?.popToHome()
     }
 }

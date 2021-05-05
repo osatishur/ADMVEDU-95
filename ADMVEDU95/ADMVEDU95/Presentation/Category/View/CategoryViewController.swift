@@ -8,10 +8,14 @@
 import UIKit
 
 protocol CategoryDelegate: AnyObject {
-    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category)
+    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category)
 }
 
-class CategoryViewController: UIViewController {
+protocol CategoryViewProtocol: AnyObject {
+
+}
+
+class CategoryViewController: UIViewController, CategoryViewProtocol {
     struct Constants {
         static let categoryCellIdentifier = "CategoryTableViewCell"
     }
@@ -52,7 +56,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         let category = presenter.getCategory(indexPath: indexPath)
-        presenter.delegate?.fetchCategory(self, category: category)
-        presenter.naviagateToHome()
+        presenter.onCellSelected(category: category)
+        presenter.navigateToHome()
     }
 }

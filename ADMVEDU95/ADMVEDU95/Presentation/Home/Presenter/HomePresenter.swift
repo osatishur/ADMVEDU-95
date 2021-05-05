@@ -16,7 +16,7 @@ protocol HomePresenterProtocol: AnyObject, BaseRouterProtocol {
     func getDataKind(model: ApiResult) -> ResponseDataKind
     func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String)
     func logOutFromFirebase() -> Bool
-    func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate)
+    func navigateToCategory(categoryChosed: Category)
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
 }
 
@@ -106,11 +106,18 @@ class HomePresenter: HomePresenterProtocol {
         router?.showDetail(dataKind: dataKind, model: model)
     }
     
-    func navigateToCategory(categoryChosed: Category, delegate: CategoryDelegate) {
-        router?.showCategory(categoryChosed: categoryTitle, delegate: delegate)
+    func navigateToCategory(categoryChosed: Category) {
+        router?.showCategory(categoryChosed: categoryTitle, delegate: self)
     }
     
     func logOutFromFirebase() -> Bool {
         return firebaseService.logOut()
+    }
+}
+
+extension HomePresenter: CategoryDelegate {
+    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category) {
+        categoryTitle = category
+        view?.updateCategory(category: category)
     }
 }

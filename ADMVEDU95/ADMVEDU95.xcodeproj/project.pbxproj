@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */; };
 		0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */; };
 		0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */; };
 		0E2CC76A263BF2C0005B97B8 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */; };
@@ -20,7 +21,6 @@
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
-		0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01C2632B29100C4C059 /* AuthTextField.swift */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
 		0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */; };
 		0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0252632D02800C4C059 /* SignInViewController.xib */; };
@@ -73,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewController.swift; sourceTree = "<group>"; };
 		0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterProtocol.swift; sourceTree = "<group>"; };
@@ -86,7 +87,6 @@
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		0E66C01C2632B29100C4C059 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBottomButton.swift; sourceTree = "<group>"; };
 		0E66C0252632D02800C4C059 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
@@ -407,9 +407,9 @@
 			isa = PBXGroup;
 			children = (
 				0E2CC75E263BE880005B97B8 /* BaseView */,
-				0E66C01C2632B29100C4C059 /* AuthTextField.swift */,
 				0E66C01F2632B7DE00C4C059 /* AuthButton.swift */,
 				0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */,
+				0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -596,6 +596,7 @@
 			files = (
 				0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */,
 				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
+				0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
@@ -615,7 +616,6 @@
 				0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */,
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */,
-				0E66C01D2632B29100C4C059 /* AuthTextField.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
 				0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */,
 				838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */,
@@ -795,7 +795,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TUMQJ6NHNZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ADMVEDU95/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -803,6 +803,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itransition.ADMVEDU95;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -815,7 +816,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TUMQJ6NHNZ;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ADMVEDU95/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -823,6 +824,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.itransition.ADMVEDU95;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
