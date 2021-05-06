@@ -10,7 +10,7 @@ import Foundation
 protocol SearchServiceProtocol {
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>)-> Void)
+                       completion: @escaping (Result<Response, SearchError>) -> ())
 }
 
 class SearchService: SearchServiceProtocol {
@@ -21,7 +21,7 @@ class SearchService: SearchServiceProtocol {
     
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>)-> Void) {
+                       completion: @escaping (Result<Response, SearchError>) -> ()) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm,
                                                Constants.filterParameter: filter],

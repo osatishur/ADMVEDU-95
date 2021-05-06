@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct ApiResult: Codable {
     let wrapperType: String?
     let kind: String?

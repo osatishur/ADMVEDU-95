@@ -36,4 +36,3 @@ extension BaseRouterProtocol {
         sceneDelegate?.changeRootViewController(router: authRouter)
     }
 }
-

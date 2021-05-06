@@ -89,4 +89,3 @@ extension SignInViewController: SignInViewProtocol {
         errorLabel.isHidden = false
     }
 }
-

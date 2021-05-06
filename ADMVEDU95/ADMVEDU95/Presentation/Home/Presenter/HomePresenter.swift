@@ -55,7 +55,7 @@ class HomePresenter: HomePresenterProtocol {
         }
         let results = response.results
         for result in results {
-            if isResultPropertiesNotNil(result: result) { //check for insufficient data
+            if isResultPropertiesNotNil(result: result) { // check for insufficient data
                 self.dataSource.append(result)
             }
         }

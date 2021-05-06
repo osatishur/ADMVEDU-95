@@ -1,0 +1,11 @@
+disabled_rules:
+- line_length
+- nesting
+- trailing_whitespace
+- void_return
+- unused_optional_binding
+
+excluded: # paths to ignore during linting. overridden byincluded.
+- Pods
+
+

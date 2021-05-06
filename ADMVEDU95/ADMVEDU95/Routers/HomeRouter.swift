@@ -42,7 +42,9 @@ class HomeRouter: HomeRouterProtocol {
     
     func showDetail(dataKind: ResponseDataKind, model: ApiResult) {
         if let navigationController = navigationController {
-            guard let detailViewController = builder?.createDetailView(dataKind: dataKind, model: model, router: self) else {
+            guard let detailViewController = builder?.createDetailView(dataKind: dataKind,
+                                                                       model: model,
+                                                                       router: self) else {
                 return
             }
             navigationController.pushViewController(detailViewController, animated: true)

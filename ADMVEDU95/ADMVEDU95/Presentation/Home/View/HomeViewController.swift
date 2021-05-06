@@ -112,10 +112,3 @@ extension HomeViewController: HomeViewProtocol {
         showAlert(titleMessage: title, message: message)
     }
 }
-//    // MARK: HomeVC + CategoryDelegate
-//extension HomeViewController: CategoryDelegate  {
-//    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
-//        presenter?.categoryTitle = category
-//        categoryView.configureView(categoryTitle: category.rawValue.localized())
-//    }
-//}
