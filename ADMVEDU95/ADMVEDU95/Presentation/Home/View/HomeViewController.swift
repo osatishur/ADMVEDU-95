@@ -9,9 +9,8 @@ import UIKit
 
 protocol HomeViewProtocol: AnyObject {
     func successToGetData()
-    func failedToGetData(title: String, message: String)
-    func noDataFromRequest(title: String, message: String)
-    func updateCategory(category: Category)
+    func updateCategoryView(category: String)
+    func showAlert(title: String, message: String)
 }
 
 class HomeViewController: UIViewController {
@@ -19,17 +18,17 @@ class HomeViewController: UIViewController {
     @IBOutlet private weak var categoryView: CategoryView!
     @IBOutlet private weak var tableView: UITableView!
     
-    // MARK: Properties
+// MARK: Properties
     var presenter: HomePresenterProtocol?
     
-    // MARK: Life cycle
+// MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
         setupSearchBar()
     }
-    // MARK: Setup Layout
+// MARK: Setup Layout
     private func setupViews() {
         setupNavigationBar()
         setupTableView()
@@ -46,7 +45,7 @@ class HomeViewController: UIViewController {
         guard let presenter = presenter else {
             return
         }
-        categoryView.configureView(categoryTitle: presenter.categoryTitle.rawValue.localized())
+        categoryView.configureView(categoryTitle: presenter.getCategoryTitle().localized())
                 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
         categoryView.isUserInteractionEnabled = true
@@ -64,38 +63,33 @@ class HomeViewController: UIViewController {
         searchBar.delegate = self
         searchBar.placeholder = "Start searching".localized()
     }
-    // MARK: goToCategory method
+// MARK: goToCategory method
     @objc func goToCategories() {
         guard let presenter = presenter else {
             return
         }
-        presenter.navigateToCategory(categoryChosed: presenter.categoryTitle)
+        presenter.didTapOnCategoryView(categoryChosed: presenter.getCategory())
     }
-    // MARK: log out method
+// MARK: log out method
     @objc func logoutUser() {
-        let isLoggedOut = presenter?.logOutFromFirebase() ?? false
-        if isLoggedOut {
-            presenter?.navigateToAuth()
-        } else {
-            self.showAlert(titleMessage: "Error".localized(), message: "Failed to log out".localized())
-        }
+        presenter?.logOutFromFirebase()
     }
 }
-    // MARK: SearchBarDelegate
+// MARK: SearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text,
               let presenter = presenter else {
             return
         }
-        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.categoryTitle.rawValue)
+        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
         searchBar.endEditing(true)
     }
 }
 
 extension HomeViewController: HomeViewProtocol {
-    func updateCategory(category: Category) {
-        categoryView.configureView(categoryTitle: category.rawValue.localized())
+    func updateCategoryView(category: String) {
+        categoryView.configureView(categoryTitle: category)
     }
     
     func successToGetData() {
@@ -104,18 +98,7 @@ extension HomeViewController: HomeViewProtocol {
         }
     }
     
-    func failedToGetData(title: String, message: String) {
-        showAlert(titleMessage: title, message: message)
-    }
-    
-    func noDataFromRequest(title: String, message: String) {
+    func showAlert(title: String, message: String) {
         showAlert(titleMessage: title, message: message)
     }
 }
-//    // MARK: HomeVC + CategoryDelegate
-//extension HomeViewController: CategoryDelegate  {
-//    func fetchCategory(_ categoryViewController: CategoryViewController, category: Category) {
-//        presenter?.categoryTitle = category
-//        categoryView.configureView(categoryTitle: category.rawValue.localized())
-//    }
-//}

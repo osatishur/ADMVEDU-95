@@ -10,10 +10,7 @@ import AVFoundation
 import AVKit
 
 protocol DetailPresenterProtocol: AnyObject {
-    var playerViewController: AVPlayerViewController { get set }
-    var player: AVPlayer? { get set }
-    var playerItem: AVPlayerItem? { get set }
-    func navigateToHome()
+    func loadView() -> UIView
 }
 
 class DetailPresenter: DetailPresenterProtocol {
@@ -23,14 +20,14 @@ class DetailPresenter: DetailPresenterProtocol {
     var playerViewController = AVPlayerViewController()
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
-    
+        
     init(view: DetailViewProtocol, model: ApiResult, router: HomeRouterProtocol) {
         self.view = view
         self.model = model
         self.router = router
     }
     
-    func navigateToHome() {
-        router?.popToHome()
+    func loadView() -> UIView {
+        return UIView()
     }
 }

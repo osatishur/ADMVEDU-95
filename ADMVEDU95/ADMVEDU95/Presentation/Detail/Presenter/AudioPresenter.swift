@@ -8,14 +8,13 @@
 import Foundation
 import AVKit
 
-protocol AudioPresenterProtocol: DetailPresenterProtocol {
-    func getAudioView() -> AudioDetailView
-    func playMusic()
-    func initAudioPlayer(songUrl: String?)
-}
-
-class AudioPresenter: DetailPresenter, AudioPresenterProtocol {
+class AudioPresenter: DetailPresenter {
     let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
+    override func loadView() -> UIView {
+        let view = getAudioView()
+        return view
+    }
     
     func getAudioView() -> AudioDetailView {
         guard let imageURL = model?.artworkUrl100,

@@ -9,10 +9,8 @@ import UIKit
 import Firebase
 
 protocol SignInViewProtocol: AnyObject {
-    func successSignIn()
-    func handlePasswordMatchError(errorText: String)
-    func handleSignInError(error: AuthErrorCode?)
-    func handleFailedToSuccessError(errorText: String)
+    func setErrorLabelHidden(isHidden: Bool)
+    func setErrorLabelText(text: String)
 }
 
 class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
@@ -57,7 +55,7 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapBottomButton(_ sender: Any) {
-        presenter?.navigateToLogIn()
+        presenter?.didTapSignInButton()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -67,26 +65,12 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
 }
 
 extension SignInViewController: SignInViewProtocol {
-    func successSignIn() {
-        presenter?.navigateToHome()
+    func setErrorLabelHidden(isHidden: Bool) {
+        errorLabel.isHidden = isHidden
     }
     
-    func handlePasswordMatchError(errorText: String) {
-        errorLabel.text = errorText
-        errorLabel.isHidden = false
-    }
-    
-    func handleSignInError(error: AuthErrorCode?) {
-        guard let text = error?.errorMessage else {
-            return
-        }
-        errorLabel.text = text.localized()
-        errorLabel.isHidden = false
-    }
-    
-    func handleFailedToSuccessError(errorText: String) {
-        errorLabel.text = errorText
-        errorLabel.isHidden = false
+    func setErrorLabelText(text: String) {
+        errorLabel.text = text
     }
 }
 

@@ -10,7 +10,6 @@
 		0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */; };
 		0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */; };
 		0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */; };
-		0E2CC76A263BF2C0005B97B8 /* BaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */; };
 		0E40CEC92636A65C0067D7D5 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E40CEC72636A65C0067D7D5 /* SearchTableViewCell.swift */; };
 		0E40CECA2636A65C0067D7D5 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEC82636A65C0067D7D5 /* SearchTableViewCell.xib */; };
 		0E40CED22636C2820067D7D5 /* AudioDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED12636C2820067D7D5 /* AudioDetailView.xib */; };
@@ -76,7 +75,6 @@
 		0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewController.swift; sourceTree = "<group>"; };
-		0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouterProtocol.swift; sourceTree = "<group>"; };
 		0E40CEC72636A65C0067D7D5 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		0E40CEC82636A65C0067D7D5 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		0E40CED12636C2820067D7D5 /* AudioDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDetailView.xib; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		0E2CC763263BEEA1005B97B8 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
-				0E2CC769263BF2C0005B97B8 /* BaseRouterProtocol.swift */,
 				0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */,
 				0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */,
 				0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */,
@@ -605,7 +602,6 @@
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */,
 				0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */,
-				0E2CC76A263BF2C0005B97B8 /* BaseRouterProtocol.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
 				0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,

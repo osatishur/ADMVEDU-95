@@ -8,14 +8,13 @@
 import Foundation
 import AVKit
 
-protocol VideoPresenterProtocol: DetailPresenterProtocol {
-    func getVideoView() -> VideoDetailView
-    func playVideo()
-    func initVideoPlayer(movieUrl: String?)
-}
-
-class VideoPresenter: DetailPresenter, VideoPresenterProtocol {
+class VideoPresenter: DetailPresenter {
     let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
+    override func loadView() -> UIView {
+        let view = getVideoView()
+        return view
+    }
     
     func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,

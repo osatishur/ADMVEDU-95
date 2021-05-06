@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol ResetPasswordPresenterProtocol: AnyObject {
     func requestRecovery(email: String)
@@ -29,9 +30,18 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
             case .success:
                 self.view?.successRequest(title: "Success".localized(), message: "Check your email for the next step".localized())
             case .failure(let error):
-                self.view?.handleAuthError(error, alertTitle: "Error".localized())
+                let errorMessage = self.getAuthErrorText(error)
+                self.view?.showAlert(title: "Error".localized(), message: errorMessage)
             }
         }
+    }
+    
+    private func getAuthErrorText(_ error: Error) -> String {
+        let error = AuthErrorCode(rawValue: error._code)
+        guard let text = error?.errorMessage else {
+            return "no info".localized()
+        }
+        return text
     }
     
     func navigateToLogIn() {

@@ -12,11 +12,11 @@ class ApplicationRouter {
     var mainNavigationController = UINavigationController()
     var viewBuilder = ViewBuilder()
     
-    init(isHomeInitial: Bool) {
+    init(isHomeInitial: Bool, window: UIWindow) {
         if isHomeInitial {
-            mainRouter = HomeRouter(navigationController: mainNavigationController, builder: viewBuilder)
+            mainRouter = HomeRouter(navigationController: mainNavigationController, builder: viewBuilder, window: window)
         } else {
-            mainRouter = AuthRouter(navigationController: mainNavigationController, builder: viewBuilder)
+            mainRouter = AuthRouter(navigationController: mainNavigationController, builder: viewBuilder, window: window)
         }
     }
 }

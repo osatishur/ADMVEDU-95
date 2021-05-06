@@ -10,10 +10,11 @@ import AVFoundation
 import AVKit
 
 protocol DetailViewProtocol: AnyObject {
+
 }
 
 class DetailViewController: UIViewController, DetailViewProtocol {
-    
+
     var presenter: DetailPresenterProtocol?
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -23,10 +24,6 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     
     override func loadView() {
         super.loadView()
-        if let presenter = presenter as? AudioPresenter {
-            view = presenter.getAudioView()
-        } else if let presenter = presenter as? VideoPresenter {
-            view = presenter.getVideoView()
-        }
+        view = presenter?.loadView()
     }
 }

@@ -31,6 +31,6 @@ extension HomeViewController: UITableViewDelegate {
         }
         let model = presenter.getResult(indexPath: indexPath)
         let dataKind: ResponseDataKind = presenter.getDataKind(model: model)
-        presenter.navigateToDetail(dataKind: dataKind, model: model)
+        presenter.didTapOnTableCell(dataKind: dataKind, model: model)
     }
 }

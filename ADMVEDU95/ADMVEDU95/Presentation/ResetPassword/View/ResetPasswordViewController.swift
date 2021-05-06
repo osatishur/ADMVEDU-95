@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol ResetPasswordViewProtocol: AnyObject {
     func successRequest(title: String, message: String)
     func handleAuthError(_ error: Error, alertTitle: String)
+    func showAlert(title: String, message: String)
 }
 
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
@@ -52,5 +53,9 @@ extension ResetPasswordViewController: ResetPasswordViewProtocol {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             showAlert(titleMessage: alertTitle, message: errorCode.errorMessage.localized())
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        showAlert(titleMessage: title, message: message)
     }
 }

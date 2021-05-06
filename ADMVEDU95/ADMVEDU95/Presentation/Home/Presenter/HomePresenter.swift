@@ -7,23 +7,23 @@
 
 import Foundation
 
-protocol HomePresenterProtocol: AnyObject, BaseRouterProtocol {
-    var dataSource: [ApiResult] { get set }
-    var categoryTitle: Category { get set }
+protocol HomePresenterProtocol: AnyObject {
+    func getCategoryTitle() -> String
+    func getCategory() -> Category
     func searchITunes(searchTerm: String, filter: String)
     func getResult(indexPath: IndexPath) -> ApiResult
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
-    func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String)
-    func logOutFromFirebase() -> Bool
-    func navigateToCategory(categoryChosed: Category)
-    func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
+    func getErrorAlertMessage(error: SearchError) -> (title: String, message: String)
+    func logOutFromFirebase()
+    func didTapOnCategoryView(categoryChosed: Category)
+    func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
 }
 
-class HomePresenter: HomePresenterProtocol {
+class HomePresenter: HomePresenterProtocol {    
     weak var view: HomeViewProtocol?
-    let searchService: SearchServiceProtocol!
-    let firebaseService: FirebaseServiceProtocol!
+    let searchService: SearchServiceProtocol?
+    let firebaseService: FirebaseServiceProtocol?
     var router: HomeRouterProtocol?
     var dataSource: [ApiResult]  = []
     var categoryTitle: Category = Category.all
@@ -36,15 +36,16 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func searchITunes(searchTerm: String, filter: String) {
-        searchService.searchResults(searchTerm: searchTerm,
+        searchService?.searchResults(searchTerm: searchTerm,
                                     filter: filter) { result in
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.successToGetData()
             case .failure(let error):
-                let alertMessage = self.setErrorAlertMessage(error: error)
-                self.view?.failedToGetData(title: alertMessage.title, message: alertMessage.messge)
+                let alertMessage = self.getErrorAlertMessage(error: error)
+                self.view?.showAlert(title: alertMessage.title,
+                                     message: alertMessage.message)
             }
         }
     }
@@ -55,21 +56,18 @@ class HomePresenter: HomePresenterProtocol {
         }
         let results = response.results
         for result in results {
-            if isResultPropertiesNotNil(result: result) { //check for insufficient data
-                self.dataSource.append(result)
-            }
+            addResultToDataSource(result: result) 
         }
         if dataSource.isEmpty {
-            self.view?.noDataFromRequest(title: "No data".localized(),
-                                         message: "Please, check for correct request".localized())
+            view?.showAlert(title: "No data".localized(),
+                            message: "Please, check for correct request".localized())
         }
     }
     
-    private func isResultPropertiesNotNil(result: ApiResult) -> Bool {
+    private func addResultToDataSource(result: ApiResult) {
+        //check for insufficient data
         if !(result.kind == nil || result.artistName == nil || result.trackName == nil) {
-            return true
-        } else {
-            return false
+            self.dataSource.append(result)
         }
     }
     
@@ -91,7 +89,15 @@ class HomePresenter: HomePresenterProtocol {
         return dataSource.count
     }
     
-    func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String) {
+    func getCategoryTitle() -> String {
+        return categoryTitle.rawValue
+    }
+    
+    func getCategory() -> Category {
+        return categoryTitle
+    }
+    
+    func getErrorAlertMessage(error: SearchError) -> (title: String, message: String) {
         switch error {
         case .unknown:
             return ("Error".localized(), "Unknown error".localized())
@@ -102,22 +108,29 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
-    func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult) {
-        router?.showDetail(dataKind: dataKind, model: model)
+    func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
+        router?.navigateToDetail(dataKind: dataKind, model: model)
     }
     
-    func navigateToCategory(categoryChosed: Category) {
-        router?.showCategory(categoryChosed: categoryTitle, delegate: self)
+    func didTapOnCategoryView(categoryChosed: Category) {
+        router?.navigateToCategory(categoryChosed: categoryTitle, delegate: self)
     }
     
-    func logOutFromFirebase() -> Bool {
-        return firebaseService.logOut()
+    func logOutFromFirebase() {
+        guard let firebaseService = firebaseService else {
+            return 
+        }
+        if firebaseService.logOut() == true {
+            router?.navigateToAuth()
+        } else {
+            view?.showAlert(title: "Error".localized(), message: "Failed to log out".localized())
+        }
     }
 }
 
-extension HomePresenter: CategoryDelegate {
+extension HomePresenter: CategoryPresenterDelegate {
     func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category) {
         categoryTitle = category
-        view?.updateCategory(category: category)
+        view?.updateCategoryView(category: category.rawValue.localized())
     }
 }

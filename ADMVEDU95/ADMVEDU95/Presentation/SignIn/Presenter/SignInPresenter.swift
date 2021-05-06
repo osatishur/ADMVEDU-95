@@ -10,7 +10,7 @@ import FirebaseAuth
 
 protocol SignInPresenterProtocol: AnyObject {
     func signIn(email: String, password: String, repeatPassword: String)
-    func navigateToLogIn()
+    func didTapSignInButton()
     func navigateToHome()
 }
 
@@ -27,7 +27,8 @@ class SignInPresenter: SignInPresenterProtocol {
     
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            self.view?.handlePasswordMatchError(errorText: "Password doesn't match".localized())
+            self.view?.setErrorLabelText(text: "Password doesn't match".localized())
+            self.view?.setErrorLabelHidden(isHidden: false)
         } else {
             createUser(email: email, password: password)
         }
@@ -40,17 +41,27 @@ class SignInPresenter: SignInPresenterProtocol {
             }
             switch result {
             case .success(true):
-                self.view?.successSignIn()
+                self.navigateToHome()
             case .failure(let error):
-                let error = AuthErrorCode(rawValue: error._code)
-                self.view?.handleSignInError(error: error)
+                let errorText = self.getAuthErrorText(error: error)
+                self.view?.setErrorLabelText(text: errorText)
+                self.view?.setErrorLabelHidden(isHidden: false)
             case .success(false):
-                self.view?.handleFailedToSuccessError(errorText: "Unknown error occurred".localized())
+                self.view?.setErrorLabelText(text: "Unknown error occurred".localized())
+                self.view?.setErrorLabelHidden(isHidden: false)
             }
         }
     }
     
-    func navigateToLogIn() {
+    private func getAuthErrorText(error: Error) -> String {
+        let error = AuthErrorCode(rawValue: error._code)
+        guard let text = error?.errorMessage else {
+            return "no info".localized()
+        }
+        return text
+    }
+    
+    func didTapSignInButton() {
         router?.popToLogIn()
     }
     

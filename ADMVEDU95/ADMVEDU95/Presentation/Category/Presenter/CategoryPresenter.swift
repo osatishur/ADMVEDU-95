@@ -7,8 +7,11 @@
 
 import Foundation
 
+protocol CategoryPresenterDelegate: AnyObject {
+    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category)
+}
+
 protocol CategoryPresenterProtocol: AnyObject {
-    var selectedCategory: Category { get set }
     func getCategory(indexPath: IndexPath) -> Category
     func getSelectedCategory() -> Category
     func numberOfCategories() -> Int
@@ -20,7 +23,7 @@ class CategoryPresenter: CategoryPresenterProtocol {
     weak var view: CategoryViewProtocol?
     var router: HomeRouterProtocol?
     var selectedCategory: Category
-    weak var delegate: CategoryDelegate?
+    weak var delegate: CategoryPresenterDelegate?
     var dataSource: [Category] = {
         var data: [Category] = []
         for category in Category.allCases {
@@ -29,9 +32,9 @@ class CategoryPresenter: CategoryPresenterProtocol {
         return data
     }()
     
-    init(view: CategoryViewProtocol, categoryChosed: Category, delegate: CategoryDelegate, router: HomeRouterProtocol) {
+    init(view: CategoryViewProtocol, selectedCategory: Category, delegate: CategoryPresenterDelegate, router: HomeRouterProtocol) {
         self.view = view
-        self.selectedCategory = categoryChosed
+        self.selectedCategory = selectedCategory
         self.delegate = delegate
         self.router = router
     }

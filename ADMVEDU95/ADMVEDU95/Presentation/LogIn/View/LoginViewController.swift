@@ -9,9 +9,8 @@ import UIKit
 import FirebaseAuth
 
 protocol LogInViewProtocol: AnyObject {
-    func successLogIn()
-    func handleLogInError(error: Error)
-    func handleFailedToSuccessError(errorText: String)
+    func setErrorLabelHidden(isHidden: Bool)
+    func setErrorLabelText(text: String)
 }
 
 class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
@@ -67,21 +66,11 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 }
 
 extension LoginViewController: LogInViewProtocol {
-    func successLogIn() {
-        presenter?.navigateToHome()
-    }
-    
-    func handleLogInError(error: Error) {
-        let error = AuthErrorCode(rawValue: error._code)
-        guard let text = error?.errorMessage else {
-            return
-        }
+    func setErrorLabelText(text: String) {
         errorLabel.text = text
-        errorLabel.isHidden = false
     }
     
-    func handleFailedToSuccessError(errorText: String) {
-        errorLabel.text = errorText
-        errorLabel.isHidden = false
+    func setErrorLabelHidden(isHidden: Bool) {
+        errorLabel.isHidden = isHidden
     }
 }

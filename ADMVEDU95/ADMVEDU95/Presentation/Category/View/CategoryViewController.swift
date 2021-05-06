@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol CategoryDelegate: AnyObject {
-    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category)
-}
-
 protocol CategoryViewProtocol: AnyObject {
 
 }

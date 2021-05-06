@@ -33,21 +33,32 @@ class LogInPresenter: LogInPresenterProtocol {
             }
             switch result {
             case .success(true):
-                self.view?.successLogIn()
+                self.navigateToHome()
             case .failure(let error):
-                self.view?.handleLogInError(error: error)
+                let errorText = self.getAuthErrorText(error: error)
+                self.view?.setErrorLabelText(text: errorText)
+                self.view?.setErrorLabelHidden(isHidden: false)
             case .success(false):
-                self.view?.handleFailedToSuccessError(errorText: "Unknown error occurred".localized())
+                self.view?.setErrorLabelText(text: "Unknown error occurred".localized())
+                self.view?.setErrorLabelHidden(isHidden: false)
             }
         }
     }
     
+    private func getAuthErrorText(error: Error) -> String {
+        let error = AuthErrorCode(rawValue: error._code)
+        guard let text = error?.errorMessage else {
+            return "no info".localized()
+        }
+        return text
+    }
+    
     func navigateToResetPassword() {
-        router?.showResetPassword()
+        router?.navigateToResetPassword()
     }
     
     func navigateToSignIn() {
-        router?.showSignIn()
+        router?.navigateToSignIn()
     }
     
     func navigateToHome() {
