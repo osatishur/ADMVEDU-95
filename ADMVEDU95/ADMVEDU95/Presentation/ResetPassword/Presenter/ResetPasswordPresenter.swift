@@ -22,18 +22,18 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func requestRecovery(email: String) {
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
                 self.view?.successRequest(title: "Success".localized(), message: "Check your email for the next step".localized())
-            case .failure(let error):
+            case let .failure(error):
                 self.view?.handleAuthError(error, alertTitle: "Error".localized())
             }
         }
     }
-    
+
     func navigateToLogIn() {
         router?.popToLogIn()
     }

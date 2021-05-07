@@ -5,8 +5,8 @@
 //  Created by Satsishur on 20.04.2021.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol FirebaseServiceProtocol {
     func createUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
@@ -17,7 +17,7 @@ protocol FirebaseServiceProtocol {
 
 class FirebaseService: FirebaseServiceProtocol {
     func createUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("failed to sign up user", error.localizedDescription)
                 completion(.failure(error))
@@ -25,15 +25,15 @@ class FirebaseService: FirebaseServiceProtocol {
             if let _ = authResult?.user {
                 completion(.success(true))
             }
-            
-            if error == nil && authResult?.user == nil {
+
+            if error == nil, authResult?.user == nil {
                 completion(.success(false))
             }
         }
     }
-    
+
     func logIn(email: String, pass: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: pass) { (result, error) in
+        Auth.auth().signIn(withEmail: email, password: pass) { result, error in
             if let error = error {
                 completion(.failure(error))
             }
@@ -41,12 +41,12 @@ class FirebaseService: FirebaseServiceProtocol {
                 print("Successfully logged in")
                 completion(.success(true))
             }
-            if error == nil && result == nil {
+            if error == nil, result == nil {
                 completion(.success(false))
             }
         }
     }
-    
+
     func logOut() -> Bool {
         do {
             try Auth.auth().signOut()
@@ -55,9 +55,9 @@ class FirebaseService: FirebaseServiceProtocol {
             return false
         }
     }
-    
+
     func sendPasswordReset(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 completion(.failure(error))
                 return

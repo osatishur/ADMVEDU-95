@@ -9,4 +9,5 @@ target 'ADMVEDU95' do
   pod 'Alamofire'
   pod 'Firebase/Auth'
   pod 'SwiftLint'
+  pod 'SwiftFormat/CLI'
 end

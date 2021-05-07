@@ -25,46 +25,46 @@ class HomePresenter: HomePresenterProtocol {
     let searchService: SearchServiceProtocol!
     let firebaseService: FirebaseServiceProtocol!
     var router: HomeRouterProtocol?
-    var dataSource: [ApiResult]  = []
-    var categoryTitle: Category = Category.all
-    
+    var dataSource: [ApiResult] = []
+    var categoryTitle = Category.all
+
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func searchITunes(searchTerm: String, filter: String) {
         searchService.searchResults(searchTerm: searchTerm,
                                     filter: filter) { result in
             switch result {
-            case .success(let response):
+            case let .success(response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.successToGetData()
-            case .failure(let error):
+            case let .failure(error):
                 let alertMessage = self.setErrorAlertMessage(error: error)
                 self.view?.failedToGetData(title: alertMessage.title, message: alertMessage.messge)
             }
         }
     }
-    
+
     private func fetchDataFromResponse(response: Response) {
-        if !self.dataSource.isEmpty {
-            self.dataSource = []
+        if !dataSource.isEmpty {
+            dataSource = []
         }
         let results = response.results
         for result in results {
             if isResultPropertiesNotNil(result: result) { // check for insufficient data
-                self.dataSource.append(result)
+                dataSource.append(result)
             }
         }
         if dataSource.isEmpty {
-            self.view?.noDataFromRequest(title: "No data".localized(),
-                                         message: "Please, check for correct request".localized())
+            view?.noDataFromRequest(title: "No data".localized(),
+                                    message: "Please, check for correct request".localized())
         }
     }
-    
+
     private func isResultPropertiesNotNil(result: ApiResult) -> Bool {
         if !(result.kind == nil || result.artistName == nil || result.trackName == nil) {
             return true
@@ -72,7 +72,7 @@ class HomePresenter: HomePresenterProtocol {
             return false
         }
     }
-    
+
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
@@ -82,15 +82,15 @@ class HomePresenter: HomePresenterProtocol {
             return .song
         }
     }
-    
+
     func getResult(indexPath: IndexPath) -> ApiResult {
-        return dataSource[indexPath.row]
+        dataSource[indexPath.row]
     }
-    
+
     func getNumberOfResults() -> Int {
-        return dataSource.count
+        dataSource.count
     }
-    
+
     func setErrorAlertMessage(error: SearchError) -> (title: String, messge: String) {
         switch error {
         case .unknown:
@@ -101,22 +101,22 @@ class HomePresenter: HomePresenterProtocol {
             return ("Error".localized(), "Failed to get data from server".localized())
         }
     }
-    
+
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult) {
         router?.showDetail(dataKind: dataKind, model: model)
     }
-    
-    func navigateToCategory(categoryChosed: Category) {
+
+    func navigateToCategory(categoryChosed _: Category) {
         router?.showCategory(categoryChosed: categoryTitle, delegate: self)
     }
-    
+
     func logOutFromFirebase() -> Bool {
-        return firebaseService.logOut()
+        firebaseService.logOut()
     }
 }
 
 extension HomePresenter: CategoryDelegate {
-    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category) {
+    func fetchCategory(_: CategoryViewProtocol, category: Category) {
         categoryTitle = category
         view?.updateCategory(category: category)
     }

@@ -10,18 +10,18 @@ import Foundation
 protocol SearchServiceProtocol {
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>) -> ())
+                       completion: @escaping (Result<Response, SearchError>) -> Void)
 }
 
 class SearchService: SearchServiceProtocol {
-    private struct Constants {
+    private enum Constants {
         static let searchParameter = "term"
         static let filterParameter = "media"
     }
-    
+
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>) -> ()) {
+                       completion: @escaping (Result<Response, SearchError>) -> Void) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm,
                                                Constants.filterParameter: filter],

@@ -16,12 +16,12 @@ protocol HomeRouterProtocol: MainRouterProtocol {
 class HomeRouter: HomeRouterProtocol {
     var navigationController: UINavigationController?
     var builder: BuilderProtocol?
-    
+
     init(navigationController: UINavigationController, builder: BuilderProtocol) {
         self.navigationController = navigationController
         self.builder = builder
     }
-    
+
     func initialViewController() {
         if let navigationController = navigationController {
             guard let homeViewController = builder?.createHomeView(router: self) else {
@@ -30,7 +30,7 @@ class HomeRouter: HomeRouterProtocol {
             navigationController.viewControllers = [homeViewController]
         }
     }
-    
+
     func showCategory(categoryChosed: Category, delegate: CategoryDelegate) {
         if let navigationController = navigationController {
             guard let categoryViewController = builder?.createCategoryView(categoryChosed: categoryChosed, delegate: delegate, router: self) else {
@@ -39,18 +39,19 @@ class HomeRouter: HomeRouterProtocol {
             navigationController.pushViewController(categoryViewController, animated: true)
         }
     }
-    
+
     func showDetail(dataKind: ResponseDataKind, model: ApiResult) {
         if let navigationController = navigationController {
             guard let detailViewController = builder?.createDetailView(dataKind: dataKind,
                                                                        model: model,
-                                                                       router: self) else {
+                                                                       router: self)
+            else {
                 return
             }
             navigationController.pushViewController(detailViewController, animated: true)
         }
     }
-    
+
     func popToHome() {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)

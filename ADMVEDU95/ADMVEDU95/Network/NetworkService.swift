@@ -5,8 +5,8 @@
 //  Created by Satsishur on 12.04.2021.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 public enum SearchError: Error {
     case emptyData
@@ -15,24 +15,24 @@ public enum SearchError: Error {
 }
 
 class NetworkService {
-    struct NetworkConstants {
+    enum NetworkConstants {
         static let baseUrl = "https://itunes.apple.com/"
-        
+
         enum Endpoint: String {
             case search = "search?"
         }
     }
-    
-    static var shared: NetworkService = NetworkService()
-    
+
+    static var shared = NetworkService()
+
     private init() {}
-    
+
     private let decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
-    
+
     public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
                                 parameters: [String: String],
                                 completion: @escaping (Result<T, SearchError>) -> Void) {
@@ -40,7 +40,7 @@ class NetworkService {
             return
         }
         print(url)
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        AF.request(url, parameters: parameters).responseJSON { response in
             let result = self.parseResponse(data: response.data,
                                             response: response.response,
                                             error: response.error,
@@ -59,7 +59,7 @@ class NetworkService {
         }
         return url
     }
-    
+
     private func parseResponse<T: Codable>(data: Data?,
                                            response _: URLResponse?,
                                            error: Error?, type: T.Type) -> Result<T, SearchError> {

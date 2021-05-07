@@ -5,9 +5,9 @@
 //  Created by Satishur, Oleg on 27.04.2021.
 //
 
-import Foundation
 import AVFoundation
 import AVKit
+import Foundation
 
 protocol DetailPresenterProtocol: AnyObject {
     var playerViewController: AVPlayerViewController { get set }
@@ -23,13 +23,13 @@ class DetailPresenter: DetailPresenterProtocol {
     var playerViewController = AVPlayerViewController()
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
-    
+
     init(view: DetailViewProtocol, model: ApiResult, router: HomeRouterProtocol) {
         self.view = view
         self.model = model
         self.router = router
     }
-    
+
     func navigateToHome() {
         router?.popToHome()
     }

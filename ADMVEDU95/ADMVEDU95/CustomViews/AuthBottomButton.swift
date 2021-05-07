@@ -17,7 +17,7 @@ class AuthBottomButton: UIButton {
         super.init(coder: aDecoder)
         setupLayout()
     }
-    
+
     private func setupLayout() {
         layer.cornerRadius = CGFloat.regularCornerRadius
         setTitleColor(.white, for: .normal)

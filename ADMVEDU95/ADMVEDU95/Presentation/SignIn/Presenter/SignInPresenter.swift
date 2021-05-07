@@ -5,8 +5,8 @@
 //  Created by Satishur, Oleg on 28.04.2021.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol SignInPresenterProtocol: AnyObject {
     func signIn(email: String, password: String, repeatPassword: String)
@@ -24,15 +24,15 @@ class SignInPresenter: SignInPresenterProtocol {
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            self.view?.handlePasswordMatchError(errorText: "Password doesn't match".localized())
+            view?.handlePasswordMatchError(errorText: "Password doesn't match".localized())
         } else {
             createUser(email: email, password: password)
         }
     }
-    
+
     private func createUser(email: String, password: String) {
         firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
@@ -41,7 +41,7 @@ class SignInPresenter: SignInPresenterProtocol {
             switch result {
             case .success(true):
                 self.view?.successSignIn()
-            case .failure(let error):
+            case let .failure(error):
                 let error = AuthErrorCode(rawValue: error._code)
                 self.view?.handleSignInError(error: error)
             case .success(false):
@@ -49,11 +49,11 @@ class SignInPresenter: SignInPresenterProtocol {
             }
         }
     }
-    
+
     func navigateToLogIn() {
         router?.popToLogIn()
     }
-    
+
     func navigateToHome() {
         router?.navigateToHome()
     }
