@@ -17,10 +17,10 @@ public enum SearchError: Error {
 class NetworkService {
     enum NetworkConstants {
         static let baseUrl = "https://itunes.apple.com/"
+    }
 
-        enum Endpoint: String {
-            case search = "search?"
-        }
+    enum Endpoint: String {
+        case search = "search?"
     }
 
     static var shared = NetworkService()
@@ -33,7 +33,7 @@ class NetworkService {
         return decoder
     }()
 
-    public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
+    public func get<T: Codable>(endpoint: Endpoint,
                                 parameters: [String: String],
                                 completion: @escaping (Result<T, SearchError>) -> Void) {
         guard let url = buildURL(endpoint: endpoint) else {
@@ -51,7 +51,7 @@ class NetworkService {
         }
     }
 
-    private func buildURL(endpoint: NetworkConstants.Endpoint) -> URL? {
+    private func buildURL(endpoint: Endpoint) -> URL? {
         let path = NetworkConstants.baseUrl + endpoint.rawValue
         let urlComponents = URLComponents(string: path)
         guard let url = urlComponents?.url else {

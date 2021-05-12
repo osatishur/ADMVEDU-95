@@ -22,7 +22,6 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     }
 
     override func loadView() {
-        super.loadView()
         if let presenter = presenter as? AudioPresenter {
             view = presenter.getAudioView()
         } else if let presenter = presenter as? VideoPresenter {

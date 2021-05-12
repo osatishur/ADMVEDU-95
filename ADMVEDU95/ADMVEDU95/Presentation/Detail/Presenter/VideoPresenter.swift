@@ -15,7 +15,12 @@ protocol VideoPresenterProtocol: DetailPresenterProtocol {
 }
 
 class VideoPresenter: DetailPresenter, VideoPresenterProtocol {
-    let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    enum Constants {
+        static let width = UIScreen.main.bounds.width
+        static let height = UIScreen.main.bounds.height
+    }
+
+    let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 
     func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,

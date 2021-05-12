@@ -4,7 +4,7 @@
 //
 //  Created by Satsishur on 14.04.2021.
 //
-
+// swiftlint:disable line_length
 import UIKit
 
 extension HomeViewController: UITableViewDataSource {

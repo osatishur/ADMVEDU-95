@@ -4,7 +4,7 @@
 //
 //  Created by Satishur, Oleg on 27.04.2021.
 //
-
+// swiftlint:disable line_length
 import UIKit
 
 protocol BuilderProtocol {

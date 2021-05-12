@@ -4,7 +4,7 @@
 //
 //  Created by Satsishur on 12.04.2021.
 //
-
+// swiftlint:disable line_length
 import Firebase
 import UIKit
 

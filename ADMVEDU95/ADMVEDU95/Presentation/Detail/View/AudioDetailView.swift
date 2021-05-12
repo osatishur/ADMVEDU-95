@@ -16,11 +16,14 @@ class AudioDetailView: XibView {
 
     private var playMusicHandler: (() -> Void)?
 
-    func configureView(albumImageURL: URL, artistName: String, songName: String, albumName: String, buttonAction: @escaping () -> Void) {
+    func configureView(albumImageURL: URL, artistName: String, songName: String, albumName: String) {
         albumImageView.loadImage(url: albumImageURL)
         artistNameLabel.text = artistName
         songNameLabel.text = songName
         albumNameLabel.text = albumName
+    }
+
+    func configureViewAction(buttonAction: @escaping () -> Void) {
         playMusicHandler = buttonAction
         playPauseButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
@@ -33,7 +36,8 @@ class AudioDetailView: XibView {
         playPauseButton.setBackgroundImage(UIImageView.playButtonImage, for: .normal)
     }
 
-    @objc private func buttonTapped() {
+    @objc
+    private func buttonTapped() {
         playMusicHandler?()
     }
 }

@@ -22,7 +22,7 @@ class FirebaseService: FirebaseServiceProtocol {
                 print("failed to sign up user", error.localizedDescription)
                 completion(.failure(error))
             }
-            if let _ = authResult?.user {
+            if authResult?.user != nil {
                 completion(.success(true))
             }
 
@@ -37,7 +37,7 @@ class FirebaseService: FirebaseServiceProtocol {
             if let error = error {
                 completion(.failure(error))
             }
-            if let _ = result {
+            if result != nil {
                 print("Successfully logged in")
                 completion(.success(true))
             }

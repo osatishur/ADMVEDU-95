@@ -15,7 +15,12 @@ protocol AudioPresenterProtocol: DetailPresenterProtocol {
 }
 
 class AudioPresenter: DetailPresenter, AudioPresenterProtocol {
-    let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    enum Constants {
+        static let width = UIScreen.main.bounds.width
+        static let height = UIScreen.main.bounds.height
+    }
+
+    let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 
     func getAudioView() -> AudioDetailView {
         guard let imageURL = model?.artworkUrl100,
@@ -32,8 +37,8 @@ class AudioPresenter: DetailPresenter, AudioPresenterProtocol {
         view.configureView(albumImageURL: url,
                            artistName: String(format: "Artist".localized(), model?.artistName ?? "no info".localized()),
                            songName: String(format: "Song".localized(), model?.trackName ?? "no info".localized()),
-                           albumName: String(format: "Album".localized(), model?.collectionName ?? "no info".localized()),
-                           buttonAction: playMusic)
+                           albumName: String(format: "Album".localized(), model?.collectionName ?? "no info".localized()))
+        view.configureViewAction(buttonAction: playMusic)
     }
 
     func initAudioPlayer(songUrl: String?) {

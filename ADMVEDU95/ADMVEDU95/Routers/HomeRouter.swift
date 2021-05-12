@@ -33,7 +33,8 @@ class HomeRouter: HomeRouterProtocol {
 
     func showCategory(categoryChosed: Category, delegate: CategoryDelegate) {
         if let navigationController = navigationController {
-            guard let categoryViewController = builder?.createCategoryView(categoryChosed: categoryChosed, delegate: delegate, router: self) else {
+            let viewController = builder?.createCategoryView(categoryChosed: categoryChosed, delegate: delegate, router: self)
+            guard let categoryViewController = viewController else {
                 return
             }
             navigationController.pushViewController(categoryViewController, animated: true)

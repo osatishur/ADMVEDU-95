@@ -41,7 +41,8 @@ class HomeViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        let logoutBarButtonItem = UIBarButtonItem(title: "Logout".localized(), style: .done, target: self, action: #selector(logoutUser))
+        let barButtonTitle = "Logout".localized()
+        let logoutBarButtonItem = UIBarButtonItem(title: barButtonTitle, style: .done, target: self, action: #selector(logOut))
         navigationItem.rightBarButtonItem = logoutBarButtonItem
         navigationItem.title = "Search".localized()
     }
@@ -71,7 +72,8 @@ class HomeViewController: UIViewController {
 
     // MARK: goToCategory method
 
-    @objc func goToCategories() {
+    @objc
+    func goToCategories() {
         guard let presenter = presenter else {
             return
         }
@@ -80,7 +82,8 @@ class HomeViewController: UIViewController {
 
     // MARK: log out method
 
-    @objc func logoutUser() {
+    @objc
+    func logOut() {
         let isLoggedOut = presenter?.logOutFromFirebase() ?? false
         if isLoggedOut {
             presenter?.navigateToAuth()

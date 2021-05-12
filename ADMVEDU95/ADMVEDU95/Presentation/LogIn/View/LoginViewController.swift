@@ -39,7 +39,9 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     }
 
     func setupLayout() {
-        let attributedTitle = createAttributedTitle(firstTtitle: "Don't have an account?  ".localized(), secondTitle: "Sign in".localized())
+        let firstTitle = "Don't have an account?  ".localized()
+        let secondTitle = "Sign in".localized()
+        let attributedTitle = createAttributedTitle(firstTtitle: firstTitle, secondTitle: secondTitle)
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
     }
 

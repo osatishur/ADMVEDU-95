@@ -28,7 +28,8 @@ class VideoDetailView: XibView {
         albumImageView.addGestureRecognizer(tap)
     }
 
-    @objc private func imageTapped() {
+    @objc
+    private func imageTapped() {
         playVideoHandler?()
     }
 }
