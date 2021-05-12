@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CategoryPresenterDelegate: AnyObject {
-    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category)
+    func fetchCategory(_ categoryPresenter: CategoryPresenter, category: Category)
 }
 
 protocol CategoryPresenterProtocol: AnyObject {
@@ -52,10 +52,7 @@ class CategoryPresenter: CategoryPresenterProtocol {
     }
     
     func onCellSelected(category: Category) {
-        guard let view = view else {
-            return
-        }
-        delegate?.fetchCategory(view, category: category)
+        delegate?.fetchCategory(self, category: category)
     }
     
     func navigateToHome() {

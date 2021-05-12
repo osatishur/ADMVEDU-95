@@ -7,14 +7,10 @@
 
 import UIKit
 
-class BaseAuthViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    func createAttributedTitle(firstTtitle: String, secondTitle: String) -> NSMutableAttributedString {
-        let attributedTitle = NSMutableAttributedString(string: firstTtitle, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
-        attributedTitle.append(NSAttributedString(string: secondTitle, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+class BaseAuthViewController: UIViewController {    
+    func createAttributedTitle(title: String, subTitle: String) -> NSMutableAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
+        attributedTitle.append(NSAttributedString(string: subTitle, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
         return attributedTitle
     }
 }

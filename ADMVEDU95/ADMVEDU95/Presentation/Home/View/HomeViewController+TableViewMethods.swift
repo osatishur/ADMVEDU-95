@@ -13,7 +13,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifire, for: indexPath) as? SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell
         guard let presenter = presenter,
               let cell = cell else {
             return UITableViewCell()

@@ -22,3 +22,13 @@ struct ApiResult: Codable {
     let country: String?
     let previewUrl: String?
 }
+
+extension ApiResult {
+    var isInsufficient: Bool {
+        if (kind == nil || artistName == nil || trackName == nil) {
+            return true
+        } else {
+            return false
+        }
+    }
+}

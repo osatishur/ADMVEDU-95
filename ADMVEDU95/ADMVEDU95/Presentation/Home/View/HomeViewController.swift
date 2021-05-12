@@ -55,8 +55,8 @@ class HomeViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        let cell = UINib(nibName: SearchTableViewCell.reuseIdentifire, bundle: nil)
-        tableView.register(cell, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifire)
+        let cell = UINib(nibName: SearchTableViewCell.reuseIdentifier, bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: SearchTableViewCell.reuseIdentifier)
     }
     
     private func setupSearchBar() {
@@ -64,15 +64,15 @@ class HomeViewController: UIViewController {
         searchBar.placeholder = "Start searching".localized()
     }
 // MARK: goToCategory method
-    @objc func goToCategories() {
+    @objc private func goToCategories() {
         guard let presenter = presenter else {
             return
         }
         presenter.didTapOnCategoryView(categoryChosed: presenter.getCategory())
     }
 // MARK: log out method
-    @objc func logoutUser() {
-        presenter?.logOutFromFirebase()
+    @objc private func logoutUser() {
+        presenter?.didTapLogOutButton()
     }
 }
 // MARK: SearchBarDelegate

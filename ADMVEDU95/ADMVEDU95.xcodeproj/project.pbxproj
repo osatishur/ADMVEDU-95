@@ -34,6 +34,7 @@
 		0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */; };
 		0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */; };
 		0E957A0F26307ED800A42206 /* CGFloat+StaticProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */; };
+		0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6D2EF264BC9A5002AF389 /* UITableViewCell+Identifiers.swift */; };
 		0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1B8263ABCA400FBC00E /* XibView.swift */; };
 		0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */; };
 		0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */; };
@@ -99,6 +100,7 @@
 		0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthErrorCode+ErrorMessage.swift"; sourceTree = "<group>"; };
 		0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ShowAlert.swift"; sourceTree = "<group>"; };
 		0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+StaticProperties.swift"; sourceTree = "<group>"; };
+		0EA6D2EF264BC9A5002AF389 /* UITableViewCell+Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Identifiers.swift"; sourceTree = "<group>"; };
 		0EDDA1B8263ABCA400FBC00E /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				837C02A7262F76C500BE31C7 /* UIFont+StaticFontSize.swift */,
 				0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */,
 				0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */,
+				0EA6D2EF264BC9A5002AF389 /* UITableViewCell+Identifiers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
+				0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
 				0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */,

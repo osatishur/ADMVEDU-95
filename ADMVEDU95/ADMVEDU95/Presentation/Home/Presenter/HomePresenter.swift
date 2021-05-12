@@ -14,8 +14,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getResult(indexPath: IndexPath) -> ApiResult
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
-    func getErrorAlertMessage(error: SearchError) -> (title: String, message: String)
-    func logOutFromFirebase()
+    func didTapLogOutButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
 }
@@ -26,7 +25,7 @@ class HomePresenter: HomePresenterProtocol {
     let firebaseService: FirebaseServiceProtocol?
     var router: HomeRouterProtocol?
     var dataSource: [ApiResult]  = []
-    var categoryTitle: Category = Category.all
+    var category: Category = Category.all
     
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
@@ -44,8 +43,8 @@ class HomePresenter: HomePresenterProtocol {
                 self.view?.successToGetData()
             case .failure(let error):
                 let alertMessage = self.getErrorAlertMessage(error: error)
-                self.view?.showAlert(title: alertMessage.title,
-                                     message: alertMessage.message)
+                self.view?.showAlert(title: "Error".localized(),
+                                     message: alertMessage)
             }
         }
     }
@@ -65,8 +64,7 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     private func addResultToDataSource(result: ApiResult) {
-        //check for insufficient data
-        if !(result.kind == nil || result.artistName == nil || result.trackName == nil) {
+        if !result.isInsufficient {
             self.dataSource.append(result)
         }
     }
@@ -90,21 +88,21 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func getCategoryTitle() -> String {
-        return categoryTitle.rawValue
+        return category.rawValue
     }
     
     func getCategory() -> Category {
-        return categoryTitle
+        return category
     }
     
-    func getErrorAlertMessage(error: SearchError) -> (title: String, message: String) {
+    private func getErrorAlertMessage(error: SearchError) -> String {
         switch error {
         case .unknown:
-            return ("Error".localized(), "Unknown error".localized())
+            return ("Unknown error".localized())
         case .emptyData:
-            return ("Error".localized(), "No data".localized())
+            return ("No data".localized())
         case .parsingData:
-            return ("Error".localized(), "Failed to get data from server".localized())
+            return ("Failed to get data from server".localized())
         }
     }
     
@@ -113,14 +111,14 @@ class HomePresenter: HomePresenterProtocol {
     }
     
     func didTapOnCategoryView(categoryChosed: Category) {
-        router?.navigateToCategory(categoryChosed: categoryTitle, delegate: self)
+        router?.navigateToCategory(categorySelected: category, delegate: self)
     }
     
-    func logOutFromFirebase() {
+    func didTapLogOutButton() {
         guard let firebaseService = firebaseService else {
             return 
         }
-        if firebaseService.logOut() == true {
+        if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
             view?.showAlert(title: "Error".localized(), message: "Failed to log out".localized())
@@ -129,8 +127,8 @@ class HomePresenter: HomePresenterProtocol {
 }
 
 extension HomePresenter: CategoryPresenterDelegate {
-    func fetchCategory(_ categoryViewController: CategoryViewProtocol, category: Category) {
-        categoryTitle = category
+    func fetchCategory(_ categoryPresenter: CategoryPresenter, category: Category) {
+        self.category = category
         view?.updateCategoryView(category: category.rawValue.localized())
     }
 }
