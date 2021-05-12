@@ -11,6 +11,7 @@ protocol HomeViewProtocol: AnyObject {
     func successToGetData()
     func updateCategoryView(category: String)
     func showAlert(title: String, message: String)
+    func showAlertWithRetry(message: String)
 }
 
 class HomeViewController: UIViewController {
@@ -88,6 +89,16 @@ extension HomeViewController: UISearchBarDelegate {
 }
 
 extension HomeViewController: HomeViewProtocol {
+    func showAlertWithRetry(message: String) {
+        showAlertWithRetry(message: message) {
+            guard let searchTerm = self.searchBar.text,
+                  let presenter = self.presenter else {
+                return
+            }
+            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
+        }
+    }
+    
     func updateCategoryView(category: String) {
         categoryView.configureView(categoryTitle: category)
     }

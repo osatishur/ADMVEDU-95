@@ -43,8 +43,7 @@ class HomePresenter: HomePresenterProtocol {
                 self.view?.successToGetData()
             case .failure(let error):
                 let alertMessage = self.getErrorAlertMessage(error: error)
-                self.view?.showAlert(title: "Error".localized(),
-                                     message: alertMessage)
+                self.view?.showAlertWithRetry(message: alertMessage)
             }
         }
     }
@@ -58,8 +57,7 @@ class HomePresenter: HomePresenterProtocol {
             addResultToDataSource(result: result) 
         }
         if dataSource.isEmpty {
-            view?.showAlert(title: "No data".localized(),
-                            message: "Please, check for correct request".localized())
+            self.view?.showAlertWithRetry(message: "Please, check for correct request".localized())
         }
     }
     
