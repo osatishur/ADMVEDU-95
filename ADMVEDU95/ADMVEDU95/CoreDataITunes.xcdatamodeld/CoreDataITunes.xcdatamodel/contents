@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ResultCoreDataModel" representedClassName="ResultCoreDataModel" syncable="YES">
+        <attribute name="albumImageURL" optional="YES" attributeType="String"/>
+        <attribute name="albumName" optional="YES" attributeType="String"/>
+        <attribute name="artistName" optional="YES" attributeType="String"/>
+        <attribute name="kind" optional="YES" attributeType="String"/>
+        <attribute name="previewPath" optional="YES" attributeType="String"/>
+        <attribute name="trackName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ResultCoreDataModel" positionX="-63" positionY="-18" width="128" height="119"/>
+    </elements>
+</model>

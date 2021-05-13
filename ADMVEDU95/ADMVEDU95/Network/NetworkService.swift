@@ -39,7 +39,6 @@ class NetworkService {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
-        //print(url)
         AF.request(url, parameters: parameters).responseJSON { (response) in
             let result = self.parseResponse(data: response.data,
                                             response: response.response,

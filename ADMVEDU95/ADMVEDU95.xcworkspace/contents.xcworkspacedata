@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/o.satishur/Desktop/ADMVEDU/ADMVEDU95/ADMVEDU95/Models/CoreDataModel/ResultCoreDataModel+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/o.satishur/Desktop/ADMVEDU/ADMVEDU95/ADMVEDU95/Models/CoreDataModel/ResultCoreDataModel+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:ADMVEDU95.xcodeproj">
    </FileRef>
    <FileRef

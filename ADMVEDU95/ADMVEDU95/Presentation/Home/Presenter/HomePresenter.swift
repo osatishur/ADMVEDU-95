@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol HomePresenterProtocol: AnyObject {
     func getCategoryTitle() -> String
     func getCategory() -> Category
@@ -19,13 +20,15 @@ protocol HomePresenterProtocol: AnyObject {
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
 }
 
-class HomePresenter: HomePresenterProtocol {    
+class HomePresenter: HomePresenterProtocol {
     weak var view: HomeViewProtocol?
     let searchService: SearchServiceProtocol?
     let firebaseService: FirebaseServiceProtocol?
     var router: HomeRouterProtocol?
     var dataSource: [ApiResult]  = []
     var category: Category = Category.all
+    var retryNumber = 0
+    var coreDataStack = CoreDataStack()
     
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
@@ -37,27 +40,30 @@ class HomePresenter: HomePresenterProtocol {
     func searchITunes(searchTerm: String, filter: String) {
         searchService?.searchResults(searchTerm: searchTerm,
                                     filter: filter) { result in
+            if !self.dataSource.isEmpty {
+                self.dataSource = []
+                self.view?.reloadTableView()
+            }
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
-                self.view?.successToGetData()
+                self.view?.reloadTableView()
             case .failure(let error):
                 let alertMessage = self.getErrorAlertMessage(error: error)
-                self.view?.showAlertWithRetry(message: alertMessage)
+                self.handleRetryNumber(message: alertMessage)
             }
         }
     }
     
     private func fetchDataFromResponse(response: Response) {
-        if !self.dataSource.isEmpty {
-            self.dataSource = []
-        }
+        self.coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
-            addResultToDataSource(result: result) 
+            addResultToDataSource(result: result)
+            self.coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            self.view?.showAlertWithRetry(message: "Please, check for correct request".localized())
+            self.view?.showAlert(title: "No data".localized(), message: "Please, check for correct request".localized())
         }
     }
     
@@ -77,6 +83,17 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
+    private func getErrorAlertMessage(error: SearchError) -> String {
+        switch error {
+        case .unknown:
+            return ("Unknown error".localized())
+        case .emptyData:
+            return ("No data".localized())
+        case .parsingData:
+            return ("Failed to get data from server".localized())
+        }
+    }
+    
     func getResult(indexPath: IndexPath) -> ApiResult {
         return dataSource[indexPath.row]
     }
@@ -93,18 +110,29 @@ class HomePresenter: HomePresenterProtocol {
         return category
     }
     
-    private func getErrorAlertMessage(error: SearchError) -> String {
-        switch error {
-        case .unknown:
-            return ("Unknown error".localized())
-        case .emptyData:
-            return ("No data".localized())
-        case .parsingData:
-            return ("Failed to get data from server".localized())
+    private func handleRetryNumber(message: String) {
+        increaseRetryNumber()
+        if retryNumber > 2 {
+            resetRetryNumber()
+            self.coreDataStack.fetchResults { results in
+                self.dataSource = results ?? []
+                self.view?.reloadTableView()
+            }
+        } else {
+            self.view?.showAlertWithRetry(message: message)
         }
     }
     
+    private func increaseRetryNumber() {
+        retryNumber += 1
+    }
+    
+    private func resetRetryNumber() {
+        retryNumber = 0
+    }
+    
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
+        print(model)
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
     

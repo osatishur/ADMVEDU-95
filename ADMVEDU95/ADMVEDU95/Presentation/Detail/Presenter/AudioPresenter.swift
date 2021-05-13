@@ -35,11 +35,16 @@ class AudioPresenter: DetailPresenter {
     }
     
     func initAudioPlayer(songUrl: String?) {
+        //print(songUrl)
         guard let songUrl = songUrl,
               let url = URL(string: songUrl) else {
             return
         }
-        let playerItem: AVPlayerItem = AVPlayerItem(url: url)
+        let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+        let destinationUrl = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
+        print(destinationUrl)
+        let playerItem: AVPlayerItem = AVPlayerItem(url: destinationUrl)
         player = AVPlayer(playerItem: playerItem)
     }
     

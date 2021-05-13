@@ -15,6 +15,8 @@
 		0E40CED22636C2820067D7D5 /* AudioDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED12636C2820067D7D5 /* AudioDetailView.xib */; };
 		0E40CED92636CFA90067D7D5 /* VideoDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */; };
 		0E40CEDD2636D29A0067D7D5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */; };
+		0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E417D8D264D59D900FE94CF /* CoreDataITunes.xcdatamodeld */; };
+		0E417D91264D5C2C00FE94CF /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E417D90264D5C2C00FE94CF /* CoreDataStack.swift */; };
 		0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E8F263945B4000122C6 /* SignInPresenter.swift */; };
 		0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E93263956FF000122C6 /* LogInPresenter.swift */; };
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
@@ -38,6 +40,8 @@
 		0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1B8263ABCA400FBC00E /* XibView.swift */; };
 		0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */; };
 		0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */; };
+		0EFB9684264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB9682264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataClass.swift */; };
+		0EFB9685264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFB9683264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataProperties.swift */; };
 		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */; };
 		0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */; };
@@ -81,6 +85,8 @@
 		0E40CED12636C2820067D7D5 /* AudioDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioDetailView.xib; sourceTree = "<group>"; };
 		0E40CED82636CFA90067D7D5 /* VideoDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoDetailView.xib; sourceTree = "<group>"; };
 		0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
+		0E417D8E264D59D900FE94CF /* CoreDataITunes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataITunes.xcdatamodel; sourceTree = "<group>"; };
+		0E417D90264D5C2C00FE94CF /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0E495E8F263945B4000122C6 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		0E495E93263956FF000122C6 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 		0EDDA1B8263ABCA400FBC00E /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		0EFB9682264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ResultCoreDataModel+CoreDataClass.swift"; path = "/Users/o.satishur/Desktop/ADMVEDU/ADMVEDU95/ADMVEDU95/Models/CoreDataModel/ResultCoreDataModel+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		0EFB9683264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ResultCoreDataModel+CoreDataProperties.swift"; path = "/Users/o.satishur/Desktop/ADMVEDU/ADMVEDU95/ADMVEDU95/Models/CoreDataModel/ResultCoreDataModel+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPresenter.swift; sourceTree = "<group>"; };
 		0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
@@ -182,6 +190,15 @@
 				0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */,
 			);
 			path = Routers;
+			sourceTree = "<group>";
+		};
+		0E417D92264D63A000FE94CF /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				0EFB9682264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataClass.swift */,
+				0EFB9683264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataProperties.swift */,
+			);
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		0E495E8C26393CD3000122C6 /* Presenter */ = {
@@ -384,8 +401,10 @@
 			children = (
 				83555FFA2624905C00C77316 /* AppDelegate.swift */,
 				83555FFC2624905C00C77316 /* SceneDelegate.swift */,
+				0E417D8D264D59D900FE94CF /* CoreDataITunes.xcdatamodeld */,
 				0E768E3926388D990048E512 /* ViewBuilder.swift */,
 				0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */,
+				0E417D90264D5C2C00FE94CF /* CoreDataStack.swift */,
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
 				83A78BAF2626C79A009C3807 /* CustomViews */,
@@ -431,6 +450,7 @@
 				83A78BDD26276263009C3807 /* ApiResult.swift */,
 				8306668C262983F000BD694B /* ResponseDataKind.swift */,
 				830666972629B1A600BD694B /* Category.swift */,
+				0E417D92264D63A000FE94CF /* CoreDataModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,13 +619,16 @@
 				0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
+				0EFB9685264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataProperties.swift in Sources */,
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
 				0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
 				83555FFF2624905C00C77316 /* HomeViewController.swift in Sources */,
+				0EFB9684264D7EA400B8D0E3 /* ResultCoreDataModel+CoreDataClass.swift in Sources */,
 				0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */,
 				0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */,
+				0E417D91264D5C2C00FE94CF /* CoreDataStack.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
 				0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
@@ -630,6 +653,7 @@
 				0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
 				0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */,
+				0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */,
 				0E768E37263885FA0048E512 /* HomePresenter.swift in Sources */,
@@ -852,6 +876,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0E417D8D264D59D900FE94CF /* CoreDataITunes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0E417D8E264D59D900FE94CF /* CoreDataITunes.xcdatamodel */,
+			);
+			currentVersion = 0E417D8E264D59D900FE94CF /* CoreDataITunes.xcdatamodel */;
+			path = CoreDataITunes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 83555FEF2624905C00C77316 /* Project object */;
 }

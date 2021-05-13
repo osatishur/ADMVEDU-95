@@ -38,6 +38,7 @@ class VideoPresenter: DetailPresenter {
               let url = URL(string: movieUrl) else {
             return
         }
+
         player = AVPlayer(url: url)
         playerViewController.player = player
     }

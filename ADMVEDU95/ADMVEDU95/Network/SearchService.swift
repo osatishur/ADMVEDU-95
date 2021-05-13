@@ -16,6 +16,8 @@ protocol SearchServiceProtocol {
 class SearchService: SearchServiceProtocol {
     private struct Constants {
         static let searchParameter = "term"
+        static let limitParameter = "limit"
+        static let searchLimit = "5"
         static let filterParameter = "media"
     }
     
@@ -24,6 +26,7 @@ class SearchService: SearchServiceProtocol {
                        completion: @escaping (Result<Response, SearchError>)-> Void) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm,
+                                               Constants.limitParameter: Constants.searchLimit,
                                                Constants.filterParameter: filter],
                                   completion: completion)
     }

@@ -34,4 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             applicationRouter = ApplicationRouter(isHomeInitial: true, window: window)
         }
     }
+    
+
 }
