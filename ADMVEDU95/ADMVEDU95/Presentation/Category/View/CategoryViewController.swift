@@ -25,7 +25,7 @@ class CategoryViewController: UIViewController, CategoryViewProtocol {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
     }
 }
 
@@ -35,7 +35,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
+        let cell = UITableViewCell()//tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
         let category = presenter?.getCategory(indexPath: indexPath)
         let selectedCategory = presenter?.getSelectedCategory()
         cell.textLabel?.text = category?.rawValue.localized()

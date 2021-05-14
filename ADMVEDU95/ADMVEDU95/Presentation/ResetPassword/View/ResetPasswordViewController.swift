@@ -19,10 +19,6 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var emailTextField: AuthTextField!
     
     var presenter: ResetPasswordPresenter?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     private func setupNavigationBar() {
         navigationItem.title = "Password recovery".localized()
