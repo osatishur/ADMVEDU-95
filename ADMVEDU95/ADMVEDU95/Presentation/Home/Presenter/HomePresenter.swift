@@ -64,7 +64,7 @@ class HomePresenter: HomePresenterProtocol {
             self.coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            self.view?.showAlert(title: "No data".localized(), message: "Please, check for correct request".localized())
+            self.view?.showAlert(title: R.string.localizable.noData(), message: R.string.localizable.pleaseCheckForCorrectRequest())
         }
     }
     
@@ -87,11 +87,11 @@ class HomePresenter: HomePresenterProtocol {
     private func getErrorMessage(error: SearchError) -> String {
         switch error {
         case .unknown:
-            return ("Unknown error".localized())
+            return (R.string.localizable.unknownError())
         case .emptyData:
-            return ("No data".localized())
+            return (R.string.localizable.noData())
         case .parsingData:
-            return ("Failed to get data from server".localized())
+            return (R.string.localizable.failedToGetDataFromServer())
         }
     }
     
@@ -152,7 +152,7 @@ class HomePresenter: HomePresenterProtocol {
         if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
-            view?.showAlert(title: "Error".localized(), message: "Failed to log out".localized())
+            view?.showAlert(title: R.string.localizable.error(), message: R.string.localizable.failedToLogOut())
         }
     }
 }

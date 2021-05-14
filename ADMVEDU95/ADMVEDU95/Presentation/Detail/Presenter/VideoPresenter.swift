@@ -27,9 +27,10 @@ class VideoPresenter: DetailPresenter {
     }
     
     private func configureVideoView(view: VideoDetailView, url: URL) {
+        let noInfoString = R.string.localizable.noInfo()
         view.configureView(albumImageURL: url,
-                           directorName: String(format: "Director".localized(), model?.artistName ?? "no info".localized()),
-                           movieName: String(format: "Movie".localized(), model?.trackName ?? "no info".localized()),
+                           directorName: String(format: R.string.localizable.director(model?.artistName ?? noInfoString)),
+                           movieName: String(format: R.string.localizable._Movie(model?.trackName ?? noInfoString)),
                                 buttonAction: playVideo)
     }
     

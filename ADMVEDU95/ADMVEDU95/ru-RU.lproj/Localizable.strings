@@ -9,11 +9,11 @@
 "Start searching" = "Начать поиск";
 "song" = "песня";
 "feature-movie" = "фильм";
-"Song" = "Песня: %@";
+"_Song:" = "Песня: %@";
 "Artist" = "Автор: %@";
 "Album" = "Альбом: %@";
 "Director" = "Режиссер: %@";
-"Movie" = "Фильм: %@";
+"_Movie:" = "Фильм: %@";
 "no info" = "нет данных";
 "all" = "все";
 "music" = "музыка";
@@ -23,11 +23,13 @@
 "ebook" = "е-книга";
 "audiobook" = "аудиокнига";
 "musicVideo" = "клипы";
-"music-video" = "клип";
+"_music-video" = "клип";
 "No data" = "Нет данных";
 "Please, check for correct request" = "Пожалуйста, проверьте правильность запроса";
 "OK" = "Ок";
 "Error" = "Ошибка";
+"Retry" = "Повторить";
+"Cancel" = "Отмена";
 
 //HomeVC
 "Logout" = "Выйти";

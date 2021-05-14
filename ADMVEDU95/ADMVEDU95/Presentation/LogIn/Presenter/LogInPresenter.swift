@@ -39,7 +39,7 @@ class LogInPresenter: LogInPresenterProtocol {
                 self.view?.setErrorLabelText(text: errorText)
                 self.view?.setErrorLabelHidden(isHidden: false)
             case .success(false):
-                self.view?.setErrorLabelText(text: "Unknown error occurred".localized())
+                self.view?.setErrorLabelText(text: R.string.localizable.unknownErrorOccurred())
                 self.view?.setErrorLabelHidden(isHidden: false)
             }
         }
@@ -48,7 +48,7 @@ class LogInPresenter: LogInPresenterProtocol {
     private func getAuthErrorText(error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
-            return "no info".localized()
+            return R.string.localizable.noInfo()
         }
         return text
     }

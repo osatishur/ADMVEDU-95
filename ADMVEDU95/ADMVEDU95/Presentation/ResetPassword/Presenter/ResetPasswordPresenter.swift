@@ -28,10 +28,10 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
-                self.view?.successRequest(title: "Success".localized(), message: "Check your email for the next step".localized())
+                self.view?.successRequest(title: R.string.localizable.success(), message: R.string.localizable.checkYourEmailForTheNextStep())
             case .failure(let error):
                 let errorMessage = self.getAuthErrorText(error)
-                self.view?.showAlert(title: "Error".localized(), message: errorMessage)
+                self.view?.showAlert(title: R.string.localizable.error(), message: errorMessage)
             }
         }
     }
@@ -39,7 +39,7 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
     private func getAuthErrorText(_ error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
-            return "no info".localized()
+            return R.string.localizable.noInfo()
         }
         return text
     }

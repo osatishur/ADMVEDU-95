@@ -9,11 +9,11 @@
 "Start searching" = "Start searching";
 "song" = "song";
 "feature-movie" = "feature-movie";
-"Song" = "Song: %@";
+"_Song" = "Song: %@";
 "Artist" = "Artist: %@";
 "Album" = "Album: %@";
 "Director" = "Director: %@";
-"Movie" = "Movie: %@";
+"_Movie" = "Movie: %@";
 "no info" = "no info";
 "all" = "all";
 "music" = "music";
@@ -23,11 +23,13 @@
 "ebook" = "ebook";
 "audiobook" = "audiobook";
 "musicVideo" = "musicVideo";
-"music-video" = "music-video";
+"_music-video" = "music-video";
 "No data" = "No data";
 "Please, check for correct request" = "Please, check for correct request";
 "OK" = "OK";
 "Error" = "Error";
+"Retry" = "Retry";
+"Cancel" = "Cancel";
 
 //HomeVC
 "Logout" = "Logout";

@@ -12,21 +12,21 @@ extension AuthErrorCode {
     var errorMessage: String {
         switch self {
         case .emailAlreadyInUse:
-            return "The email is already in use with another account".localized()
+            return R.string.localizable.theEmailIsAlreadyInUseWithAnotherAccount()
         case .userNotFound:
-            return "Account not found for the specified user. Please check and try again".localized()
+            return R.string.localizable.accountNotFoundForTheSpecifiedUserPleaseCheckAndTryAgain()
         case .userDisabled:
-            return "Your account has been disabled. Please contact support.".localized()
+            return R.string.localizable.yourAccountHasBeenDisabledPleaseContactSupport()
         case .invalidEmail, .invalidSender, .invalidRecipientEmail:
-            return "Please enter a valid email".localized()
+            return R.string.localizable.pleaseEnterAValidEmail()
         case .networkError:
-            return "Network error. Please try again.".localized()
+            return R.string.localizable.networkErrorPleaseTryAgain()
         case .weakPassword:
-            return "The password must be 6 characters long or more.".localized()
+            return R.string.localizable.thePasswordMustBe6CharactersLongOrMore()
         case .wrongPassword:
-            return "Your password is incorrect. Please try again or use 'Forgot password'".localized()
+            return R.string.localizable.yourPasswordIsIncorrectPleaseTryAgainOrUseForgotPassword()
         default:
-            return "Unknown error occurred".localized()
+            return R.string.localizable.unknownErrorOccurred()
         }
     }
 }

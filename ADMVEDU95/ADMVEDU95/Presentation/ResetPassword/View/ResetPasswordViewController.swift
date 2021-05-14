@@ -21,7 +21,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     var presenter: ResetPasswordPresenter?
     
     private func setupNavigationBar() {
-        navigationItem.title = "Password recovery".localized()
+        navigationItem.title = R.string.localizable.passwordRecovery()
     }
     
     @IBAction private func didTapSendButton(_ sender: Any) {
