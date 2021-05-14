@@ -34,11 +34,11 @@ class VideoPresenter: DetailPresenter {
     }
     
     func initVideoPlayer(movieUrl: String?) {
-        guard let movieUrl = movieUrl,
-              let url = URL(string: movieUrl) else {
+        guard let urlString = movieUrl,
+              let url = getURL(urlString: urlString) else {
             return
         }
-
+        print(movieUrl)
         player = AVPlayer(url: url)
         playerViewController.player = player
     }

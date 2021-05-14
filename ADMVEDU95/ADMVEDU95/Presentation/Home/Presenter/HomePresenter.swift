@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol HomePresenterProtocol: AnyObject {
     func getCategoryTitle() -> String
     func getCategory() -> Category
@@ -15,6 +14,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getResult(indexPath: IndexPath) -> ApiResult
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
+    func getResultsFromCoreData()
     func didTapLogOutButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
@@ -28,7 +28,7 @@ class HomePresenter: HomePresenterProtocol {
     var dataSource: [ApiResult]  = []
     var category: Category = Category.all
     var retryNumber = 0
-    var coreDataStack = CoreDataStack()
+    var coreDataStack = CoreDataService()
     
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
         self.view = view
@@ -42,15 +42,15 @@ class HomePresenter: HomePresenterProtocol {
                                     filter: filter) { result in
             if !self.dataSource.isEmpty {
                 self.dataSource = []
-                self.view?.reloadTableView()
+                self.view?.updateSearchResults()
             }
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
-                self.view?.reloadTableView()
+                self.view?.updateSearchResults()
             case .failure(let error):
-                let alertMessage = self.getErrorAlertMessage(error: error)
-                self.handleRetryNumber(message: alertMessage)
+                let alertMessage = self.getErrorMessage(error: error)
+                self.handleRetry(message: alertMessage)
             }
         }
     }
@@ -59,6 +59,7 @@ class HomePresenter: HomePresenterProtocol {
         self.coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
+            print(result)
             addResultToDataSource(result: result)
             self.coreDataStack.saveResult(apiResult: result)
         }
@@ -83,7 +84,7 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
-    private func getErrorAlertMessage(error: SearchError) -> String {
+    private func getErrorMessage(error: SearchError) -> String {
         switch error {
         case .unknown:
             return ("Unknown error".localized())
@@ -91,6 +92,23 @@ class HomePresenter: HomePresenterProtocol {
             return ("No data".localized())
         case .parsingData:
             return ("Failed to get data from server".localized())
+        }
+    }
+    
+    private func handleRetry(message: String) {
+        increaseRetryNumber()
+        if retryNumber > 2 {
+            resetRetryNumber()
+            getResultsFromCoreData()
+        } else {
+            self.view?.showAlertWithRetry(message: message)
+        }
+    }
+    
+    func getResultsFromCoreData() {
+        self.coreDataStack.fetchResults { results in
+            self.dataSource = results ?? []
+            self.view?.updateSearchResults()
         }
     }
     
@@ -108,19 +126,6 @@ class HomePresenter: HomePresenterProtocol {
     
     func getCategory() -> Category {
         return category
-    }
-    
-    private func handleRetryNumber(message: String) {
-        increaseRetryNumber()
-        if retryNumber > 2 {
-            resetRetryNumber()
-            self.coreDataStack.fetchResults { results in
-                self.dataSource = results ?? []
-                self.view?.reloadTableView()
-            }
-        } else {
-            self.view?.showAlertWithRetry(message: message)
-        }
     }
     
     private func increaseRetryNumber() {
@@ -155,6 +160,6 @@ class HomePresenter: HomePresenterProtocol {
 extension HomePresenter: CategoryPresenterDelegate {
     func fetchCategory(_ categoryPresenter: CategoryPresenter, category: Category) {
         self.category = category
-        view?.updateCategoryView(category: category.rawValue.localized())
+        view?.updateCategory(category: category.rawValue.localized())
     }
 }

@@ -6,16 +6,20 @@
 //
 
 import Foundation
-import UIKit
 import CoreData
 
-class CoreDataStack {
+class CoreDataService {
+    struct Constants {
+        static let coreDataModelName = "CoreDataITunes"
+        static let entityName = "ResultCoreDataModel"
+    }
+    
     lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
     }()
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "CoreDataITunes")
+        let container = NSPersistentContainer(name: Constants.coreDataModelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -25,7 +29,7 @@ class CoreDataStack {
     }()
     
     func fetchResults(completion: @escaping ([ApiResult]?) -> ()) {
-        let request = NSFetchRequest<ResultCoreDataModel>(entityName: "ResultCoreDataModel")
+        let request = NSFetchRequest<ResultCoreDataModel>(entityName: Constants.entityName)
 
         if let models = try? context.fetch(request) {
             var results: [ApiResult] = []
@@ -40,7 +44,7 @@ class CoreDataStack {
     }
 
     func saveResult(apiResult: ApiResult) {
-        let model = NSEntityDescription.insertNewObject(forEntityName: "ResultCoreDataModel", into: context) as! ResultCoreDataModel
+        let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as! ResultCoreDataModel
         model.albumImageURL = apiResult.artworkUrl100
         model.albumName = apiResult.collectionName
         model.artistName = apiResult.artistName
@@ -55,19 +59,20 @@ class CoreDataStack {
     }
     
     func saveFile(url: String, completion: @escaping ((_ filePath: String)->())) {
-        if let url = URL(string: url) {
-            let fileManager = FileManager.default
-            let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let filePath = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
-            do {
-                if try filePath.checkResourceIsReachable() {
-                    completion(filePath.absoluteString)
-                } else {
-                    downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
-                }
-            } catch {
+        guard let url = URL(string: url)  else {
+            return
+        }
+        let fileManager = FileManager.default
+        let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
+        do {
+            if try filePath.checkResourceIsReachable() {
+                completion(filePath.absoluteString)
+            } else {
                 downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
             }
+        } catch {
+            downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
         }
     }
     
@@ -87,28 +92,35 @@ class CoreDataStack {
     }
     
     func deleteAllResults(){
+        deleteDownloadedFiles()
+        deleteEntityObjects()
+    }
+    
+    private func deleteDownloadedFiles() {
         let fileManager = FileManager.default
         let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        
         let documentsPath = documentsDirectoryURL?.path
+        
         do {
-            if let documentPath = documentsPath
-            {
-                let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
-                print("all files in folder: \(fileNames)")
-                for fileName in fileNames {
-                    let filePathName = "\(documentPath)/\(fileName)"
-                    try fileManager.removeItem(atPath: filePathName)
-                }
-                
-                let files = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
-                print("all files after deleting: \(files)")
+            guard let documentPath = documentsPath else {
+                return
             }
+            let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
+            print("all files in folder: \(fileNames)")
+            for fileName in fileNames {
+                let filePathName = "\(documentPath)/\(fileName)"
+                try fileManager.removeItem(atPath: filePathName)
+            }
+            
+            let files = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
+            print("all files after deleting: \(files)")
             
         } catch {
             print("Could not clear folder: \(error)")
         }
-        
+    }
+    
+    private func deleteEntityObjects() {
         let DelAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
         do {
             try context.execute(DelAllReqVar)
@@ -118,15 +130,15 @@ class CoreDataStack {
         }
     }
     
-        func saveContext () {
-            let context = persistentContainer.viewContext
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
+    private func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
 }

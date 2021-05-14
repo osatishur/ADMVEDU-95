@@ -30,4 +30,16 @@ class DetailPresenter: DetailPresenterProtocol {
     func loadView() -> UIView {
         return UIView()
     }
+    
+    func getURL(urlString: String) -> URL? {
+        if urlString.hasPrefix("http") {
+            let url = URL(string: urlString)
+            return url
+        } else {
+            let url = URL(string: urlString)
+            let documentsDirectoryURL =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let destinationUrl = documentsDirectoryURL.appendingPathComponent(url?.lastPathComponent ?? "")
+            return destinationUrl
+        }
+    }
 }

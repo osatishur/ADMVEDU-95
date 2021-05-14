@@ -8,8 +8,8 @@
 import UIKit
 
 protocol HomeViewProtocol: AnyObject {
-    func reloadTableView()
-    func updateCategoryView(category: String)
+    func updateSearchResults()
+    func updateCategory(category: String)
     func showAlert(title: String, message: String)
     func showAlertWithRetry(message: String)
 }
@@ -28,10 +28,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         setupSearchBar()
-        let coreDataStack = CoreDataStack()
-        coreDataStack.fetchResults { results in
-            print(results)
-        }
+        presenter?.getResultsFromCoreData()
     }
 // MARK: Setup Layout
     private func setupViews() {
@@ -103,11 +100,11 @@ extension HomeViewController: HomeViewProtocol {
         }
     }
     
-    func updateCategoryView(category: String) {
+    func updateCategory(category: String) {
         categoryView.configureView(categoryTitle: category)
     }
     
-    func reloadTableView() {
+    func updateSearchResults() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
