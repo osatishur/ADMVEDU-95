@@ -7,10 +7,15 @@
 
 import UIKit
 
-class BaseAuthViewController: UIViewController {    
+class BaseAuthViewController: UIViewController {
     func createAttributedTitle(title: String, subTitle: String) -> NSMutableAttributedString {
-        let attributedTitle = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.black])
-        attributedTitle.append(NSAttributedString(string: subTitle, attributes: [NSAttributedString.Key.font: UIFont.regularFont, NSAttributedString.Key.foregroundColor: UIColor.systemBlue]))
+        let titleColor = UIColor.attributedButtonTitle
+        let subtitleColor = UIColor.attributedButtonSubTitle
+        let font = UIFont.regularFont
+        let titleKeys = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: titleColor]
+        let subTitleKeys = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: subtitleColor]
+        let attributedTitle = NSMutableAttributedString(string: title, attributes: titleKeys)
+        attributedTitle.append(NSAttributedString(string: subTitle, attributes: subTitleKeys))
         return attributedTitle
     }
 }

@@ -23,7 +23,6 @@
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
-		0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */; };
 		0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0252632D02800C4C059 /* SignInViewController.xib */; };
 		0E66C0292632F30400C4C059 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */; };
 		0E66C02E2633089700C4C059 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C02D2633089700C4C059 /* HomeViewController.xib */; };
@@ -94,7 +93,6 @@
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBottomButton.swift; sourceTree = "<group>"; };
 		0E66C0252632D02800C4C059 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		0E66C02D2633089700C4C059 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 			children = (
 				0E2CC75E263BE880005B97B8 /* BaseView */,
 				0E66C01F2632B7DE00C4C059 /* AuthButton.swift */,
-				0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */,
 				0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */,
 			);
 			path = CustomViews;
@@ -501,6 +498,8 @@
 			buildPhases = (
 				0E487634EE889DC443D19310 /* [CP] Check Pods Manifest.lock */,
 				0ED8DFAE264EBBF000F79B98 /* Rswift script */,
+				0EAB69CC264FEA6B003E4459 /* Swiftlint script */,
+				0EAB69CD264FF6A1003E4459 /* Swiftformat script */,
 				83555FF32624905C00C77316 /* Sources */,
 				83555FF42624905C00C77316 /* Frameworks */,
 				83555FF52624905C00C77316 /* Resources */,
@@ -594,6 +593,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0EAB69CC264FEA6B003E4459 /* Swiftlint script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftlint script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		0EAB69CD264FF6A1003E4459 /* Swiftformat script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftformat script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
 		0ED8DFAE264EBBF000F79B98 /* Rswift script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -674,7 +709,6 @@
 				0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */,
 				0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */,
 				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
-				0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
 				0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */,
 				0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */,

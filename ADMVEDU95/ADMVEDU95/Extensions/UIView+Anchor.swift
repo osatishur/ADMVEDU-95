@@ -26,7 +26,7 @@ extension UIView {
             leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
         }
     }
-    
+
     func centerAnchor(centerX: NSLayoutXAxisAnchor? = nil, centerY: NSLayoutYAxisAnchor? = nil) {
         if let centerX = centerX {
             centerXAnchor.constraint(equalTo: centerX).isActive = true
@@ -35,7 +35,7 @@ extension UIView {
             centerYAnchor.constraint(equalTo: centerY).isActive = true
         }
     }
-    
+
     func dimension(width: CGFloat, height: CGFloat) {
         if width != .zero {
             widthAnchor.constraint(equalToConstant: width).isActive = true

@@ -5,15 +5,14 @@
 //  Created by Satsishur on 12.04.2021.
 //
 
-import UIKit
 import FirebaseAuth
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var applicationRouter: ApplicationRouter?
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
+    func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
@@ -26,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = applicationRouter?.mainNavigationController
         window.makeKeyAndVisible()
     }
-    
+
     private func setApplicationRouter(with window: UIWindow) {
         if Auth.auth().currentUser == nil {
             applicationRouter = ApplicationRouter(isHomeInitial: false, window: window)
@@ -34,6 +33,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             applicationRouter = ApplicationRouter(isHomeInitial: true, window: window)
         }
     }
-    
-
 }

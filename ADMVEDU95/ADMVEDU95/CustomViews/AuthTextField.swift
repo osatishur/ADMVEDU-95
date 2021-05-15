@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthTextField: UITextField {
-    private struct Constants {
+    private enum Constants {
         static let sideWidth: CGFloat = 20
     }
 
@@ -21,7 +21,7 @@ class AuthTextField: UITextField {
         super.init(coder: aDecoder)
         setupLayout()
     }
-    
+
     private func setupLayout() {
         leftView = UIView(frame: CGRect(x: .zero,
                                         y: .zero,

@@ -25,55 +25,60 @@ class HomePresenter: HomePresenterProtocol {
     let searchService: SearchServiceProtocol?
     let firebaseService: FirebaseServiceProtocol?
     var router: HomeRouterProtocol?
-    var dataSource: [ApiResult]  = []
-    var category: Category = Category.all
+    var dataSource: [ApiResult] = []
+    var category = Category.all
     var retryNumber = 0
     var coreDataStack = CoreDataService()
-    
-    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
+
+    init(view: HomeViewProtocol,
+         searchService: SearchServiceProtocol,
+         firebaseService: FirebaseServiceProtocol,
+         router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func searchITunes(searchTerm: String, filter: String) {
         searchService?.searchResults(searchTerm: searchTerm,
-                                    filter: filter) { result in
+                                     filter: filter) { result in
             if !self.dataSource.isEmpty {
                 self.dataSource = []
                 self.view?.updateSearchResults()
             }
             switch result {
-            case .success(let response):
+            case let .success(response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
-            case .failure(let error):
+            case let .failure(error):
                 let alertMessage = self.getErrorMessage(error: error)
                 self.handleRetry(message: alertMessage)
             }
         }
     }
-    
+
     private func fetchDataFromResponse(response: Response) {
-        self.coreDataStack.deleteAllResults()
+        coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
             print(result)
             addResultToDataSource(result: result)
-            self.coreDataStack.saveResult(apiResult: result)
+            coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            self.view?.showAlert(title: R.string.localizable.noData(), message: R.string.localizable.pleaseCheckForCorrectRequest())
+            let title = R.string.localizable.noData()
+            let message = R.string.localizable.pleaseCheckForCorrectRequest()
+            view?.showAlert(title: title, message: message)
         }
     }
-    
+
     private func addResultToDataSource(result: ApiResult) {
         if !result.isInsufficient {
-            self.dataSource.append(result)
+            dataSource.append(result)
         }
     }
-    
+
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
@@ -83,7 +88,7 @@ class HomePresenter: HomePresenterProtocol {
             return .song
         }
     }
-    
+
     private func getErrorMessage(error: SearchError) -> String {
         switch error {
         case .unknown:
@@ -94,60 +99,60 @@ class HomePresenter: HomePresenterProtocol {
             return (R.string.localizable.failedToGetDataFromServer())
         }
     }
-    
+
     private func handleRetry(message: String) {
         increaseRetryNumber()
         if retryNumber > 2 {
             resetRetryNumber()
             getResultsFromCoreData()
         } else {
-            self.view?.showAlertWithRetry(message: message)
+            view?.showAlertWithRetry(message: message)
         }
     }
-    
+
     func getResultsFromCoreData() {
-        self.coreDataStack.fetchResults { results in
+        coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
             self.view?.updateSearchResults()
         }
     }
-    
+
     func getResult(indexPath: IndexPath) -> ApiResult {
-        return dataSource[indexPath.row]
+        dataSource[indexPath.row]
     }
-    
+
     func getNumberOfResults() -> Int {
-        return dataSource.count
+        dataSource.count
     }
-    
+
     func getCategoryTitle() -> String {
-        return category.rawValue
+        category.rawValue
     }
-    
+
     func getCategory() -> Category {
-        return category
+        category
     }
-    
+
     private func increaseRetryNumber() {
         retryNumber += 1
     }
-    
+
     private func resetRetryNumber() {
         retryNumber = 0
     }
-    
+
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
         print(model)
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
-    
-    func didTapOnCategoryView(categoryChosed: Category) {
-        router?.navigateToCategory(categorySelected: category, delegate: self)
+
+    func didTapOnCategoryView(categoryChosed _: Category) {
+        router?.navigateToCategory(selectedCategory: category, delegate: self)
     }
-    
+
     func didTapLogOutButton() {
         guard let firebaseService = firebaseService else {
-            return 
+            return
         }
         if firebaseService.logOut() {
             router?.navigateToAuth()
@@ -158,7 +163,7 @@ class HomePresenter: HomePresenterProtocol {
 }
 
 extension HomePresenter: CategoryPresenterDelegate {
-    func fetchCategory(_ categoryPresenter: CategoryPresenter, category: Category) {
+    func fetchCategory(_: CategoryPresenter, category: Category) {
         self.category = category
         view?.updateCategory(category: category.rawValue.localized())
     }

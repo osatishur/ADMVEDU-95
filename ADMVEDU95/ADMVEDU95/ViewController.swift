@@ -8,9 +8,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
     private var searchController = UISearchController(searchResultsController: nil)
-    
+
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -21,7 +20,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        self.view.backgroundColor = .red
+        view.backgroundColor = .red
     }
 
     private func setupLayout() {
@@ -29,18 +28,18 @@ class HomeViewController: UIViewController {
         setupSearchBar()
         setupTableView()
     }
-    
+
     private func setupSubviews() {
         view.addSubview(searchController.searchBar)
         view.addSubview(tableView)
     }
-    
+
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search News"
     }
-    
+
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -54,11 +53,11 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        10
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func tableView(_: UITableView, cellForRowAt _: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.backgroundColor = .blue
         return cell
@@ -66,8 +65,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
-    }
+    func searchBarSearchButtonClicked(_: UISearchBar) {}
 }
-

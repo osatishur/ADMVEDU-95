@@ -8,10 +8,9 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-    
-    @IBOutlet private weak var kindLabel: UILabel!
-    @IBOutlet private weak var infoLabel: UILabel!
-    
+    @IBOutlet private var kindLabel: UILabel!
+    @IBOutlet private var infoLabel: UILabel!
+
     public func configure(model: ApiResult) {
         let noInfoString = R.string.localizable.noInfo()
         kindLabel.text = model.kind ?? noInfoString

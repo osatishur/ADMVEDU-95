@@ -5,8 +5,8 @@
 //  Created by Satishur, Oleg on 28.04.2021.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol LogInPresenterProtocol: AnyObject {
     func logIn(email: String, password: String)
@@ -25,7 +25,7 @@ class LogInPresenter: LogInPresenterProtocol {
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func logIn(email: String, password: String) {
         firebaseService.logIn(email: email, pass: password) { [weak self] result in
             guard let self = self else {
@@ -34,7 +34,7 @@ class LogInPresenter: LogInPresenterProtocol {
             switch result {
             case .success(true):
                 self.navigateToHome()
-            case .failure(let error):
+            case let .failure(error):
                 let errorText = self.getAuthErrorText(error: error)
                 self.view?.setErrorLabelText(text: errorText)
                 self.view?.setErrorLabelHidden(isHidden: false)
@@ -44,7 +44,7 @@ class LogInPresenter: LogInPresenterProtocol {
             }
         }
     }
-    
+
     private func getAuthErrorText(error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
@@ -52,15 +52,15 @@ class LogInPresenter: LogInPresenterProtocol {
         }
         return text
     }
-    
+
     func navigateToResetPassword() {
         router?.navigateToResetPassword()
     }
-    
+
     func navigateToSignIn() {
         router?.navigateToSignIn()
     }
-    
+
     func navigateToHome() {
         router?.navigateToHome()
     }

@@ -8,14 +8,16 @@
 import UIKit
 
 extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getNumberOfResults() ?? .zero
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        presenter?.getNumberOfResults() ?? .zero
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier, for: indexPath) as? SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier,
+                                                 for: indexPath) as? SearchTableViewCell
         guard let presenter = presenter,
-              let cell = cell else {
+              let cell = cell
+        else {
             return UITableViewCell()
         }
         let model = presenter.getResult(indexPath: indexPath)
@@ -25,7 +27,7 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let presenter = presenter else {
             return
         }

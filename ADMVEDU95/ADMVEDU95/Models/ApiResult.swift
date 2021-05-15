@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct ApiResult: Codable {
     let kind: String?
     let artistName: String?
@@ -20,6 +18,6 @@ struct ApiResult: Codable {
 
 extension ApiResult {
     var isInsufficient: Bool {
-        return (kind == nil || artistName == nil || trackName == nil)
+        kind == nil || artistName == nil || trackName == nil
     }
 }
