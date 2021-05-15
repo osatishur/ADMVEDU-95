@@ -25,6 +25,6 @@ struct ApiResult: Codable {
 
 extension ApiResult {
     var isInsufficient: Bool {
-        return (kind == nil || artistName == nil || trackName == nil)
+        return kind == nil || artistName == nil || trackName == nil
     }
 }
