@@ -84,7 +84,7 @@ class CoreDataService {
         }
     }
 
-    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)) {
+    private func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try Data(contentsOf: url)

@@ -39,7 +39,7 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
-    func setupLayout() {
+    private func setupLayout() {
         let attributedTitle = createAttributedTitle(title: R.string.localizable.alreadyHaveAnAccount(),
                                                     subTitle: R.string.localizable.logIn())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)

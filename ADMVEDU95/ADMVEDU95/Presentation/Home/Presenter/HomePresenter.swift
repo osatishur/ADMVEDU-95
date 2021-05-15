@@ -21,14 +21,14 @@ protocol HomePresenterProtocol: AnyObject {
 }
 
 class HomePresenter: HomePresenterProtocol {
-    weak var view: HomeViewProtocol?
-    let searchService: SearchServiceProtocol?
-    let firebaseService: FirebaseServiceProtocol?
-    var router: HomeRouterProtocol?
-    var dataSource: [ApiResult] = []
-    var category = Category.all
-    var retryNumber = 0
-    var coreDataStack = CoreDataService()
+    private weak var view: HomeViewProtocol?
+    private let searchService: SearchServiceProtocol?
+    private let firebaseService: FirebaseServiceProtocol?
+    private var router: HomeRouterProtocol?
+    private var dataSource: [ApiResult] = []
+    private var category = Category.all
+    private var retryNumber = 0
+    private var coreDataStack = CoreDataService()
 
     init(view: HomeViewProtocol,
          searchService: SearchServiceProtocol,

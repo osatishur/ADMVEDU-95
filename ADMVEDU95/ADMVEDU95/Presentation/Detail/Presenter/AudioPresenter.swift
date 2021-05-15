@@ -9,19 +9,19 @@ import AVKit
 import Foundation
 
 class AudioPresenter: DetailPresenter {
-    enum Constants {
+    private enum Constants {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
     }
 
-    let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
+    private let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 
     override func loadView() -> UIView {
         let view = getAudioView()
         return view
     }
 
-    func getAudioView() -> AudioDetailView {
+    private func getAudioView() -> AudioDetailView {
         guard let imageURL = model?.artworkUrl100,
               let url = URL(string: imageURL)
         else {
@@ -41,7 +41,7 @@ class AudioPresenter: DetailPresenter {
         view.configureAction(buttonAction: playMusic)
     }
 
-    func initAudioPlayer(songUrl: String?) {
+    private func initAudioPlayer(songUrl: String?) {
         guard let urlString = songUrl,
               let url = getURL(urlString: urlString)
         else {
@@ -51,7 +51,7 @@ class AudioPresenter: DetailPresenter {
         player = AVPlayer(playerItem: playerItem)
     }
 
-    func playMusic() {
+    private func playMusic() {
         if player?.rate == .zero {
             player?.play()
             songView.setPauseImage()

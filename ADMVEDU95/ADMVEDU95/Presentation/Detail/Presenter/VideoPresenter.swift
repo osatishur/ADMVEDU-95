@@ -9,19 +9,19 @@ import AVKit
 import Foundation
 
 class VideoPresenter: DetailPresenter {
-    enum Constants {
+    private enum Constants {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
     }
 
-    let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
+    private let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 
     override func loadView() -> UIView {
         let view = getVideoView()
         return view
     }
 
-    func getVideoView() -> VideoDetailView {
+    private func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,
               let url = URL(string: imageURL)
         else {
@@ -40,7 +40,7 @@ class VideoPresenter: DetailPresenter {
         view.configureAction(buttonAction: playVideo)
     }
 
-    func initVideoPlayer(movieUrl: String?) {
+    private func initVideoPlayer(movieUrl: String?) {
         guard let urlString = movieUrl,
               let url = getURL(urlString: urlString)
         else {
@@ -50,7 +50,7 @@ class VideoPresenter: DetailPresenter {
         playerViewController.player = player
     }
 
-    func playVideo() {
+    private func playVideo() {
         let view = view as? DetailViewController
         view?.present(playerViewController, animated: true) {
             self.player?.play()
