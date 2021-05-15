@@ -26,6 +26,7 @@ profile
 DerivedData
 *.hmap
 *.ipa
+*.generated.swift
 
 # CocoaPods
 Pods/
