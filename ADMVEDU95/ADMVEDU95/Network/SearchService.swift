@@ -10,20 +10,20 @@ import Foundation
 protocol SearchServiceProtocol {
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>)-> Void)
+                       completion: @escaping (Result<Response, SearchError>) -> Void)
 }
 
 class SearchService: SearchServiceProtocol {
-    private struct Constants {
+    private enum Constants {
         static let searchParameter = "term"
         static let limitParameter = "limit"
         static let searchLimit = "5"
         static let filterParameter = "media"
     }
-    
+
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response, SearchError>)-> Void) {
+                       completion: @escaping (Result<Response, SearchError>) -> Void) {
         NetworkService.shared.get(endpoint: .search,
                                   parameters: [Constants.searchParameter: searchTerm,
                                                Constants.limitParameter: Constants.searchLimit,

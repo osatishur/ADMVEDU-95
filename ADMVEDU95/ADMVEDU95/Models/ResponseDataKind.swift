@@ -8,11 +8,11 @@
 import Foundation
 
 enum ResponseDataKind: String {
-    case song = "song"
+    case song
     case movie = "feature-movie"
-    case podcast = "podcast"
-    case tvShow = "tvShow"
-    case ebook = "ebook"
-    case audiobook = "audiobook"
-    case musicVideo = "musicVideo"
+    case podcast
+    case tvShow
+    case ebook
+    case audiobook
+    case musicVideo
 }

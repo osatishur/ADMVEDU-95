@@ -5,8 +5,8 @@
 //  Created by Satishur, Oleg on 28.04.2021.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol SignInPresenterProtocol: AnyObject {
     func signIn(email: String, password: String, repeatPassword: String)
@@ -24,16 +24,16 @@ class SignInPresenter: SignInPresenterProtocol {
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            self.view?.setErrorLabelText(text: R.string.localizable.passwordsDonTMatch())
-            self.view?.setErrorLabelHidden(isHidden: false)
+            view?.setErrorLabelText(text: R.string.localizable.passwordsDonTMatch())
+            view?.setErrorLabelHidden(isHidden: false)
         } else {
             createUser(email: email, password: password)
         }
     }
-    
+
     private func createUser(email: String, password: String) {
         firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
@@ -42,7 +42,7 @@ class SignInPresenter: SignInPresenterProtocol {
             switch result {
             case .success(true):
                 self.navigateToHome()
-            case .failure(let error):
+            case let .failure(error):
                 let errorText = self.getAuthErrorText(error: error)
                 self.view?.setErrorLabelText(text: errorText)
                 self.view?.setErrorLabelHidden(isHidden: false)
@@ -52,7 +52,7 @@ class SignInPresenter: SignInPresenterProtocol {
             }
         }
     }
-    
+
     private func getAuthErrorText(error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
@@ -60,11 +60,11 @@ class SignInPresenter: SignInPresenterProtocol {
         }
         return text
     }
-    
+
     func didTapSignInButton() {
         router?.popToLogIn()
     }
-    
+
     func navigateToHome() {
         router?.navigateToHome()
     }

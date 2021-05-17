@@ -11,16 +11,16 @@ extension UIViewController {
     func showAlert(titleMessage: String, message: String) {
         let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: R.string.localizable.oK(), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
-    
-    func showAlertWithRetry(message: String, completion: @escaping () -> ()) {
+
+    func showAlertWithRetry(message: String, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: R.string.localizable.error(), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: R.string.localizable.retry(), style: .default, handler: { (action: UIAlertAction!) in
-              completion()
+        alert.addAction(UIAlertAction(title: R.string.localizable.retry(), style: .default, handler: { (_: UIAlertAction!) in
+            completion()
         }))
 
         alert.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
 }

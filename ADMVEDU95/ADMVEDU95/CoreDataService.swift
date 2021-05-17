@@ -5,30 +5,30 @@
 //  Created by Satishur, Oleg on 13.05.2021.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class CoreDataService {
-    struct Constants {
+    enum Constants {
         static let coreDataModelName = "CoreDataITunes"
         static let entityName = "ResultCoreDataModel"
     }
-    
+
     lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
     }()
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.coreDataModelName)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
-    
-    func fetchResults(completion: @escaping ([ApiResult]?) -> ()) {
+
+    func fetchResults(completion: @escaping ([ApiResult]?) -> Void) {
         let request = NSFetchRequest<ResultCoreDataModel>(entityName: Constants.entityName)
 
         if let models = try? context.fetch(request) {
@@ -44,7 +44,11 @@ class CoreDataService {
     }
 
     func saveResult(apiResult: ApiResult) {
-        let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as! ResultCoreDataModel
+        let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName,
+                                                        into: context) as? ResultCoreDataModel
+        guard let model = model else {
+            return
+        }
         model.albumImageURL = apiResult.artworkUrl100
         model.albumName = apiResult.collectionName
         model.artistName = apiResult.artistName
@@ -57,13 +61,17 @@ class CoreDataService {
         }
         saveContext()
     }
-    
-    func saveFile(url: String, completion: @escaping ((_ filePath: String)->())) {
-        guard let url = URL(string: url)  else {
+
+    func saveFile(url: String, completion: @escaping ((_ filePath: String) -> Void)) {
+        guard let url = URL(string: url) else {
             return
         }
         let fileManager = FileManager.default
-        let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let documentsDirectoryURL = fileManager.urls(for: .documentDirectory,
+                                                           in: .userDomainMask).first
+        else {
+            return
+        }
         let filePath = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
         do {
             if try filePath.checkResourceIsReachable() {
@@ -75,8 +83,8 @@ class CoreDataService {
             downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
         }
     }
-    
-    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String)->())){
+
+    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try Data(contentsOf: url)
@@ -90,17 +98,17 @@ class CoreDataService {
             }
         }
     }
-    
-    func deleteAllResults(){
+
+    func deleteAllResults() {
         deleteDownloadedFiles()
         deleteEntityObjects()
     }
-    
+
     private func deleteDownloadedFiles() {
         let fileManager = FileManager.default
-        let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
+        let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         let documentsPath = documentsDirectoryURL?.path
-        
+
         do {
             guard let documentPath = documentsPath else {
                 return
@@ -111,26 +119,26 @@ class CoreDataService {
                 let filePathName = "\(documentPath)/\(fileName)"
                 try fileManager.removeItem(atPath: filePathName)
             }
-            
+
             let files = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
             print("all files after deleting: \(files)")
-            
+
         } catch {
             print("Could not clear folder: \(error)")
         }
     }
-    
+
     private func deleteEntityObjects() {
-        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel")
+        let delAllReqVar = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-            try context.execute(DelAllReqVar)
-        }
-        catch {
+            try context.execute(delAllReqVar)
+        } catch {
             print(error)
         }
     }
-    
-    private func saveContext () {
+
+    private func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

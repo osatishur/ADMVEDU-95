@@ -13,7 +13,7 @@ extension UIView {
         guard let viewFromXib = Bundle.main.loadNibNamed(nibName, owner: self, options: nil)?.first as? UIView else {
             return
         }
-        viewFromXib.frame = self.bounds
+        viewFromXib.frame = bounds
         addSubview(viewFromXib)
     }
 }

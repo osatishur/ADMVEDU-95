@@ -31,30 +31,33 @@ class CategoryPresenter: CategoryPresenterProtocol {
         }
         return data
     }()
-    
-    init(view: CategoryViewProtocol, selectedCategory: Category, delegate: CategoryPresenterDelegate, router: HomeRouterProtocol) {
+
+    init(view: CategoryViewProtocol,
+         selectedCategory: Category,
+         delegate: CategoryPresenterDelegate,
+         router: HomeRouterProtocol) {
         self.view = view
         self.selectedCategory = selectedCategory
         self.delegate = delegate
         self.router = router
     }
-    
+
     func getCategory(indexPath: IndexPath) -> Category {
-        return dataSource[indexPath.row]
+        dataSource[indexPath.row]
     }
-    
+
     func getSelectedCategory() -> Category {
-        return selectedCategory
+        selectedCategory
     }
-    
+
     func numberOfCategories() -> Int {
-        return dataSource.count
+        dataSource.count
     }
-    
+
     func onCellSelected(category: Category) {
         delegate?.fetchCategory(self, category: category)
     }
-    
+
     func navigateToHome() {
         router?.popToHome()
     }
