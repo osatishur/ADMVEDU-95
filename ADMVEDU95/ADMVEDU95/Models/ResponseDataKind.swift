@@ -14,5 +14,5 @@ enum ResponseDataKind: String {
     case tvShow
     case ebook
     case audiobook
-    case musicVideo
+    case musicVideo = "music-video"
 }

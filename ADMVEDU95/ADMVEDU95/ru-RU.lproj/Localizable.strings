@@ -6,15 +6,9 @@
   
 */
 
-"Start searching" = "Начать поиск";
+//Category
 "song" = "песня";
 "feature-movie" = "фильм";
-"_Song" = "Песня: %@";
-"Artist" = "Автор: %@";
-"Album" = "Альбом: %@";
-"Director" = "Режиссер: %@";
-"_Movie" = "Фильм: %@";
-"no info" = "нет данных";
 "all" = "все";
 "music" = "музыка";
 "movie" = "фильмы";
@@ -22,54 +16,66 @@
 "tvShow" = "ТВ-шоу";
 "ebook" = "е-книга";
 "audiobook" = "аудиокнига";
-"musicVideo" = "клипы";
-"_music-video" = "клип";
-"No data" = "Нет данных";
-"Please, check for correct request" = "Пожалуйста, проверьте правильность запроса";
-"OK" = "Ок";
-"Error" = "Ошибка";
-"Retry" = "Повторить";
-"Cancel" = "Отмена";
+"musicVideoPlural" = "клипы";
+"music-video" = "клип";
 
-//HomeVC
-"Logout" = "Выйти";
-"Failed to get data from server" = "Не удалось получить данные от сервера";
-"No data" = "Данные отсуствуют";
-"Unknown error" = "Неизвестная ошибка";
-"Failed to log out" = "Не удалось выйти из аккаунта";
-"Search" = "Поиск";
+//Alert
+"Alert.Ok.Title" = "Ок";
+"Alert.Error.Title" = "Ошибка";
+"Alert.Retry.Action" = "Повторить";
+"Alert.Cancel.Action" = "Отмена";
+
+//Common
+"no info" = "нет данных";
+"Error.UnknownError.Text" = "Неизвестная ошибка";
+
+//DetailView
+"Detail.Song.Name" = "Песня: %@";
+"Detail.Artist.Name" = "Автор: %@";
+"Detail.Album.Name" = "Альбом: %@";
+"Detail.Director.Name" = "Режиссер: %@";
+"Detail.Movie.Name" = "Фильм: %@";
+
+//Home View
+"Home.SearchBar.Placeholder" = "Начать поиск";
+"Home.NavigationItem.Title" = "Поиск";
+"Home.LogoutButton.Title" = "Выйти";
+"Home.ParsingDataError.AlertMessage" = "Не удалось получить данные от сервера";
+"Home.UnknownError.AlertMessage" = "Неизвестная ошибка";
+"Home.LogOutFailed.AlertMessage" = "Не удалось выйти из аккаунта";
+"Home.NoData.AlertTitle" = "Данные отсуствуют";
+"Home.NoData.AlertMessage" = "Пожалуйста, проверьте правильность запроса";
 
 //Auth Views
-"Log in" = "Войти";
-"Sign in" = "Зарегистрироваться";
-"Email" = "Почта";
-"Password" = "Пароль";
+"Auth.LogIn.Text" = "Войти";
+"Auth.SignIn.Text" = "Зарегистрироваться";
+"Auth.Email.Placeholder" = "Почта";
+"Auth.Password.Placeholder" = "Пароль";
+"Auth.RepeatPpassword.Placeholder" = "Повторить пароль";
 
 //SignInView
-"Registration" = "Регистрация";
-"Repeat password" = "Повторить пароль";
-"Already have an account?  " = "Уже есть аккаунт?  ";
-"Passwords don't match" = "Пароли не совпадают";
-"Sign In is succesful" = "Регистрация прошла успешно";
+"SignIn.TopLabel.Text" = "Регистрация";
+"SignIn.bottomButton.Title" = "Уже есть аккаунт?  ";
+"SignIn.PasswordsMatchError.Text" = "Пароли не совпадают";
 
 //LogInView
-"Authorization" = "Авторизация";
-"Forgot password" = "Сбросить пароль";
-"Don't have an account?  " = "Нет аккаунта?  ";
+"LogIn.TopLabel.Text" = "Авторизация";
+"LogIn.ForgotPasswordButton.Title" = "Сбросить пароль";
+"LogIn.BottomButton.Title" = "Нет аккаунта?  ";
 
 //ResetPasswordView
-"Please, enter your email" = "Пожалуйста, введите адрес вашей почты";
-"Send" = "Отправить";
-"Success" = "Success";
-"Check your email for the next step" = "Проверьте вашу почту для дальнейших шагов";
-"Password recovery" = "Восстановление пароля";
+"ResetPassword.TopLabel.Text" = "Пожалуйста, введите адрес вашей почты";
+"ResetPassword.SendButton.Text" = "Отправить";
+"ResetPassword.NavigationItem.Title" = "Восстановление пароля";
+"ResetPasswor.Success.AlertTitle" = "Запрос принят";
+"ResetPassword.Success.AlertMessage" = "Проверьте вашу почту для дальнейших шагов";
 
 //AuthErrorCode
-"The email is already in use with another account" = "Адрес указанной почты уже используется";
-"Account not found for the specified user. Please check and try again" = "Аккаунт данного пользователя не найден. Проверь корректность данных и попробуйте еще раз";
-"Your account has been disabled. Please contact support." = "Ваш аккаунт был удален. Пожалуйста, свяжитесь с поддержкой.";
-"Please enter a valid email" = "Введите корректный адрес почты";
-"Network error. Please try again." = "Ошибка сети. Попробуйте еще раз.";
-"The password must be 6 characters long or more." = "Пароль должен содержать минимум 6 символов";
-"Your password is incorrect. Please try again or use 'Forgot password'" = "Неправильный пароль. Попробуйте еще раз или нажмите 'Сбросить пароль'";
-"Unknown error occurred" = "Неизвестная ошибка";
+"AuthErrorCode.EmailAlreadyInUse.Text" = "Адрес указанной почты уже используется";
+"AuthErrorCode.UserNotFound.Text" = "Аккаунт данного пользователя не найден. Проверь корректность данных и попробуйте еще раз";
+"AuthErrorCode.UserDisabled.Text" = "Ваш аккаунт был удален. Пожалуйста, свяжитесь с поддержкой.";
+"AuthErrorCode.InvalidEmail.Text" = "Введите корректный адрес почты";
+"AuthErrorCode.NetworkError.Text" = "Ошибка сети. Попробуйте еще раз.";
+"AuthErrorCode.WeakPassword.Text" = "Пароль должен содержать минимум 6 символов";
+"AuthErrorCode.WrongPassword.Text" = "Неправильный пароль. Попробуйте еще раз или нажмите 'Сбросить пароль'";
+

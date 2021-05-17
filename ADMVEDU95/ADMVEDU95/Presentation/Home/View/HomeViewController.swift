@@ -42,10 +42,10 @@ class HomeViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        let title = R.string.localizable.logout()
+        let title = R.string.localizable.homeLogoutButtonTitle()
         let logoutBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(logoutUser))
         navigationItem.rightBarButtonItem = logoutBarButtonItem
-        navigationItem.title = R.string.localizable.search()
+        navigationItem.title = R.string.localizable.homeNavigationItemTitle()
     }
 
     private func setupCategoryView() {
@@ -68,7 +68,7 @@ class HomeViewController: UIViewController {
 
     private func setupSearchBar() {
         searchBar.delegate = self
-        searchBar.placeholder = R.string.localizable.startSearching()
+        searchBar.placeholder = R.string.localizable.homeSearchBarPlaceholder()
     }
 
     // MARK: goToCategory method

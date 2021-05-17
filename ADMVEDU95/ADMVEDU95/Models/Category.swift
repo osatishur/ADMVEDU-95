@@ -15,5 +15,5 @@ enum Category: String, CaseIterable {
     case tvShow
     case ebook
     case audiobook
-    case musicVideo
+    case musicVideo = "musicVideoPlural"
 }

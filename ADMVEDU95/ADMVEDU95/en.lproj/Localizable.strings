@@ -6,15 +6,8 @@
   
 */
 
-"Start searching" = "Start searching";
+//Category
 "song" = "song";
-"feature-movie" = "feature-movie";
-"_Song" = "Song: %@";
-"Artist" = "Artist: %@";
-"Album" = "Album: %@";
-"Director" = "Director: %@";
-"_Movie" = "Movie: %@";
-"no info" = "no info";
 "all" = "all";
 "music" = "music";
 "movie" = "movie";
@@ -22,55 +15,66 @@
 "tvShow" = "tvShow";
 "ebook" = "ebook";
 "audiobook" = "audiobook";
-"musicVideo" = "musicVideo";
-"_music-video" = "music-video";
-"No data" = "No data";
-"Please, check for correct request" = "Please, check for correct request";
-"OK" = "OK";
-"Error" = "Error";
-"Retry" = "Retry";
-"Cancel" = "Cancel";
+"music-video" = "music-video";
+"musicVideoPlural" = "music-video";
+"feature-movie" = "feature-movie";
 
-//HomeVC
-"Logout" = "Logout";
-"Failed to get data from server" = "Failed to get data from server";
-"No data" = "No data";
-"Unknown error" = "Unknown error";
-"Failed to log out" = "Failed to log out";
-"Search" = "Search";
+//Alert
+"Alert.Ok.Title" = "OK";
+"Alert.Error.Title" = "Error";
+"Alert.Retry.Action" = "Retry";
+"Alert.Cancel.Action" = "Cancel";
+
+//Common
+"no info" = "no info";
+"Error.UnknownError.Text" = "Unknown error occurred";
+
+//DetailVIew
+"Detail.Song.Name" = "Song: %@";
+"Detail.Artist.Name" = "Artist: %@";
+"Detail.Album.Name" = "Album: %@";
+"Detail.Director.Name" = "Director: %@";
+"Detail.Movie.Name" = "Movie: %@";
+
+//Home VIew
+"Home.SearchBar.Placeholder" = "Start searching";
+"Home.NavigationItem.Title" = "Search";
+"Home.LogoutButton.Title" = "Logout";
+"Home.ParsingDataError.AlertMessage" = "Failed to get data from server";
+"Home.UnknownError.AlertMessage" = "Unknown error";
+"Home.NoData.AlertTitle" = "No data";
+"Home.NoData.AlertMessage" = "Please, check for correct request";
+"Home.LogOutFailed.AlertMessage" = "Failed to log out";
 
 //Auth Views
-"Log in" = "Log in";
-"Sign in" = "Sign in";
-"Email" = "Email";
-"Password" = "Password";
+"Auth.LogIn.Text" = "Log in";
+"Auth.SignIn.Text" = "Sign in";
+"Auth.Email.Placeholder" = "Email";
+"Auth.Password.Placeholder" = "Password";
+"Auth.RepeatPpassword.Placeholder" = "Repeat password";
 
 //SignInView
-"Registration" = "Registration";
-"Repeat password" = "Repeat password";
-"Already have an account?  " = "Already have an account?  ";
-"Passwords don't match" = "Passwords don't match";
-"Sign In is succesful" = "Sign In is succesful";
+"SignIn.TopLabel.Text" = "Registration";
+"SignIn.bottomButton.Title" = "Already have an account?  ";
+"SignIn.PasswordsMatchError.Text" = "Passwords don't match";
 
 //LogInView
-"Authorization" = "Authorization";
-"Forgot password" = "Forgot password";
-"Don't have an account?  " = "Don't have an account?  ";
+"LogIn.TopLabel.Text" = "Authorization";
+"LogIn.ForgotPasswordButton.Title" = "Forgot password";
+"LogIn.BottomButton.Title" = "Don't have an account?  ";
 
 //ResetPasswordView
-"Please, enter your email" = "Please, enter your email";
-"Send" = "Send";
-"Success" = "Success";
-"Check your email for the next step" = "Check your email for the next step";
-"Password recovery" = "Password recovery";
-
+"ResetPassword.TopLabel.Text" = "Please, enter your email";
+"ResetPassword.SendButton.Text" = "Send";
+"ResetPassword.NavigationItem.Title" = "Password recovery";
+"ResetPasswor.Success.AlertTitle" = "Request delivered";
+"ResetPassword.Success.AlertMessage" = "Check your email for the next step";
 
 //AuthErrorCode
-"The email is already in use with another account" = "The email is already in use with another account";
-"Account not found for the specified user. Please check and try again" = "Account not found for the specified user. Please check and try again";
-"Your account has been disabled. Please contact support." = "Your account has been disabled. Please contact support.";
-"Please enter a valid email" = "Please enter a valid email";
-"Network error. Please try again." = "Network error. Please try again.";
-"The password must be 6 characters long or more." = "The password must be 6 characters long or more.";
-"Your password is incorrect. Please try again or use 'Forgot password'" = "Your password is incorrect. Please try again or use 'Forgot password'";
-"Unknown error occurred" = "Unknown error occurred";
+"AuthErrorCode.EmailAlreadyInUse.Text" = "The email is already in use with another account";
+"AuthErrorCode.UserNotFound.Text" = "Account not found for the specified user. Please check and try again";
+"AuthErrorCode.UserDisabled.Text" = "Your account has been disabled. Please contact support.";
+"AuthErrorCode.InvalidEmail.Text" = "Please enter a valid email";
+"AuthErrorCode.NetworkError.Text" = "Network error. Please try again.";
+"AuthErrorCode.WeakPassword.Text" = "The password must be 6 characters long or more.";
+"AuthErrorCode.WrongPassword.Text" = "Your password is incorrect. Please try again or use 'Forgot password'";

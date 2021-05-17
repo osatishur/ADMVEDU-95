@@ -9,18 +9,26 @@ import UIKit
 
 extension UIViewController {
     func showAlert(titleMessage: String, message: String) {
-        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: R.string.localizable.oK(), style: .default))
+        let alert = UIAlertController(title: titleMessage,
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizable.alertOkTitle(),
+                                      style: .default))
         present(alert, animated: true, completion: nil)
     }
 
     func showAlertWithRetry(message: String, completion: @escaping () -> Void) {
-        let alert = UIAlertController(title: R.string.localizable.error(), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: R.string.localizable.retry(), style: .default, handler: { (_: UIAlertAction!) in
-            completion()
-        }))
+        let alert = UIAlertController(title: R.string.localizable.alertErrorTitle(),
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: R.string.localizable.alertRetryAction(),
+                                      style: .default,
+                                      handler: { (_: UIAlertAction!) in
+                                          completion()
+                                      }))
 
-        alert.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel))
+        alert.addAction(UIAlertAction(title: R.string.localizable.alertCancelAction(),
+                                      style: .cancel))
         present(alert, animated: true, completion: nil)
     }
 }

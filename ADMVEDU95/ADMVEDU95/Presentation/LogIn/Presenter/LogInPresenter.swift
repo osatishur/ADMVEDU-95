@@ -39,7 +39,7 @@ class LogInPresenter: LogInPresenterProtocol {
                 self.view?.setErrorLabelText(text: errorText)
                 self.view?.setErrorLabelHidden(isHidden: false)
             case .success(false):
-                self.view?.setErrorLabelText(text: R.string.localizable.unknownErrorOccurred())
+                self.view?.setErrorLabelText(text: R.string.localizable.errorUnknownErrorText())
                 self.view?.setErrorLabelHidden(isHidden: false)
             }
         }

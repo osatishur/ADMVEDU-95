@@ -14,6 +14,8 @@
                 <outlet property="bottomButton" destination="LQz-dU-ULD" id="XgW-4W-W68"/>
                 <outlet property="emailTextField" destination="aV9-Lp-Ddq" id="apM-oc-AED"/>
                 <outlet property="errorLabel" destination="vxW-8h-Lni" id="Oe5-AM-hEw"/>
+                <outlet property="forgotPasswordButton" destination="9WL-rR-xK8" id="7bf-4V-xza"/>
+                <outlet property="logInButton" destination="TTA-hu-t95" id="BYy-Ci-tiN"/>
                 <outlet property="passwordTextField" destination="dyz-N5-s3H" id="O0A-1o-cmk"/>
                 <outlet property="topLabel" destination="bIh-a3-Oh0" id="hlA-Og-Ekg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="MKf-W3-UL4"/>

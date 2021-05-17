@@ -27,7 +27,7 @@ class SignInPresenter: SignInPresenterProtocol {
 
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            view?.setErrorLabelText(text: R.string.localizable.passwordsDonTMatch())
+            view?.setErrorLabelText(text: R.string.localizable.signInPasswordsMatchErrorText())
             view?.setErrorLabelHidden(isHidden: false)
         } else {
             createUser(email: email, password: password)
@@ -47,7 +47,7 @@ class SignInPresenter: SignInPresenterProtocol {
                 self.view?.setErrorLabelText(text: errorText)
                 self.view?.setErrorLabelHidden(isHidden: false)
             case .success(false):
-                self.view?.setErrorLabelText(text: R.string.localizable.unknownErrorOccurred())
+                self.view?.setErrorLabelText(text: R.string.localizable.errorUnknownErrorText())
                 self.view?.setErrorLabelHidden(isHidden: false)
             }
         }

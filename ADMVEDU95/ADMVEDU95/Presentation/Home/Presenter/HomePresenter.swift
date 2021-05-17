@@ -67,8 +67,8 @@ class HomePresenter: HomePresenterProtocol {
             coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            let title = R.string.localizable.noData()
-            let message = R.string.localizable.pleaseCheckForCorrectRequest()
+            let title = R.string.localizable.homeNoDataAlertTitle()
+            let message = R.string.localizable.homeNoDataAlertMessage()
             view?.showAlert(title: title, message: message)
         }
     }
@@ -82,7 +82,8 @@ class HomePresenter: HomePresenterProtocol {
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
-             ResponseDataKind.musicVideo.rawValue:
+             ResponseDataKind.musicVideo.rawValue,
+             ResponseDataKind.tvShow.rawValue:
             return .movie
         default:
             return .song
@@ -92,11 +93,11 @@ class HomePresenter: HomePresenterProtocol {
     private func getErrorMessage(error: SearchError) -> String {
         switch error {
         case .unknown:
-            return (R.string.localizable.unknownError())
+            return (R.string.localizable.homeUnknownErrorAlertMessage())
         case .emptyData:
-            return (R.string.localizable.noData())
+            return (R.string.localizable.homeNoDataAlertMessage())
         case .parsingData:
-            return (R.string.localizable.failedToGetDataFromServer())
+            return (R.string.localizable.homeParsingDataErrorAlertMessage())
         }
     }
 
@@ -157,7 +158,8 @@ class HomePresenter: HomePresenterProtocol {
         if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
-            view?.showAlert(title: R.string.localizable.error(), message: R.string.localizable.failedToLogOut())
+            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
+                            message: R.string.localizable.homeLogOutFailedAlertMessage())
         }
     }
 }

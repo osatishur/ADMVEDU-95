@@ -19,6 +19,8 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBOutlet private var emailTextField: AuthTextField!
     @IBOutlet private var passwordTextField: AuthTextField!
     @IBOutlet private var bottomButton: UIButton!
+    @IBOutlet private var logInButton: AuthButton!
+    @IBOutlet private var forgotPasswordButton: UIButton!
 
     var presenter: LogInPresenterProtocol?
 
@@ -38,9 +40,14 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     }
 
     func setupLayout() {
-        let attributedTitle = createAttributedTitle(title: R.string.localizable.donTHaveAnAccount(),
-                                                    subTitle: R.string.localizable.signIn())
+        let attributedTitle = createAttributedTitle(title: R.string.localizable.logInBottomButtonTitle(),
+                                                    subTitle: R.string.localizable.authSignInText())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
+        logInButton.setTitle(R.string.localizable.authLogInText(), for: .normal)
+        forgotPasswordButton.setTitle(R.string.localizable.logInForgotPasswordButtonTitle(), for: .normal)
+        topLabel.text = R.string.localizable.logInTopLabelText()
+        emailTextField.placeholder = R.string.localizable.authEmailPlaceholder()
+        passwordTextField.placeholder = R.string.localizable.authPasswordPlaceholder()
     }
 
     @IBAction private func didTapLogInButton(_: Any) {
