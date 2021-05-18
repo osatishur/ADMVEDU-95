@@ -7,17 +7,22 @@
 */
 
 //Category
-"song" = "песня";
-"feature-movie" = "фильм";
-"all" = "все";
-"music" = "музыка";
-"movie" = "фильмы";
-"podcast" = "подкасты";
-"tvShow" = "ТВ-шоу";
-"ebook" = "е-книга";
-"audiobook" = "аудиокнига";
-"musicVideoPlural" = "клипы";
-"music-video" = "клип";
+"Category.All.Text" = "все";
+"Category.Music.Text" = "музыка";
+"Category.Movie.Text" = "фильмы";
+"Category.Podcast.Text" = "подкасты";
+"Category.TvShow.Text" = "ТВ-шоу";
+"Category.Ebook.Text" = "е-книги";
+"Category.Audiobook.Text" = "аудиокниги";
+"Category.MusicVideo.Text" = "клипы";
+
+"DataKind.Song.Text" = "песня";
+"DataKind.Podcast.Text" = "подкаст";
+"DataKind.TvShow.Text" = "ТВ-шоу";
+"DataKind.Ebook.Text" = "е-книга";
+"DataKind.Audiobook.Text" = "аудиокнига";
+"DataKind.MusicVideo.Text" = "клип";
+"DataKind.FeatureMovie.Text" = "фильм";
 
 //Alert
 "Alert.Ok.Title" = "Ок";

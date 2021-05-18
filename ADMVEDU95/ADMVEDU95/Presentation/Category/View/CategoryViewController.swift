@@ -33,9 +33,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
-        let category = presenter?.getCategory(indexPath: indexPath)
-        let selectedCategory = presenter?.getSelectedCategory()
-        cell.textLabel?.text = category?.rawValue.localized()
+        let category = presenter?.getCategoryTitle(indexPath: indexPath)
+        let selectedCategory = presenter?.getSelectedCategoryTitle()
+        cell.textLabel?.text = category
         cell.accessoryType = category == selectedCategory ? .checkmark : .none
         return cell
     }

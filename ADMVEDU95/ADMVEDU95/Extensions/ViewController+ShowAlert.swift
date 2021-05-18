@@ -23,7 +23,7 @@ extension UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: R.string.localizable.alertRetryAction(),
                                       style: .default,
-                                      handler: { (_: UIAlertAction!) in
+                                      handler: { _ in
                                           completion()
                                       }))
 

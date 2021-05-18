@@ -336,7 +336,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 53 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 57 localization keys.
     struct localizable {
       /// en translation: Account not found for the specified user. Please check and try again
       ///
@@ -505,35 +505,43 @@ struct R: Rswift.Validatable {
       /// en translation: all
       ///
       /// Locales: en, ru-RU
-      static let all = Rswift.StringResource(key: "all", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryAllText = Rswift.StringResource(key: "Category.All.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: audiobook
       ///
       /// Locales: en, ru-RU
-      static let audiobook = Rswift.StringResource(key: "audiobook", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryAudiobookText = Rswift.StringResource(key: "Category.Audiobook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: audiobook
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindAudiobookText = Rswift.StringResource(key: "DataKind.Audiobook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: ebook
       ///
       /// Locales: en, ru-RU
-      static let ebook = Rswift.StringResource(key: "ebook", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryEbookText = Rswift.StringResource(key: "Category.Ebook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: ebook
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindEbookText = Rswift.StringResource(key: "DataKind.Ebook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: feature-movie
       ///
       /// Locales: en, ru-RU
-      static let featureMovie = Rswift.StringResource(key: "feature-movie", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindFeatureMovieText = Rswift.StringResource(key: "DataKind.FeatureMovie.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: movie
       ///
       /// Locales: en, ru-RU
-      static let movie = Rswift.StringResource(key: "movie", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryMovieText = Rswift.StringResource(key: "Category.Movie.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: music
       ///
       /// Locales: en, ru-RU
-      static let music = Rswift.StringResource(key: "music", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryMusicText = Rswift.StringResource(key: "Category.Music.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static let musicVideo = Rswift.StringResource(key: "music-video", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryMusicVideoText = Rswift.StringResource(key: "Category.MusicVideo.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static let musicVideoPlural = Rswift.StringResource(key: "musicVideoPlural", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindMusicVideoText = Rswift.StringResource(key: "DataKind.MusicVideo.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: no info
       ///
       /// Locales: en, ru-RU
@@ -541,15 +549,23 @@ struct R: Rswift.Validatable {
       /// en translation: podcast
       ///
       /// Locales: en, ru-RU
-      static let podcast = Rswift.StringResource(key: "podcast", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryPodcastText = Rswift.StringResource(key: "Category.Podcast.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: podcast
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindPodcastText = Rswift.StringResource(key: "DataKind.Podcast.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: song
       ///
       /// Locales: en, ru-RU
-      static let song = Rswift.StringResource(key: "song", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindSongText = Rswift.StringResource(key: "DataKind.Song.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: tvShow
       ///
       /// Locales: en, ru-RU
-      static let tvShow = Rswift.StringResource(key: "tvShow", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryTvShowText = Rswift.StringResource(key: "Category.TvShow.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: tvShow
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindTvShowText = Rswift.StringResource(key: "DataKind.TvShow.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
 
       /// en translation: Account not found for the specified user. Please check and try again
       ///
@@ -1179,121 +1195,151 @@ struct R: Rswift.Validatable {
       /// en translation: all
       ///
       /// Locales: en, ru-RU
-      static func all(preferredLanguages: [String]? = nil) -> String {
+      static func categoryAllText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("all", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.All.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "all"
+          return "Category.All.Text"
         }
 
-        return NSLocalizedString("all", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.All.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: audiobook
       ///
       /// Locales: en, ru-RU
-      static func audiobook(preferredLanguages: [String]? = nil) -> String {
+      static func categoryAudiobookText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("audiobook", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Audiobook.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "audiobook"
+          return "Category.Audiobook.Text"
         }
 
-        return NSLocalizedString("audiobook", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Audiobook.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: audiobook
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindAudiobookText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Audiobook.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Audiobook.Text"
+        }
+
+        return NSLocalizedString("DataKind.Audiobook.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: ebook
       ///
       /// Locales: en, ru-RU
-      static func ebook(preferredLanguages: [String]? = nil) -> String {
+      static func categoryEbookText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("ebook", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Ebook.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "ebook"
+          return "Category.Ebook.Text"
         }
 
-        return NSLocalizedString("ebook", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Ebook.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: ebook
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindEbookText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Ebook.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Ebook.Text"
+        }
+
+        return NSLocalizedString("DataKind.Ebook.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: feature-movie
       ///
       /// Locales: en, ru-RU
-      static func featureMovie(preferredLanguages: [String]? = nil) -> String {
+      static func dataKindFeatureMovieText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("feature-movie", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.FeatureMovie.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "feature-movie"
+          return "DataKind.FeatureMovie.Text"
         }
 
-        return NSLocalizedString("feature-movie", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.FeatureMovie.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: movie
       ///
       /// Locales: en, ru-RU
-      static func movie(preferredLanguages: [String]? = nil) -> String {
+      static func categoryMovieText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("movie", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Movie.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "movie"
+          return "Category.Movie.Text"
         }
 
-        return NSLocalizedString("movie", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Movie.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: music
       ///
       /// Locales: en, ru-RU
-      static func music(preferredLanguages: [String]? = nil) -> String {
+      static func categoryMusicText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("music", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Music.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "music"
+          return "Category.Music.Text"
         }
 
-        return NSLocalizedString("music", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Music.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static func musicVideo(preferredLanguages: [String]? = nil) -> String {
+      static func categoryMusicVideoText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("music-video", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.MusicVideo.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "music-video"
+          return "Category.MusicVideo.Text"
         }
 
-        return NSLocalizedString("music-video", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.MusicVideo.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static func musicVideoPlural(preferredLanguages: [String]? = nil) -> String {
+      static func dataKindMusicVideoText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("musicVideoPlural", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.MusicVideo.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "musicVideoPlural"
+          return "DataKind.MusicVideo.Text"
         }
 
-        return NSLocalizedString("musicVideoPlural", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.MusicVideo.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: no info
@@ -1314,46 +1360,76 @@ struct R: Rswift.Validatable {
       /// en translation: podcast
       ///
       /// Locales: en, ru-RU
-      static func podcast(preferredLanguages: [String]? = nil) -> String {
+      static func categoryPodcastText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("podcast", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Podcast.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "podcast"
+          return "Category.Podcast.Text"
         }
 
-        return NSLocalizedString("podcast", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Podcast.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: podcast
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindPodcastText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Podcast.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Podcast.Text"
+        }
+
+        return NSLocalizedString("DataKind.Podcast.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: song
       ///
       /// Locales: en, ru-RU
-      static func song(preferredLanguages: [String]? = nil) -> String {
+      static func dataKindSongText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("song", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.Song.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "song"
+          return "DataKind.Song.Text"
         }
 
-        return NSLocalizedString("song", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.Song.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: tvShow
       ///
       /// Locales: en, ru-RU
-      static func tvShow(preferredLanguages: [String]? = nil) -> String {
+      static func categoryTvShowText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("tvShow", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.TvShow.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "tvShow"
+          return "Category.TvShow.Text"
         }
 
-        return NSLocalizedString("tvShow", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.TvShow.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: tvShow
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindTvShowText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.TvShow.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.TvShow.Text"
+        }
+
+        return NSLocalizedString("DataKind.TvShow.Text", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

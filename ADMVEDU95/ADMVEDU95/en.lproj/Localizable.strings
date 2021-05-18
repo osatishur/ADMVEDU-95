@@ -7,17 +7,22 @@
 */
 
 //Category
-"song" = "song";
-"all" = "all";
-"music" = "music";
-"movie" = "movie";
-"podcast" = "podcast";
-"tvShow" = "tvShow";
-"ebook" = "ebook";
-"audiobook" = "audiobook";
-"music-video" = "music-video";
-"musicVideoPlural" = "music-video";
-"feature-movie" = "feature-movie";
+"Category.All.Text" = "all";
+"Category.Music.Text" = "music";
+"Category.Movie.Text" = "movie";
+"Category.Podcast.Text" = "podcast";
+"Category.TvShow.Text" = "tvShow";
+"Category.Ebook.Text" = "ebook";
+"Category.Audiobook.Text" = "audiobook";
+"Category.MusicVideo.Text" = "music-video";
+
+"DataKind.Song.Text" = "song";
+"DataKind.Podcast.Text" = "podcast";
+"DataKind.TvShow.Text" = "tvShow";
+"DataKind.Ebook.Text" = "ebook";
+"DataKind.Audiobook.Text" = "audiobook";
+"DataKind.MusicVideo.Text" = "music-video";
+"DataKind.FeatureMovie.Text" = "feature-movie";
 
 //Alert
 "Alert.Ok.Title" = "OK";

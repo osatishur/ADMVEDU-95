@@ -127,7 +127,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func getCategoryTitle() -> String {
-        category.rawValue
+        category.kind
     }
 
     func getCategory() -> Category {
@@ -167,6 +167,6 @@ class HomePresenter: HomePresenterProtocol {
 extension HomePresenter: CategoryPresenterDelegate {
     func fetchCategory(_: CategoryPresenter, category: Category) {
         self.category = category
-        view?.updateCategory(category: category.rawValue.localized())
+        view?.updateCategory(category: category.kind)
     }
 }
