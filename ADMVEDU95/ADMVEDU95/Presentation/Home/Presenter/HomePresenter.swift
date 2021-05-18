@@ -39,18 +39,15 @@ class HomePresenter: HomePresenterProtocol {
     
     func searchITunes(searchTerm: String, filter: String) {
         searchService?.searchResults(searchTerm: searchTerm,
-                                    filter: filter) { result in
-            if !self.dataSource.isEmpty {
-                self.dataSource = []
-                self.view?.updateSearchResults()
-            }
+                                     filter: filter) { result in
+            self.clearOldResults()
             switch result {
             case .success(let response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
             case .failure(let error):
                 let alertMessage = self.getErrorMessage(error: error)
-                self.handleRetry(message: alertMessage)
+                self.handleSearchError(alertMessage: alertMessage)
             }
         }
     }
@@ -59,7 +56,6 @@ class HomePresenter: HomePresenterProtocol {
         self.coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
-            print(result)
             addResultToDataSource(result: result)
             self.coreDataStack.saveResult(apiResult: result)
         }
@@ -71,6 +67,17 @@ class HomePresenter: HomePresenterProtocol {
     private func addResultToDataSource(result: ApiResult) {
         if !result.isInsufficient {
             self.dataSource.append(result)
+        }
+    }
+    
+    private func handleSearchError(alertMessage: String) {
+        NetworkService.shared.handleSearchNetworkError { result in
+            switch result {
+            case .reachedRetryLimit:
+                self.getResultsFromCoreData()
+            case .notReachedRetryLimit:
+                self.view?.showAlertWithRetry(message: alertMessage)
+            }
         }
     }
     
@@ -94,17 +101,7 @@ class HomePresenter: HomePresenterProtocol {
             return ("Failed to get data from server".localized())
         }
     }
-    
-    private func handleRetry(message: String) {
-        increaseRetryNumber()
-        if retryNumber > 2 {
-            resetRetryNumber()
-            getResultsFromCoreData()
-        } else {
-            self.view?.showAlertWithRetry(message: message)
-        }
-    }
-    
+        
     func getResultsFromCoreData() {
         self.coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
@@ -136,8 +133,14 @@ class HomePresenter: HomePresenterProtocol {
         retryNumber = 0
     }
     
+    private func clearOldResults() {
+        if !self.dataSource.isEmpty {
+            self.dataSource = []
+            self.view?.updateSearchResults()
+        }
+    }
+    
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
-        print(model)
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
     

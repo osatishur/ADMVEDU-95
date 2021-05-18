@@ -46,7 +46,14 @@ class CoreDataService {
     }
 
     func saveResult(apiResult: ApiResult) {
-        let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as! ResultCoreDataModel
+        guard let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as? ResultCoreDataModel else {
+            return
+        }
+        convertApiResultToModel(apiResult: apiResult, model: model)
+        saveContext()
+    }
+    
+    private func convertApiResultToModel(apiResult: ApiResult, model: ResultCoreDataModel) {
         model.albumImageURL = apiResult.artworkUrl100
         model.albumName = apiResult.collectionName
         model.artistName = apiResult.artistName
@@ -57,7 +64,6 @@ class CoreDataService {
             model.previewPath = fileUrl
             self.saveContext()
         }
-        saveContext()
     }
     
     func deleteAllResults(){

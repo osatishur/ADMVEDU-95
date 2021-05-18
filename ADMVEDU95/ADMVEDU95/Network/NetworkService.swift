@@ -77,4 +77,40 @@ class NetworkService {
             return .failure(SearchError.parsingData)
         }
     }
+    
+    func handleSearchNetworkError(comletion: @escaping (LostNetworkRetryLimit) -> Void) {
+        NetworkReachabilityHandler.shared.handleNetworkLoss(comletion: comletion)
+    }
+}
+
+enum LostNetworkRetryLimit {
+    case reachedRetryLimit
+    case notReachedRetryLimit
+}
+
+class NetworkReachabilityHandler {
+    static var shared: NetworkReachabilityHandler = NetworkReachabilityHandler()
+    
+    private init() {}
+    
+    //private let reachability = NetworkReachabilityManager(host: "www.apple.com")
+    
+    var retryCount = 0
+    
+//    var isReachable: Bool {
+//        guard let reachability = reachability else {
+//            return false
+//        }
+//        return reachability.isReachable
+//    }
+    
+    func handleNetworkLoss(comletion: @escaping (LostNetworkRetryLimit) -> Void) {
+        if retryCount == 2 {
+            retryCount = 0
+            comletion(.reachedRetryLimit)
+        } else {
+            retryCount += 1
+            comletion(.notReachedRetryLimit)
+        }
+    }
 }

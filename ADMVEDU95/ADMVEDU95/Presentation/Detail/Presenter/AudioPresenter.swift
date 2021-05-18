@@ -39,7 +39,6 @@ class AudioPresenter: DetailPresenter {
               let url = getURL(urlString: urlString) else {
             return
         }
-        print(songUrl)
         let playerItem: AVPlayerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
     }

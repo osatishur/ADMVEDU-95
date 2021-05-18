@@ -8,7 +8,6 @@
 import Foundation
 
 class FileManagerService {
-    
     func saveFile(url: String, completion: @escaping ((_ filePath: String)->())) {
         guard let url = URL(string: url)  else {
             return
@@ -65,5 +64,4 @@ class FileManagerService {
             print("Could not clear folder: \(error)")
         }
     }
-    
 }
