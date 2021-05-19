@@ -44,11 +44,11 @@ class CategoryPresenter: CategoryPresenterProtocol {
     }
 
     func getCategoryTitle(indexPath: IndexPath) -> String {
-        dataSource[indexPath.row].kind
+        dataSource[indexPath.row].description
     }
 
     func getSelectedCategoryTitle() -> String {
-        selectedCategory.kind
+        selectedCategory.description
     }
 
     func getCategory(indexPath: IndexPath) -> Category {

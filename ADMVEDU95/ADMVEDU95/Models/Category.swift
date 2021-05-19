@@ -20,7 +20,7 @@ enum Category: String, CaseIterable {
 }
 
 extension Category {
-    var kind: String {
+    var description: String {
         switch self {
         case .all:
             return R.string.localizable.categoryAllText()
