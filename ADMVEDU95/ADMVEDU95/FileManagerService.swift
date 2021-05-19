@@ -8,25 +8,27 @@
 import Foundation
 
 class FileManagerService {
-    func saveFile(url: String, completion: @escaping ((_ filePath: String)->())) {
-        guard let url = URL(string: url)  else {
+    
+    private var fileManager = FileManager.default
+    
+    func saveFile(url: String, completion: @escaping ((_ filePath: String) -> Void)) {
+        guard let url = URL(string: url),
+              let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-        let fileManager = FileManager.default
-        let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let filePath = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
+        let documentsPath = documentsDirectoryURL.appendingPathComponent(url.lastPathComponent)
         do {
-            if try filePath.checkResourceIsReachable() {
-                completion(filePath.absoluteString)
+            if try documentsPath.checkResourceIsReachable() {
+                completion(documentsPath.absoluteString)
             } else {
-                downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
+                downloadFile(withUrl: url, andFilePath: documentsPath, completion: completion)
             }
         } catch {
-            downloadFile(withUrl: url, andFilePath: filePath, completion: completion)
+            downloadFile(withUrl: url, andFilePath: documentsPath, completion: completion)
         }
     }
     
-    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String)->())){
+    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)){
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try Data(contentsOf: url)
@@ -42,22 +44,19 @@ class FileManagerService {
     }
     
     func deleteDownloadedFiles() {
-        let fileManager = FileManager.default
-        let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
-        let documentsPath = documentsDirectoryURL?.path
-        
+        guard let documentsDirectoryURL =  fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+        let documentsPath = documentsDirectoryURL.path
         do {
-            guard let documentPath = documentsPath else {
-                return
-            }
-            let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
+            let fileNames = try fileManager.contentsOfDirectory(atPath: "\(documentsPath)")
             print("all files in folder: \(fileNames)")
             for fileName in fileNames {
-                let filePathName = "\(documentPath)/\(fileName)"
+                let filePathName = "\(documentsPath)/\(fileName)"
                 try fileManager.removeItem(atPath: filePathName)
             }
             
-            let files = try fileManager.contentsOfDirectory(atPath: "\(documentPath)")
+            let files = try fileManager.contentsOfDirectory(atPath: "\(documentsPath)")
             print("all files after deleting: \(files)")
             
         } catch {

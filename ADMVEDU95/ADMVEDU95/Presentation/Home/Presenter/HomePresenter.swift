@@ -27,7 +27,6 @@ class HomePresenter: HomePresenterProtocol {
     var router: HomeRouterProtocol?
     var dataSource: [ApiResult]  = []
     var category: Category = Category.all
-    var retryNumber = 0
     var coreDataStack = CoreDataService()
     
     init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
@@ -46,8 +45,12 @@ class HomePresenter: HomePresenterProtocol {
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
             case .failure(let error):
-                let alertMessage = self.getErrorMessage(error: error)
-                self.handleSearchError(alertMessage: alertMessage)
+                if !(error == .networkLoss) {
+                    let alertMessage = self.getErrorMessage(error: error)
+                    self.view?.showAlert(title: "Error", message: alertMessage)
+                } else {
+                    self.handleNetworkLoss()
+                }
             }
         }
     }
@@ -70,13 +73,13 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
-    private func handleSearchError(alertMessage: String) {
-        NetworkService.shared.handleSearchNetworkError { result in
+    private func handleNetworkLoss() {
+        NetworkReachabilityHandler.shared.handleNetworkLoss { result in
             switch result {
             case .reachedRetryLimit:
                 self.getResultsFromCoreData()
             case .notReachedRetryLimit:
-                self.view?.showAlertWithRetry(message: alertMessage)
+                self.view?.showAlertWithRetry(message: "Please, check your internet connection")
             }
         }
     }
@@ -91,7 +94,7 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
     
-    private func getErrorMessage(error: SearchError) -> String {
+    private func getErrorMessage(error: NetworkError) -> String {
         switch error {
         case .unknown:
             return ("Unknown error".localized())
@@ -99,6 +102,8 @@ class HomePresenter: HomePresenterProtocol {
             return ("No data".localized())
         case .parsingData:
             return ("Failed to get data from server".localized())
+        case .networkLoss:
+            return ("Please, check your internet connection".localized())
         }
     }
         
@@ -124,15 +129,7 @@ class HomePresenter: HomePresenterProtocol {
     func getCategory() -> Category {
         return category
     }
-    
-    private func increaseRetryNumber() {
-        retryNumber += 1
-    }
-    
-    private func resetRetryNumber() {
-        retryNumber = 0
-    }
-    
+        
     private func clearOldResults() {
         if !self.dataSource.isEmpty {
             self.dataSource = []

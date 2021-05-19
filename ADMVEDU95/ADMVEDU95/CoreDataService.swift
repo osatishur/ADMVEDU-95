@@ -22,7 +22,7 @@ class CoreDataService {
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.coreDataModelName)
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -33,16 +33,16 @@ class CoreDataService {
     func fetchResults(completion: @escaping ([ApiResult]?) -> ()) {
         let request = NSFetchRequest<ResultCoreDataModel>(entityName: Constants.entityName)
 
-        if let models = try? context.fetch(request) {
-            var results: [ApiResult] = []
-            for model in models {
-                let result = model.model
-                results.append(result)
-            }
-            completion(results)
-        } else {
+        guard let models = try? context.fetch(request) else {
             completion(nil)
+            return
         }
+        var results: [ApiResult] = []
+        for model in models {
+            let result = model.model
+            results.append(result)
+        }
+        completion(results)
     }
 
     func saveResult(apiResult: ApiResult) {
@@ -72,9 +72,9 @@ class CoreDataService {
     }
     
     private func deleteEntityObjects() {
-        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
+        let delAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
         do {
-            try context.execute(DelAllReqVar)
+            try context.execute(delAllReqVar)
         }
         catch {
             print(error)

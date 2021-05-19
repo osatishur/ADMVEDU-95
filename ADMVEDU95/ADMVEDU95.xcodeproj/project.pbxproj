@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1E53482655657300D7D191 /* NetworkReachabilityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */; };
+		0E1E534A2655659000D7D191 /* LostNetworkRetryLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */; };
 		0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */; };
 		0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */; };
 		0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */; };
@@ -78,6 +80,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityHandler.swift; sourceTree = "<group>"; };
+		0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostNetworkRetryLimit.swift; sourceTree = "<group>"; };
 		0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewController.swift; sourceTree = "<group>"; };
@@ -440,6 +444,7 @@
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
+				0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */,
 				838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */,
 				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
 			);
@@ -453,6 +458,7 @@
 				83A78BDD26276263009C3807 /* ApiResult.swift */,
 				8306668C262983F000BD694B /* ResponseDataKind.swift */,
 				830666972629B1A600BD694B /* Category.swift */,
+				0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */,
 				0E417D92264D63A000FE94CF /* CoreDataModel */,
 			);
 			path = Models;
@@ -621,8 +627,10 @@
 				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
 				0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
+				0E1E53482655657300D7D191 /* NetworkReachabilityHandler.swift in Sources */,
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
+				0E1E534A2655659000D7D191 /* LostNetworkRetryLimit.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
 				0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
