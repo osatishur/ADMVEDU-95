@@ -51,6 +51,7 @@ class HomePresenter: HomePresenterProtocol {
                 } else {
                     self.handleNetworkLoss()
                 }
+            }
         }
     }
 
@@ -58,7 +59,6 @@ class HomePresenter: HomePresenterProtocol {
         coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
-            print(result)
             addResultToDataSource(result: result)
             coreDataStack.saveResult(apiResult: result)
         }
@@ -74,7 +74,7 @@ class HomePresenter: HomePresenterProtocol {
             dataSource.append(result)
         }
     }
-        
+
     private func handleNetworkLoss() {
         NetworkReachabilityHandler.shared.handleNetworkLoss { result in
             switch result {
@@ -85,7 +85,7 @@ class HomePresenter: HomePresenterProtocol {
             }
         }
     }
-
+  
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
@@ -107,7 +107,7 @@ class HomePresenter: HomePresenterProtocol {
             return ("Please, check your internet connection".localized())
         }
     }
-    
+
     func getResultsFromCoreData() {
         coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
@@ -128,7 +128,16 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func getCategory() -> Category {
-        category
+
+        return category
+    }
+        
+    private func clearOldResults() {
+        if !self.dataSource.isEmpty {
+            self.dataSource = []
+            self.view?.updateSearchResults()
+        }
+
     }
 
         private func clearOldResults() {
@@ -138,7 +147,6 @@ class HomePresenter: HomePresenterProtocol {
             }
 
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
-        print(model)
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
 

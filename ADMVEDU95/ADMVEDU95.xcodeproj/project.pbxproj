@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1E53482655657300D7D191 /* NetworkReachabilityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */; };
+		0E1E534A2655659000D7D191 /* LostNetworkRetryLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */; };
 		0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */; };
 		0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */; };
 		0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */; };
@@ -22,6 +24,7 @@
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
 		0E49E0CE26500F8D0028F7DB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49E0CD26500F8D0028F7DB /* R.generated.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
+		0E5D85CE2652F08D00C44350 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D85CD2652F08D00C44350 /* FileManagerService.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
 		0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0252632D02800C4C059 /* SignInViewController.xib */; };
@@ -78,6 +81,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityHandler.swift; sourceTree = "<group>"; };
+		0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostNetworkRetryLimit.swift; sourceTree = "<group>"; };
 		0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		0E2CC760263BEE8F005B97B8 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
 		0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +98,7 @@
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		0E49E0CD26500F8D0028F7DB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
+		0E5D85CD2652F08D00C44350 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		0E66C0252632D02800C4C059 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
@@ -409,6 +415,7 @@
 				0E417D90264D5C2C00FE94CF /* CoreDataService.swift */,
 				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
 				0E49E0CD26500F8D0028F7DB /* R.generated.swift */,
+
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
 				83A78BAF2626C79A009C3807 /* CustomViews */,
@@ -440,6 +447,7 @@
 			children = (
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
+				0E1E53472655657300D7D191 /* NetworkReachabilityHandler.swift */,
 				838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */,
 				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
 			);
@@ -453,6 +461,7 @@
 				83A78BDD26276263009C3807 /* ApiResult.swift */,
 				8306668C262983F000BD694B /* ResponseDataKind.swift */,
 				830666972629B1A600BD694B /* Category.swift */,
+				0E1E53492655659000D7D191 /* LostNetworkRetryLimit.swift */,
 				0E417D92264D63A000FE94CF /* CoreDataModel */,
 			);
 			path = Models;
@@ -680,8 +689,10 @@
 				831607152625B4780090D203 /* UIImageView+LoadImage.swift in Sources */,
 				0E23E8CA2641DEBD0084AD1E /* AuthTextField.swift in Sources */,
 				8355601C26249A6D00C77316 /* NetworkService.swift in Sources */,
+				0E1E53482655657300D7D191 /* NetworkReachabilityHandler.swift in Sources */,
 				83E769A8262DB104008826CB /* String+Localized.swift in Sources */,
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
+				0E1E534A2655659000D7D191 /* LostNetworkRetryLimit.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
 				0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
@@ -729,7 +740,7 @@
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,
 				0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */,
 				0E40CEC92636A65C0067D7D5 /* SearchTableViewCell.swift in Sources */,
-				0EE9441E2656CEB8007768BB /* FileManagerService.swift in Sources */,
+				0E5D85CE2652F08D00C44350 /* FileManagerService.swift in Sources */
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

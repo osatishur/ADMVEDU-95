@@ -8,10 +8,11 @@
 import Alamofire
 import Foundation
 
-public enum SearchError: Error {
+public enum NetworkError: Error {
     case emptyData
     case parsingData
     case unknown
+    case networkLoss
 }
 
 class NetworkService {
@@ -67,20 +68,20 @@ class NetworkService {
 
     private func parseResponse<T: Codable>(data: Data?,
                                            response _: URLResponse?,
-                                           error: Error?, type: T.Type) -> Result<T, SearchError> {
+                                           error: Error?, type: T.Type) -> Result<T, NetworkError> {
         guard let jsonData = data else {
-            return .failure(SearchError.emptyData)
+            return .failure(NetworkError.emptyData)
         }
 
         if error != nil {
-            return .failure(SearchError.unknown)
+            return .failure(NetworkError.unknown)
         }
 
         do {
             let searchResponse = try decoder.decode(type, from: jsonData)
             return .success(searchResponse)
         } catch {
-            return .failure(SearchError.parsingData)
+            return .failure(NetworkError.parsingData)
         }
     }
 }
