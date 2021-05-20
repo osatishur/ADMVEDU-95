@@ -8,10 +8,11 @@
 import Alamofire
 import Foundation
 
-public enum SearchError: Error {
+public enum NetworkError: Error {
     case emptyData
     case parsingData
     case unknown
+    case networkLoss
 }
 
 class NetworkService {
@@ -33,13 +34,13 @@ class NetworkService {
         return decoder
     }()
 
-    public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
+    public func get<T: Codable>(endpoint: Endpoint,
                                 parameters: [String: String],
                                 completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
-        AF.request(url, parameters: parameters).responseJSON { (response) in
+        AF.request(url, parameters: parameters).responseJSON { response in
             if let _ = response.error?.isSessionTaskError {
                 DispatchQueue.main.async {
                     let searchError: Result<T, NetworkError> = .failure(NetworkError.networkLoss)
@@ -67,20 +68,20 @@ class NetworkService {
 
     private func parseResponse<T: Codable>(data: Data?,
                                            response _: URLResponse?,
-                                           error: Error?, type: T.Type) -> Result<T, SearchError> {
+                                           error: Error?, type: T.Type) -> Result<T, NetworkError> {
         guard let jsonData = data else {
-            return .failure(SearchError.emptyData)
+            return .failure(NetworkError.emptyData)
         }
 
         if error != nil {
-            return .failure(SearchError.unknown)
+            return .failure(NetworkError.unknown)
         }
 
         do {
             let searchResponse = try decoder.decode(type, from: jsonData)
             return .success(searchResponse)
         } catch {
-            return .failure(SearchError.parsingData)
+            return .failure(NetworkError.parsingData)
         }
     }
 }

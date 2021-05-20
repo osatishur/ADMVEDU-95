@@ -47,7 +47,7 @@ class AudioPresenter: DetailPresenter {
         else {
             return
         }
-        let playerItem: AVPlayerItem = AVPlayerItem(url: url)
+        let playerItem = AVPlayerItem(url: url)
         player = AVPlayer(playerItem: playerItem)
     }
 

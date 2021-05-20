@@ -14,6 +14,8 @@ class CoreDataService {
         static let entityName = "ResultCoreDataModel"
     }
 
+    let fileManagerService = FileManagerService()
+
     lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
     }()
@@ -44,13 +46,14 @@ class CoreDataService {
     }
 
     func saveResult(apiResult: ApiResult) {
-        guard let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as? ResultCoreDataModel else {
+        guard let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName,
+                                                              into: context) as? ResultCoreDataModel else {
             return
         }
         convertApiResultToModel(apiResult: apiResult, model: model)
         saveContext()
     }
-    
+
     private func convertApiResultToModel(apiResult: ApiResult, model: ResultCoreDataModel) {
         model.albumImageURL = apiResult.artworkUrl100
         model.albumName = apiResult.collectionName
@@ -101,7 +104,7 @@ class CoreDataService {
         }
     }
 
-    func deleteAllResults(){
+    func deleteAllResults() {
         fileManagerService.deleteDownloadedFiles()
         deleteEntityObjects()
     }
@@ -131,12 +134,10 @@ class CoreDataService {
     }
 
     private func deleteEntityObjects() {
-        let delAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
+        let delAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: Constants.entityName))
         do {
             try context.execute(delAllReqVar)
-        }
-        catch {
-        }
+        } catch {}
         saveContext()
     }
 

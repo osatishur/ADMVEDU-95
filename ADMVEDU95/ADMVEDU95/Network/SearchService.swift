@@ -10,7 +10,7 @@ import Foundation
 protocol SearchServiceProtocol {
     func searchResults(searchTerm: String,
                        filter: String,
-                       completion: @escaping (Result<Response,  NetworkError>) -> Void)
+                       completion: @escaping (Result<Response, NetworkError>) -> Void)
 }
 
 class SearchService: SearchServiceProtocol {

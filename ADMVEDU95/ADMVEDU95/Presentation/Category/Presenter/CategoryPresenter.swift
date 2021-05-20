@@ -21,10 +21,10 @@ protocol CategoryPresenterProtocol: AnyObject {
 
 class CategoryPresenter: CategoryPresenterProtocol {
     weak var view: CategoryViewProtocol?
-    var router: HomeRouterProtocol?
-    var selectedCategory: Category
+    private var router: HomeRouterProtocol?
+    private var selectedCategory: Category
     weak var delegate: CategoryPresenterDelegate?
-    var dataSource: [Category] = {
+    private var dataSource: [Category] = {
         var data: [Category] = []
         for category in Category.allCases {
             data.append(category)

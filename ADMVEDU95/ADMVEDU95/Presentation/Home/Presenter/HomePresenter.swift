@@ -21,15 +21,18 @@ protocol HomePresenterProtocol: AnyObject {
 }
 
 class HomePresenter: HomePresenterProtocol {
-    weak var view: HomeViewProtocol?
-    let searchService: SearchServiceProtocol?
-    let firebaseService: FirebaseServiceProtocol?
-    var router: HomeRouterProtocol?
-    var dataSource: [ApiResult]  = []
-    var category: Category = Category.all
-    var coreDataStack = CoreDataService()
-    
-    init(view: HomeViewProtocol, searchService: SearchServiceProtocol, firebaseService: FirebaseServiceProtocol, router: HomeRouterProtocol) {
+    private weak var view: HomeViewProtocol?
+    private let searchService: SearchServiceProtocol?
+    private let firebaseService: FirebaseServiceProtocol?
+    private var router: HomeRouterProtocol?
+    private var dataSource: [ApiResult] = []
+    private var category = Category.all
+    private var coreDataStack = CoreDataService()
+
+    init(view: HomeViewProtocol,
+         searchService: SearchServiceProtocol,
+         firebaseService: FirebaseServiceProtocol,
+         router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
@@ -44,13 +47,14 @@ class HomePresenter: HomePresenterProtocol {
             case let .success(response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
-            case .failure(let error):
+            case let .failure(error):
                 if !(error == .networkLoss) {
                     let alertMessage = self.getErrorMessage(error: error)
                     self.view?.showAlert(title: "Error", message: alertMessage)
                 } else {
                     self.handleNetworkLoss()
                 }
+            }
         }
     }
 
@@ -74,7 +78,7 @@ class HomePresenter: HomePresenterProtocol {
             dataSource.append(result)
         }
     }
-        
+
     private func handleNetworkLoss() {
         NetworkReachabilityHandler.shared.handleNetworkLoss { result in
             switch result {
@@ -102,12 +106,13 @@ class HomePresenter: HomePresenterProtocol {
             return (R.string.localizable.unknownError())
         case .emptyData:
             return (R.string.localizable.noData())
+        case .parsingData:
             return ("Failed to get data from server".localized())
         case .networkLoss:
             return ("Please, check your internet connection".localized())
         }
     }
-    
+
     func getResultsFromCoreData() {
         coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
@@ -131,11 +136,12 @@ class HomePresenter: HomePresenterProtocol {
         category
     }
 
-        private func clearOldResults() {
-            if !self.dataSource.isEmpty {
-                self.dataSource = []
-                self.view?.updateSearchResults()
-            }
+    func clearOldResults() {
+        if !dataSource.isEmpty {
+            dataSource = []
+            view?.updateSearchResults()
+        }
+    }
 
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
         print(model)
