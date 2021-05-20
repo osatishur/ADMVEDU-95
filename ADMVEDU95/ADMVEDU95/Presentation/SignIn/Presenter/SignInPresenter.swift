@@ -15,9 +15,9 @@ protocol SignInPresenterProtocol: AnyObject {
 }
 
 class SignInPresenter: SignInPresenterProtocol {
-    weak var view: SignInViewProtocol?
-    var router: AuthRouter?
-    let firebaseService: FirebaseServiceProtocol!
+    private weak var view: SignInViewProtocol?
+    private var router: AuthRouter?
+    private let firebaseService: FirebaseServiceProtocol!
 
     init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view

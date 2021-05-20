@@ -21,14 +21,13 @@ protocol HomePresenterProtocol: AnyObject {
 }
 
 class HomePresenter: HomePresenterProtocol {
-    weak var view: HomeViewProtocol?
-    let searchService: SearchServiceProtocol?
-    let firebaseService: FirebaseServiceProtocol?
-    var router: HomeRouterProtocol?
-    var dataSource: [ApiResult] = []
-    var category = Category.all
-    var retryNumber = 0
-    var coreDataStack = CoreDataService()
+    private weak var view: HomeViewProtocol?
+    private let searchService: SearchServiceProtocol?
+    private let firebaseService: FirebaseServiceProtocol?
+    private var router: HomeRouterProtocol?
+    private var dataSource: [ApiResult] = []
+    private var category = Category.all
+    private var coreDataStack = CoreDataService()
 
     init(view: HomeViewProtocol,
          searchService: SearchServiceProtocol,
@@ -43,17 +42,18 @@ class HomePresenter: HomePresenterProtocol {
     func searchITunes(searchTerm: String, filter: String) {
         searchService?.searchResults(searchTerm: searchTerm,
                                      filter: filter) { result in
-            if !self.dataSource.isEmpty {
-                self.dataSource = []
-                self.view?.updateSearchResults()
-            }
+            self.clearOldResults()
             switch result {
             case let .success(response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
             case let .failure(error):
-                let alertMessage = self.getErrorMessage(error: error)
-                self.handleRetry(message: alertMessage)
+                if !(error == .networkLoss) {
+                    let alertMessage = self.getErrorMessage(error: error)
+                    self.view?.showAlert(title: "Error", message: alertMessage)
+                } else {
+                    self.handleNetworkLoss()
+                }
             }
         }
     }
@@ -79,6 +79,17 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
 
+    private func handleNetworkLoss() {
+        NetworkReachabilityHandler.shared.handleNetworkLoss { result in
+            switch result {
+            case .reachedRetryLimit:
+                self.getResultsFromCoreData()
+            case .notReachedRetryLimit:
+                self.view?.showAlertWithRetry(message: "Please, check your internet connection")
+            }
+        }
+    }
+
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
@@ -90,24 +101,17 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
 
-    private func getErrorMessage(error: SearchError) -> String {
+    private func getErrorMessage(error: NetworkError) -> String {
         switch error {
         case .unknown:
             return (R.string.localizable.homeUnknownErrorAlertMessage())
         case .emptyData:
             return (R.string.localizable.homeNoDataAlertMessage())
         case .parsingData:
-            return (R.string.localizable.homeParsingDataErrorAlertMessage())
-        }
-    }
 
-    private func handleRetry(message: String) {
-        increaseRetryNumber()
-        if retryNumber > 2 {
-            resetRetryNumber()
-            getResultsFromCoreData()
-        } else {
-            view?.showAlertWithRetry(message: message)
+            return (R.string.localizable.homeParsingDataErrorAlertMessage())
+        case .networkLoss:
+            return ("Please, check your internet connection".localized())
         }
     }
 
@@ -134,12 +138,11 @@ class HomePresenter: HomePresenterProtocol {
         category
     }
 
-    private func increaseRetryNumber() {
-        retryNumber += 1
-    }
-
-    private func resetRetryNumber() {
-        retryNumber = 0
+    func clearOldResults() {
+        if !dataSource.isEmpty {
+            dataSource = []
+            view?.updateSearchResults()
+        }
     }
 
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {

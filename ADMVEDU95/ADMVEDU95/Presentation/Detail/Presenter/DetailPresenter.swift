@@ -15,7 +15,7 @@ protocol DetailPresenterProtocol: AnyObject {
 
 class DetailPresenter: DetailPresenterProtocol {
     weak var view: DetailViewProtocol?
-    var router: HomeRouterProtocol?
+    private var router: HomeRouterProtocol?
     var model: ApiResult?
     var playerViewController = AVPlayerViewController()
     var player: AVPlayer?

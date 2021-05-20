@@ -1,3 +1,4 @@
 --disable wrapMultilineStatementBraces
 
 --exclude Pods, R.generated.swift
+
