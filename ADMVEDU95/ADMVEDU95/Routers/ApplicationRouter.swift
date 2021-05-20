@@ -11,7 +11,7 @@ class ApplicationRouter {
     var mainRouter: MainRouterProtocol?
     var mainNavigationController = UINavigationController()
     var viewBuilder = ViewBuilder()
-    
+
     init(isHomeInitial: Bool, window: UIWindow) {
         if isHomeInitial {
             mainRouter = HomeRouter(navigationController: mainNavigationController, builder: viewBuilder, window: window)

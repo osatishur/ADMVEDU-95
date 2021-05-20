@@ -35,13 +35,13 @@ class HomePresenter: HomePresenterProtocol {
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func searchITunes(searchTerm: String, filter: String) {
         searchService?.searchResults(searchTerm: searchTerm,
                                      filter: filter) { result in
             self.clearOldResults()
             switch result {
-            case .success(let response):
+            case let .success(response):
                 self.fetchDataFromResponse(response: response)
                 self.view?.updateSearchResults()
             case .failure(let error):
@@ -54,25 +54,27 @@ class HomePresenter: HomePresenterProtocol {
             }
         }
     }
-    
+
     private func fetchDataFromResponse(response: Response) {
-        self.coreDataStack.deleteAllResults()
+        coreDataStack.deleteAllResults()
         let results = response.results
         for result in results {
             addResultToDataSource(result: result)
-            self.coreDataStack.saveResult(apiResult: result)
+            coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            self.view?.showAlert(title: "No data".localized(), message: "Please, check for correct request".localized())
+            let title = R.string.localizable.noData()
+            let message = R.string.localizable.pleaseCheckForCorrectRequest()
+            view?.showAlert(title: title, message: message)
         }
     }
-    
+
     private func addResultToDataSource(result: ApiResult) {
         if !result.isInsufficient {
-            self.dataSource.append(result)
+            dataSource.append(result)
         }
     }
-    
+
     private func handleNetworkLoss() {
         NetworkReachabilityHandler.shared.handleNetworkLoss { result in
             switch result {
@@ -83,7 +85,7 @@ class HomePresenter: HomePresenterProtocol {
             }
         }
     }
-    
+  
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
@@ -93,40 +95,40 @@ class HomePresenter: HomePresenterProtocol {
             return .song
         }
     }
-    
+
     private func getErrorMessage(error: NetworkError) -> String {
         switch error {
         case .unknown:
-            return ("Unknown error".localized())
+            return (R.string.localizable.unknownError())
         case .emptyData:
-            return ("No data".localized())
-        case .parsingData:
+            return (R.string.localizable.noData())
             return ("Failed to get data from server".localized())
         case .networkLoss:
             return ("Please, check your internet connection".localized())
         }
     }
-        
+
     func getResultsFromCoreData() {
-        self.coreDataStack.fetchResults { results in
+        coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
             self.view?.updateSearchResults()
         }
     }
-    
+
     func getResult(indexPath: IndexPath) -> ApiResult {
-        return dataSource[indexPath.row]
+        dataSource[indexPath.row]
     }
-    
+
     func getNumberOfResults() -> Int {
-        return dataSource.count
+        dataSource.count
     }
-    
+
     func getCategoryTitle() -> String {
-        return category.rawValue
+        category.rawValue
     }
-    
+
     func getCategory() -> Category {
+
         return category
     }
         
@@ -135,30 +137,37 @@ class HomePresenter: HomePresenterProtocol {
             self.dataSource = []
             self.view?.updateSearchResults()
         }
+
     }
-    
+
+        private func clearOldResults() {
+            if !self.dataSource.isEmpty {
+                self.dataSource = []
+                self.view?.updateSearchResults()
+            }
+
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
-    
-    func didTapOnCategoryView(categoryChosed: Category) {
-        router?.navigateToCategory(categorySelected: category, delegate: self)
+
+    func didTapOnCategoryView(categoryChosed _: Category) {
+        router?.navigateToCategory(selectedCategory: category, delegate: self)
     }
-    
+
     func didTapLogOutButton() {
         guard let firebaseService = firebaseService else {
-            return 
+            return
         }
         if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
-            view?.showAlert(title: "Error".localized(), message: "Failed to log out".localized())
+            view?.showAlert(title: R.string.localizable.error(), message: R.string.localizable.failedToLogOut())
         }
     }
 }
 
 extension HomePresenter: CategoryPresenterDelegate {
-    func fetchCategory(_ categoryPresenter: CategoryPresenter, category: Category) {
+    func fetchCategory(_: CategoryPresenter, category: Category) {
         self.category = category
         view?.updateCategory(category: category.rawValue.localized())
     }

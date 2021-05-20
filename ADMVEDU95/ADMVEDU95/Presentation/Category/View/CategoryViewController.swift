@@ -7,21 +7,18 @@
 
 import UIKit
 
-protocol CategoryViewProtocol: AnyObject {
-
-}
+protocol CategoryViewProtocol: AnyObject {}
 
 class CategoryViewController: UIViewController, CategoryViewProtocol {
-    
-    @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet private var tableView: UITableView!
+
     var presenter: CategoryPresenterProtocol?
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
-    
+
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,10 +27,10 @@ class CategoryViewController: UIViewController, CategoryViewProtocol {
 }
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.numberOfCategories() ?? .zero
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        presenter?.numberOfCategories() ?? .zero
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
         let category = presenter?.getCategory(indexPath: indexPath)
@@ -42,7 +39,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = category == selectedCategory ? .checkmark : .none
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let presenter = presenter else {

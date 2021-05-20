@@ -5,8 +5,8 @@
 //  Created by Satishur, Oleg on 28.04.2021.
 //
 
-import Foundation
 import FirebaseAuth
+import Foundation
 
 protocol ResetPasswordPresenterProtocol: AnyObject {
     func requestRecovery(email: String)
@@ -14,36 +14,37 @@ protocol ResetPasswordPresenterProtocol: AnyObject {
 }
 
 class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
-    weak var view: ResetPasswordViewProtocol?
-    var router: AuthRouter?
-    let firebaseService: FirebaseServiceProtocol!
+    private weak var view: ResetPasswordViewProtocol?
+    private var router: AuthRouter?
+    private let firebaseService: FirebaseServiceProtocol!
 
     init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
     }
-    
+
     func requestRecovery(email: String) {
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
-                self.view?.successRequest(title: "Success".localized(), message: "Check your email for the next step".localized())
-            case .failure(let error):
+                self.view?.successRequest(title: R.string.localizable.success(),
+                                          message: R.string.localizable.checkYourEmailForTheNextStep())
+            case let .failure(error):
                 let errorMessage = self.getAuthErrorText(error)
-                self.view?.showAlert(title: "Error".localized(), message: errorMessage)
+                self.view?.showAlert(title: R.string.localizable.error(), message: errorMessage)
             }
         }
     }
-    
+
     private func getAuthErrorText(_ error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {
-            return "no info".localized()
+            return R.string.localizable.noInfo()
         }
         return text
     }
-    
+
     func navigateToLogIn() {
         router?.popToLogIn()
     }

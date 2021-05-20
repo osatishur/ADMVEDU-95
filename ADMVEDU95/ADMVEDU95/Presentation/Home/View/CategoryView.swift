@@ -8,8 +8,8 @@
 import UIKit
 
 class CategoryView: XibView {
-    @IBOutlet private weak var categoryLabel: UILabel!
-    
+    @IBOutlet private var categoryLabel: UILabel!
+
     func configureView(categoryTitle: String) {
         categoryLabel.text = categoryTitle
     }

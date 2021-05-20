@@ -8,12 +8,12 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
-    
-    @IBOutlet private weak var kindLabel: UILabel!
-    @IBOutlet private weak var infoLabel: UILabel!
-    
-    public func configure(model: ApiResult) {
-        kindLabel.text = model.kind ?? "no info".localized()
-        infoLabel.text = "\(model.artistName ?? "no info".localized()) - \(model.trackName ?? "no info".localized())"
+    @IBOutlet private var kindLabel: UILabel!
+    @IBOutlet private var infoLabel: UILabel!
+
+    func configure(model: ApiResult) {
+        let noInfoString = R.string.localizable.noInfo()
+        kindLabel.text = model.kind ?? noInfoString
+        infoLabel.text = "\(model.artistName ?? noInfoString) - \(model.trackName ?? noInfoString)"
     }
 }

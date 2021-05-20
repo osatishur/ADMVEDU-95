@@ -22,11 +22,11 @@
 		0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E8F263945B4000122C6 /* SignInPresenter.swift */; };
 		0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E93263956FF000122C6 /* LogInPresenter.swift */; };
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
+		0E49E0CE26500F8D0028F7DB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49E0CD26500F8D0028F7DB /* R.generated.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
 		0E5D85CE2652F08D00C44350 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5D85CD2652F08D00C44350 /* FileManagerService.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
-		0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */; };
 		0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0252632D02800C4C059 /* SignInViewController.xib */; };
 		0E66C0292632F30400C4C059 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */; };
 		0E66C02E2633089700C4C059 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C02D2633089700C4C059 /* HomeViewController.xib */; };
@@ -45,6 +45,7 @@
 		0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1B8263ABCA400FBC00E /* XibView.swift */; };
 		0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */; };
 		0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */; };
+		0EE9441E2656CEB8007768BB /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9441D2656CEB8007768BB /* FileManagerService.swift */; };
 		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */; };
 		0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */; };
@@ -95,11 +96,11 @@
 		0E495E8F263945B4000122C6 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		0E495E93263956FF000122C6 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
+		0E49E0CD26500F8D0028F7DB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
 		0E5D85CD2652F08D00C44350 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBottomButton.swift; sourceTree = "<group>"; };
 		0E66C0252632D02800C4C059 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
 		0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		0E66C02D2633089700C4C059 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		0EDDA1B8263ABCA400FBC00E /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		0EE9441D2656CEB8007768BB /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPresenter.swift; sourceTree = "<group>"; };
 		0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
@@ -411,7 +413,9 @@
 				0E768E3926388D990048E512 /* ViewBuilder.swift */,
 				0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */,
 				0E417D90264D5C2C00FE94CF /* CoreDataService.swift */,
-				0E5D85CD2652F08D00C44350 /* FileManagerService.swift */,
+				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
+				0E49E0CD26500F8D0028F7DB /* R.generated.swift */,
+
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
 				83A78BAF2626C79A009C3807 /* CustomViews */,
@@ -433,7 +437,6 @@
 			children = (
 				0E2CC75E263BE880005B97B8 /* BaseView */,
 				0E66C01F2632B7DE00C4C059 /* AuthButton.swift */,
-				0E66C0222632CBCB00C4C059 /* AuthBottomButton.swift */,
 				0E23E8C92641DEBD0084AD1E /* AuthTextField.swift */,
 			);
 			path = CustomViews;
@@ -506,6 +509,9 @@
 			buildConfigurationList = 8355600B2624905D00C77316 /* Build configuration list for PBXNativeTarget "ADMVEDU95" */;
 			buildPhases = (
 				0E487634EE889DC443D19310 /* [CP] Check Pods Manifest.lock */,
+				0ED8DFAE264EBBF000F79B98 /* Rswift script */,
+				0EAB69CC264FEA6B003E4459 /* Swiftlint script */,
+				0EAB69CD264FF6A1003E4459 /* Swiftformat script */,
 				83555FF32624905C00C77316 /* Sources */,
 				83555FF42624905C00C77316 /* Frameworks */,
 				83555FF52624905C00C77316 /* Resources */,
@@ -599,6 +605,62 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0EAB69CC264FEA6B003E4459 /* Swiftlint script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftlint script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		0EAB69CD264FF6A1003E4459 /* Swiftformat script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftformat script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
+		};
+		0ED8DFAE264EBBF000F79B98 /* Rswift script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Rswift script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		7D7BF34ED314EBC05468620F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,11 +719,11 @@
 				0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */,
 				0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */,
 				83A78BE12627628B009C3807 /* UIImageView+StaticImages.swift in Sources */,
+				0E49E0CE26500F8D0028F7DB /* R.generated.swift in Sources */,
 				8316071B2625C33F0090D203 /* AudioDetailView.swift in Sources */,
 				0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */,
 				0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */,
 				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
-				0E66C0232632CBCB00C4C059 /* AuthBottomButton.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
 				0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */,
 				0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */,
@@ -678,7 +740,7 @@
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,
 				0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */,
 				0E40CEC92636A65C0067D7D5 /* SearchTableViewCell.swift in Sources */,
-				0E5D85CE2652F08D00C44350 /* FileManagerService.swift in Sources */,
+				0E5D85CE2652F08D00C44350 /* FileManagerService.swift in Sources */
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

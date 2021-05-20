@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 struct ApiResult: Codable {
     let kind: String?
     let artistName: String?

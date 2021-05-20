@@ -5,44 +5,52 @@
 //  Created by Satishur, Oleg on 04.05.2021.
 //
 
-import Foundation
 import AVKit
+import Foundation
 
 class VideoPresenter: DetailPresenter {
-    let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    
+    private enum Constants {
+        static let width = UIScreen.main.bounds.width
+        static let height = UIScreen.main.bounds.height
+    }
+
+    private let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
+
     override func loadView() -> UIView {
         let view = getVideoView()
         return view
     }
-    
-    func getVideoView() -> VideoDetailView {
+
+    private func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,
-              let url = URL(string: imageURL) else {
+              let url = URL(string: imageURL)
+        else {
             return VideoDetailView()
         }
         configureVideoView(view: videoView, url: url)
         initVideoPlayer(movieUrl: model?.previewUrl)
         return videoView
     }
-    
+
     private func configureVideoView(view: VideoDetailView, url: URL) {
+        let noInfoString = R.string.localizable.noInfo()
         view.configureView(albumImageURL: url,
-                           directorName: String(format: "Director".localized(), model?.artistName ?? "no info".localized()),
-                           movieName: String(format: "Movie".localized(), model?.trackName ?? "no info".localized()),
-                                buttonAction: playVideo)
+                           directorName: String(format: R.string.localizable.director(model?.artistName ?? noInfoString)),
+                           movieName: String(format: R.string.localizable._Movie(model?.trackName ?? noInfoString)))
+        view.configureAction(buttonAction: playVideo)
     }
-    
-    func initVideoPlayer(movieUrl: String?) {
+
+    private func initVideoPlayer(movieUrl: String?) {
         guard let urlString = movieUrl,
-              let url = getURL(urlString: urlString) else {
+              let url = getURL(urlString: urlString)
+        else {
             return
         }
         player = AVPlayer(url: url)
         playerViewController.player = player
     }
-    
-    func playVideo() {
+
+    private func playVideo() {
         let view = view as? DetailViewController
         view?.present(playerViewController, animated: true) {
             self.player?.play()

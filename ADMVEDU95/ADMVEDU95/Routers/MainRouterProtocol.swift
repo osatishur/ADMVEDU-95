@@ -15,12 +15,12 @@ protocol MainRouterProtocol {
 }
 
 extension MainRouterProtocol {
-    func changeRootViewController(window: UIWindow?, router: MainRouterProtocol, animated: Bool = true) {
+    func changeRootViewController(window: UIWindow?, router: MainRouterProtocol, animated _: Bool = true) {
         guard let window = window else {
             return
         }
         router.initialViewController()
-        
+
         window.rootViewController = router.navigationController
         UIView.transition(with: window,
                           duration: 0.8,

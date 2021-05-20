@@ -5,21 +5,21 @@
 //  Created by Satishur, Oleg on 13.05.2021.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class CoreDataService {
-    struct Constants {
+    enum Constants {
         static let coreDataModelName = "CoreDataITunes"
         static let entityName = "ResultCoreDataModel"
     }
-    
+
     private var fileManagerService = FileManagerService()
-    
+
     lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
     }()
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constants.coreDataModelName)
         container.loadPersistentStores(completionHandler: { _, error in
@@ -29,8 +29,8 @@ class CoreDataService {
         })
         return container
     }()
-    
-    func fetchResults(completion: @escaping ([ApiResult]?) -> ()) {
+
+    func fetchResults(completion: @escaping ([ApiResult]?) -> Void) {
         let request = NSFetchRequest<ResultCoreDataModel>(entityName: Constants.entityName)
 
         guard let models = try? context.fetch(request) else {
@@ -65,23 +65,23 @@ class CoreDataService {
             self.saveContext()
         }
     }
-    
+
     func deleteAllResults(){
         fileManagerService.deleteDownloadedFiles()
         deleteEntityObjects()
     }
-    
+
     private func deleteEntityObjects() {
         let delAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
         do {
             try context.execute(delAllReqVar)
         }
         catch {
-            print(error)
         }
+        saveContext()
     }
-    
-    private func saveContext () {
+
+    private func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
