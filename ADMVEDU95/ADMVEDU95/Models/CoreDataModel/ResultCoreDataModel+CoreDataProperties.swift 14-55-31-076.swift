@@ -8,7 +8,7 @@
 
 import CoreData
 import Foundation
-// swiftlint:disable line_length
+
 public extension ResultCoreDataModel {
     @nonobjc
     class func fetchRequest() -> NSFetchRequest<ResultCoreDataModel> {
@@ -23,6 +23,11 @@ public extension ResultCoreDataModel {
     @NSManaged var kind: String?
 
     internal var model: ApiResult {
-        ApiResult(kind: kind, artistName: artistName, trackName: trackName, collectionName: albumName, artworkUrl100: albumImageURL, previewUrl: previewPath)
+        ApiResult(kind: kind,
+                  artistName: artistName,
+                  trackName: trackName,
+                  collectionName: albumName,
+                  artworkUrl100: albumImageURL,
+                  previewUrl: previewPath)
     }
 }

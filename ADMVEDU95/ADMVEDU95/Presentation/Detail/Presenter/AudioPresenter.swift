@@ -35,9 +35,9 @@ class AudioPresenter: DetailPresenter {
     private func configureAudioView(view: AudioDetailView, url: URL) {
         let noInfoString = R.string.localizable.noInfo()
         view.configureView(albumImageURL: url,
-                           artistName: String(format: R.string.localizable.artist(model?.artistName ?? noInfoString)),
-                           songName: String(format: R.string.localizable._Song(model?.trackName ?? noInfoString)),
-                           albumName: String(format: R.string.localizable.album(model?.collectionName ?? noInfoString)))
+                           artistName: String(format: R.string.localizable.detailArtistName(model?.artistName ?? noInfoString)),
+                           songName: String(format: R.string.localizable.detailSongName(model?.trackName ?? noInfoString)),
+                           albumName: String(format: R.string.localizable.detailAlbumName(model?.collectionName ?? noInfoString)))
         view.configureAction(buttonAction: playMusic)
     }
 

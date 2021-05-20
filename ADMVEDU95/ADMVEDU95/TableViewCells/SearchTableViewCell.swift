@@ -13,7 +13,8 @@ class SearchTableViewCell: UITableViewCell {
 
     func configure(model: ApiResult) {
         let noInfoString = R.string.localizable.noInfo()
-        kindLabel.text = model.kind ?? noInfoString
+        let kind = ResponseDataKind(rawValue: model.kind ?? noInfoString)
+        kindLabel.text = kind?.kind
         infoLabel.text = "\(model.artistName ?? noInfoString) - \(model.trackName ?? noInfoString)"
     }
 }

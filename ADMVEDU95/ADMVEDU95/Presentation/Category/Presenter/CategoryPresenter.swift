@@ -13,7 +13,8 @@ protocol CategoryPresenterDelegate: AnyObject {
 
 protocol CategoryPresenterProtocol: AnyObject {
     func getCategory(indexPath: IndexPath) -> Category
-    func getSelectedCategory() -> Category
+    func getCategoryTitle(indexPath: IndexPath) -> String
+    func getSelectedCategoryTitle() -> String
     func numberOfCategories() -> Int
     func onCellSelected(category: Category)
     func navigateToHome()
@@ -42,12 +43,16 @@ class CategoryPresenter: CategoryPresenterProtocol {
         self.router = router
     }
 
-    func getCategory(indexPath: IndexPath) -> Category {
-        dataSource[indexPath.row]
+    func getCategoryTitle(indexPath: IndexPath) -> String {
+        dataSource[indexPath.row].description
     }
 
-    func getSelectedCategory() -> Category {
-        selectedCategory
+    func getSelectedCategoryTitle() -> String {
+        selectedCategory.description
+    }
+
+    func getCategory(indexPath: IndexPath) -> Category {
+        dataSource[indexPath.row]
     }
 
     func numberOfCategories() -> Int {

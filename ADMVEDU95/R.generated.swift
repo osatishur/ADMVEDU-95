@@ -124,6 +124,23 @@ struct R: Rswift.Validatable {
     @available(watchOSApplicationExtension 4.0, *)
     static func accentColor(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.accentColor.name)
+
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
+  /// This `R.file` struct is generated, and contains static references to 1 files.
+  struct file {
+    /// Resource file `GoogleService-Info.plist`.
+    static let googleServiceInfoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "GoogleService-Info", pathExtension: "plist")
+
+    /// `bundle.url(forResource: "GoogleService-Info", withExtension: "plist")`
+    static func googleServiceInfoPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.googleServiceInfoPlist
+      return fileResource.bundle.url(forResource: fileResource)
+
     }
     #endif
 
@@ -140,6 +157,14 @@ struct R: Rswift.Validatable {
       let fileResource = R.file.googleServiceInfoPlist
       return fileResource.bundle.url(forResource: fileResource)
     }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 1 images.
+  struct image {
+    /// Image `cover1`.
+    static let cover1 = Rswift.ImageResource(bundle: R.hostingBundle, name: "cover1")
 
     fileprivate init() {}
   }
@@ -216,6 +241,7 @@ struct R: Rswift.Validatable {
     static func audioDetailView(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.audioDetailView)
     }
+
     #endif
 
     #if os(iOS) || os(tvOS)
@@ -231,50 +257,62 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.categoryViewController) instead")
     static func categoryViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.categoryViewController)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "HomeViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.homeViewController) instead")
     static func homeViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.homeViewController)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "LoginViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.loginViewController) instead")
     static func loginViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.loginViewController)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "ResetPasswordViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.resetPasswordViewController) instead")
     static func resetPasswordViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.resetPasswordViewController)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "SearchTableViewCell", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.searchTableViewCell) instead")
     static func searchTableViewCell(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.searchTableViewCell)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "SignInViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.signInViewController) instead")
     static func signInViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.signInViewController)
+
     }
     #endif
 
     #if os(iOS) || os(tvOS)
+
     /// `UINib(name: "VideoDetailView", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.videoDetailView) instead")
     static func videoDetailView(_: Void = ()) -> UIKit.UINib {
@@ -318,6 +356,7 @@ struct R: Rswift.Validatable {
       return R.nib.videoDetailView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
+
     fileprivate init() {}
   }
 
@@ -336,208 +375,216 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 54 localization keys.
+
+    /// This `R.string.localizable` struct is generated, and contains static references to 57 localization keys.
+
     struct localizable {
       /// en translation: Account not found for the specified user. Please check and try again
       ///
       /// Locales: en, ru-RU
-      static let accountNotFoundForTheSpecifiedUserPleaseCheckAndTryAgain = Rswift.StringResource(key: "Account not found for the specified user. Please check and try again", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+
+      static let authErrorCodeUserNotFoundText = Rswift.StringResource(key: "AuthErrorCode.UserNotFound.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Album: %@
       ///
       /// Locales: en, ru-RU
-      static let album = Rswift.StringResource(key: "Album", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let detailAlbumName = Rswift.StringResource(key: "Detail.Album.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Already have an account?  
       ///
       /// Locales: en, ru-RU
-      static let alreadyHaveAnAccount = Rswift.StringResource(key: "Already have an account?  ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let signInBottomButtonTitle = Rswift.StringResource(key: "SignIn.bottomButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Artist: %@
       ///
       /// Locales: en, ru-RU
-      static let artist = Rswift.StringResource(key: "Artist", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let detailArtistName = Rswift.StringResource(key: "Detail.Artist.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Authorization
       ///
       /// Locales: en, ru-RU
-      static let authorization = Rswift.StringResource(key: "Authorization", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let logInTopLabelText = Rswift.StringResource(key: "LogIn.TopLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Cancel
       ///
       /// Locales: en, ru-RU
-      static let cancel = Rswift.StringResource(key: "Cancel", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let alertCancelAction = Rswift.StringResource(key: "Alert.Cancel.Action", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Check your email for the next step
       ///
       /// Locales: en, ru-RU
-      static let checkYourEmailForTheNextStep = Rswift.StringResource(key: "Check your email for the next step", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let resetPasswordSuccessAlertMessage = Rswift.StringResource(key: "ResetPassword.Success.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Director: %@
       ///
       /// Locales: en, ru-RU
-      static let director = Rswift.StringResource(key: "Director", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let detailDirectorName = Rswift.StringResource(key: "Detail.Director.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Don't have an account?  
       ///
       /// Locales: en, ru-RU
-      static let donTHaveAnAccount = Rswift.StringResource(key: "Don't have an account?  ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let logInBottomButtonTitle = Rswift.StringResource(key: "LogIn.BottomButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Email
       ///
       /// Locales: en, ru-RU
-      static let email = Rswift.StringResource(key: "Email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authEmailPlaceholder = Rswift.StringResource(key: "Auth.Email.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Error
       ///
       /// Locales: en, ru-RU
-      static let error = Rswift.StringResource(key: "Error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let alertErrorTitle = Rswift.StringResource(key: "Alert.Error.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Failed to get data from server
       ///
       /// Locales: en, ru-RU
-      static let failedToGetDataFromServer = Rswift.StringResource(key: "Failed to get data from server", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeParsingDataErrorAlertMessage = Rswift.StringResource(key: "Home.ParsingDataError.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Failed to log out
       ///
       /// Locales: en, ru-RU
-      static let failedToLogOut = Rswift.StringResource(key: "Failed to log out", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeLogOutFailedAlertMessage = Rswift.StringResource(key: "Home.LogOutFailed.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Forgot password
       ///
       /// Locales: en, ru-RU
-      static let forgotPassword = Rswift.StringResource(key: "Forgot password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let logInForgotPasswordButtonTitle = Rswift.StringResource(key: "LogIn.ForgotPasswordButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Log in
       ///
       /// Locales: en, ru-RU
-      static let logIn = Rswift.StringResource(key: "Log in", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authLogInText = Rswift.StringResource(key: "Auth.LogIn.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Logout
       ///
       /// Locales: en, ru-RU
-      static let logout = Rswift.StringResource(key: "Logout", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeLogoutButtonTitle = Rswift.StringResource(key: "Home.LogoutButton.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Movie: %@
       ///
       /// Locales: en, ru-RU
-      static let _Movie = Rswift.StringResource(key: "_Movie", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let detailMovieName = Rswift.StringResource(key: "Detail.Movie.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Network error. Please try again.
       ///
       /// Locales: en, ru-RU
-      static let networkErrorPleaseTryAgain = Rswift.StringResource(key: "Network error. Please try again.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeNetworkErrorText = Rswift.StringResource(key: "AuthErrorCode.NetworkError.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: No data
       ///
       /// Locales: en, ru-RU
-      static let noData = Rswift.StringResource(key: "No data", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeNoDataAlertTitle = Rswift.StringResource(key: "Home.NoData.AlertTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: OK
       ///
       /// Locales: en, ru-RU
-      static let oK = Rswift.StringResource(key: "OK", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let alertOkTitle = Rswift.StringResource(key: "Alert.Ok.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Password
       ///
       /// Locales: en, ru-RU
-      static let password = Rswift.StringResource(key: "Password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authPasswordPlaceholder = Rswift.StringResource(key: "Auth.Password.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Password recovery
       ///
       /// Locales: en, ru-RU
-      static let passwordRecovery = Rswift.StringResource(key: "Password recovery", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let resetPasswordNavigationItemTitle = Rswift.StringResource(key: "ResetPassword.NavigationItem.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Passwords don't match
       ///
       /// Locales: en, ru-RU
-      static let passwordsDonTMatch = Rswift.StringResource(key: "Passwords don't match", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let signInPasswordsMatchErrorText = Rswift.StringResource(key: "SignIn.PasswordsMatchError.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Please enter a valid email
       ///
       /// Locales: en, ru-RU
-      static let pleaseEnterAValidEmail = Rswift.StringResource(key: "Please enter a valid email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeInvalidEmailText = Rswift.StringResource(key: "AuthErrorCode.InvalidEmail.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Please, check for correct request
       ///
       /// Locales: en, ru-RU
-      static let pleaseCheckForCorrectRequest = Rswift.StringResource(key: "Please, check for correct request", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeNoDataAlertMessage = Rswift.StringResource(key: "Home.NoData.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Please, enter your email
       ///
       /// Locales: en, ru-RU
-      static let pleaseEnterYourEmail = Rswift.StringResource(key: "Please, enter your email", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let resetPasswordTopLabelText = Rswift.StringResource(key: "ResetPassword.TopLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Registration
       ///
       /// Locales: en, ru-RU
-      static let registration = Rswift.StringResource(key: "Registration", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let signInTopLabelText = Rswift.StringResource(key: "SignIn.TopLabel.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Repeat password
       ///
       /// Locales: en, ru-RU
-      static let repeatPassword = Rswift.StringResource(key: "Repeat password", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authRepeatPpasswordPlaceholder = Rswift.StringResource(key: "Auth.RepeatPpassword.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: Request delivered
+      ///
+      /// Locales: en, ru-RU
+      static let resetPassworSuccessAlertTitle = Rswift.StringResource(key: "ResetPasswor.Success.AlertTitle", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Retry
       ///
       /// Locales: en, ru-RU
-      static let retry = Rswift.StringResource(key: "Retry", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let alertRetryAction = Rswift.StringResource(key: "Alert.Retry.Action", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Search
       ///
       /// Locales: en, ru-RU
-      static let search = Rswift.StringResource(key: "Search", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeNavigationItemTitle = Rswift.StringResource(key: "Home.NavigationItem.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Send
       ///
       /// Locales: en, ru-RU
-      static let send = Rswift.StringResource(key: "Send", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
-      /// en translation: Sign In is succesful
-      ///
-      /// Locales: en, ru-RU
-      static let signInIsSuccesful = Rswift.StringResource(key: "Sign In is succesful", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let resetPasswordSendButtonText = Rswift.StringResource(key: "ResetPassword.SendButton.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Sign in
       ///
       /// Locales: en, ru-RU
-      static let signIn = Rswift.StringResource(key: "Sign in", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authSignInText = Rswift.StringResource(key: "Auth.SignIn.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Song: %@
       ///
       /// Locales: en, ru-RU
-      static let _Song = Rswift.StringResource(key: "_Song", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let detailSongName = Rswift.StringResource(key: "Detail.Song.Name", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Start searching
       ///
       /// Locales: en, ru-RU
-      static let startSearching = Rswift.StringResource(key: "Start searching", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
-      /// en translation: Success
-      ///
-      /// Locales: en, ru-RU
-      static let success = Rswift.StringResource(key: "Success", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeSearchBarPlaceholder = Rswift.StringResource(key: "Home.SearchBar.Placeholder", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: The email is already in use with another account
       ///
       /// Locales: en, ru-RU
-      static let theEmailIsAlreadyInUseWithAnotherAccount = Rswift.StringResource(key: "The email is already in use with another account", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeEmailAlreadyInUseText = Rswift.StringResource(key: "AuthErrorCode.EmailAlreadyInUse.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: The password must be 6 characters long or more.
       ///
       /// Locales: en, ru-RU
-      static let thePasswordMustBe6CharactersLongOrMore = Rswift.StringResource(key: "The password must be 6 characters long or more.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeWeakPasswordText = Rswift.StringResource(key: "AuthErrorCode.WeakPassword.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Unknown error
       ///
       /// Locales: en, ru-RU
-      static let unknownError = Rswift.StringResource(key: "Unknown error", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let homeUnknownErrorAlertMessage = Rswift.StringResource(key: "Home.UnknownError.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Unknown error occurred
       ///
       /// Locales: en, ru-RU
-      static let unknownErrorOccurred = Rswift.StringResource(key: "Unknown error occurred", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let errorUnknownErrorText = Rswift.StringResource(key: "Error.UnknownError.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Your account has been disabled. Please contact support.
       ///
       /// Locales: en, ru-RU
-      static let yourAccountHasBeenDisabledPleaseContactSupport = Rswift.StringResource(key: "Your account has been disabled. Please contact support.", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeUserDisabledText = Rswift.StringResource(key: "AuthErrorCode.UserDisabled.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Your password is incorrect. Please try again or use 'Forgot password'
       ///
       /// Locales: en, ru-RU
-      static let yourPasswordIsIncorrectPleaseTryAgainOrUseForgotPassword = Rswift.StringResource(key: "Your password is incorrect. Please try again or use 'Forgot password'", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let authErrorCodeWrongPasswordText = Rswift.StringResource(key: "AuthErrorCode.WrongPassword.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: all
       ///
       /// Locales: en, ru-RU
-      static let all = Rswift.StringResource(key: "all", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryAllText = Rswift.StringResource(key: "Category.All.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: audiobook
       ///
       /// Locales: en, ru-RU
-      static let audiobook = Rswift.StringResource(key: "audiobook", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryAudiobookText = Rswift.StringResource(key: "Category.Audiobook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: audiobook
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindAudiobookText = Rswift.StringResource(key: "DataKind.Audiobook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: ebook
       ///
       /// Locales: en, ru-RU
-      static let ebook = Rswift.StringResource(key: "ebook", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryEbookText = Rswift.StringResource(key: "Category.Ebook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: ebook
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindEbookText = Rswift.StringResource(key: "DataKind.Ebook.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: feature-movie
       ///
       /// Locales: en, ru-RU
-      static let featureMovie = Rswift.StringResource(key: "feature-movie", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindFeatureMovieText = Rswift.StringResource(key: "DataKind.FeatureMovie.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: movie
       ///
       /// Locales: en, ru-RU
-      static let movie = Rswift.StringResource(key: "movie", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryMovieText = Rswift.StringResource(key: "Category.Movie.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: music
       ///
       /// Locales: en, ru-RU
-      static let music = Rswift.StringResource(key: "music", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryMusicText = Rswift.StringResource(key: "Category.Music.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static let _musicVideo = Rswift.StringResource(key: "_music-video", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
-      /// en translation: musicVideo
+      static let categoryMusicVideoText = Rswift.StringResource(key: "Category.MusicVideo.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static let musicVideo = Rswift.StringResource(key: "musicVideo", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindMusicVideoText = Rswift.StringResource(key: "DataKind.MusicVideo.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+
       /// en translation: no info
       ///
       /// Locales: en, ru-RU
@@ -545,774 +592,881 @@ struct R: Rswift.Validatable {
       /// en translation: podcast
       ///
       /// Locales: en, ru-RU
-      static let podcast = Rswift.StringResource(key: "podcast", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+
+      static let categoryPodcastText = Rswift.StringResource(key: "Category.Podcast.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: podcast
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindPodcastText = Rswift.StringResource(key: "DataKind.Podcast.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: song
       ///
       /// Locales: en, ru-RU
-      static let song = Rswift.StringResource(key: "song", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let dataKindSongText = Rswift.StringResource(key: "DataKind.Song.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: tvShow
       ///
       /// Locales: en, ru-RU
-      static let tvShow = Rswift.StringResource(key: "tvShow", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      static let categoryTvShowText = Rswift.StringResource(key: "Category.TvShow.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: tvShow
+      ///
+      /// Locales: en, ru-RU
+      static let dataKindTvShowText = Rswift.StringResource(key: "DataKind.TvShow.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+
 
       /// en translation: Account not found for the specified user. Please check and try again
       ///
       /// Locales: en, ru-RU
-      static func accountNotFoundForTheSpecifiedUserPleaseCheckAndTryAgain(preferredLanguages: [String]? = nil) -> String {
+
+      static func authErrorCodeUserNotFoundText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Account not found for the specified user. Please check and try again", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.UserNotFound.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Account not found for the specified user. Please check and try again"
+          return "AuthErrorCode.UserNotFound.Text"
         }
 
-        return NSLocalizedString("Account not found for the specified user. Please check and try again", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.UserNotFound.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Album: %@
       ///
       /// Locales: en, ru-RU
-      static func album(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+
+      static func detailAlbumName(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("Album", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Detail.Album.Name", bundle: hostingBundle, comment: "")
+
           return String(format: format, locale: applicationLocale, value1)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Album"
+
+          return "Detail.Album.Name"
         }
 
-        let format = NSLocalizedString("Album", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Detail.Album.Name", bundle: bundle, comment: "")
+
         return String(format: format, locale: locale, value1)
       }
 
       /// en translation: Already have an account?  
       ///
       /// Locales: en, ru-RU
-      static func alreadyHaveAnAccount(preferredLanguages: [String]? = nil) -> String {
+
+      static func signInBottomButtonTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Already have an account?  ", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("SignIn.bottomButton.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Already have an account?  "
+          return "SignIn.bottomButton.Title"
         }
 
-        return NSLocalizedString("Already have an account?  ", bundle: bundle, comment: "")
+        return NSLocalizedString("SignIn.bottomButton.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Artist: %@
       ///
       /// Locales: en, ru-RU
-      static func artist(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+
+      static func detailArtistName(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("Artist", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Detail.Artist.Name", bundle: hostingBundle, comment: "")
+
           return String(format: format, locale: applicationLocale, value1)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Artist"
+
+          return "Detail.Artist.Name"
         }
 
-        let format = NSLocalizedString("Artist", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Detail.Artist.Name", bundle: bundle, comment: "")
+
         return String(format: format, locale: locale, value1)
       }
 
       /// en translation: Authorization
       ///
       /// Locales: en, ru-RU
-      static func authorization(preferredLanguages: [String]? = nil) -> String {
+
+      static func logInTopLabelText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Authorization", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("LogIn.TopLabel.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Authorization"
+          return "LogIn.TopLabel.Text"
         }
 
-        return NSLocalizedString("Authorization", bundle: bundle, comment: "")
+        return NSLocalizedString("LogIn.TopLabel.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: Cancel
       ///
       /// Locales: en, ru-RU
-      static func cancel(preferredLanguages: [String]? = nil) -> String {
+      static func alertCancelAction(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Cancel", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Alert.Cancel.Action", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Cancel"
+          return "Alert.Cancel.Action"
         }
 
-        return NSLocalizedString("Cancel", bundle: bundle, comment: "")
+        return NSLocalizedString("Alert.Cancel.Action", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Check your email for the next step
       ///
       /// Locales: en, ru-RU
-      static func checkYourEmailForTheNextStep(preferredLanguages: [String]? = nil) -> String {
+
+      static func resetPasswordSuccessAlertMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Check your email for the next step", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("ResetPassword.Success.AlertMessage", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Check your email for the next step"
+          return "ResetPassword.Success.AlertMessage"
         }
 
-        return NSLocalizedString("Check your email for the next step", bundle: bundle, comment: "")
+        return NSLocalizedString("ResetPassword.Success.AlertMessage", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Director: %@
       ///
       /// Locales: en, ru-RU
-      static func director(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+
+      static func detailDirectorName(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("Director", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Detail.Director.Name", bundle: hostingBundle, comment: "")
+
           return String(format: format, locale: applicationLocale, value1)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Director"
+
+          return "Detail.Director.Name"
         }
 
-        let format = NSLocalizedString("Director", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Detail.Director.Name", bundle: bundle, comment: "")
+
         return String(format: format, locale: locale, value1)
       }
 
       /// en translation: Don't have an account?  
       ///
       /// Locales: en, ru-RU
-      static func donTHaveAnAccount(preferredLanguages: [String]? = nil) -> String {
+
+      static func logInBottomButtonTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Don't have an account?  ", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("LogIn.BottomButton.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Don't have an account?  "
+          return "LogIn.BottomButton.Title"
         }
 
-        return NSLocalizedString("Don't have an account?  ", bundle: bundle, comment: "")
+        return NSLocalizedString("LogIn.BottomButton.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Email
       ///
       /// Locales: en, ru-RU
-      static func email(preferredLanguages: [String]? = nil) -> String {
+
+      static func authEmailPlaceholder(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Email", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Auth.Email.Placeholder", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Email"
+          return "Auth.Email.Placeholder"
         }
 
-        return NSLocalizedString("Email", bundle: bundle, comment: "")
+        return NSLocalizedString("Auth.Email.Placeholder", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Error
       ///
       /// Locales: en, ru-RU
-      static func error(preferredLanguages: [String]? = nil) -> String {
+
+      static func alertErrorTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Error", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Alert.Error.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Error"
+          return "Alert.Error.Title"
         }
 
-        return NSLocalizedString("Error", bundle: bundle, comment: "")
+        return NSLocalizedString("Alert.Error.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Failed to get data from server
       ///
       /// Locales: en, ru-RU
-      static func failedToGetDataFromServer(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeParsingDataErrorAlertMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Failed to get data from server", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.ParsingDataError.AlertMessage", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Failed to get data from server"
+          return "Home.ParsingDataError.AlertMessage"
         }
 
-        return NSLocalizedString("Failed to get data from server", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.ParsingDataError.AlertMessage", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Failed to log out
       ///
       /// Locales: en, ru-RU
-      static func failedToLogOut(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeLogOutFailedAlertMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Failed to log out", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.LogOutFailed.AlertMessage", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Failed to log out"
+          return "Home.LogOutFailed.AlertMessage"
         }
 
-        return NSLocalizedString("Failed to log out", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.LogOutFailed.AlertMessage", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Forgot password
       ///
       /// Locales: en, ru-RU
-      static func forgotPassword(preferredLanguages: [String]? = nil) -> String {
+
+      static func logInForgotPasswordButtonTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Forgot password", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("LogIn.ForgotPasswordButton.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Forgot password"
+          return "LogIn.ForgotPasswordButton.Title"
         }
 
-        return NSLocalizedString("Forgot password", bundle: bundle, comment: "")
+        return NSLocalizedString("LogIn.ForgotPasswordButton.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Log in
       ///
       /// Locales: en, ru-RU
-      static func logIn(preferredLanguages: [String]? = nil) -> String {
+
+      static func authLogInText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Log in", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Auth.LogIn.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Log in"
+          return "Auth.LogIn.Text"
         }
 
-        return NSLocalizedString("Log in", bundle: bundle, comment: "")
+        return NSLocalizedString("Auth.LogIn.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Logout
       ///
       /// Locales: en, ru-RU
-      static func logout(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeLogoutButtonTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Logout", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.LogoutButton.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Logout"
+          return "Home.LogoutButton.Title"
         }
 
-        return NSLocalizedString("Logout", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.LogoutButton.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Movie: %@
       ///
       /// Locales: en, ru-RU
-      static func _Movie(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+
+      static func detailMovieName(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("_Movie", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Detail.Movie.Name", bundle: hostingBundle, comment: "")
+
           return String(format: format, locale: applicationLocale, value1)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "_Movie"
+
+          return "Detail.Movie.Name"
         }
 
-        let format = NSLocalizedString("_Movie", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Detail.Movie.Name", bundle: bundle, comment: "")
+
         return String(format: format, locale: locale, value1)
       }
 
       /// en translation: Network error. Please try again.
       ///
       /// Locales: en, ru-RU
-      static func networkErrorPleaseTryAgain(preferredLanguages: [String]? = nil) -> String {
+
+      static func authErrorCodeNetworkErrorText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Network error. Please try again.", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.NetworkError.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Network error. Please try again."
+          return "AuthErrorCode.NetworkError.Text"
         }
 
-        return NSLocalizedString("Network error. Please try again.", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.NetworkError.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: No data
       ///
       /// Locales: en, ru-RU
-      static func noData(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeNoDataAlertTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("No data", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.NoData.AlertTitle", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "No data"
+          return "Home.NoData.AlertTitle"
         }
 
-        return NSLocalizedString("No data", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.NoData.AlertTitle", bundle: bundle, comment: "")
+
       }
 
       /// en translation: OK
       ///
       /// Locales: en, ru-RU
-      static func oK(preferredLanguages: [String]? = nil) -> String {
+
+      static func alertOkTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("OK", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Alert.Ok.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "OK"
+          return "Alert.Ok.Title"
         }
 
-        return NSLocalizedString("OK", bundle: bundle, comment: "")
+        return NSLocalizedString("Alert.Ok.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Password
       ///
       /// Locales: en, ru-RU
-      static func password(preferredLanguages: [String]? = nil) -> String {
+
+      static func authPasswordPlaceholder(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Password", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Auth.Password.Placeholder", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Password"
+          return "Auth.Password.Placeholder"
         }
 
-        return NSLocalizedString("Password", bundle: bundle, comment: "")
+        return NSLocalizedString("Auth.Password.Placeholder", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Password recovery
       ///
       /// Locales: en, ru-RU
-      static func passwordRecovery(preferredLanguages: [String]? = nil) -> String {
+
+      static func resetPasswordNavigationItemTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Password recovery", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("ResetPassword.NavigationItem.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Password recovery"
+          return "ResetPassword.NavigationItem.Title"
         }
 
-        return NSLocalizedString("Password recovery", bundle: bundle, comment: "")
+        return NSLocalizedString("ResetPassword.NavigationItem.Title", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Passwords don't match
       ///
       /// Locales: en, ru-RU
-      static func passwordsDonTMatch(preferredLanguages: [String]? = nil) -> String {
+
+      static func signInPasswordsMatchErrorText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Passwords don't match", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("SignIn.PasswordsMatchError.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Passwords don't match"
+          return "SignIn.PasswordsMatchError.Text"
         }
 
-        return NSLocalizedString("Passwords don't match", bundle: bundle, comment: "")
+        return NSLocalizedString("SignIn.PasswordsMatchError.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Please enter a valid email
       ///
       /// Locales: en, ru-RU
-      static func pleaseEnterAValidEmail(preferredLanguages: [String]? = nil) -> String {
+
+      static func authErrorCodeInvalidEmailText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Please enter a valid email", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.InvalidEmail.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Please enter a valid email"
+          return "AuthErrorCode.InvalidEmail.Text"
         }
 
-        return NSLocalizedString("Please enter a valid email", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.InvalidEmail.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Please, check for correct request
       ///
       /// Locales: en, ru-RU
-      static func pleaseCheckForCorrectRequest(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeNoDataAlertMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Please, check for correct request", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.NoData.AlertMessage", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Please, check for correct request"
+          return "Home.NoData.AlertMessage"
         }
 
-        return NSLocalizedString("Please, check for correct request", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.NoData.AlertMessage", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Please, enter your email
       ///
       /// Locales: en, ru-RU
-      static func pleaseEnterYourEmail(preferredLanguages: [String]? = nil) -> String {
+
+      static func resetPasswordTopLabelText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Please, enter your email", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("ResetPassword.TopLabel.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Please, enter your email"
+          return "ResetPassword.TopLabel.Text"
         }
 
-        return NSLocalizedString("Please, enter your email", bundle: bundle, comment: "")
+        return NSLocalizedString("ResetPassword.TopLabel.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Registration
       ///
       /// Locales: en, ru-RU
-      static func registration(preferredLanguages: [String]? = nil) -> String {
+
+      static func signInTopLabelText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Registration", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("SignIn.TopLabel.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Registration"
+          return "SignIn.TopLabel.Text"
         }
 
-        return NSLocalizedString("Registration", bundle: bundle, comment: "")
+        return NSLocalizedString("SignIn.TopLabel.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Repeat password
       ///
       /// Locales: en, ru-RU
-      static func repeatPassword(preferredLanguages: [String]? = nil) -> String {
+
+      static func authRepeatPpasswordPlaceholder(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Repeat password", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Auth.RepeatPpassword.Placeholder", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Repeat password"
+          return "Auth.RepeatPpassword.Placeholder"
         }
 
-        return NSLocalizedString("Repeat password", bundle: bundle, comment: "")
+        return NSLocalizedString("Auth.RepeatPpassword.Placeholder", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Request delivered
+      ///
+      /// Locales: en, ru-RU
+      static func resetPassworSuccessAlertTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("ResetPasswor.Success.AlertTitle", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "ResetPasswor.Success.AlertTitle"
+        }
+
+        return NSLocalizedString("ResetPasswor.Success.AlertTitle", bundle: bundle, comment: "")
       }
 
       /// en translation: Retry
       ///
       /// Locales: en, ru-RU
-      static func retry(preferredLanguages: [String]? = nil) -> String {
+      static func alertRetryAction(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Retry", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Alert.Retry.Action", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Retry"
+          return "Alert.Retry.Action"
         }
 
-        return NSLocalizedString("Retry", bundle: bundle, comment: "")
+        return NSLocalizedString("Alert.Retry.Action", bundle: bundle, comment: "")
       }
 
       /// en translation: Search
       ///
       /// Locales: en, ru-RU
-      static func search(preferredLanguages: [String]? = nil) -> String {
+      static func homeNavigationItemTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Search", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.NavigationItem.Title", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Search"
+          return "Home.NavigationItem.Title"
         }
 
-        return NSLocalizedString("Search", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.NavigationItem.Title", bundle: bundle, comment: "")
       }
 
       /// en translation: Send
       ///
       /// Locales: en, ru-RU
-      static func send(preferredLanguages: [String]? = nil) -> String {
+      static func resetPasswordSendButtonText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Send", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("ResetPassword.SendButton.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Send"
+          return "ResetPassword.SendButton.Text"
         }
 
-        return NSLocalizedString("Send", bundle: bundle, comment: "")
-      }
+        return NSLocalizedString("ResetPassword.SendButton.Text", bundle: bundle, comment: "")
 
-      /// en translation: Sign In is succesful
-      ///
-      /// Locales: en, ru-RU
-      static func signInIsSuccesful(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Sign In is succesful", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Sign In is succesful"
-        }
-
-        return NSLocalizedString("Sign In is succesful", bundle: bundle, comment: "")
       }
 
       /// en translation: Sign in
       ///
       /// Locales: en, ru-RU
-      static func signIn(preferredLanguages: [String]? = nil) -> String {
+
+      static func authSignInText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Sign in", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Auth.SignIn.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Sign in"
+          return "Auth.SignIn.Text"
         }
 
-        return NSLocalizedString("Sign in", bundle: bundle, comment: "")
+        return NSLocalizedString("Auth.SignIn.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: Song: %@
       ///
       /// Locales: en, ru-RU
-      static func _Song(_ value1: String, preferredLanguages: [String]? = nil) -> String {
+
+      static func detailSongName(_ value1: String, preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          let format = NSLocalizedString("_Song", bundle: hostingBundle, comment: "")
+          let format = NSLocalizedString("Detail.Song.Name", bundle: hostingBundle, comment: "")
+
           return String(format: format, locale: applicationLocale, value1)
         }
 
         guard let (locale, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "_Song"
+
+          return "Detail.Song.Name"
         }
 
-        let format = NSLocalizedString("_Song", bundle: bundle, comment: "")
+        let format = NSLocalizedString("Detail.Song.Name", bundle: bundle, comment: "")
+
         return String(format: format, locale: locale, value1)
       }
 
       /// en translation: Start searching
       ///
       /// Locales: en, ru-RU
-      static func startSearching(preferredLanguages: [String]? = nil) -> String {
+
+      static func homeSearchBarPlaceholder(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Start searching", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.SearchBar.Placeholder", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Start searching"
+          return "Home.SearchBar.Placeholder"
         }
 
-        return NSLocalizedString("Start searching", bundle: bundle, comment: "")
-      }
-
-      /// en translation: Success
-      ///
-      /// Locales: en, ru-RU
-      static func success(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Success", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Success"
-        }
-
-        return NSLocalizedString("Success", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.SearchBar.Placeholder", bundle: bundle, comment: "")
       }
 
       /// en translation: The email is already in use with another account
       ///
       /// Locales: en, ru-RU
-      static func theEmailIsAlreadyInUseWithAnotherAccount(preferredLanguages: [String]? = nil) -> String {
+      static func authErrorCodeEmailAlreadyInUseText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("The email is already in use with another account", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.EmailAlreadyInUse.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "The email is already in use with another account"
+          return "AuthErrorCode.EmailAlreadyInUse.Text"
         }
 
-        return NSLocalizedString("The email is already in use with another account", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.EmailAlreadyInUse.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: The password must be 6 characters long or more.
       ///
       /// Locales: en, ru-RU
-      static func thePasswordMustBe6CharactersLongOrMore(preferredLanguages: [String]? = nil) -> String {
+      static func authErrorCodeWeakPasswordText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("The password must be 6 characters long or more.", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.WeakPassword.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "The password must be 6 characters long or more."
+          return "AuthErrorCode.WeakPassword.Text"
         }
 
-        return NSLocalizedString("The password must be 6 characters long or more.", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.WeakPassword.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: Unknown error
       ///
       /// Locales: en, ru-RU
-      static func unknownError(preferredLanguages: [String]? = nil) -> String {
+      static func homeUnknownErrorAlertMessage(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Unknown error", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Home.UnknownError.AlertMessage", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Unknown error"
+          return "Home.UnknownError.AlertMessage"
         }
 
-        return NSLocalizedString("Unknown error", bundle: bundle, comment: "")
+        return NSLocalizedString("Home.UnknownError.AlertMessage", bundle: bundle, comment: "")
       }
 
       /// en translation: Unknown error occurred
       ///
       /// Locales: en, ru-RU
-      static func unknownErrorOccurred(preferredLanguages: [String]? = nil) -> String {
+      static func errorUnknownErrorText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Unknown error occurred", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Error.UnknownError.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Unknown error occurred"
+          return "Error.UnknownError.Text"
         }
 
-        return NSLocalizedString("Unknown error occurred", bundle: bundle, comment: "")
+        return NSLocalizedString("Error.UnknownError.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: Your account has been disabled. Please contact support.
       ///
       /// Locales: en, ru-RU
-      static func yourAccountHasBeenDisabledPleaseContactSupport(preferredLanguages: [String]? = nil) -> String {
+      static func authErrorCodeUserDisabledText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Your account has been disabled. Please contact support.", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.UserDisabled.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Your account has been disabled. Please contact support."
+          return "AuthErrorCode.UserDisabled.Text"
         }
 
-        return NSLocalizedString("Your account has been disabled. Please contact support.", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.UserDisabled.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: Your password is incorrect. Please try again or use 'Forgot password'
       ///
       /// Locales: en, ru-RU
-      static func yourPasswordIsIncorrectPleaseTryAgainOrUseForgotPassword(preferredLanguages: [String]? = nil) -> String {
+      static func authErrorCodeWrongPasswordText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Your password is incorrect. Please try again or use 'Forgot password'", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("AuthErrorCode.WrongPassword.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Your password is incorrect. Please try again or use 'Forgot password'"
+          return "AuthErrorCode.WrongPassword.Text"
         }
 
-        return NSLocalizedString("Your password is incorrect. Please try again or use 'Forgot password'", bundle: bundle, comment: "")
+        return NSLocalizedString("AuthErrorCode.WrongPassword.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: all
       ///
       /// Locales: en, ru-RU
-      static func all(preferredLanguages: [String]? = nil) -> String {
+      static func categoryAllText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("all", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.All.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "all"
+          return "Category.All.Text"
         }
 
-        return NSLocalizedString("all", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.All.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: audiobook
       ///
       /// Locales: en, ru-RU
-      static func audiobook(preferredLanguages: [String]? = nil) -> String {
+      static func categoryAudiobookText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("audiobook", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Audiobook.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "audiobook"
+          return "Category.Audiobook.Text"
         }
 
-        return NSLocalizedString("audiobook", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Audiobook.Text", bundle: bundle, comment: "")
+
+      }
+
+      /// en translation: audiobook
+      ///
+      /// Locales: en, ru-RU
+
+      static func dataKindAudiobookText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Audiobook.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Audiobook.Text"
+        }
+
+        return NSLocalizedString("DataKind.Audiobook.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: ebook
       ///
       /// Locales: en, ru-RU
-      static func ebook(preferredLanguages: [String]? = nil) -> String {
+
+      static func categoryEbookText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("ebook", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Ebook.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "ebook"
+          return "Category.Ebook.Text"
         }
 
-        return NSLocalizedString("ebook", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Ebook.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: ebook
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindEbookText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Ebook.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Ebook.Text"
+        }
+
+        return NSLocalizedString("DataKind.Ebook.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: feature-movie
       ///
       /// Locales: en, ru-RU
-      static func featureMovie(preferredLanguages: [String]? = nil) -> String {
+
+      static func dataKindFeatureMovieText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("feature-movie", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.FeatureMovie.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "feature-movie"
+          return "DataKind.FeatureMovie.Text"
         }
 
-        return NSLocalizedString("feature-movie", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.FeatureMovie.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: movie
       ///
       /// Locales: en, ru-RU
-      static func movie(preferredLanguages: [String]? = nil) -> String {
+
+      static func categoryMovieText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("movie", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Movie.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "movie"
+          return "Category.Movie.Text"
         }
 
-        return NSLocalizedString("movie", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Movie.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: music
       ///
       /// Locales: en, ru-RU
-      static func music(preferredLanguages: [String]? = nil) -> String {
+
+      static func categoryMusicText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("music", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Music.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "music"
+          return "Category.Music.Text"
         }
 
-        return NSLocalizedString("music", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Music.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static func _musicVideo(preferredLanguages: [String]? = nil) -> String {
+
+      static func categoryMusicVideoText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("_music-video", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.MusicVideo.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "_music-video"
+          return "Category.MusicVideo.Text"
         }
 
-        return NSLocalizedString("_music-video", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.MusicVideo.Text", bundle: bundle, comment: "")
       }
 
-      /// en translation: musicVideo
+      /// en translation: music-video
       ///
       /// Locales: en, ru-RU
-      static func musicVideo(preferredLanguages: [String]? = nil) -> String {
+      static func dataKindMusicVideoText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("musicVideo", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.MusicVideo.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "musicVideo"
+          return "DataKind.MusicVideo.Text"
         }
 
-        return NSLocalizedString("musicVideo", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.MusicVideo.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: no info
@@ -1333,46 +1487,82 @@ struct R: Rswift.Validatable {
       /// en translation: podcast
       ///
       /// Locales: en, ru-RU
-      static func podcast(preferredLanguages: [String]? = nil) -> String {
+
+      static func categoryPodcastText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("podcast", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.Podcast.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "podcast"
+          return "Category.Podcast.Text"
         }
 
-        return NSLocalizedString("podcast", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.Podcast.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: podcast
+      ///
+      /// Locales: en, ru-RU
+      static func dataKindPodcastText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.Podcast.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.Podcast.Text"
+        }
+
+        return NSLocalizedString("DataKind.Podcast.Text", bundle: bundle, comment: "")
+
       }
 
       /// en translation: song
       ///
       /// Locales: en, ru-RU
-      static func song(preferredLanguages: [String]? = nil) -> String {
+
+      static func dataKindSongText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("song", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("DataKind.Song.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "song"
+          return "DataKind.Song.Text"
         }
 
-        return NSLocalizedString("song", bundle: bundle, comment: "")
+        return NSLocalizedString("DataKind.Song.Text", bundle: bundle, comment: "")
       }
 
       /// en translation: tvShow
       ///
       /// Locales: en, ru-RU
-      static func tvShow(preferredLanguages: [String]? = nil) -> String {
+      static func categoryTvShowText(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("tvShow", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("Category.TvShow.Text", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "tvShow"
+          return "Category.TvShow.Text"
         }
 
-        return NSLocalizedString("tvShow", bundle: bundle, comment: "")
+        return NSLocalizedString("Category.TvShow.Text", bundle: bundle, comment: "")
+
+      }
+
+      /// en translation: tvShow
+      ///
+      /// Locales: en, ru-RU
+
+      static func dataKindTvShowText(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("DataKind.TvShow.Text", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "DataKind.TvShow.Text"
+        }
+
+        return NSLocalizedString("DataKind.TvShow.Text", bundle: bundle, comment: "")
+
       }
 
       fileprivate init() {}

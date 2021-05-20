@@ -4,7 +4,7 @@
 //
 //  Created by Satsishur on 12.04.2021.
 //
-// swiftlint:disable line_length
+
 import Firebase
 import UIKit
 
@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: UISceneSession Lifecycle
 
-    func application(_: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    func application(_: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options _: UIScene.ConnectionOptions) -> UISceneConfiguration {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 

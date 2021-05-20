@@ -20,6 +20,7 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBOutlet private var passwordTextField: AuthTextField!
     @IBOutlet private var repeatPasswordTextField: AuthTextField!
     @IBOutlet private var bottomButton: UIButton!
+    @IBOutlet private var signInButton: AuthButton!
 
     var presenter: SignInPresenterProtocol?
 
@@ -40,9 +41,14 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     }
 
     private func setupLayout() {
-        let attributedTitle = createAttributedTitle(title: R.string.localizable.alreadyHaveAnAccount(),
-                                                    subTitle: R.string.localizable.logIn())
+        let attributedTitle = createAttributedTitle(title: R.string.localizable.signInBottomButtonTitle(),
+                                                    subTitle: R.string.localizable.authLogInText())
         bottomButton.setAttributedTitle(attributedTitle, for: .normal)
+        signInButton.setTitle(R.string.localizable.authSignInText(), for: .normal)
+        topLabel.text = R.string.localizable.signInTopLabelText()
+        emailTextField.placeholder = R.string.localizable.authEmailPlaceholder()
+        passwordTextField.placeholder = R.string.localizable.authPasswordPlaceholder()
+        repeatPasswordTextField.placeholder = R.string.localizable.authRepeatPpasswordPlaceholder()
     }
 
     @IBAction private func didTapSignInButton(_: Any) {

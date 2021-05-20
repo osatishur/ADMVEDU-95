@@ -9,7 +9,7 @@ import FirebaseAuth
 import UIKit
 
 protocol ResetPasswordViewProtocol: AnyObject {
-    func successRequest(title: String, message: String)
+    func successRequest()
     func handleAuthError(_ error: Error, alertTitle: String)
     func showAlert(title: String, message: String)
 }
@@ -17,11 +17,23 @@ protocol ResetPasswordViewProtocol: AnyObject {
 class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private var topLabel: UILabel!
     @IBOutlet private var emailTextField: AuthTextField!
+    @IBOutlet private var sendButton: AuthButton!
 
     var presenter: ResetPasswordPresenter?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavigationBar()
+        setupViews()
+    }
+
     private func setupNavigationBar() {
-        navigationItem.title = R.string.localizable.passwordRecovery()
+        navigationItem.title = R.string.localizable.resetPasswordNavigationItemTitle()
+    }
+
+    private func setupViews() {
+        topLabel.text = R.string.localizable.resetPasswordTopLabelText()
+        sendButton.setTitle(R.string.localizable.resetPasswordSendButtonText(), for: .normal)
     }
 
     @IBAction private func didTapSendButton(_: Any) {
@@ -38,10 +50,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension ResetPasswordViewController: ResetPasswordViewProtocol {
-    func successRequest(title: String, message: String) {
-        DispatchQueue.main.async {
-            self.showAlert(titleMessage: title, message: message)
-        }
+    func successRequest() {
         presenter?.navigateToLogIn()
     }
 
@@ -52,6 +61,8 @@ extension ResetPasswordViewController: ResetPasswordViewProtocol {
     }
 
     func showAlert(title: String, message: String) {
-        showAlert(titleMessage: title, message: message)
+        DispatchQueue.main.async {
+            self.showAlert(titleMessage: title, message: message)
+        }
     }
 }

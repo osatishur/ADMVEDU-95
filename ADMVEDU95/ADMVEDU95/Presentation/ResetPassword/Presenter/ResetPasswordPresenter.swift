@@ -28,11 +28,13 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
-                self.view?.successRequest(title: R.string.localizable.success(),
-                                          message: R.string.localizable.checkYourEmailForTheNextStep())
+                self.view?.showAlert(title: R.string.localizable.resetPassworSuccessAlertTitle(),
+                                     message: R.string.localizable.resetPasswordSuccessAlertMessage())
+                self.view?.successRequest()
             case let .failure(error):
                 let errorMessage = self.getAuthErrorText(error)
-                self.view?.showAlert(title: R.string.localizable.error(), message: errorMessage)
+                self.view?.showAlert(title: R.string.localizable.alertErrorTitle(),
+                                     message: errorMessage)
             }
         }
     }

@@ -67,8 +67,8 @@ class HomePresenter: HomePresenterProtocol {
             coreDataStack.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
-            let title = R.string.localizable.noData()
-            let message = R.string.localizable.pleaseCheckForCorrectRequest()
+            let title = R.string.localizable.homeNoDataAlertTitle()
+            let message = R.string.localizable.homeNoDataAlertMessage()
             view?.showAlert(title: title, message: message)
         }
     }
@@ -93,7 +93,8 @@ class HomePresenter: HomePresenterProtocol {
     func getDataKind(model: ApiResult) -> ResponseDataKind {
         switch model.kind {
         case ResponseDataKind.movie.rawValue,
-             ResponseDataKind.musicVideo.rawValue:
+             ResponseDataKind.musicVideo.rawValue,
+             ResponseDataKind.tvShow.rawValue:
             return .movie
         default:
             return .song
@@ -103,11 +104,12 @@ class HomePresenter: HomePresenterProtocol {
     private func getErrorMessage(error: NetworkError) -> String {
         switch error {
         case .unknown:
-            return (R.string.localizable.unknownError())
+            return (R.string.localizable.homeUnknownErrorAlertMessage())
         case .emptyData:
-            return (R.string.localizable.noData())
+            return (R.string.localizable.homeNoDataAlertMessage())
         case .parsingData:
-            return ("Failed to get data from server".localized())
+
+            return (R.string.localizable.homeParsingDataErrorAlertMessage())
         case .networkLoss:
             return ("Please, check your internet connection".localized())
         }
@@ -129,7 +131,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func getCategoryTitle() -> String {
-        category.rawValue
+        category.description
     }
 
     func getCategory() -> Category {
@@ -159,7 +161,8 @@ class HomePresenter: HomePresenterProtocol {
         if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
-            view?.showAlert(title: R.string.localizable.error(), message: R.string.localizable.failedToLogOut())
+            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
+                            message: R.string.localizable.homeLogOutFailedAlertMessage())
         }
     }
 }
@@ -167,6 +170,6 @@ class HomePresenter: HomePresenterProtocol {
 extension HomePresenter: CategoryPresenterDelegate {
     func fetchCategory(_: CategoryPresenter, category: Category) {
         self.category = category
-        view?.updateCategory(category: category.rawValue.localized())
+        view?.updateCategory(category: category.description)
     }
 }
