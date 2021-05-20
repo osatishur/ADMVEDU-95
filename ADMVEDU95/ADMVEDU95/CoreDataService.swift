@@ -44,22 +44,24 @@ class CoreDataService {
     }
 
     func saveResult(apiResult: ApiResult) {
-        let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName,
-                                                        into: context) as? ResultCoreDataModel
-        guard let model = model else {
+        guard let model = NSEntityDescription.insertNewObject(forEntityName: Constants.entityName, into: context) as? ResultCoreDataModel else {
             return
         }
+        convertApiResultToModel(apiResult: apiResult, model: model)
+        saveContext()
+    }
+    
+    private func convertApiResultToModel(apiResult: ApiResult, model: ResultCoreDataModel) {
         model.albumImageURL = apiResult.artworkUrl100
         model.albumName = apiResult.collectionName
         model.artistName = apiResult.artistName
         model.trackName = apiResult.trackName
         model.kind = apiResult.kind
-        saveFile(url: apiResult.previewUrl ?? "") { fileUrl in
+        fileManagerService.saveFile(url: apiResult.previewUrl ?? "") { fileUrl in
             print("CORE DATA SAVED FILE AT PATH", fileUrl)
             model.previewPath = fileUrl
             self.saveContext()
         }
-        saveContext()
     }
 
     func saveFile(url: String, completion: @escaping ((_ filePath: String) -> Void)) {
@@ -99,8 +101,8 @@ class CoreDataService {
         }
     }
 
-    func deleteAllResults() {
-        deleteDownloadedFiles()
+    func deleteAllResults(){
+        fileManagerService.deleteDownloadedFiles()
         deleteEntityObjects()
     }
 
@@ -129,13 +131,13 @@ class CoreDataService {
     }
 
     private func deleteEntityObjects() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel")
-        let delAllReqVar = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let delAllReqVar = NSBatchDeleteRequest(fetchRequest:  NSFetchRequest<NSFetchRequestResult>(entityName: "ResultCoreDataModel"))
         do {
             try context.execute(delAllReqVar)
-        } catch {
-            print(error)
         }
+        catch {
+        }
+        saveContext()
     }
 
     private func saveContext() {

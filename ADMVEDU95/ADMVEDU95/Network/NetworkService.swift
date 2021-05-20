@@ -33,13 +33,19 @@ class NetworkService {
         return decoder
     }()
 
-    func get<T: Codable>(endpoint: Endpoint,
-                         parameters: [String: String],
-                         completion: @escaping (Result<T, SearchError>) -> Void) {
+    public func get<T: Codable>(endpoint: NetworkConstants.Endpoint,
+                                parameters: [String: String],
+                                completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
-        AF.request(url, parameters: parameters).responseJSON { response in
+        AF.request(url, parameters: parameters).responseJSON { (response) in
+            if let _ = response.error?.isSessionTaskError {
+                DispatchQueue.main.async {
+                    let searchError: Result<T, NetworkError> = .failure(NetworkError.networkLoss)
+                    completion(searchError)
+                }
+            }
             let result = self.parseResponse(data: response.data,
                                             response: response.response,
                                             error: response.error,

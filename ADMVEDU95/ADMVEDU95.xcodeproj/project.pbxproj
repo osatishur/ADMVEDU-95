@@ -42,6 +42,7 @@
 		0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1B8263ABCA400FBC00E /* XibView.swift */; };
 		0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */; };
 		0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */; };
+		0EE9441E2656CEB8007768BB /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9441D2656CEB8007768BB /* FileManagerService.swift */; };
 		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */; };
 		0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */; };
@@ -112,6 +113,7 @@
 		0EDDA1B8263ABCA400FBC00E /* XibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibView.swift; sourceTree = "<group>"; };
 		0EDDA1BB263ADCF400FBC00E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		0EDDA1BF263B26DF00FBC00E /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		0EE9441D2656CEB8007768BB /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPresenter.swift; sourceTree = "<group>"; };
 		0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				0E768E3926388D990048E512 /* ViewBuilder.swift */,
 				0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */,
 				0E417D90264D5C2C00FE94CF /* CoreDataService.swift */,
+				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
 				0E49E0CD26500F8D0028F7DB /* R.generated.swift */,
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
@@ -726,6 +729,7 @@
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,
 				0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */,
 				0E40CEC92636A65C0067D7D5 /* SearchTableViewCell.swift in Sources */,
+				0EE9441E2656CEB8007768BB /* FileManagerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
