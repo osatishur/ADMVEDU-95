@@ -41,7 +41,7 @@ class NetworkService {
             return
         }
         AF.request(url, parameters: parameters).responseJSON { response in
-            if let _ = response.error?.isSessionTaskError {
+            if response.error?.isSessionTaskError != nil {
                 DispatchQueue.main.async {
                     let searchError: Result<T, NetworkError> = .failure(NetworkError.networkLoss)
                     completion(searchError)

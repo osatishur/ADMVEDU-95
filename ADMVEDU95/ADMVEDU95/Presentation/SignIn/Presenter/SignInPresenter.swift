@@ -10,7 +10,7 @@ import Foundation
 
 protocol SignInPresenterProtocol: AnyObject {
     func signIn(email: String, password: String, repeatPassword: String)
-    func didTapSignInButton()
+    func didTapOnBottomButton()
     func navigateToHome()
 }
 
@@ -61,7 +61,7 @@ class SignInPresenter: SignInPresenterProtocol {
         return text
     }
 
-    func didTapSignInButton() {
+    func didTapOnBottomButton() {
         router?.popToLogIn()
     }
 

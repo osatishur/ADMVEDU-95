@@ -47,6 +47,5 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let category = presenter.getCategory(indexPath: indexPath)
         presenter.onCellSelected(category: category)
-        presenter.navigateToHome()
     }
 }

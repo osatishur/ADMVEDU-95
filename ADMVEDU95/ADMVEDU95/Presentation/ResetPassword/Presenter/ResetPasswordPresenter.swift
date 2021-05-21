@@ -30,7 +30,7 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
             case .success:
                 self.view?.showAlert(title: R.string.localizable.resetPassworSuccessAlertTitle(),
                                      message: R.string.localizable.resetPasswordSuccessAlertMessage())
-                self.view?.successRequest()
+                self.navigateToLogIn()
             case let .failure(error):
                 let errorMessage = self.getAuthErrorText(error)
                 self.view?.showAlert(title: R.string.localizable.alertErrorTitle(),

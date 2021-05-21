@@ -10,8 +10,8 @@ import Foundation
 
 protocol LogInPresenterProtocol: AnyObject {
     func logIn(email: String, password: String)
-    func navigateToSignIn()
-    func navigateToResetPassword()
+    func didTapOnSignInButton()
+    func didTapOnResetPasswordButton()
     func navigateToHome()
 }
 
@@ -53,11 +53,11 @@ class LogInPresenter: LogInPresenterProtocol {
         return text
     }
 
-    func navigateToResetPassword() {
+    func didTapOnResetPasswordButton() {
         router?.navigateToResetPassword()
     }
 
-    func navigateToSignIn() {
+    func didTapOnSignInButton() {
         router?.navigateToSignIn()
     }
 

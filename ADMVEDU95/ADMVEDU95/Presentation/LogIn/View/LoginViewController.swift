@@ -60,11 +60,11 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     }
 
     @IBAction private func didTapForgorPasswordButton(_: Any) {
-        presenter?.navigateToResetPassword()
+        presenter?.didTapOnResetPasswordButton()
     }
 
     @IBAction private func didTapBottomButton(_: Any) {
-        presenter?.navigateToSignIn()
+        presenter?.didTapOnSignInButton()
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {
