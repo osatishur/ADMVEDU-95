@@ -15,6 +15,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
     func getResultsFromCoreData()
+    func getFilterParameter() -> String
     func didTapLogOutButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
@@ -61,6 +62,9 @@ class HomePresenter: HomePresenterProtocol {
     private func fetchDataFromResponse(response: Response) {
         coreDataStack.deleteAllResults()
         let results = response.results
+//        guard let results = response.results else {
+//            return
+//        }
         for result in results {
             print(result)
             addResultToDataSource(result: result)
@@ -135,6 +139,10 @@ class HomePresenter: HomePresenterProtocol {
 
     func getCategory() -> Category {
         category
+    }
+
+    func getFilterParameter() -> String {
+        category.rawValue
     }
 
     func clearOldResults() {

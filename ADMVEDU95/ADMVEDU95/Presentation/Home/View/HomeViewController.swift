@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         guard let presenter = presenter else {
             return
         }
-        categoryView.configureView(categoryTitle: presenter.getCategoryTitle().localized())
+        categoryView.configureView(categoryTitle: presenter.getCategoryTitle())
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
         categoryView.isUserInteractionEnabled = true
@@ -97,7 +97,7 @@ extension HomeViewController: UISearchBarDelegate {
               let presenter = presenter else {
             return
         }
-        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
+        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
         searchBar.endEditing(true)
     }
 }
@@ -109,7 +109,7 @@ extension HomeViewController: HomeViewProtocol {
                   let presenter = self.presenter else {
                 return
             }
-            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
+            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
         }
     }
 
