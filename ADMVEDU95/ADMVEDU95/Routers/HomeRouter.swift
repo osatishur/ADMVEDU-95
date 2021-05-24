@@ -44,8 +44,7 @@ class HomeRouter: HomeRouterProtocol {
         guard let navigationController = navigationController,
               let categoryViewController = builder?.createCategoryView(selectedCategory: selectedCategory,
                                                                        delegate: delegate,
-                                                                       router: self)
-        else {
+                                                                       router: self) else {
             return
         }
         navigationController.pushViewController(categoryViewController, animated: true)

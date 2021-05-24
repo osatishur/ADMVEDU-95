@@ -14,7 +14,6 @@ protocol HomePresenterProtocol: AnyObject {
     func getResult(indexPath: IndexPath) -> ApiResult
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
-    func getResultsFromCoreData()
     func didTapLogOutButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
@@ -115,7 +114,7 @@ class HomePresenter: HomePresenterProtocol {
         }
     }
 
-    func getResultsFromCoreData() {
+    private func getResultsFromCoreData() {
         coreDataStack.fetchResults { results in
             self.dataSource = results ?? []
             self.view?.updateSearchResults()
@@ -146,7 +145,6 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult) {
-        print(model)
         router?.navigateToDetail(dataKind: dataKind, model: model)
     }
 

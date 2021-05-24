@@ -8,6 +8,16 @@
 import UIKit
 
 class BaseAuthViewController: UIViewController {
+    override func viewWillAppear(_: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(_: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     func createAttributedTitle(title: String, subTitle: String) -> NSMutableAttributedString {
         let titleColor = UIColor.attributedButtonTitle
         let subtitleColor = UIColor.attributedButtonSubTitle
