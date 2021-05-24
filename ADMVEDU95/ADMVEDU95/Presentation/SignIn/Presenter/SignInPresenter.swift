@@ -17,7 +17,7 @@ protocol SignInPresenterProtocol: AnyObject {
 class SignInPresenter: SignInPresenterProtocol {
     private weak var view: SignInViewProtocol?
     private var router: AuthRouter?
-    private let firebaseService: FirebaseServiceProtocol!
+    private let firebaseService: FirebaseServiceProtocol?
 
     init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
@@ -35,6 +35,9 @@ class SignInPresenter: SignInPresenterProtocol {
     }
 
     private func createUser(email: String, password: String) {
+        guard let firebaseService = firebaseService else {
+            return
+        }
         firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
                 return

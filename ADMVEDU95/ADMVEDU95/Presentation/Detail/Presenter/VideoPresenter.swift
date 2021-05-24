@@ -14,6 +14,9 @@ class VideoPresenter: DetailPresenter {
         static let height = UIScreen.main.bounds.height
     }
 
+    private var playerViewController = AVPlayerViewController()
+    private var player: AVPlayer?
+
     private let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 
     override func loadView() -> UIView {
@@ -23,8 +26,7 @@ class VideoPresenter: DetailPresenter {
 
     private func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,
-              let url = URL(string: imageURL)
-        else {
+              let url = URL(string: imageURL) else {
             return VideoDetailView()
         }
         configureVideoView(view: videoView, url: url)
@@ -44,8 +46,7 @@ class VideoPresenter: DetailPresenter {
 
     private func initVideoPlayer(movieUrl: String?) {
         guard let urlString = movieUrl,
-              let url = getURL(urlString: urlString)
-        else {
+              let url = getURL(urlString: urlString) else {
             return
         }
         player = AVPlayer(url: url)

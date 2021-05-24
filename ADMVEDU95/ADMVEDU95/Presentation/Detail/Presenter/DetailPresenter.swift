@@ -17,9 +17,6 @@ class DetailPresenter: DetailPresenterProtocol {
     weak var view: DetailViewProtocol?
     private var router: HomeRouterProtocol?
     var model: ApiResult?
-    var playerViewController = AVPlayerViewController()
-    var player: AVPlayer?
-    var playerItem: AVPlayerItem?
 
     init(view: DetailViewProtocol, model: ApiResult, router: HomeRouterProtocol) {
         self.view = view

@@ -33,8 +33,7 @@ class HomeRouter: HomeRouterProtocol {
 
     func initialViewController() {
         guard let navigationController = navigationController,
-              let homeViewController = builder?.createHomeView(router: self)
-        else {
+              let homeViewController = builder?.createHomeView(router: self) else {
             return
         }
         navigationController.viewControllers = [homeViewController]
@@ -44,8 +43,7 @@ class HomeRouter: HomeRouterProtocol {
         guard let navigationController = navigationController,
               let categoryViewController = builder?.createCategoryView(selectedCategory: selectedCategory,
                                                                        delegate: delegate,
-                                                                       router: self)
-        else {
+                                                                       router: self) else {
             return
         }
         navigationController.pushViewController(categoryViewController, animated: true)
@@ -53,8 +51,7 @@ class HomeRouter: HomeRouterProtocol {
 
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult) {
         guard let navigationController = navigationController,
-              let detailViewController = builder?.createDetailView(dataKind: dataKind, model: model, router: self)
-        else {
+              let detailViewController = builder?.createDetailView(dataKind: dataKind, model: model, router: self) else {
             return
         }
         navigationController.pushViewController(detailViewController, animated: true)

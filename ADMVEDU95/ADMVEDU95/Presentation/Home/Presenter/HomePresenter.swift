@@ -108,7 +108,6 @@ class HomePresenter: HomePresenterProtocol {
         case .emptyData:
             return (R.string.localizable.homeNoDataAlertMessage())
         case .parsingData:
-
             return (R.string.localizable.homeParsingDataErrorAlertMessage())
         case .networkLoss:
             return ("Please, check your internet connection".localized())

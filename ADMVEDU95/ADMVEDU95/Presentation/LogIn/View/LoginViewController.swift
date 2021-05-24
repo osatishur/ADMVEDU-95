@@ -52,8 +52,7 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 
     @IBAction private func didTapLogInButton(_: Any) {
         guard let email = emailTextField.text,
-              let password = passwordTextField.text
-        else {
+              let password = passwordTextField.text else {
             return
         }
         presenter?.logIn(email: email, password: password)

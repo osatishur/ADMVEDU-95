@@ -32,7 +32,7 @@ class CoreDataService {
 
     func fetchResults(completion: @escaping ([ApiResult]?) -> Void) {
         let request = NSFetchRequest<ResultCoreDataModel>(entityName: Constants.entityName)
-        
+
         guard let models = try? context.fetch(request) else {
             completion(nil)
             return

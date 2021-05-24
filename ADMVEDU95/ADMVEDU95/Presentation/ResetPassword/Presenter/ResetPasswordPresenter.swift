@@ -16,7 +16,7 @@ protocol ResetPasswordPresenterProtocol: AnyObject {
 class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
     private weak var view: ResetPasswordViewProtocol?
     private var router: AuthRouter?
-    private let firebaseService: FirebaseServiceProtocol!
+    private let firebaseService: FirebaseServiceProtocol?
 
     init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
@@ -25,6 +25,9 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
     }
 
     func requestRecovery(email: String) {
+        guard let firebaseService = firebaseService else {
+            return
+        }
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:

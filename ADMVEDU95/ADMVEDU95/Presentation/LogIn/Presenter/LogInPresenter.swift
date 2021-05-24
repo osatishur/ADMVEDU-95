@@ -18,7 +18,7 @@ protocol LogInPresenterProtocol: AnyObject {
 class LogInPresenter: LogInPresenterProtocol {
     private weak var view: LogInViewProtocol?
     private var router: AuthRouter?
-    private let firebaseService: FirebaseServiceProtocol!
+    private let firebaseService: FirebaseServiceProtocol?
 
     init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
         self.view = view
@@ -27,6 +27,9 @@ class LogInPresenter: LogInPresenterProtocol {
     }
 
     func logIn(email: String, password: String) {
+        guard let firebaseService = firebaseService else {
+            return
+        }
         firebaseService.logIn(email: email, pass: password) { [weak self] result in
             guard let self = self else {
                 return
