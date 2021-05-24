@@ -13,18 +13,21 @@ protocol ResetPasswordPresenterProtocol: AnyObject {
     func navigateToLogIn()
 }
 
-class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
+class ResetPasswordPresenter: BaseAuthPresenter, ResetPasswordPresenterProtocol {
     private weak var view: ResetPasswordViewProtocol?
     private var router: AuthRouter?
-    private let firebaseService: FirebaseServiceProtocol!
 
     init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+        super.init()
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
     }
 
     func requestRecovery(email: String) {
+        guard let firebaseService = firebaseService else {
+            return
+        }
         firebaseService.sendPasswordReset(email: email) { result in
             switch result {
             case .success:
@@ -32,19 +35,11 @@ class ResetPasswordPresenter: ResetPasswordPresenterProtocol {
                                      message: R.string.localizable.resetPasswordSuccessAlertMessage())
                 self.view?.successRequest()
             case let .failure(error):
-                let errorMessage = self.getAuthErrorText(error)
+                let errorMessage = self.getAuthErrorText(error: error)
                 self.view?.showAlert(title: R.string.localizable.alertErrorTitle(),
                                      message: errorMessage)
             }
         }
-    }
-
-    private func getAuthErrorText(_ error: Error) -> String {
-        let error = AuthErrorCode(rawValue: error._code)
-        guard let text = error?.errorMessage else {
-            return R.string.localizable.noInfo()
-        }
-        return text
     }
 
     func navigateToLogIn() {

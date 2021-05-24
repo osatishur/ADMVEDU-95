@@ -13,6 +13,8 @@ class AudioPresenter: DetailPresenter {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
     }
+    
+    var player: AVPlayer?
 
     private let songView = AudioDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 

@@ -15,6 +15,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getNumberOfResults() -> Int
     func getDataKind(model: ApiResult) -> ResponseDataKind
     func getResultsFromCoreData()
+    func getFilterParameter() -> String
     func didTapLogOutButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
@@ -50,7 +51,7 @@ class HomePresenter: HomePresenterProtocol {
             case let .failure(error):
                 if !(error == .networkLoss) {
                     let alertMessage = self.getErrorMessage(error: error)
-                    self.view?.showAlert(title: "Error", message: alertMessage)
+                    self.view?.showAlert(title: R.string.localizable.alertErrorTitle(), message: alertMessage)
                 } else {
                     self.handleNetworkLoss()
                 }
@@ -104,14 +105,13 @@ class HomePresenter: HomePresenterProtocol {
     private func getErrorMessage(error: NetworkError) -> String {
         switch error {
         case .unknown:
-            return (R.string.localizable.homeUnknownErrorAlertMessage())
+            return R.string.localizable.homeUnknownErrorAlertMessage()
         case .emptyData:
-            return (R.string.localizable.homeNoDataAlertMessage())
+            return R.string.localizable.homeNoDataAlertMessage()
         case .parsingData:
-
-            return (R.string.localizable.homeParsingDataErrorAlertMessage())
+            return R.string.localizable.homeParsingDataErrorAlertMessage()
         case .networkLoss:
-            return ("Please, check your internet connection".localized())
+            return R.string.localizable.homeCheckConnectionAlertMessage()
         }
     }
 
@@ -136,6 +136,10 @@ class HomePresenter: HomePresenterProtocol {
 
     func getCategory() -> Category {
         category
+    }
+    
+    func getFilterParameter() -> String {
+        category.rawValue
     }
 
     func clearOldResults() {

@@ -98,7 +98,7 @@ extension HomeViewController: UISearchBarDelegate {
         else {
             return
         }
-        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
+        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
         searchBar.endEditing(true)
     }
 }
@@ -111,7 +111,7 @@ extension HomeViewController: HomeViewProtocol {
             else {
                 return
             }
-            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getCategoryTitle())
+            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
         }
     }
 

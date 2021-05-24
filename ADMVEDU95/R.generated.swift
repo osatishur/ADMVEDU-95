@@ -336,7 +336,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 57 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 58 localization keys.
     struct localizable {
       /// en translation: Account not found for the specified user. Please check and try again
       ///
@@ -438,6 +438,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ru-RU
       static let homeNoDataAlertMessage = Rswift.StringResource(key: "Home.NoData.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: Please, check your internet connection
+      ///
+      /// Locales: en, ru-RU
+      static let homeCheckConnectionAlertMessage = Rswift.StringResource(key: "Home.CheckConnection.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Please, enter your email
       ///
       /// Locales: en, ru-RU
@@ -948,6 +952,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Home.NoData.AlertMessage", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Please, check your internet connection
+      ///
+      /// Locales: en, ru-RU
+      static func homeCheckConnectionAlertMessage(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Home.CheckConnection.AlertMessage", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Home.CheckConnection.AlertMessage"
+        }
+
+        return NSLocalizedString("Home.CheckConnection.AlertMessage", bundle: bundle, comment: "")
       }
 
       /// en translation: Please, enter your email

@@ -14,12 +14,12 @@ protocol SignInPresenterProtocol: AnyObject {
     func navigateToHome()
 }
 
-class SignInPresenter: SignInPresenterProtocol {
+class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
     private weak var view: SignInViewProtocol?
     private var router: AuthRouter?
-    private let firebaseService: FirebaseServiceProtocol!
 
     init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+        super.init()
         self.view = view
         self.firebaseService = firebaseService
         self.router = router
@@ -35,6 +35,9 @@ class SignInPresenter: SignInPresenterProtocol {
     }
 
     private func createUser(email: String, password: String) {
+        guard let firebaseService = firebaseService else {
+            return
+        }
         firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
                 return
@@ -51,14 +54,6 @@ class SignInPresenter: SignInPresenterProtocol {
                 self.view?.setErrorLabelHidden(isHidden: false)
             }
         }
-    }
-
-    private func getAuthErrorText(error: Error) -> String {
-        let error = AuthErrorCode(rawValue: error._code)
-        guard let text = error?.errorMessage else {
-            return R.string.localizable.noInfo()
-        }
-        return text
     }
 
     func didTapSignInButton() {

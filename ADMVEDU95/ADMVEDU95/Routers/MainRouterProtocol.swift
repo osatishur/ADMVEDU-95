@@ -10,6 +10,7 @@ import UIKit
 protocol MainRouterProtocol {
     var navigationController: UINavigationController? { get set }
     var builder: BuilderProtocol? { get set }
+    var window: UIWindow? { get set }
     func initialViewController()
     func changeRootViewController(window: UIWindow?, router: MainRouterProtocol, animated: Bool)
 }

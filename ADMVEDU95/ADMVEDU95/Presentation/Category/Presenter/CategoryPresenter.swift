@@ -17,7 +17,6 @@ protocol CategoryPresenterProtocol: AnyObject {
     func getSelectedCategoryTitle() -> String
     func numberOfCategories() -> Int
     func onCellSelected(category: Category)
-    func navigateToHome()
 }
 
 class CategoryPresenter: CategoryPresenterProtocol {
@@ -61,9 +60,6 @@ class CategoryPresenter: CategoryPresenterProtocol {
 
     func onCellSelected(category: Category) {
         delegate?.fetchCategory(self, category: category)
-    }
-
-    func navigateToHome() {
         router?.popToHome()
     }
 }

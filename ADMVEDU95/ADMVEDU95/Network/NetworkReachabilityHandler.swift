@@ -12,7 +12,7 @@ class NetworkReachabilityHandler {
 
     private init() {}
 
-    var retryCount = 0
+    private var retryCount = 0
 
     func handleNetworkLoss(comletion: @escaping (LostNetworkRetryLimit) -> Void) {
         if retryCount == 2 {
