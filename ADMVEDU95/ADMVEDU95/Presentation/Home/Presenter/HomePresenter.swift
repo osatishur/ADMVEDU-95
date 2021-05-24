@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Swinject
 
 protocol HomePresenterProtocol: AnyObject {
     func getCategoryTitle() -> String
@@ -29,7 +30,7 @@ class HomePresenter: HomePresenterProtocol {
     private var dataSource: [ApiResult] = []
     private var category = Category.all
     private var coreDataStack = CoreDataService()
-
+    
     init(view: HomeViewProtocol,
          searchService: SearchServiceProtocol,
          firebaseService: FirebaseServiceProtocol,
