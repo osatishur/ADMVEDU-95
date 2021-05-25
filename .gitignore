@@ -31,5 +31,5 @@ DerivedData
 Pods/
 
 # fastlane specific
-ADMVEDU95/fastlane/report.xml
+*/fastlane/report.xml
 
