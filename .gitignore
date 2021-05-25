@@ -31,10 +31,10 @@ DerivedData
 Pods/
 
 # fastlane specific
-**/fastlane/report.xml
+**/report.xml
 
 # deliver temporary files
-**/fastlane/Preview.html
+**/Preview.html
 
 # snapshot generated screenshots
 **/fastlane/screenshots
