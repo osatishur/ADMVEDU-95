@@ -31,7 +31,7 @@ DerivedData
 Pods/
 
 # fastlane specific
-**/report.xml
+fastlane/report.xml
 
 # deliver temporary files
 **/Preview.html
