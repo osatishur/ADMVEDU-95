@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="ADMVEDU95" customModuleProvider="target">
+            <connections>
+                <outlet property="categoryView" destination="scf-31-AAZ" id="Nvu-bo-PEl"/>
+                <outlet property="searchBar" destination="Q2w-dg-ZoU" id="iBj-Ex-x1p"/>
+                <outlet property="tableView" destination="ZHu-Js-M7r" id="DVv-sc-grb"/>
+                <outlet property="view" destination="iN0-l3-epB" id="BOW-0R-iQw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Q2w-dg-ZoU">
+                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scf-31-AAZ" customClass="CategoryView" customModule="ADMVEDU95" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="100" width="414" height="30"/>
+                    <color key="backgroundColor" red="0.20392156862745098" green="0.23137254901960785" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ynJ-O9-3uY"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZHu-Js-M7r">
+                    <rect key="frame" x="0.0" y="130" width="414" height="732"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="scf-31-AAZ" secondAttribute="trailing" id="0qo-X1-JMk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZHu-Js-M7r" secondAttribute="trailing" id="1Jg-hl-0jR"/>
+                <constraint firstItem="Q2w-dg-ZoU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4Ed-uq-7dh"/>
+                <constraint firstItem="Q2w-dg-ZoU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6sw-PL-6hu"/>
+                <constraint firstItem="ZHu-Js-M7r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9zq-6p-t8V"/>
+                <constraint firstItem="scf-31-AAZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HSi-6X-X4o"/>
+                <constraint firstItem="scf-31-AAZ" firstAttribute="top" secondItem="Q2w-dg-ZoU" secondAttribute="bottom" id="T9B-DN-ntj"/>
+                <constraint firstItem="Q2w-dg-ZoU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="TBS-TS-HpV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZHu-Js-M7r" secondAttribute="bottom" id="pyZ-hH-KsA"/>
+                <constraint firstItem="ZHu-Js-M7r" firstAttribute="top" secondItem="scf-31-AAZ" secondAttribute="bottom" id="sUt-Oz-2ms"/>
+            </constraints>
+            <point key="canvasLocation" x="-151" y="64"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

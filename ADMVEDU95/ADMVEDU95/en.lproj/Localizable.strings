@@ -6,24 +6,80 @@
   
 */
 
-"Start searching" = "Start searching";
-"song" = "song";
-"feature-movie" = "feature-movie";
-"Song" = "Song: %@";
-"Artist" = "Artist: %@";
-"Album" = "Album: %@";
-"Director" = "Director: %@";
-"Movie" = "Movie: %@";
+//Category
+"Category.All.Text" = "all";
+"Category.Music.Text" = "music";
+"Category.Movie.Text" = "movie";
+"Category.Podcast.Text" = "podcast";
+"Category.TvShow.Text" = "tvShow";
+"Category.Ebook.Text" = "ebook";
+"Category.Audiobook.Text" = "audiobook";
+"Category.MusicVideo.Text" = "music-video";
+
+"DataKind.Song.Text" = "song";
+"DataKind.Podcast.Text" = "podcast";
+"DataKind.TvShow.Text" = "tvShow";
+"DataKind.Ebook.Text" = "ebook";
+"DataKind.Audiobook.Text" = "audiobook";
+"DataKind.MusicVideo.Text" = "music-video";
+"DataKind.FeatureMovie.Text" = "feature-movie";
+
+//Alert
+"Alert.Ok.Title" = "OK";
+"Alert.Error.Title" = "Error";
+"Alert.Retry.Action" = "Retry";
+"Alert.Cancel.Action" = "Cancel";
+
+//Common
 "no info" = "no info";
-"all" = "all";
-"music" = "music";
-"movie" = "movie";
-"podcast" = "podcast";
-"tvShow" = "tvShow";
-"ebook" = "ebook";
-"audiobook" = "audiobook";
-"musicVideo" = "musicVideo";
-"music-video" = "music-video";
-"No data" = "No data";
-"Please, check for correct request" = "Please, check for correct request";
-"OK" = "OK";
+"Error.UnknownError.Text" = "Unknown error occurred";
+
+//DetailVIew
+"Detail.Song.Name" = "Song: %@";
+"Detail.Artist.Name" = "Artist: %@";
+"Detail.Album.Name" = "Album: %@";
+"Detail.Director.Name" = "Director: %@";
+"Detail.Movie.Name" = "Movie: %@";
+
+//Home VIew
+"Home.SearchBar.Placeholder" = "Start searching";
+"Home.NavigationItem.Title" = "Search";
+"Home.LogoutButton.Title" = "Logout";
+"Home.ParsingDataError.AlertMessage" = "Failed to get data from server";
+"Home.UnknownError.AlertMessage" = "Unknown error";
+"Home.NoData.AlertTitle" = "No data";
+"Home.NoData.AlertMessage" = "Please, check for correct request";
+"Home.LogOutFailed.AlertMessage" = "Failed to log out";
+
+//Auth Views
+"Auth.LogIn.Text" = "Log in";
+"Auth.SignIn.Text" = "Sign in";
+"Auth.Email.Placeholder" = "Email";
+"Auth.Password.Placeholder" = "Password";
+"Auth.RepeatPpassword.Placeholder" = "Repeat password";
+
+//SignInView
+"SignIn.TopLabel.Text" = "Registration";
+"SignIn.bottomButton.Title" = "Already have an account?  ";
+"SignIn.PasswordsMatchError.Text" = "Passwords don't match";
+
+//LogInView
+"LogIn.TopLabel.Text" = "Authorization";
+"LogIn.ForgotPasswordButton.Title" = "Forgot password";
+"LogIn.BottomButton.Title" = "Don't have an account?  ";
+
+//ResetPasswordView
+"ResetPassword.TopLabel.Text" = "Please, enter your email";
+"ResetPassword.SendButton.Text" = "Send";
+"ResetPassword.NavigationItem.Title" = "Password recovery";
+"ResetPasswor.Success.AlertTitle" = "Request delivered";
+"ResetPassword.Success.AlertMessage" = "Check your email for the next step";
+
+//AuthErrorCode
+"AuthErrorCode.EmailAlreadyInUse.Text" = "The email is already in use with another account";
+"AuthErrorCode.UserNotFound.Text" = "Account not found for the specified user. Please check and try again";
+"AuthErrorCode.UserDisabled.Text" = "Your account has been disabled. Please contact support.";
+"AuthErrorCode.InvalidEmail.Text" = "Please enter a valid email";
+"AuthErrorCode.NetworkError.Text" = "Network error. Please try again.";
+"AuthErrorCode.WeakPassword.Text" = "The password must be 6 characters long or more.";
+"AuthErrorCode.WrongPassword.Text" = "Your password is incorrect. Please try again or use 'Forgot password'";
