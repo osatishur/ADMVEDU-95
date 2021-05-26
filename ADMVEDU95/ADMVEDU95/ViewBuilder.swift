@@ -15,77 +15,62 @@ protocol BuilderProtocol {
     func createCategoryView(selectedCategory: Category,
                             delegate: CategoryPresenterDelegate,
                             router: HomeRouterProtocol) -> UIViewController
-    func createSignInView(router: AuthRouter) -> UIViewController
-    func createLogInView(router: AuthRouter) -> UIViewController
-    func createResetPasswordView(router: AuthRouter) -> UIViewController
+    func createSignInView(router: AuthRouterProtocol) -> UIViewController
+    func createLogInView(router: AuthRouterProtocol) -> UIViewController
+    func createResetPasswordView(router: AuthRouterProtocol) -> UIViewController
 }
 
 class ViewBuilder: BuilderProtocol {
-    let firebaseService = FirebaseService()
-    
+    let dependencyAssembler = DependencyProvider.assembler.resolver
+
     func createHomeView(router: HomeRouterProtocol) -> UIViewController {
-        let view = HomeViewController()
-        let searchService = SearchService()
-        let presenter = HomePresenter(view: view,
-                                      searchService: searchService,
-                                      firebaseService: firebaseService,
-                                      router: router)
-        view.presenter = presenter
+        let view = dependencyAssembler.resolve(HomeViewProtocol.self,
+                                                argument: router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
         return view
     }
 
     func createDetailView(dataKind: ResponseDataKind, model: ApiResult, router: HomeRouterProtocol) -> UIViewController {
-        let view = DetailViewController()
-        let presenter: DetailPresenterProtocol
-        if dataKind == .song {
-            presenter = AudioPresenter(view: view,
-                                       model: model,
-                                       router: router)
-        } else {
-            presenter = VideoPresenter(view: view,
-                                       model: model,
-                                       router: router)
+        let view = dependencyAssembler.resolve(DetailViewProtocol.self, arguments: dataKind, model, router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
         }
-        view.presenter = presenter
         return view
     }
 
     func createCategoryView(selectedCategory: Category,
                             delegate: CategoryPresenterDelegate,
                             router: HomeRouterProtocol) -> UIViewController {
-        let view = CategoryViewController()
-        let presenter = CategoryPresenter(view: view,
-                                          selectedCategory: selectedCategory,
-                                          delegate: delegate,
-                                          router: router)
-        view.presenter = presenter
+        let view = dependencyAssembler.resolve(CategoryViewProtocol.self, arguments: selectedCategory, delegate, router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
         return view
     }
 
-    func createSignInView(router: AuthRouter) -> UIViewController {
-        let view = SignInViewController()
-        let presenter = SignInPresenter(view: view,
-                                        firebaseService: firebaseService,
-                                        router: router)
-        view.presenter = presenter
+    func createSignInView(router: AuthRouterProtocol) -> UIViewController {
+        let view = dependencyAssembler.resolve(SignInViewProtocol.self, argument: router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
         return view
     }
 
-    func createLogInView(router: AuthRouter) -> UIViewController {
-        let view = LoginViewController()
-        let presenter = LogInPresenter(view: view,
-                                       firebaseService: firebaseService,
-                                       router: router)
-        view.presenter = presenter
+    func createLogInView(router: AuthRouterProtocol) -> UIViewController {
+        let view = dependencyAssembler.resolve(LogInViewProtocol.self, argument: router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
         return view
     }
 
-    func createResetPasswordView(router: AuthRouter) -> UIViewController {
-        let view = ResetPasswordViewController()
-        let presenter = ResetPasswordPresenter(view: view,
-                                               firebaseService: firebaseService,
-                                               router: router)
-        view.presenter = presenter
+    func createResetPasswordView(router: AuthRouterProtocol) -> UIViewController {
+        let view = dependencyAssembler.resolve(ResetPasswordViewProtocol.self, argument: router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
         return view
     }
 }

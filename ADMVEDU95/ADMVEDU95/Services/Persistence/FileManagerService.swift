@@ -7,11 +7,17 @@
 
 import Foundation
 
-class FileManagerService {
-    private var fileManager = FileManager.default
+protocol FileManagerServiceProtocol {
+    func saveFile(url: String, completion: @escaping ((_ filePath: String) -> Void))
+    func deleteDownloadedFiles()
+}
+
+class FileManagerService: FileManagerServiceProtocol {
+    var fileManager: FileManager?
 
     func saveFile(url: String, completion: @escaping ((_ filePath: String) -> Void)) {
         guard let url = URL(string: url),
+              let fileManager = fileManager,
               let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
@@ -27,7 +33,7 @@ class FileManagerService {
         }
     }
 
-    func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)) {
+    private func downloadFile(withUrl url: URL, andFilePath filePath: URL, completion: @escaping ((_ filePath: String) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try Data(contentsOf: url)
@@ -43,7 +49,8 @@ class FileManagerService {
     }
 
     func deleteDownloadedFiles() {
-        guard let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        guard let fileManager = fileManager,
+              let documentsDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
         let documentsPath = documentsDirectoryURL.path

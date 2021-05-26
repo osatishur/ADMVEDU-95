@@ -34,8 +34,7 @@ class AuthRouter: AuthRouterProtocol {
 
     func initialViewController() {
         guard let navigationController = navigationController,
-              let logInViewController = builder?.createLogInView(router: self)
-        else {
+              let logInViewController = builder?.createLogInView(router: self) else {
             return
         }
         navigationController.viewControllers = [logInViewController]
@@ -43,8 +42,7 @@ class AuthRouter: AuthRouterProtocol {
 
     func navigateToSignIn() {
         guard let navigationController = navigationController,
-              let signInViewController = builder?.createSignInView(router: self)
-        else {
+              let signInViewController = builder?.createSignInView(router: self) else {
             return
         }
         navigationController.pushViewController(signInViewController, animated: true)
@@ -52,8 +50,7 @@ class AuthRouter: AuthRouterProtocol {
 
     func navigateToResetPassword() {
         guard let navigationController = navigationController,
-              let resetPasswordViewController = builder?.createResetPasswordView(router: self)
-        else {
+              let resetPasswordViewController = builder?.createResetPasswordView(router: self) else {
             return
         }
         navigationController.pushViewController(resetPasswordViewController, animated: true)

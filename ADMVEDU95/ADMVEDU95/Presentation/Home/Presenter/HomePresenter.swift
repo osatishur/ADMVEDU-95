@@ -26,18 +26,20 @@ class HomePresenter: HomePresenterProtocol {
     private weak var view: HomeViewProtocol?
     private let searchService: SearchServiceProtocol?
     private let firebaseService: FirebaseServiceProtocol?
+    private var coreDataService: CoreDataServiceProtocol?
     private var router: HomeRouterProtocol?
     private var dataSource: [ApiResult] = []
     private var category = Category.all
-    private var coreDataStack = CoreDataService()
-    
+
     init(view: HomeViewProtocol,
          searchService: SearchServiceProtocol,
          firebaseService: FirebaseServiceProtocol,
+         coreDataService: CoreDataServiceProtocol,
          router: HomeRouterProtocol) {
         self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
+        self.coreDataService = coreDataService
         self.router = router
     }
 
@@ -61,12 +63,12 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     private func fetchDataFromResponse(response: Response) {
-        coreDataStack.deleteAllResults()
+        coreDataService?.deleteAllResults()
         let results = response.results
         for result in results {
             print(result)
             addResultToDataSource(result: result)
-            coreDataStack.saveResult(apiResult: result)
+            coreDataService?.saveResult(apiResult: result)
         }
         if dataSource.isEmpty {
             let title = R.string.localizable.homeNoDataAlertTitle()
@@ -117,7 +119,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func getResultsFromCoreData() {
-        coreDataStack.fetchResults { results in
+        coreDataService?.fetchResults { results in
             self.dataSource = results ?? []
             self.view?.updateSearchResults()
         }
@@ -138,7 +140,7 @@ class HomePresenter: HomePresenterProtocol {
     func getCategory() -> Category {
         category
     }
-    
+
     func getFilterParameter() -> String {
         category.rawValue
     }

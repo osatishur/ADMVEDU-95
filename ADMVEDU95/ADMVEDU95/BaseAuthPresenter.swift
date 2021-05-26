@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class BaseAuthPresenter {
     var firebaseService: FirebaseServiceProtocol?
-    
+
     func getAuthErrorText(error: Error) -> String {
         let error = AuthErrorCode(rawValue: error._code)
         guard let text = error?.errorMessage else {

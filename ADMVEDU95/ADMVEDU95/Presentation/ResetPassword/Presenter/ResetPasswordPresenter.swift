@@ -15,9 +15,9 @@ protocol ResetPasswordPresenterProtocol: AnyObject {
 
 class ResetPasswordPresenter: BaseAuthPresenter, ResetPasswordPresenterProtocol {
     private weak var view: ResetPasswordViewProtocol?
-    private var router: AuthRouter?
+    private var router: AuthRouterProtocol?
 
-    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+    init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
         super.init()
         self.view = view
         self.firebaseService = firebaseService
