@@ -50,6 +50,7 @@
 "Home.LogOutFailed.AlertMessage" = "Не удалось выйти из аккаунта";
 "Home.NoData.AlertTitle" = "Данные отсуствуют";
 "Home.NoData.AlertMessage" = "Пожалуйста, проверьте правильность запроса";
+"Home.CheckConnection.AlertMessage" = "Пожалуйста, проверьте соединение с интернетом";
 
 //Auth Views
 "Auth.LogIn.Text" = "Войти";

@@ -16,8 +16,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier,
                                                  for: indexPath) as? SearchTableViewCell
         guard let presenter = presenter,
-              let cell = cell
-        else {
+              let cell = cell else {
             return UITableViewCell()
         }
         let model = presenter.getResult(indexPath: indexPath)

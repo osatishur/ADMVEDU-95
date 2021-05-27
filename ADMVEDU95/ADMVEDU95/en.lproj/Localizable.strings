@@ -50,6 +50,7 @@
 "Home.NoData.AlertTitle" = "No data";
 "Home.NoData.AlertMessage" = "Please, check for correct request";
 "Home.LogOutFailed.AlertMessage" = "Failed to log out";
+"Home.CheckConnection.AlertMessage" = "Please, check your internet connection";
 
 //Auth Views
 "Auth.LogIn.Text" = "Log in";

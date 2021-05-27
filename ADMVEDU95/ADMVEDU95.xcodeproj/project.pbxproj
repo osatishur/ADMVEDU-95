@@ -45,6 +45,7 @@
 		0EE9441E2656CEB8007768BB /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9441D2656CEB8007768BB /* FileManagerService.swift */; };
 		0EE944202656D372007768BB /* NetworkReachabilityHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9441F2656D372007768BB /* NetworkReachabilityHandler.swift */; };
 		0EE944222656D39D007768BB /* LostNetworkRetryLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE944212656D39D007768BB /* LostNetworkRetryLimit.swift */; };
+		0EE944242656DCE6007768BB /* BaseAuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE944232656DCE6007768BB /* BaseAuthPresenter.swift */; };
 		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */; };
 		0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */; };
@@ -118,6 +119,7 @@
 		0EE9441D2656CEB8007768BB /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		0EE9441F2656D372007768BB /* NetworkReachabilityHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityHandler.swift; sourceTree = "<group>"; };
 		0EE944212656D39D007768BB /* LostNetworkRetryLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostNetworkRetryLimit.swift; sourceTree = "<group>"; };
+		0EE944232656DCE6007768BB /* BaseAuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAuthPresenter.swift; sourceTree = "<group>"; };
 		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPresenter.swift; sourceTree = "<group>"; };
 		0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
@@ -243,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				0E768E2A263884F50048E512 /* LogIn */,
-				0E768E32263885780048E512 /* ResetPassword */,
 				0E768E29263884EE0048E512 /* SignIn */,
+				0E768E32263885780048E512 /* ResetPassword */,
 				0E768E28263884D80048E512 /* Category */,
 				0E768E27263884CE0048E512 /* Detail */,
 				0E768E26263884B40048E512 /* Home */,
@@ -384,6 +386,15 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		0E857AEF2657F40000FED027 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0E417D90264D5C2C00FE94CF /* CoreDataService.swift */,
+				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		83555FEE2624905C00C77316 = {
 			isa = PBXGroup;
 			children = (
@@ -410,9 +421,9 @@
 				0E417D8D264D59D900FE94CF /* CoreDataITunes.xcdatamodeld */,
 				0E768E3926388D990048E512 /* ViewBuilder.swift */,
 				0E2CC766263BF210005B97B8 /* BaseAuthViewController.swift */,
-				0E417D90264D5C2C00FE94CF /* CoreDataService.swift */,
-				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
+				0EE944232656DCE6007768BB /* BaseAuthPresenter.swift */,
 				0E49E0CD26500F8D0028F7DB /* R.generated.swift */,
+				0E857AEF2657F40000FED027 /* Persistence */,
 				0E2CC763263BEEA1005B97B8 /* Routers */,
 				0E495EAB2639A970000122C6 /* Presentation */,
 				83A78BAF2626C79A009C3807 /* CustomViews */,
@@ -622,7 +633,7 @@
 		};
 		0EAB69CD264FF6A1003E4459 /* Swiftformat script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -634,7 +645,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\" -- lint\n";
 		};
@@ -710,6 +721,7 @@
 				835560192624999400C77316 /* DetailViewController.swift in Sources */,
 				0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
+				0EE944242656DCE6007768BB /* BaseAuthPresenter.swift in Sources */,
 				0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */,
 				838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* Response.swift in Sources */,

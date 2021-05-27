@@ -14,8 +14,8 @@ class VideoPresenter: DetailPresenter {
         static let height = UIScreen.main.bounds.height
     }
 
-    private var playerViewController = AVPlayerViewController()
-    private var player: AVPlayer?
+    var playerViewController = AVPlayerViewController()
+    var player: AVPlayer?
 
     private let videoView = VideoDetailView(frame: CGRect(x: .zero, y: .zero, width: Constants.width, height: Constants.height))
 

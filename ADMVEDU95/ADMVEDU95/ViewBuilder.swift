@@ -21,10 +21,11 @@ protocol BuilderProtocol {
 }
 
 class ViewBuilder: BuilderProtocol {
+    private let firebaseService = FirebaseService()
+
     func createHomeView(router: HomeRouterProtocol) -> UIViewController {
         let view = HomeViewController()
         let searchService = SearchService()
-        let firebaseService = FirebaseService()
         let presenter = HomePresenter(view: view,
                                       searchService: searchService,
                                       firebaseService: firebaseService,
@@ -63,7 +64,6 @@ class ViewBuilder: BuilderProtocol {
 
     func createSignInView(router: AuthRouter) -> UIViewController {
         let view = SignInViewController()
-        let firebaseService = FirebaseService()
         let presenter = SignInPresenter(view: view,
                                         firebaseService: firebaseService,
                                         router: router)
@@ -73,7 +73,6 @@ class ViewBuilder: BuilderProtocol {
 
     func createLogInView(router: AuthRouter) -> UIViewController {
         let view = LoginViewController()
-        let firebaseService = FirebaseService()
         let presenter = LogInPresenter(view: view,
                                        firebaseService: firebaseService,
                                        router: router)
@@ -83,7 +82,6 @@ class ViewBuilder: BuilderProtocol {
 
     func createResetPasswordView(router: AuthRouter) -> UIViewController {
         let view = ResetPasswordViewController()
-        let firebaseService = FirebaseService()
         let presenter = ResetPasswordPresenter(view: view,
                                                firebaseService: firebaseService,
                                                router: router)
