@@ -30,3 +30,7 @@ DerivedData/
 
 # CocoaPods
 Pods/
+
+# fastlane specific
+*/fastlane/report.xml
+
