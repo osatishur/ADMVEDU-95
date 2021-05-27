@@ -20,6 +20,7 @@ class ViewBuilderAssembly: Assembly {
         assembleHomeView(container: container, firebaseService: firebaseService)
         assembleDetailView(container: container)
         assembleCategoryView(container: container)
+        assembleSettingsView(container: container)
         assembleSignInView(container: container, firebaseService: firebaseService)
         assembleLogInView(container: container, firebaseService: firebaseService)
         assembleResetPasswordView(container: container, firebaseService: firebaseService)
@@ -80,6 +81,28 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
+    
+    private func assembleSettingsView(container: Container) {
+        container.register(SettingsViewProtocol.self) { (_,
+                                                         router: HomeRouterProtocol) in
+            let view = SettingsViewController()
+            let presenter = SettingsPresenter(view: view,
+                                              router: router)
+            presenter.networkServiceSelected = self.getNetworkOption()
+            view.presenter = presenter
+            return view
+        }.inObjectScope(.container)
+    }
+    
+    private func getNetworkOption() -> NetworkServiceSelected {
+        let userDefaults = UserDefaults.standard
+        if let networkServiceSelected = userDefaults.object(forKey: "networkOption") as? String {
+            return NetworkServiceSelected(rawValue: networkServiceSelected) ?? .alamofire
+        } else {
+            userDefaults.setValue(NetworkServiceSelected.alamofire.rawValue, forKey: "networkOption")
+            return .alamofire
+        }
     }
 
     private func assembleSignInView(container: Container, firebaseService: FirebaseServiceProtocol) {

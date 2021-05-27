@@ -39,6 +39,10 @@ PODS:
   - GoogleUtilities/Reachability (7.4.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.5.0)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -55,6 +59,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Firebase/Auth
+  - Moya
   - R.swift
   - SwiftFormat/CLI
   - SwiftLint
@@ -70,6 +75,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - Moya
     - nanopb
     - PromisesObjC
     - R.swift
@@ -87,6 +93,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
@@ -95,6 +102,6 @@ SPEC CHECKSUMS:
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 96a67a33fcf1c6caca1b184870c534f31cf504d7
+PODFILE CHECKSUM: bffd906a0a54acd944145dec9f93b4854840fbe5
 
 COCOAPODS: 1.10.1

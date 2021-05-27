@@ -189,7 +189,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 9 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
   struct nib {
     /// Nib `AudioDetailView`.
     static let audioDetailView = _R.nib._AudioDetailView()
@@ -205,6 +205,8 @@ struct R: Rswift.Validatable {
     static let resetPasswordViewController = _R.nib._ResetPasswordViewController()
     /// Nib `SearchTableViewCell`.
     static let searchTableViewCell = _R.nib._SearchTableViewCell()
+    /// Nib `SettingsViewController`.
+    static let settingsViewController = _R.nib._SettingsViewController()
     /// Nib `SignInViewController`.
     static let signInViewController = _R.nib._SignInViewController()
     /// Nib `VideoDetailView`.
@@ -267,6 +269,14 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SettingsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.settingsViewController) instead")
+    static func settingsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.settingsViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "SignInViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.signInViewController) instead")
     static func signInViewController(_: Void = ()) -> UIKit.UINib {
@@ -310,6 +320,10 @@ struct R: Rswift.Validatable {
       return R.nib.searchTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SearchTableViewCell
     }
 
+    static func settingsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.settingsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func signInViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.signInViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -336,7 +350,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 58 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 59 localization keys.
     struct localizable {
       /// en translation: Account not found for the specified user. Please check and try again
       ///
@@ -470,6 +484,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ru-RU
       static let resetPasswordSendButtonText = Rswift.StringResource(key: "ResetPassword.SendButton.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: Settings
+      ///
+      /// Locales: en, ru-RU
+      static let settingsNavigationItemTitle = Rswift.StringResource(key: "Settings.NavigationItem.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Sign in
       ///
       /// Locales: en, ru-RU
@@ -1074,6 +1092,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ResetPassword.SendButton.Text", bundle: bundle, comment: "")
       }
 
+      /// en translation: Settings
+      ///
+      /// Locales: en, ru-RU
+      static func settingsNavigationItemTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Settings.NavigationItem.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Settings.NavigationItem.Title"
+        }
+
+        return NSLocalizedString("Settings.NavigationItem.Title", bundle: bundle, comment: "")
+      }
+
       /// en translation: Sign in
       ///
       /// Locales: en, ru-RU
@@ -1567,6 +1600,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SearchTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SearchTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SettingsViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "SettingsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
       }
 
       fileprivate init() {}

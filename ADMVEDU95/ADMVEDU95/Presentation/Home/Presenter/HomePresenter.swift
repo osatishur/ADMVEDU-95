@@ -161,15 +161,16 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func didTapLogOutButton() {
-        guard let firebaseService = firebaseService else {
-            return
-        }
-        if firebaseService.logOut() {
-            router?.navigateToAuth()
-        } else {
-            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
-                            message: R.string.localizable.homeLogOutFailedAlertMessage())
-        }
+//        guard let firebaseService = firebaseService else {
+//            return
+//        }
+//        if firebaseService.logOut() {
+//            router?.navigateToAuth()
+//        } else {
+//            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
+//                            message: R.string.localizable.homeLogOutFailedAlertMessage())
+//        }
+        router?.navigateToSettings()
     }
 }
 

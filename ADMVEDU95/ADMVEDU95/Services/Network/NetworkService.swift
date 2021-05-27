@@ -15,15 +15,15 @@ public enum NetworkError: Error {
     case networkLoss
 }
 
+enum NetworkConstants {
+    static let baseUrl = "https://itunes.apple.com/"
+}
+
+enum Endpoint: String {
+    case search = "search?"
+}
+
 class NetworkService {
-    private enum NetworkConstants {
-        static let baseUrl = "https://itunes.apple.com/"
-    }
-
-    enum Endpoint: String {
-        case search = "search?"
-    }
-
     static var shared = NetworkService()
 
     private init() {}

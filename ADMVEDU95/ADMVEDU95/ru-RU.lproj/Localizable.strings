@@ -76,6 +76,9 @@
 "ResetPasswor.Success.AlertTitle" = "Запрос принят";
 "ResetPassword.Success.AlertMessage" = "Проверьте вашу почту для дальнейших шагов";
 
+//SettingsView
+"Settings.NavigationItem.Title" = "Настройки";
+
 //AuthErrorCode
 "AuthErrorCode.EmailAlreadyInUse.Text" = "Адрес указанной почты уже используется";
 "AuthErrorCode.UserNotFound.Text" = "Аккаунт данного пользователя не найден. Проверь корректность данных и попробуйте еще раз";

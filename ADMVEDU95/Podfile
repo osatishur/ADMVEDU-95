@@ -12,4 +12,5 @@ target 'ADMVEDU95' do
   pod 'SwiftLint'
   pod 'SwiftFormat/CLI'
   pod 'Swinject'
+  pod 'Moya'
 end

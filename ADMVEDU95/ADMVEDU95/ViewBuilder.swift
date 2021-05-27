@@ -15,6 +15,7 @@ protocol BuilderProtocol {
     func createCategoryView(selectedCategory: Category,
                             delegate: CategoryPresenterDelegate,
                             router: HomeRouterProtocol) -> UIViewController
+    func createSettingsView(router: HomeRouterProtocol) -> UIViewController
     func createSignInView(router: AuthRouterProtocol) -> UIViewController
     func createLogInView(router: AuthRouterProtocol) -> UIViewController
     func createResetPasswordView(router: AuthRouterProtocol) -> UIViewController
@@ -49,6 +50,14 @@ class ViewBuilder: BuilderProtocol {
         }
         return view
     }
+    
+    func createSettingsView(router: HomeRouterProtocol) -> UIViewController {
+        let view = dependencyAssembler.resolve(SettingsViewProtocol.self, argument: router)
+        guard let view = view as? UIViewController else {
+            return UIViewController()
+        }
+        return view
+    }
 
     func createSignInView(router: AuthRouterProtocol) -> UIViewController {
         let view = dependencyAssembler.resolve(SignInViewProtocol.self, argument: router)
@@ -73,4 +82,6 @@ class ViewBuilder: BuilderProtocol {
         }
         return view
     }
+    
+
 }

@@ -32,6 +32,9 @@
 		0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E3926388D990048E512 /* ViewBuilder.swift */; };
 		0E768E3E263891E00048E512 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E3D263891E00048E512 /* DetailPresenter.swift */; };
 		0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E4026389F390048E512 /* CategoryPresenter.swift */; };
+		0E882413265FEF550012A2F2 /* SettindsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E882412265FEF550012A2F2 /* SettindsPresenter.swift */; };
+		0E882416265FEFD20012A2F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E882414265FEFD20012A2F2 /* SettingsViewController.swift */; };
+		0E882417265FEFD20012A2F2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E882415265FEFD20012A2F2 /* SettingsViewController.xib */; };
 		0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A012630510C00A42206 /* ResetPasswordViewController.swift */; };
 		0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */; };
 		0E957A0C26307C3000A42206 /* ViewController+ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */; };
@@ -112,6 +115,9 @@
 		0E768E3926388D990048E512 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		0E768E3D263891E00048E512 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		0E768E4026389F390048E512 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		0E882412265FEF550012A2F2 /* SettindsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettindsPresenter.swift; sourceTree = "<group>"; };
+		0E882414265FEFD20012A2F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0E882415265FEFD20012A2F2 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		0E957A012630510C00A42206 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthErrorCode+ErrorMessage.swift"; sourceTree = "<group>"; };
 		0E957A0B26307C3000A42206 /* ViewController+ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ShowAlert.swift"; sourceTree = "<group>"; };
@@ -261,6 +267,7 @@
 				0E768E32263885780048E512 /* ResetPassword */,
 				0E768E28263884D80048E512 /* Category */,
 				0E768E27263884CE0048E512 /* Detail */,
+				0E88240F265FEF220012A2F2 /* Settings */,
 				0E768E26263884B40048E512 /* Home */,
 			);
 			path = Presentation;
@@ -269,8 +276,8 @@
 		0E768E26263884B40048E512 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0E768E2B263885060048E512 /* View */,
 				0E768E2C2638850B0048E512 /* Presenter */,
+				0E768E2B263885060048E512 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -405,6 +412,32 @@
 				0EE9441D2656CEB8007768BB /* FileManagerService.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		0E88240F265FEF220012A2F2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0E882411265FEF3B0012A2F2 /* Presenter */,
+				0E882410265FEF360012A2F2 /* View */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0E882410265FEF360012A2F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E882414265FEFD20012A2F2 /* SettingsViewController.swift */,
+				0E882415265FEFD20012A2F2 /* SettingsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E882411265FEF3B0012A2F2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E882412265FEF550012A2F2 /* SettindsPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		0EF06A34265E4A47008C7135 /* DI */ = {
@@ -619,6 +652,7 @@
 				835560072624905D00C77316 /* LaunchScreen.storyboard in Resources */,
 				0E66C0292632F30400C4C059 /* ResetPasswordViewController.xib in Resources */,
 				838E24C3262EBBE2002C6C7A /* GoogleService-Info.plist in Resources */,
+				0E882417265FEFD20012A2F2 /* SettingsViewController.xib in Resources */,
 				830E0FE726286B1100C545B0 /* Localizable.strings in Resources */,
 				0E66C0402633135D00C4C059 /* CategoryViewController.xib in Resources */,
 				0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */,
@@ -758,6 +792,7 @@
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
 				0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
+				0E882416265FEFD20012A2F2 /* SettingsViewController.swift in Sources */,
 				831607182625C32B0090D203 /* VideoDetailView.swift in Sources */,
 				0E957A0F26307ED800A42206 /* CGFloat+StaticProperties.swift in Sources */,
 				0EF06A3C265E8269008C7135 /* RouterAssembly.swift in Sources */,
@@ -791,6 +826,7 @@
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
 				0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */,
 				0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */,
+				0E882413265FEF550012A2F2 /* SettindsPresenter.swift in Sources */,
 				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,

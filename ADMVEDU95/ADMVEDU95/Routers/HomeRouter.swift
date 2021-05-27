@@ -10,8 +10,9 @@ import UIKit
 protocol HomeRouterProtocol: MainRouterProtocol {
     func navigateToCategory(selectedCategory: Category, delegate: CategoryPresenterDelegate)
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
-    func popToHome()
     func navigateToAuth()
+    func navigateToSettings()
+    func popToHome()
 }
 
 class HomeRouter: HomeRouterProtocol {
@@ -55,6 +56,14 @@ class HomeRouter: HomeRouterProtocol {
             return
         }
         navigationController.pushViewController(detailViewController, animated: true)
+    }
+    
+    func navigateToSettings() {
+        guard let navigationController = navigationController,
+              let settingsViewController = builder?.createSettingsView(router: self) else {
+            return
+        }
+        navigationController.pushViewController(settingsViewController, animated: true)
     }
 
     func popToHome() {

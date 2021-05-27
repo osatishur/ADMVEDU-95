@@ -76,6 +76,9 @@
 "ResetPasswor.Success.AlertTitle" = "Request delivered";
 "ResetPassword.Success.AlertMessage" = "Check your email for the next step";
 
+//SettingsView
+"Settings.NavigationItem.Title" = "Settings";
+
 //AuthErrorCode
 "AuthErrorCode.EmailAlreadyInUse.Text" = "The email is already in use with another account";
 "AuthErrorCode.UserNotFound.Text" = "Account not found for the specified user. Please check and try again";
