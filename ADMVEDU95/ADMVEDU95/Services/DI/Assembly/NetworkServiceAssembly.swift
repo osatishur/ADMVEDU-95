@@ -11,7 +11,7 @@ import Swinject
 class NetworkServiceAssembly: Assembly {
     func assemble(container: Container) {
         container.register(SearchServiceProtocol.self) { _ in
-            return SearchService()
+            SearchService()
         }.inObjectScope(.container)
     }
 }

@@ -11,7 +11,7 @@ import Swinject
 class AuthServiceAssembly: Assembly {
     func assemble(container: Container) {
         container.register(FirebaseServiceProtocol.self) { _ in
-            return FirebaseService()
+            FirebaseService()
         }.inObjectScope(.container)
     }
 }

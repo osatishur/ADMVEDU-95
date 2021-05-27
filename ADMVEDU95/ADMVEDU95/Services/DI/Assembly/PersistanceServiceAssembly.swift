@@ -10,8 +10,13 @@ import Swinject
 
 class PersistanceServiceAssembly: Assembly {
     func assemble(container: Container) {
+        assembleFileManagerService(container: container)
+        assembleCoreDataService(container: container)
+    }
+
+    private func assembleFileManagerService(container: Container) {
         container.register(FileManager.self) { _ in
-            return FileManager.default
+            FileManager.default
         }.inObjectScope(.container)
 
         container.register(FileManagerServiceProtocol.self) { resolver in
@@ -19,7 +24,9 @@ class PersistanceServiceAssembly: Assembly {
             fileManagerServie.fileManager = resolver.resolve(FileManager.self)
             return fileManagerServie
         }.inObjectScope(.container)
+    }
 
+    private func assembleCoreDataService(container: Container) {
         container.register(CoreDataServiceProtocol.self) { resolver in
             let coreDataService = CoreDataService()
             coreDataService.fileManagerService = resolver.resolve(FileManagerServiceProtocol.self)

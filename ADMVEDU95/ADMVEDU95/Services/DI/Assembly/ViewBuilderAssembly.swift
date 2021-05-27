@@ -4,19 +4,42 @@
 //
 //  Created by Satishur, Oleg on 26.05.2021.
 //
-// swiftlint:disable function_body_length closure_parameter_position
+// swiftlint:disable closure_parameter_position
 import Foundation
 import Swinject
 
 class ViewBuilderAssembly: Assembly {
     func assemble(container: Container) {
+        let firebaseService: FirebaseServiceProtocol = {
+            guard let service = container.resolve(FirebaseServiceProtocol.self) else {
+                return FirebaseService()
+            }
+            return service
+        }()
 
-        let firebaseService = container.resolve(FirebaseServiceProtocol.self)!
+        assembleHomeView(container: container, firebaseService: firebaseService)
+        assembleDetailView(container: container)
+        assembleCategoryView(container: container)
+        assembleSignInView(container: container, firebaseService: firebaseService)
+        assembleLogInView(container: container, firebaseService: firebaseService)
+        assembleResetPasswordView(container: container, firebaseService: firebaseService)
+    }
 
-        container.register(HomeViewProtocol.self) { (resolver, router: HomeRouterProtocol) in
+    private func assembleHomeView(container: Container, firebaseService: FirebaseServiceProtocol) {
+        container.register(HomeViewProtocol.self) { (_, router: HomeRouterProtocol) in
+            let searchService: SearchServiceProtocol = {
+                guard let service = container.resolve(SearchServiceProtocol.self) else {
+                    return SearchService()
+                }
+                return service
+            }()
+            let coreDataService: CoreDataServiceProtocol = {
+                guard let service = container.resolve(CoreDataServiceProtocol.self) else {
+                    return CoreDataService()
+                }
+                return service
+            }()
             let view = HomeViewController()
-            let searchService = resolver.resolve(SearchServiceProtocol.self)!
-            let coreDataService = resolver.resolve(CoreDataServiceProtocol.self)!
             let presenter = HomePresenter(view: view,
                                           searchService: searchService,
                                           firebaseService: firebaseService,
@@ -25,7 +48,9 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
 
+    private func assembleDetailView(container: Container) {
         container.register(DetailViewProtocol.self) { (_,
                                                        dataKind: ResponseDataKind,
                                                        model: ApiResult,
@@ -40,7 +65,9 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
 
+    private func assembleCategoryView(container: Container) {
         container.register(CategoryViewProtocol.self) { (_,
                                                          selectedCategory: Category,
                                                          delegate: CategoryPresenterDelegate,
@@ -53,8 +80,10 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
 
-        container.register(SignInViewProtocol.self) { (resolver, router: AuthRouterProtocol) in
+    private func assembleSignInView(container: Container, firebaseService: FirebaseServiceProtocol) {
+        container.register(SignInViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = SignInViewController()
             let presenter = SignInPresenter(view: view,
                                             firebaseService: firebaseService,
@@ -62,8 +91,10 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
 
-        container.register(LogInViewProtocol.self) { (resolver, router: AuthRouterProtocol) in
+    private func assembleLogInView(container: Container, firebaseService: FirebaseServiceProtocol) {
+        container.register(LogInViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = LoginViewController()
             let presenter = LogInPresenter(view: view,
                                            firebaseService: firebaseService,
@@ -71,8 +102,10 @@ class ViewBuilderAssembly: Assembly {
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
+    }
 
-        container.register(ResetPasswordViewProtocol.self) { (resolver, router: AuthRouterProtocol) in
+    private func assembleResetPasswordView(container: Container, firebaseService: FirebaseServiceProtocol) {
+        container.register(ResetPasswordViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = ResetPasswordViewController()
             let presenter = ResetPasswordPresenter(view: view,
                                                    firebaseService: firebaseService,

@@ -15,9 +15,15 @@ class ApplicationRouter {
     init(isHomeInitial: Bool, window: UIWindow) {
         let dependencyAssembler = DependencyProvider.assembler.resolver
         if isHomeInitial {
-            mainRouter = dependencyAssembler.resolve(HomeRouterProtocol.self, arguments: mainNavigationController, viewBuilder, window)
+            mainRouter = dependencyAssembler.resolve(HomeRouterProtocol.self,
+                                                     arguments: mainNavigationController,
+                                                                viewBuilder,
+                                                                window)
         } else {
-            mainRouter = dependencyAssembler.resolve(AuthRouterProtocol.self, arguments: mainNavigationController, viewBuilder, window)
+            mainRouter = dependencyAssembler.resolve(AuthRouterProtocol.self,
+                                                     arguments: mainNavigationController,
+                                                                viewBuilder,
+                                                                window)
         }
     }
 }
