@@ -21,8 +21,8 @@ protocol BuilderProtocol {
 }
 
 class ViewBuilder: BuilderProtocol {
-    let firebaseService = FirebaseService()
-    
+    private let firebaseService = FirebaseService()
+
     func createHomeView(router: HomeRouterProtocol) -> UIViewController {
         let view = HomeViewController()
         let searchService = SearchService()

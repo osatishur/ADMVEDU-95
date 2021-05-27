@@ -18,9 +18,8 @@ class ResetPasswordPresenter: BaseAuthPresenter, ResetPasswordPresenterProtocol 
     private var router: AuthRouter?
 
     init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
-        super.init()
+        super.init(firebaseService: firebaseService)
         self.view = view
-        self.firebaseService = firebaseService
         self.router = router
     }
 

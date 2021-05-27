@@ -13,7 +13,7 @@ class VideoPresenter: DetailPresenter {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
     }
-    
+
     var playerViewController = AVPlayerViewController()
     var player: AVPlayer?
 

@@ -137,7 +137,7 @@ class HomePresenter: HomePresenterProtocol {
     func getCategory() -> Category {
         category
     }
-    
+
     func getFilterParameter() -> String {
         category.rawValue
     }
