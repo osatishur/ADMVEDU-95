@@ -50,7 +50,7 @@ class ViewBuilder: BuilderProtocol {
         }
         return view
     }
-    
+
     func createSettingsView(router: HomeRouterProtocol) -> UIViewController {
         let view = dependencyAssembler.resolve(SettingsViewProtocol.self, argument: router)
         guard let view = view as? UIViewController else {
@@ -82,6 +82,4 @@ class ViewBuilder: BuilderProtocol {
         }
         return view
     }
-    
-
 }

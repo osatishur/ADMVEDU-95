@@ -82,7 +82,7 @@ class ViewBuilderAssembly: Assembly {
             return view
         }.inObjectScope(.container)
     }
-    
+
     private func assembleSettingsView(container: Container) {
         container.register(SettingsViewProtocol.self) { (_,
                                                          router: HomeRouterProtocol) in
@@ -94,7 +94,7 @@ class ViewBuilderAssembly: Assembly {
             return view
         }.inObjectScope(.container)
     }
-    
+
     private func getNetworkOption() -> NetworkServiceSelected {
         let userDefaults = UserDefaults.standard
         if let networkServiceSelected = userDefaults.object(forKey: "networkOption") as? String {

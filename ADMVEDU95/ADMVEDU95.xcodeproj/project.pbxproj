@@ -22,6 +22,7 @@
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
 		0E49E0CE26500F8D0028F7DB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49E0CD26500F8D0028F7DB /* R.generated.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
+		0E61C50E2660E5BF00825A00 /* MoyaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E61C50D2660E5BF00825A00 /* MoyaAPI.swift */; };
 		0E66C01A2632B23C00C4C059 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0192632B23C00C4C059 /* LoginViewController.xib */; };
 		0E66C0202632B7DE00C4C059 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66C01F2632B7DE00C4C059 /* AuthButton.swift */; };
 		0E66C0262632D02800C4C059 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0252632D02800C4C059 /* SignInViewController.xib */; };
@@ -105,6 +106,7 @@
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		0E49E0CD26500F8D0028F7DB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
+		0E61C50D2660E5BF00825A00 /* MoyaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAPI.swift; sourceTree = "<group>"; };
 		0E66C0192632B23C00C4C059 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0E66C01F2632B7DE00C4C059 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		0E66C0252632D02800C4C059 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				8355601B26249A6D00C77316 /* NetworkService.swift */,
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
 				0EE9441F2656D372007768BB /* NetworkReachabilityHandler.swift */,
+				0E61C50D2660E5BF00825A00 /* MoyaAPI.swift */,
 				838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */,
 				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
 			);
@@ -791,6 +794,7 @@
 				0EF06A38265E5052008C7135 /* PersistanceServiceAssembly.swift in Sources */,
 				830666952629B12900BD694B /* CategoryViewController.swift in Sources */,
 				0EDDA1C0263B26DF00FBC00E /* AuthRouter.swift in Sources */,
+				0E61C50E2660E5BF00825A00 /* MoyaAPI.swift in Sources */,
 				837C02A8262F76C500BE31C7 /* UIFont+StaticFontSize.swift in Sources */,
 				0E882416265FEFD20012A2F2 /* SettingsViewController.swift in Sources */,
 				831607182625C32B0090D203 /* VideoDetailView.swift in Sources */,

@@ -57,7 +57,7 @@ class HomeRouter: HomeRouterProtocol {
         }
         navigationController.pushViewController(detailViewController, animated: true)
     }
-    
+
     func navigateToSettings() {
         guard let navigationController = navigationController,
               let settingsViewController = builder?.createSettingsView(router: self) else {

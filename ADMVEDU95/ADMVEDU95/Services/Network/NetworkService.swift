@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import Moya
 
 public enum NetworkError: Error {
     case emptyData
@@ -16,11 +17,11 @@ public enum NetworkError: Error {
 }
 
 enum NetworkConstants {
-    static let baseUrl = "https://itunes.apple.com/"
+    static let baseUrl = "https://itunes.apple.com"
 }
 
 enum Endpoint: String {
-    case search = "search?"
+    case search = "/search"
 }
 
 class NetworkService {
@@ -33,6 +34,8 @@ class NetworkService {
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }()
+
+    var provider = MoyaProvider<MoyaAPI>()
 
     public func get<T: Codable>(endpoint: Endpoint,
                                 parameters: [String: String],
@@ -55,6 +58,23 @@ class NetworkService {
                 completion(result)
             }
         }
+        
+//        provider.request(MoyaAPI.search(query: parameters)) { result in
+//            switch result {
+//            case .success(let response):
+//                do {
+//                    let results = try self.decoder.decode(T.self, from: response.data)
+//                    print(result)
+//                    completion(.success(results))
+//                } catch _ {
+//                    print("FAILURE1")
+//                    completion(.failure(NetworkError.unknown))
+//                }
+//            case .failure(_):
+//                print("FAILURE2")
+//                completion(.failure(NetworkError.unknown))
+//            }
+//        }
     }
 
     private func buildURL(endpoint: Endpoint) -> URL? {
