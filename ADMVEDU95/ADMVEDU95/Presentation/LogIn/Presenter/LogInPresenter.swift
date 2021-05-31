@@ -10,8 +10,8 @@ import Foundation
 
 protocol LogInPresenterProtocol: AnyObject {
     func logIn(email: String, password: String)
-    func navigateToSignIn()
-    func navigateToResetPassword()
+    func didTapOnSignInButton()
+    func didTapOnResetPasswordButton()
     func navigateToHome()
 }
 
@@ -20,9 +20,8 @@ class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
     private var router: AuthRouterProtocol?
 
     init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
-        super.init()
+        super.init(firebaseService: firebaseService)
         self.view = view
-        self.firebaseService = firebaseService
         self.router = router
     }
 
@@ -48,11 +47,12 @@ class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
         }
     }
 
+
     func navigateToResetPassword() {
         router?.navigateToResetPassword()
     }
 
-    func navigateToSignIn() {
+    func didTapOnSignInButton() {
         router?.navigateToSignIn()
     }
 

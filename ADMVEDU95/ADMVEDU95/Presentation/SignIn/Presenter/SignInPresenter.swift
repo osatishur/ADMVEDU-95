@@ -10,7 +10,7 @@ import Foundation
 
 protocol SignInPresenterProtocol: AnyObject {
     func signIn(email: String, password: String, repeatPassword: String)
-    func didTapSignInButton()
+    func didTapOnBottomButton()
     func navigateToHome()
 }
 
@@ -18,10 +18,9 @@ class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
     private weak var view: SignInViewProtocol?
     private var router: AuthRouterProtocol?
 
-    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
-        super.init()
+    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {{
+        super.init(firebaseService: firebaseService)
         self.view = view
-        self.firebaseService = firebaseService
         self.router = router
     }
 
@@ -34,7 +33,7 @@ class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
         }
     }
 
-    private func createUser(email: String, password: String) {
+    func createUser(email: String, password: String) {
         guard let firebaseService = firebaseService else {
             return
         }
@@ -56,7 +55,7 @@ class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
         }
     }
 
-    func didTapSignInButton() {
+    func didTapSignInButton() 
         router?.popToLogIn()
     }
 

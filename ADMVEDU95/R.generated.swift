@@ -952,22 +952,6 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("Home.NoData.AlertMessage", bundle: bundle, comment: "")
-      }
-
-      /// en translation: Please, check your internet connection
-      ///
-      /// Locales: en, ru-RU
-      static func homeCheckConnectionAlertMessage(preferredLanguages: [String]? = nil) -> String {
-        guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Home.CheckConnection.AlertMessage", bundle: hostingBundle, comment: "")
-        }
-
-        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
-          return "Home.CheckConnection.AlertMessage"
-        }
-
-        return NSLocalizedString("Home.CheckConnection.AlertMessage", bundle: bundle, comment: "")
-      }
 
       /// en translation: Please, enter your email
       ///

@@ -18,9 +18,8 @@ class ResetPasswordPresenter: BaseAuthPresenter, ResetPasswordPresenterProtocol 
     private var router: AuthRouterProtocol?
 
     init(view: ResetPasswordViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
-        super.init()
+        super.init(firebaseService: firebaseService)
         self.view = view
-        self.firebaseService = firebaseService
         self.router = router
     }
 
@@ -33,7 +32,7 @@ class ResetPasswordPresenter: BaseAuthPresenter, ResetPasswordPresenterProtocol 
             case .success:
                 self.view?.showAlert(title: R.string.localizable.resetPassworSuccessAlertTitle(),
                                      message: R.string.localizable.resetPasswordSuccessAlertMessage())
-                self.view?.successRequest()
+                self.navigateToLogIn()
             case let .failure(error):
                 let errorMessage = self.getAuthErrorText(error: error)
                 self.view?.showAlert(title: R.string.localizable.alertErrorTitle(),

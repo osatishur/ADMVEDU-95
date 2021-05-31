@@ -44,15 +44,14 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBAction private func didTapSignInButton(_: Any) {
         guard let email = emailTextField.text,
               let password = passwordTextField.text,
-              let passwordRepeat = repeatPasswordTextField.text
-        else {
+              let passwordRepeat = repeatPasswordTextField.text else {
             return
         }
         presenter?.signIn(email: email, password: password, repeatPassword: passwordRepeat)
     }
 
     @IBAction private func didTapBottomButton(_: Any) {
-        presenter?.didTapSignInButton()
+        presenter?.didTapOnBottomButton()
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {

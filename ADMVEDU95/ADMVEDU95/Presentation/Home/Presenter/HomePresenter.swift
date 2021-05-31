@@ -65,6 +65,9 @@ class HomePresenter: HomePresenterProtocol {
     private func fetchDataFromResponse(response: Response) {
         coreDataService?.deleteAllResults()
         let results = response.results
+//        guard let results = response.results else {
+//            return
+//        }
         for result in results {
             print(result)
             addResultToDataSource(result: result)

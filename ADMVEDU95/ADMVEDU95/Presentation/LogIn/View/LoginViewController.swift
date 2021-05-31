@@ -42,19 +42,18 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 
     @IBAction private func didTapLogInButton(_: Any) {
         guard let email = emailTextField.text,
-              let password = passwordTextField.text
-        else {
+              let password = passwordTextField.text else {
             return
         }
         presenter?.logIn(email: email, password: password)
     }
 
     @IBAction private func didTapForgorPasswordButton(_: Any) {
-        presenter?.navigateToResetPassword()
+        presenter?.didTapOnResetPasswordButton()
     }
 
     @IBAction private func didTapBottomButton(_: Any) {
-        presenter?.navigateToSignIn()
+        presenter?.didTapOnSignInButton()
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {

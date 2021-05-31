@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
         guard let presenter = presenter else {
             return
         }
-        categoryView.configureView(categoryTitle: presenter.getCategoryTitle().localized())
+        categoryView.configureView(categoryTitle: presenter.getCategoryTitle())
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
         categoryView.isUserInteractionEnabled = true
@@ -94,8 +94,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text,
-              let presenter = presenter
-        else {
+              let presenter = presenter else {
             return
         }
         presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
@@ -107,8 +106,7 @@ extension HomeViewController: HomeViewProtocol {
     func showAlertWithRetry(message: String) {
         showAlertWithRetry(message: message) {
             guard let searchTerm = self.searchBar.text,
-                  let presenter = self.presenter
-            else {
+                  let presenter = self.presenter else {
                 return
             }
             presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())

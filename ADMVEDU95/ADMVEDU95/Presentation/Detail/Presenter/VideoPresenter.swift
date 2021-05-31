@@ -26,8 +26,7 @@ class VideoPresenter: DetailPresenter {
 
     private func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,
-              let url = URL(string: imageURL)
-        else {
+              let url = URL(string: imageURL) else {
             return VideoDetailView()
         }
         configureVideoView(view: videoView, url: url)
@@ -37,16 +36,17 @@ class VideoPresenter: DetailPresenter {
 
     private func configureVideoView(view: VideoDetailView, url: URL) {
         let noInfo = R.string.localizable.noInfo()
+        let directorName = R.string.localizable.detailDirectorName(model?.artistName ?? noInfo)
+        let movieName = R.string.localizable.detailMovieName(model?.trackName ?? noInfo)
         view.configureView(albumImageURL: url,
-                           directorName: String(format: R.string.localizable.detailDirectorName(model?.artistName ?? noInfo)),
-                           movieName: String(format: R.string.localizable.detailMovieName(model?.trackName ?? noInfo)))
+                           directorName: directorName,
+                           movieName: movieName)
         view.configureAction(buttonAction: playVideo)
     }
 
     private func initVideoPlayer(movieUrl: String?) {
         guard let urlString = movieUrl,
-              let url = getURL(urlString: urlString)
-        else {
+              let url = getURL(urlString: urlString) else {
             return
         }
         player = AVPlayer(url: url)

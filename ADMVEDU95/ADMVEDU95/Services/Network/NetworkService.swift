@@ -40,6 +40,10 @@ class NetworkService {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
+//        guard let url = URL(string: "https://itunes.apple.com/search?term=jack+johnson&limit=25") else {
+//            return
+//        }
+        print(url, parameters)
         AF.request(url, parameters: parameters).responseJSON { response in
             if response.error?.isSessionTaskError != nil {
                 DispatchQueue.main.async {
@@ -81,6 +85,7 @@ class NetworkService {
             let searchResponse = try decoder.decode(type, from: jsonData)
             return .success(searchResponse)
         } catch {
+            print(error)
             return .failure(NetworkError.parsingData)
         }
     }
