@@ -27,10 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func setApplicationRouter(with window: UIWindow) {
+        let dependencyAssembler = DependencyProvider.assembler.resolver
         if Auth.auth().currentUser == nil {
-            applicationRouter = ApplicationRouter(isHomeInitial: false, window: window)
+            applicationRouter = dependencyAssembler.resolve(ApplicationRouter.self, arguments: false, window)
         } else {
-            applicationRouter = ApplicationRouter(isHomeInitial: true, window: window)
+            applicationRouter = dependencyAssembler.resolve(ApplicationRouter.self, arguments: true, window)
         }
     }
 }

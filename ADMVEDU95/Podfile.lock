@@ -50,6 +50,7 @@ PODS:
   - R.swift.Library (5.3.0)
   - SwiftFormat/CLI (0.48.0)
   - SwiftLint (0.43.1)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - R.swift
   - SwiftFormat/CLI
   - SwiftLint
+  - Swinject
 
 SPEC REPOS:
   trunk:
@@ -74,6 +76,7 @@ SPEC REPOS:
     - R.swift.Library
     - SwiftFormat
     - SwiftLint
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -90,7 +93,8 @@ SPEC CHECKSUMS:
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SwiftFormat: 48a96bf55d167e44b8eb825f3dbda0e1204e549a
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: e19e3195ab06af4cf3576ffe7e069a537f5067ff
+PODFILE CHECKSUM: 96a67a33fcf1c6caca1b184870c534f31cf504d7
 
 COCOAPODS: 1.10.1

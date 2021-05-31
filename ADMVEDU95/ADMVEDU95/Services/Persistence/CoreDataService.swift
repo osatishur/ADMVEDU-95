@@ -8,13 +8,19 @@
 import CoreData
 import Foundation
 
-class CoreDataService {
+protocol CoreDataServiceProtocol {
+    func fetchResults(completion: @escaping ([ApiResult]?) -> Void)
+    func saveResult(apiResult: ApiResult)
+    func deleteAllResults()
+}
+
+class CoreDataService: CoreDataServiceProtocol {
     enum Constants {
         static let coreDataModelName = "CoreDataITunes"
         static let entityName = "ResultCoreDataModel"
     }
 
-    let fileManagerService = FileManagerService()
+    var fileManagerService: FileManagerServiceProtocol?
 
     lazy var context: NSManagedObjectContext = {
         persistentContainer.viewContext
@@ -60,7 +66,7 @@ class CoreDataService {
         model.artistName = apiResult.artistName
         model.trackName = apiResult.trackName
         model.kind = apiResult.kind
-        fileManagerService.saveFile(url: apiResult.previewUrl ?? "") { fileUrl in
+        fileManagerService?.saveFile(url: apiResult.previewUrl ?? "") { fileUrl in
             print("CORE DATA SAVED FILE AT PATH", fileUrl)
             model.previewPath = fileUrl
             self.saveContext()
@@ -68,7 +74,7 @@ class CoreDataService {
     }
 
     func deleteAllResults() {
-        fileManagerService.deleteDownloadedFiles()
+        fileManagerService?.deleteDownloadedFiles()
         deleteEntityObjects()
     }
 

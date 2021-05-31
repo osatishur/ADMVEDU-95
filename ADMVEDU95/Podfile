@@ -11,4 +11,5 @@ target 'ADMVEDU95' do
   pod 'R.swift'
   pod 'SwiftLint'
   pod 'SwiftFormat/CLI'
+  pod 'Swinject'
 end

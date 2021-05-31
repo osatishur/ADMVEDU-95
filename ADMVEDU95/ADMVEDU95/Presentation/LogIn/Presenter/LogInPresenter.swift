@@ -17,9 +17,9 @@ protocol LogInPresenterProtocol: AnyObject {
 
 class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
     private weak var view: LogInViewProtocol?
-    private var router: AuthRouter?
+    private var router: AuthRouterProtocol?
 
-    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouter) {
+    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
         super.init(firebaseService: firebaseService)
         self.view = view
         self.router = router

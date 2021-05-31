@@ -13,10 +13,17 @@ class ApplicationRouter {
     var viewBuilder = ViewBuilder()
 
     init(isHomeInitial: Bool, window: UIWindow) {
+        let dependencyAssembler = DependencyProvider.assembler.resolver
         if isHomeInitial {
-            mainRouter = HomeRouter(navigationController: mainNavigationController, builder: viewBuilder, window: window)
+            mainRouter = dependencyAssembler.resolve(HomeRouterProtocol.self,
+                                                     arguments: mainNavigationController,
+                                                                viewBuilder,
+                                                                window)
         } else {
-            mainRouter = AuthRouter(navigationController: mainNavigationController, builder: viewBuilder, window: window)
+            mainRouter = dependencyAssembler.resolve(AuthRouterProtocol.self,
+                                                     arguments: mainNavigationController,
+                                                                viewBuilder,
+                                                                window)
         }
     }
 }
