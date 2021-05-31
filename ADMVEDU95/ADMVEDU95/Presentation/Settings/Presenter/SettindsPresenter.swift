@@ -7,30 +7,26 @@
 
 import Foundation
 
-enum NetworkServiceSelected: String, CaseIterable {
-    case alamofire = "Alamofire"
-    case moya = "Moya"
-}
-
 protocol SettingsPresenterProtocol {
-    var networkServiceSelected: NetworkServiceSelected? { get set }
     func getSectionsCount() -> Int
     func getRowsInSectionCount(section: Int) -> Int
-    func getSectionTitle() -> String
-    func getOptionTitle(row: Int) -> String
-    func isOptionsMatched(row: Int) -> Bool
-    func networkOptionSelected(row: Int)
+    func getSectionTitle(section: Int) -> String
+    func getCellTitle(section: Int, row: Int) -> String
+    func isFrameworkMatched(section: Int, row: Int) -> Bool
+    func onCellSelected(section: Int, row: Int)
 }
 
 class SettingsPresenter: SettingsPresenterProtocol {
     weak var view: SettingsViewProtocol?
     private var router: HomeRouterProtocol?
-    var networkServiceSelected: NetworkServiceSelected?
-    private var dataSource = [
-        [
-            (title: "Alamofire", option: NetworkServiceSelected.alamofire),
-            (title: "Moya", option: NetworkServiceSelected.moya)
-        ]
+    var networkFrameworkSelected: NetworkFrameworkSelected?
+    private var dataSource = [SettingsSection(sectionTitle: "Network frameworks available",
+                                              data:
+                                [FrameworkSectionData(frameworkTitle: "Alamofire",
+                                                      framework: NetworkFrameworkSelected.alamofire),
+                                 FrameworkSectionData(frameworkTitle: "Moya",
+                                                      framework: NetworkFrameworkSelected.moya)
+                                ])
     ]
 
     init(view: SettingsViewProtocol, router: HomeRouterProtocol) {
@@ -43,36 +39,31 @@ class SettingsPresenter: SettingsPresenterProtocol {
     }
 
     func getRowsInSectionCount(section: Int) -> Int {
-        return dataSource[section].count
+        return dataSource[section].data.count
     }
 
-    func getSectionTitle() -> String {
-        return "Network service options"
+    func getSectionTitle(section: Int) -> String {
+        return dataSource[section].sectionTitle
     }
 
-    func getOptionTitle(row: Int) -> String {
-        let optionSection = dataSource[0]
-        let optionTitle = optionSection[row].title
-        return optionTitle
+    func getCellTitle(section: Int, row: Int) -> String {
+        let title = dataSource[section].data[row].frameworkTitle
+        return title
     }
 
-    func isOptionsMatched(row: Int) -> Bool {
-        let optionSection = dataSource[0]
-        let optionInRow = optionSection[row].option
-
-        return optionInRow == networkServiceSelected
+    func isFrameworkMatched(section: Int, row: Int) -> Bool {
+        let framework = dataSource[section].data[row].framework
+        return framework == networkFrameworkSelected
     }
 
-    func networkOptionSelected(row: Int) {
-        let optionSection = dataSource[0]
-        let optionSelected = optionSection[row].option
-        self.networkServiceSelected = optionSelected
+    func onCellSelected(section: Int, row: Int) {
+        let frameworkSelected = dataSource[section].data[row].framework
+        self.networkFrameworkSelected = frameworkSelected
         setNetworkOption()
         view?.updateView()
     }
 
     private func setNetworkOption() {
-        let userDefaults = UserDefaults.standard
-        userDefaults.setValue(self.networkServiceSelected?.rawValue, forKey: "networkOption")
+        UserDefaults.setNetworkFramework(framework: self.networkFrameworkSelected ?? .alamofire)
     }
 }

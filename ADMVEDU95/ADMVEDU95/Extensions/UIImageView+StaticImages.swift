@@ -10,4 +10,5 @@ import UIKit
 extension UIImageView {
     static let playButtonImage = UIImage(systemName: "play.fill")
     static let pauseButtonImage = UIImage(systemName: "pause.fill")
+    static let settingsBarButtonImage = UIImage(systemName: "gear")
 }

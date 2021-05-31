@@ -8,14 +8,15 @@
 import Moya
 
 enum MoyaAPI {
-    case search(query: [String: String])
+    case search(url: URL, parameters: [String: String])
 }
 
 extension MoyaAPI: TargetType {
     var baseURL: URL {
-        let urlString = NetworkConstants.baseUrl
-        guard let url = URL(string: urlString) else { fatalError() }
-        return url
+        switch self {
+        case .search(let url, _):
+            return url
+        }
     }
 
     var path: String {
@@ -35,8 +36,8 @@ extension MoyaAPI: TargetType {
 
     var task: Task {
         switch self {
-        case .search(let query):
-            return .requestParameters(parameters: query, encoding: URLEncoding.queryString)
+        case .search(_, let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.queryString)
         }
     }
 

@@ -89,20 +89,10 @@ class ViewBuilderAssembly: Assembly {
             let view = SettingsViewController()
             let presenter = SettingsPresenter(view: view,
                                               router: router)
-            presenter.networkServiceSelected = self.getNetworkOption()
+            presenter.networkFrameworkSelected = UserDefaults.getNetworkFramework()
             view.presenter = presenter
             return view
         }.inObjectScope(.container)
-    }
-
-    private func getNetworkOption() -> NetworkServiceSelected {
-        let userDefaults = UserDefaults.standard
-        if let networkServiceSelected = userDefaults.object(forKey: "networkOption") as? String {
-            return NetworkServiceSelected(rawValue: networkServiceSelected) ?? .alamofire
-        } else {
-            userDefaults.setValue(NetworkServiceSelected.alamofire.rawValue, forKey: "networkOption")
-            return .alamofire
-        }
     }
 
     private func assembleSignInView(container: Container, firebaseService: FirebaseServiceProtocol) {

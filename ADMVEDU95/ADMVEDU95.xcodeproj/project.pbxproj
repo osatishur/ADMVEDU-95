@@ -56,6 +56,9 @@
 		0EF06A38265E5052008C7135 /* PersistanceServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06A37265E5052008C7135 /* PersistanceServiceAssembly.swift */; };
 		0EF06A3A265E5D82008C7135 /* ViewBuilderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06A39265E5D82008C7135 /* ViewBuilderAssembly.swift */; };
 		0EF06A3C265E8269008C7135 /* RouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF06A3B265E8269008C7135 /* RouterAssembly.swift */; };
+		0EF4F87D2665631D00BE2E6A /* UserDefaults+GetNetworkFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4F87C2665631D00BE2E6A /* UserDefaults+GetNetworkFramework.swift */; };
+		0EF4F87F26658CD000BE2E6A /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4F87E26658CD000BE2E6A /* SettingsSections.swift */; };
+		0EF4F88126658F0900BE2E6A /* NetworkFrameworkSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4F88026658F0900BE2E6A /* NetworkFrameworkSelected.swift */; };
 		0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */; };
 		0EFCB4A12641931C00EDAB04 /* AudioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */; };
 		0EFCB4A32641932D00EDAB04 /* VideoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */; };
@@ -140,6 +143,9 @@
 		0EF06A37265E5052008C7135 /* PersistanceServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceServiceAssembly.swift; sourceTree = "<group>"; };
 		0EF06A39265E5D82008C7135 /* ViewBuilderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilderAssembly.swift; sourceTree = "<group>"; };
 		0EF06A3B265E8269008C7135 /* RouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAssembly.swift; sourceTree = "<group>"; };
+		0EF4F87C2665631D00BE2E6A /* UserDefaults+GetNetworkFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+GetNetworkFramework.swift"; sourceTree = "<group>"; };
+		0EF4F87E26658CD000BE2E6A /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		0EF4F88026658F0900BE2E6A /* NetworkFrameworkSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFrameworkSelected.swift; sourceTree = "<group>"; };
 		0EFCB49E26414A4300EDAB04 /* ApplicationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRouter.swift; sourceTree = "<group>"; };
 		0EFCB4A02641931B00EDAB04 /* AudioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPresenter.swift; sourceTree = "<group>"; };
 		0EFCB4A22641932D00EDAB04 /* VideoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPresenter.swift; sourceTree = "<group>"; };
@@ -438,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				0E882412265FEF550012A2F2 /* SettindsPresenter.swift */,
+				0EF4F87E26658CD000BE2E6A /* SettingsSections.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -534,6 +541,7 @@
 				830E0FDC26282D6900C545B0 /* SearchService.swift */,
 				0EE9441F2656D372007768BB /* NetworkReachabilityHandler.swift */,
 				0E61C50D2660E5BF00825A00 /* MoyaAPI.swift */,
+				0EF4F88026658F0900BE2E6A /* NetworkFrameworkSelected.swift */,
 				838E24E2262F0CE0002C6C7A /* FirebaseSevice.swift */,
 				831607142625B4780090D203 /* UIImageView+LoadImage.swift */,
 			);
@@ -575,6 +583,7 @@
 				0E957A0E26307ED800A42206 /* CGFloat+StaticProperties.swift */,
 				0E957A08263065E400A42206 /* AuthErrorCode+ErrorMessage.swift */,
 				0EA6D2EF264BC9A5002AF389 /* UITableViewCell+Identifiers.swift */,
+				0EF4F87C2665631D00BE2E6A /* UserDefaults+GetNetworkFramework.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -783,6 +792,7 @@
 				0E2CC767263BF210005B97B8 /* BaseAuthViewController.swift in Sources */,
 				0EE944222656D39D007768BB /* LostNetworkRetryLimit.swift in Sources */,
 				830666982629B1A600BD694B /* Category.swift in Sources */,
+				0EF4F88126658F0900BE2E6A /* NetworkFrameworkSelected.swift in Sources */,
 				0EF06A36265E4DBE008C7135 /* NetworkServiceAssembly.swift in Sources */,
 				0EA6D2F0264BC9A5002AF389 /* UITableViewCell+Identifiers.swift in Sources */,
 				8306668D262983F000BD694B /* ResponseDataKind.swift in Sources */,
@@ -818,8 +828,10 @@
 				8316071B2625C33F0090D203 /* AudioDetailView.swift in Sources */,
 				0EFCB49F26414A4300EDAB04 /* ApplicationRouter.swift in Sources */,
 				0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */,
+				0EF4F87F26658CD000BE2E6A /* SettingsSections.swift in Sources */,
 				838E24E3262F0CE0002C6C7A /* FirebaseSevice.swift in Sources */,
 				83E7699A262D74C3008826CB /* CategoryView.swift in Sources */,
+				0EF4F87D2665631D00BE2E6A /* UserDefaults+GetNetworkFramework.swift in Sources */,
 				0EDDA1BC263ADCF400FBC00E /* HomeRouter.swift in Sources */,
 				0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,

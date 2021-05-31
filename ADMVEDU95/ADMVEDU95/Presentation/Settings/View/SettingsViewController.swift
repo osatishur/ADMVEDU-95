@@ -41,7 +41,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter?.getSectionTitle()
+        return presenter?.getSectionTitle(section: section)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,9 +49,12 @@ extension SettingsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let presenter = presenter else {
+            return UITableViewCell()
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = presenter?.getOptionTitle(row: indexPath.row)
-        cell.accessoryType = (presenter?.isOptionsMatched(row: indexPath.row))! ? .checkmark : .none
+        cell.textLabel?.text = presenter.getCellTitle(section: indexPath.section, row: indexPath.row)
+        cell.accessoryType = (presenter.isFrameworkMatched(section: indexPath.section, row: indexPath.row)) ? .checkmark : .none
         return cell
     }
 }
@@ -59,7 +62,7 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        presenter?.networkOptionSelected(row: indexPath.row)
+        presenter?.onCellSelected(section: indexPath.section, row: indexPath.row)
     }
 }
 

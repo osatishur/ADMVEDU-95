@@ -43,8 +43,14 @@ class HomeViewController: UIViewController {
 
     private func setupNavigationBar() {
         let title = R.string.localizable.homeLogoutButtonTitle()
-        let logoutBarButtonItem = UIBarButtonItem(title: title, style: .done, target: self, action: #selector(logoutUser))
-        navigationItem.rightBarButtonItem = logoutBarButtonItem
+        let logoutBarButtonItem = UIBarButtonItem(title: title,
+                                                  style: .done,
+                                                  target: self,
+                                                  action: #selector(logoutUser))
+        let settingsBarButtonItem = UIBarButtonItem(image: UIImageView.settingsBarButtonImage,
+                                                    style: .done, target: self,
+                                                    action: #selector(goToSettings))
+        navigationItem.rightBarButtonItems = [logoutBarButtonItem, settingsBarButtonItem ]
         navigationItem.title = R.string.localizable.homeNavigationItemTitle()
     }
 
@@ -86,6 +92,11 @@ class HomeViewController: UIViewController {
     @objc
     private func logoutUser() {
         presenter?.didTapLogOutButton()
+    }
+
+    @objc
+    private func goToSettings() {
+        presenter?.didTapOnSettingsBarButton()
     }
 }
 

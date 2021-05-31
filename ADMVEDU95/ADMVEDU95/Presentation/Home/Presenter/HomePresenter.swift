@@ -18,6 +18,7 @@ protocol HomePresenterProtocol: AnyObject {
     func getResultsFromCoreData()
     func getFilterParameter() -> String
     func didTapLogOutButton()
+    func didTapOnSettingsBarButton()
     func didTapOnCategoryView(categoryChosed: Category)
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
 }
@@ -161,15 +162,18 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func didTapLogOutButton() {
-//        guard let firebaseService = firebaseService else {
-//            return
-//        }
-//        if firebaseService.logOut() {
-//            router?.navigateToAuth()
-//        } else {
-//            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
-//                            message: R.string.localizable.homeLogOutFailedAlertMessage())
-//        }
+        guard let firebaseService = firebaseService else {
+            return
+        }
+        if firebaseService.logOut() {
+            router?.navigateToAuth()
+        } else {
+            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
+                            message: R.string.localizable.homeLogOutFailedAlertMessage())
+        }
+    }
+
+    func didTapOnSettingsBarButton() {
         router?.navigateToSettings()
     }
 }

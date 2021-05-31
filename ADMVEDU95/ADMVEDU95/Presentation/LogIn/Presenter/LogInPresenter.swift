@@ -20,9 +20,8 @@ class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
     private var router: AuthRouterProtocol?
 
     init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
-        super.init()
+        super.init(firebaseService: firebaseService)
         self.view = view
-        self.firebaseService = firebaseService
         self.router = router
     }
 

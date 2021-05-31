@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 import Moya
 
-public enum NetworkError: Error {
+enum NetworkError: Error {
     case emptyData
     case parsingData
     case unknown
@@ -35,7 +35,7 @@ class NetworkService {
         return decoder
     }()
 
-    var provider = MoyaProvider<MoyaAPI>()
+    private var provider = MoyaProvider<MoyaAPI>()
 
     public func get<T: Codable>(endpoint: Endpoint,
                                 parameters: [String: String],
@@ -43,11 +43,33 @@ class NetworkService {
         guard let url = buildURL(endpoint: endpoint) else {
             return
         }
+        let networkFrameworkSelected = UserDefaults.getNetworkFramework()
+        switch networkFrameworkSelected {
+        case .alamofire:
+            makeRequestWithAlamofire(url: url,
+                                     parameters: parameters,
+                                     type: T.self,
+                                     completion: completion)
+        case .moya:
+            let moyaAPI: MoyaAPI
+            switch endpoint {
+            case .search:
+                moyaAPI = MoyaAPI.search(url: url, parameters: parameters)
+            }
+            makeRequestWithMoya(moyaAPI: moyaAPI,
+                                type: T.self,
+                                completion: completion)
+        }
+    }
+
+    private func makeRequestWithAlamofire<T: Codable>(url: URL,
+                                                      parameters: [String: String],
+                                                      type: T.Type,
+                                                      completion: @escaping (Result<T, NetworkError>) -> Void) {
         AF.request(url, parameters: parameters).responseJSON { response in
             if response.error?.isSessionTaskError != nil {
                 DispatchQueue.main.async {
-                    let searchError: Result<T, NetworkError> = .failure(NetworkError.networkLoss)
-                    completion(searchError)
+                    completion(.failure(NetworkError.networkLoss))
                 }
             }
             let result = self.parseResponse(data: response.data,
@@ -58,23 +80,26 @@ class NetworkService {
                 completion(result)
             }
         }
-        
-//        provider.request(MoyaAPI.search(query: parameters)) { result in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    let results = try self.decoder.decode(T.self, from: response.data)
-//                    print(result)
-//                    completion(.success(results))
-//                } catch _ {
-//                    print("FAILURE1")
-//                    completion(.failure(NetworkError.unknown))
-//                }
-//            case .failure(_):
-//                print("FAILURE2")
-//                completion(.failure(NetworkError.unknown))
-//            }
-//        }
+    }
+
+    private func makeRequestWithMoya<T: Codable>(moyaAPI: MoyaAPI,
+                                                 type: T.Type,
+                                                 completion: @escaping (Result<T, NetworkError>) -> Void) {
+        provider.request(moyaAPI) { result in
+            switch result {
+            case .success(let response):
+                let result = self.parseResponse(data: response.data,
+                                                response: nil,
+                                                error: nil,
+                                                type: T.self)
+                completion(result)
+            case .failure(let error):
+                if error.asAFError?.isSessionTaskError != nil {
+                    completion(.failure(NetworkError.networkLoss))
+                }
+                completion(.failure(NetworkError.unknown))
+            }
+        }
     }
 
     private func buildURL(endpoint: Endpoint) -> URL? {
