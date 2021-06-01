@@ -11,22 +11,21 @@ protocol SettingsPresenterProtocol {
     func getSectionsCount() -> Int
     func getRowsInSectionCount(section: Int) -> Int
     func getSectionTitle(section: Int) -> String
-    func getCellTitle(section: Int, row: Int) -> String
-    func isFrameworkMatched(section: Int, row: Int) -> Bool
-    func onCellSelected(section: Int, row: Int)
+    func isFrameworkMatched(framework: NetworkFrameworkSelected) -> Bool
+    func onFrameworkCellSelected(framework: NetworkFrameworkSelected)
+    func getCellType(section: Int, row: Int) -> SettingsType
 }
 
 class SettingsPresenter: SettingsPresenterProtocol {
     weak var view: SettingsViewProtocol?
     private var router: HomeRouterProtocol?
     var networkFrameworkSelected: NetworkFrameworkSelected?
-    private var dataSource = [SettingsSection(sectionTitle: "Network frameworks available",
-                                              data:
-                                [FrameworkSectionData(frameworkTitle: "Alamofire",
-                                                      framework: NetworkFrameworkSelected.alamofire),
-                                 FrameworkSectionData(frameworkTitle: "Moya",
-                                                      framework: NetworkFrameworkSelected.moya)
-                                ])
+    private var dataSource = [SettingsSection(sectionTitle: R.string.localizable.settingsNetworksAvailableSectionTitle(), data:
+                                                [.framworkCell(model: FrameworkSectionData(frameworkTitle: "Alamofire",
+                                                                         framework: NetworkFrameworkSelected.alamofire)),
+                                                 .framworkCell(model: FrameworkSectionData(frameworkTitle: "Moya",
+                                                                          framework: NetworkFrameworkSelected.moya))
+                                                ])
     ]
 
     init(view: SettingsViewProtocol, router: HomeRouterProtocol) {
@@ -46,19 +45,17 @@ class SettingsPresenter: SettingsPresenterProtocol {
         return dataSource[section].sectionTitle
     }
 
-    func getCellTitle(section: Int, row: Int) -> String {
-        let title = dataSource[section].data[row].frameworkTitle
-        return title
+    func getCellType(section: Int, row: Int) -> SettingsType {
+        let type = dataSource[section].data[row]
+        return type
     }
 
-    func isFrameworkMatched(section: Int, row: Int) -> Bool {
-        let framework = dataSource[section].data[row].framework
+    func isFrameworkMatched(framework: NetworkFrameworkSelected) -> Bool {
         return framework == networkFrameworkSelected
     }
 
-    func onCellSelected(section: Int, row: Int) {
-        let frameworkSelected = dataSource[section].data[row].framework
-        self.networkFrameworkSelected = frameworkSelected
+    func onFrameworkCellSelected(framework: NetworkFrameworkSelected) {
+        self.networkFrameworkSelected = framework
         setNetworkOption()
         view?.updateView()
     }

@@ -189,7 +189,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 10 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 12 nibs.
   struct nib {
     /// Nib `AudioDetailView`.
     static let audioDetailView = _R.nib._AudioDetailView()
@@ -205,6 +205,10 @@ struct R: Rswift.Validatable {
     static let resetPasswordViewController = _R.nib._ResetPasswordViewController()
     /// Nib `SearchTableViewCell`.
     static let searchTableViewCell = _R.nib._SearchTableViewCell()
+    /// Nib `SettingsCoreDataCell`.
+    static let settingsCoreDataCell = _R.nib._SettingsCoreDataCell()
+    /// Nib `SettingsFrameworkCell`.
+    static let settingsFrameworkCell = _R.nib._SettingsFrameworkCell()
     /// Nib `SettingsViewController`.
     static let settingsViewController = _R.nib._SettingsViewController()
     /// Nib `SignInViewController`.
@@ -269,6 +273,22 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SettingsCoreDataCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.settingsCoreDataCell) instead")
+    static func settingsCoreDataCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.settingsCoreDataCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "SettingsFrameworkCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.settingsFrameworkCell) instead")
+    static func settingsFrameworkCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.settingsFrameworkCell)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UINib(name: "SettingsViewController", in: bundle)`
     @available(*, deprecated, message: "Use UINib(resource: R.nib.settingsViewController) instead")
     static func settingsViewController(_: Void = ()) -> UIKit.UINib {
@@ -320,6 +340,14 @@ struct R: Rswift.Validatable {
       return R.nib.searchTableViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SearchTableViewCell
     }
 
+    static func settingsCoreDataCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsCoreDataCell? {
+      return R.nib.settingsCoreDataCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsCoreDataCell
+    }
+
+    static func settingsFrameworkCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsFrameworkCell? {
+      return R.nib.settingsFrameworkCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsFrameworkCell
+    }
+
     static func settingsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.settingsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -350,7 +378,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 59 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 61 localization keys.
     struct localizable {
       /// en translation: Account not found for the specified user. Please check and try again
       ///
@@ -404,6 +432,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ru-RU
       static let homeLogOutFailedAlertMessage = Rswift.StringResource(key: "Home.LogOutFailed.AlertMessage", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: Files saving
+      ///
+      /// Locales: en, ru-RU
+      static let settingsFilesSavingSectionTitle = Rswift.StringResource(key: "Settings.FilesSavingSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: Forgot password
       ///
       /// Locales: en, ru-RU
@@ -424,6 +456,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, ru-RU
       static let authErrorCodeNetworkErrorText = Rswift.StringResource(key: "AuthErrorCode.NetworkError.Text", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
+      /// en translation: Network frameworks available
+      ///
+      /// Locales: en, ru-RU
+      static let settingsNetworksAvailableSectionTitle = Rswift.StringResource(key: "Settings.NetworksAvailableSection.Title", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "ru-RU"], comment: nil)
       /// en translation: No data
       ///
       /// Locales: en, ru-RU
@@ -790,6 +826,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("Home.LogOutFailed.AlertMessage", bundle: bundle, comment: "")
       }
 
+      /// en translation: Files saving
+      ///
+      /// Locales: en, ru-RU
+      static func settingsFilesSavingSectionTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Settings.FilesSavingSection.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Settings.FilesSavingSection.Title"
+        }
+
+        return NSLocalizedString("Settings.FilesSavingSection.Title", bundle: bundle, comment: "")
+      }
+
       /// en translation: Forgot password
       ///
       /// Locales: en, ru-RU
@@ -865,6 +916,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("AuthErrorCode.NetworkError.Text", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Network frameworks available
+      ///
+      /// Locales: en, ru-RU
+      static func settingsNetworksAvailableSectionTitle(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Settings.NetworksAvailableSection.Title", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Settings.NetworksAvailableSection.Title"
+        }
+
+        return NSLocalizedString("Settings.NetworksAvailableSection.Title", bundle: bundle, comment: "")
       }
 
       /// en translation: No data
@@ -1600,6 +1666,28 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SearchTableViewCell? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SearchTableViewCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SettingsCoreDataCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "SettingsCoreDataCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsCoreDataCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsCoreDataCell
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _SettingsFrameworkCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "SettingsFrameworkCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SettingsFrameworkCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? SettingsFrameworkCell
       }
 
       fileprivate init() {}

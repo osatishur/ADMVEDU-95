@@ -78,6 +78,8 @@
 
 //SettingsView
 "Settings.NavigationItem.Title" = "Settings";
+"Settings.NetworksAvailableSection.Title" = "Network frameworks available";
+"Settings.FilesSavingSection.Title" = "Files saving";
 
 //AuthErrorCode
 "AuthErrorCode.EmailAlreadyInUse.Text" = "The email is already in use with another account";

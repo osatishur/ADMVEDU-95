@@ -7,12 +7,22 @@
 
 import Foundation
 
-struct SettingsSection<T: Codable> {
+enum SettingsType {
+    case framworkCell(model: FrameworkSectionData)
+    //case coreDataCell(model: CoreDataSectionData)
+}
+
+struct SettingsSection {
     var sectionTitle: String
-    var data: [T]
+    var data: [SettingsType]
 }
 
 struct FrameworkSectionData: Codable {
     var frameworkTitle: String
     var framework: NetworkFrameworkSelected
 }
+
+//struct CoreDataSectionData: Codable {
+//    var title: String
+//    var isEnabled: Bool
+//}

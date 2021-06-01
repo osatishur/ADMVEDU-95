@@ -78,6 +78,8 @@
 
 //SettingsView
 "Settings.NavigationItem.Title" = "Настройки";
+"Settings.NetworksAvailableSection.Title" = "Доступные сетевые фрэймворки";
+"Settings.FilesSavingSection.Title" = "Сохранение файлов";
 
 //AuthErrorCode
 "AuthErrorCode.EmailAlreadyInUse.Text" = "Адрес указанной почты уже используется";
