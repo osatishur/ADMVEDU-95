@@ -12,7 +12,7 @@ import UIKit
 protocol DetailViewProtocol: AnyObject {}
 
 class DetailViewController: UIViewController, DetailViewProtocol {
-    var presenter: DetailPresenterProtocol?
+    var viewModel: DetailViewModel?
 
     // MARK: Life cycle
 
@@ -22,6 +22,6 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     }
 
     override func loadView() {
-        view = presenter?.loadView()
+        view = viewModel?.loadView()
     }
 }

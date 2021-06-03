@@ -13,6 +13,7 @@ class VideoDetailView: XibView {
     @IBOutlet private var movieNameLabel: UILabel!
 
     private var playVideoHandler: (() -> Void)?
+    //var viewModel: VideoViewModel?
 
     func configureView(albumImageURL: URL, directorName: String, movieName: String) {
         albumImageView.loadImage(url: albumImageURL)
@@ -34,5 +35,7 @@ class VideoDetailView: XibView {
     @objc
     private func imageTapped() {
         playVideoHandler?()
+//        print(1111)
+//        viewModel?.playVideo()
     }
 }

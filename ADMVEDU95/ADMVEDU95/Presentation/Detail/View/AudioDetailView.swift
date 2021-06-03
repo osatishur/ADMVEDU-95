@@ -15,6 +15,7 @@ class AudioDetailView: XibView {
     @IBOutlet private var playPauseButton: UIButton!
 
     private var playMusicHandler: (() -> Void)?
+    //var viewModel: AudioViewModel?
 
     func configureView(albumImageURL: URL, artistName: String, songName: String, albumName: String) {
         albumImageView.loadImage(url: albumImageURL)

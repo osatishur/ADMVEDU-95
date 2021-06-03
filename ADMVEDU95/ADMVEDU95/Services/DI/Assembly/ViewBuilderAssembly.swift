@@ -56,16 +56,16 @@ class ViewBuilderAssembly: Assembly {
                                                        dataKind: ResponseDataKind,
                                                        model: ApiResult,
                                                        router: HomeRouterProtocol) in
-            let view = DetailViewController()
-            let presenter: DetailPresenterProtocol
+            let viewController = DetailViewController()
+            let viewModel: DetailViewModel
             if dataKind == .song {
-                presenter = AudioPresenter(view: view, model: model, router: router)
+                viewModel = AudioViewModel(model: model, router: router)
             } else {
-                presenter = VideoPresenter(view: view, model: model, router: router)
+                viewModel = VideoViewModel(model: model, router: router)
             }
-            view.presenter = presenter
-            return view
-        }.inObjectScope(.container)
+            viewController.viewModel = viewModel
+            return viewController
+        }
     }
 
     private func assembleCategoryView(container: Container) {
@@ -87,10 +87,10 @@ class ViewBuilderAssembly: Assembly {
         container.register(SettingsViewProtocol.self) { (_,
                                                          router: HomeRouterProtocol) in
             let view = SettingsViewController()
-            let presenter = SettingsPresenter(view: view,
-                                              router: router)
-            presenter.networkFrameworkSelected = UserDefaults.getNetworkFramework()
-            view.presenter = presenter
+
+            let networkFrameworkSelected = UserDefaults.getNetworkFramework()
+            let viewModel = SettingsViewModel(router: router, networkFrameworkSelected: networkFrameworkSelected)
+            view.viewModel = viewModel
             return view
         }.inObjectScope(.container)
     }

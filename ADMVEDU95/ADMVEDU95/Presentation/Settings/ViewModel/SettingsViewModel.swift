@@ -1,25 +1,25 @@
 //
-//  SettindsPresenter.swift
+//  SettingsViewModel.swift
 //  ADMVEDU95
 //
-//  Created by Satishur, Oleg on 27.05.2021.
+//  Created by Satishur, Oleg on 02.06.2021.
 //
 
-import Foundation
+import UIKit
 
-protocol SettingsPresenterProtocol {
+protocol SettingsViewModelProtocol {
     func getSectionsCount() -> Int
     func getRowsInSectionCount(section: Int) -> Int
     func getSectionTitle(section: Int) -> String
     func isFrameworkMatched(framework: NetworkFrameworkSelected) -> Bool
     func onFrameworkCellSelected(framework: NetworkFrameworkSelected)
     func getCellType(section: Int, row: Int) -> SettingsType
+    var networkFrameworkSelected: Observable<NetworkFrameworkSelected>? { get set }
 }
 
-class SettingsPresenter: SettingsPresenterProtocol {
-    weak var view: SettingsViewProtocol?
+class SettingsViewModel: SettingsViewModelProtocol {
     private var router: HomeRouterProtocol?
-    var networkFrameworkSelected: NetworkFrameworkSelected?
+    var networkFrameworkSelected: Observable<NetworkFrameworkSelected>?
     private var dataSource = [SettingsSection(sectionTitle: R.string.localizable.settingsNetworksAvailableSectionTitle(), data:
                                                 [.framworkCell(model: FrameworkSectionData(frameworkTitle: "Alamofire",
                                                                          framework: NetworkFrameworkSelected.alamofire)),
@@ -28,9 +28,9 @@ class SettingsPresenter: SettingsPresenterProtocol {
                                                 ])
     ]
 
-    init(view: SettingsViewProtocol, router: HomeRouterProtocol) {
-        self.view = view
+    init(router: HomeRouterProtocol, networkFrameworkSelected: NetworkFrameworkSelected) {
         self.router = router
+        self.networkFrameworkSelected = Observable(value: networkFrameworkSelected)
     }
 
     func getSectionsCount() -> Int {
@@ -51,16 +51,15 @@ class SettingsPresenter: SettingsPresenterProtocol {
     }
 
     func isFrameworkMatched(framework: NetworkFrameworkSelected) -> Bool {
-        return framework == networkFrameworkSelected
+        return framework == networkFrameworkSelected?.value
     }
 
     func onFrameworkCellSelected(framework: NetworkFrameworkSelected) {
-        self.networkFrameworkSelected = framework
+        self.networkFrameworkSelected?.value = framework
         setNetworkOption()
-        view?.updateView()
     }
 
     private func setNetworkOption() {
-        UserDefaults.setNetworkFramework(framework: self.networkFrameworkSelected ?? .alamofire)
+        UserDefaults.setNetworkFramework(framework: self.networkFrameworkSelected?.value ?? .alamofire)
     }
 }

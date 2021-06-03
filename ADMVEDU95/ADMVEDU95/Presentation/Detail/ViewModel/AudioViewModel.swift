@@ -1,14 +1,16 @@
 //
-//  AudioPresenter.swift
+//  AudioViewModel.swift
 //  ADMVEDU95
 //
-//  Created by Satishur, Oleg on 04.05.2021.
+//  Created by Satishur, Oleg on 02.06.2021.
 //
+
+import Foundation
 
 import AVKit
 import Foundation
 
-class AudioPresenter: DetailPresenter {
+class AudioViewModel: DetailViewModel {
     private enum Constants {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
@@ -23,7 +25,7 @@ class AudioPresenter: DetailPresenter {
         return view
     }
 
-    private func getAudioView() -> AudioDetailView {
+    func getAudioView() -> AudioDetailView {
         guard let imageURL = model?.artworkUrl100,
               let url = URL(string: imageURL)
         else {

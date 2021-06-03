@@ -1,14 +1,14 @@
 //
-//  VideoPresenter.swift
+//  VideoViewModel.swift
 //  ADMVEDU95
 //
-//  Created by Satishur, Oleg on 04.05.2021.
+//  Created by Satishur, Oleg on 02.06.2021.
 //
 
 import AVKit
 import Foundation
 
-class VideoPresenter: DetailPresenter {
+class VideoViewModel: DetailViewModel {
     private enum Constants {
         static let width = UIScreen.main.bounds.width
         static let height = UIScreen.main.bounds.height
@@ -24,14 +24,14 @@ class VideoPresenter: DetailPresenter {
         return view
     }
 
-    private func getVideoView() -> VideoDetailView {
+    func getVideoView() -> VideoDetailView {
         guard let imageURL = model?.artworkUrl100,
               let url = URL(string: imageURL)
         else {
             return VideoDetailView()
         }
-        configureVideoView(view: videoView, url: url)
         initVideoPlayer(movieUrl: model?.previewUrl)
+        configureVideoView(view: videoView, url: url)
         return videoView
     }
 
@@ -53,10 +53,15 @@ class VideoPresenter: DetailPresenter {
         playerViewController.player = player
     }
 
-    private func playVideo() {
-        let view = view as? DetailViewController
-        view?.present(playerViewController, animated: true) {
-            self.player?.play()
-        }
+    func playVideo() {
+        //let view = view as? DetailViewController
+//        print(2222222)
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = videoView.bounds
+//        videoView.layer.addSublayer(playerLayer)
+//        player?.play()
+//        view?.present(playerViewController, animated: true) {
+//            self.player?.play()
+//        }
     }
 }

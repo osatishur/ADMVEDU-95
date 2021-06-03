@@ -1,25 +1,24 @@
 //
-//  DetailPresenter.swift
+//  DetailViewModel.swift
 //  ADMVEDU95
 //
-//  Created by Satishur, Oleg on 27.04.2021.
+//  Created by Satishur, Oleg on 02.06.2021.
 //
 
+import Foundation
 import AVFoundation
 import AVKit
-import Foundation
 
-protocol DetailPresenterProtocol: AnyObject {
+protocol DetailViewModelProtocol: AnyObject {
+    var model: ApiResult? { get set }
     func loadView() -> UIView
 }
 
-class DetailPresenter: DetailPresenterProtocol {
-    weak var view: DetailViewProtocol?
+class DetailViewModel: DetailViewModelProtocol {
     private var router: HomeRouterProtocol?
     var model: ApiResult?
 
-    init(view: DetailViewProtocol, model: ApiResult, router: HomeRouterProtocol) {
-        self.view = view
+    init(model: ApiResult, router: HomeRouterProtocol) {
         self.model = model
         self.router = router
     }

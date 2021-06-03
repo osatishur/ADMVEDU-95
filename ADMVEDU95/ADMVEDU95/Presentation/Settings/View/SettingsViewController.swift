@@ -15,12 +15,16 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
-    var presenter: SettingsPresenterProtocol?
+    var viewModel: SettingsViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupTableView()
+        viewModel?.networkFrameworkSelected?.bind({ [weak self] _ in
+            print("table reloaded")
+            self?.updateView()
+        })
     }
 
     private func setupNavigationBar() {
@@ -40,23 +44,23 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return presenter?.getSectionsCount() ?? 0
+        return viewModel?.getSectionsCount() ?? 0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return presenter?.getSectionTitle(section: section)
+        return viewModel?.getSectionTitle(section: section)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getRowsInSectionCount(section: section) ?? 0
+        return viewModel?.getRowsInSectionCount(section: section) ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let presenter = presenter else {
+        guard let viewModel = viewModel else {
             return UITableViewCell()
         }
 
-        let type = presenter.getCellType(section: indexPath.section, row: indexPath.row)
+        let type = viewModel.getCellType(section: indexPath.section, row: indexPath.row)
         switch type {
         case .framworkCell(let model):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsFrameworkCell.reuseIdentifier,
@@ -65,7 +69,7 @@ extension SettingsViewController: UITableViewDataSource {
             }
 
             cell.configure(model: model)
-            cell.accessoryType = (presenter.isFrameworkMatched(framework: model.framework)) ? .checkmark : .none
+            cell.accessoryType = (viewModel.isFrameworkMatched(framework: model.framework)) ? .checkmark : .none
             return cell
         }
     }
@@ -74,13 +78,13 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let presenter = presenter else {
+        guard let viewModel = viewModel else {
             return
         }
-        let type = presenter.getCellType(section: indexPath.section, row: indexPath.row)
+        let type = viewModel.getCellType(section: indexPath.section, row: indexPath.row)
         switch type {
         case .framworkCell(let model):
-            presenter.onFrameworkCellSelected(framework: model.framework)
+            viewModel.onFrameworkCellSelected(framework: model.framework)
         }
     }
 }
