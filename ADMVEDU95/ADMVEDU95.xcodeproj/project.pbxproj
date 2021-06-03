@@ -20,8 +20,8 @@
 		0E40CEDD2636D29A0067D7D5 /* CategoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */; };
 		0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E417D8D264D59D900FE94CF /* CoreDataITunes.xcdatamodeld */; };
 		0E417D91264D5C2C00FE94CF /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E417D90264D5C2C00FE94CF /* CoreDataService.swift */; };
-		0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E8F263945B4000122C6 /* SignInPresenter.swift */; };
-		0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E93263956FF000122C6 /* LogInPresenter.swift */; };
+		0E495E90263945B4000122C6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E8F263945B4000122C6 /* SignInViewModel.swift */; };
+		0E495E94263956FF000122C6 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E93263956FF000122C6 /* LogInViewModel.swift */; };
 		0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */; };
 		0E49E0CE26500F8D0028F7DB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E49E0CD26500F8D0028F7DB /* R.generated.swift */; };
 		0E4C0D8C2638334D002E6DBA /* UIView+CommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */; };
@@ -38,9 +38,9 @@
 		0E66C0292632F30400C4C059 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */; };
 		0E66C02E2633089700C4C059 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C02D2633089700C4C059 /* HomeViewController.xib */; };
 		0E66C0402633135D00C4C059 /* CategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E66C03F2633135D00C4C059 /* CategoryViewController.xib */; };
-		0E768E37263885FA0048E512 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E36263885FA0048E512 /* HomePresenter.swift */; };
+		0E768E37263885FA0048E512 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E36263885FA0048E512 /* HomeViewModel.swift */; };
 		0E768E3A26388D990048E512 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E3926388D990048E512 /* ViewBuilder.swift */; };
-		0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E4026389F390048E512 /* CategoryPresenter.swift */; };
+		0E768E4126389F390048E512 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E768E4026389F390048E512 /* CategoryViewModel.swift */; };
 		0E882416265FEFD20012A2F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E882414265FEFD20012A2F2 /* SettingsViewController.swift */; };
 		0E882417265FEFD20012A2F2 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E882415265FEFD20012A2F2 /* SettingsViewController.xib */; };
 		0E957A022630510C00A42206 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E957A012630510C00A42206 /* ResetPasswordViewController.swift */; };
@@ -112,8 +112,8 @@
 		0E40CEDC2636D29A0067D7D5 /* CategoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryView.xib; sourceTree = "<group>"; };
 		0E417D8E264D59D900FE94CF /* CoreDataITunes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataITunes.xcdatamodel; sourceTree = "<group>"; };
 		0E417D90264D5C2C00FE94CF /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		0E495E8F263945B4000122C6 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
-		0E495E93263956FF000122C6 /* LogInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPresenter.swift; sourceTree = "<group>"; };
+		0E495E8F263945B4000122C6 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		0E495E93263956FF000122C6 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordPresenter.swift; sourceTree = "<group>"; };
 		0E49E0CD26500F8D0028F7DB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		0E4C0D8B2638334D002E6DBA /* UIView+CommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CommonInit.swift"; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 		0E66C0282632F30400C4C059 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		0E66C02D2633089700C4C059 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		0E66C03F2633135D00C4C059 /* CategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryViewController.xib; sourceTree = "<group>"; };
-		0E768E36263885FA0048E512 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		0E768E36263885FA0048E512 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0E768E3926388D990048E512 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
-		0E768E4026389F390048E512 /* CategoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPresenter.swift; sourceTree = "<group>"; };
+		0E768E4026389F390048E512 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		0E882414265FEFD20012A2F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0E882415265FEFD20012A2F2 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		0E957A012630510C00A42206 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -245,36 +245,36 @@
 			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
-		0E495E8C26393CD3000122C6 /* Presenter */ = {
+		0E495E8C26393CD3000122C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0E768E4026389F390048E512 /* CategoryPresenter.swift */,
+				0E768E4026389F390048E512 /* CategoryViewModel.swift */,
 			);
-			path = Presenter;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0E495E8E263945A3000122C6 /* Presenter */ = {
+		0E495E8E263945A3000122C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E8F263945B4000122C6 /* SignInPresenter.swift */,
+				0E495E8F263945B4000122C6 /* SignInViewModel.swift */,
 			);
-			path = Presenter;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0E495E92263956EB000122C6 /* Presenter */ = {
+		0E495E92263956EB000122C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E93263956FF000122C6 /* LogInPresenter.swift */,
+				0E495E93263956FF000122C6 /* LogInViewModel.swift */,
 			);
-			path = Presenter;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		0E495E9626395D98000122C6 /* Presenter */ = {
+		0E495E9626395D98000122C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				0E495E9726395DB8000122C6 /* ResetPasswordPresenter.swift */,
 			);
-			path = Presenter;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0E495EAB2639A970000122C6 /* Presentation */ = {
@@ -314,7 +314,7 @@
 		0E768E26263884B40048E512 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0E768E2C2638850B0048E512 /* Presenter */,
+				0E768E2C2638850B0048E512 /* ViewModel */,
 				0E768E2B263885060048E512 /* View */,
 			);
 			path = Home;
@@ -332,7 +332,7 @@
 		0E768E28263884D80048E512 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E8C26393CD3000122C6 /* Presenter */,
+				0E495E8C26393CD3000122C6 /* ViewModel */,
 				0E768E2F263885520048E512 /* View */,
 			);
 			path = Category;
@@ -341,7 +341,7 @@
 		0E768E29263884EE0048E512 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E8E263945A3000122C6 /* Presenter */,
+				0E495E8E263945A3000122C6 /* ViewModel */,
 				0E768E302638855F0048E512 /* View */,
 			);
 			path = SignIn;
@@ -350,7 +350,7 @@
 		0E768E2A263884F50048E512 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E92263956EB000122C6 /* Presenter */,
+				0E495E92263956EB000122C6 /* ViewModel */,
 				0E768E312638856D0048E512 /* View */,
 			);
 			path = LogIn;
@@ -368,12 +368,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0E768E2C2638850B0048E512 /* Presenter */ = {
+		0E768E2C2638850B0048E512 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				0E768E36263885FA0048E512 /* HomePresenter.swift */,
+				0E768E36263885FA0048E512 /* HomeViewModel.swift */,
 			);
-			path = Presenter;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0E768E2E2638853B0048E512 /* View */ = {
@@ -418,7 +418,7 @@
 		0E768E32263885780048E512 /* ResetPassword */ = {
 			isa = PBXGroup;
 			children = (
-				0E495E9626395D98000122C6 /* Presenter */,
+				0E495E9626395D98000122C6 /* ViewModel */,
 				0E768E33263885890048E512 /* View */,
 			);
 			path = ResetPassword;
@@ -843,7 +843,7 @@
 				0E2CC761263BEE8F005B97B8 /* MainRouterProtocol.swift in Sources */,
 				83E769A2262D89FD008826CB /* UIView+Anchor.swift in Sources */,
 				0EE944242656DCE6007768BB /* BaseAuthPresenter.swift in Sources */,
-				0E495E90263945B4000122C6 /* SignInPresenter.swift in Sources */,
+				0E495E90263945B4000122C6 /* SignInViewModel.swift in Sources */,
 				838E24D6262EBFB1002C6C7A /* LoginViewController.swift in Sources */,
 				8355601F26249D7700C77316 /* Response.swift in Sources */,
 				0EDDA1B9263ABCA400FBC00E /* XibView.swift in Sources */,
@@ -863,12 +863,12 @@
 				0E417D8F264D59D900FE94CF /* CoreDataITunes.xcdatamodeld in Sources */,
 				83555FFB2624905C00C77316 /* AppDelegate.swift in Sources */,
 				0E957A09263065E400A42206 /* AuthErrorCode+ErrorMessage.swift in Sources */,
-				0E768E37263885FA0048E512 /* HomePresenter.swift in Sources */,
+				0E768E37263885FA0048E512 /* HomeViewModel.swift in Sources */,
 				0E56A95E2666423400C00B50 /* SettingsCoreDataCell.swift in Sources */,
 				0E495E9826395DB8000122C6 /* ResetPasswordPresenter.swift in Sources */,
-				0E495E94263956FF000122C6 /* LogInPresenter.swift in Sources */,
+				0E495E94263956FF000122C6 /* LogInViewModel.swift in Sources */,
 				83555FFD2624905C00C77316 /* SceneDelegate.swift in Sources */,
-				0E768E4126389F390048E512 /* CategoryPresenter.swift in Sources */,
+				0E768E4126389F390048E512 /* CategoryViewModel.swift in Sources */,
 				830E0FDD26282D6900C545B0 /* SearchService.swift in Sources */,
 				83A78BA62626C56D009C3807 /* HomeViewController+TableViewMethods.swift in Sources */,
 				838E24D3262EBFA5002C6C7A /* SignInViewController.swift in Sources */,

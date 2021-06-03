@@ -22,12 +22,18 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBOutlet private var bottomButton: UIButton!
     @IBOutlet private var signInButton: AuthButton!
 
-    var presenter: SignInPresenterProtocol?
+    var viewModel: SignInViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
+        viewModel?.errorText.bind({ [weak self] value in
+            self?.setErrorLabelText(text: value ?? "")
+        })
+        viewModel?.isErrorTextHidden.bind({ [weak self] value in
+            self?.setErrorLabelHidden(isHidden: value ?? true)
+        })
     }
 
     private func setupLayout() {
@@ -48,11 +54,11 @@ class SignInViewController: BaseAuthViewController, UITextFieldDelegate {
         else {
             return
         }
-        presenter?.signIn(email: email, password: password, repeatPassword: passwordRepeat)
+        viewModel?.signIn(email: email, password: password, repeatPassword: passwordRepeat)
     }
 
     @IBAction private func didTapBottomButton(_: Any) {
-        presenter?.didTapSignInButton()
+        viewModel?.didTapSignInButton()
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {

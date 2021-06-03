@@ -8,7 +8,7 @@
 import UIKit
 
 class Observable<T> {
-    var value: T? {
+    var value: T {
         didSet {
             listener?(value)
         }

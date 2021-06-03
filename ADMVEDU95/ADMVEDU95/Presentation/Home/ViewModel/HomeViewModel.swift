@@ -8,7 +8,11 @@
 import Foundation
 import Swinject
 
-protocol HomePresenterProtocol: AnyObject {
+protocol HomeViewModelProtocol: AnyObject {
+    var dataSource: Observable<[ApiResult]> { get set }
+    var category: Observable<Category> { get set }
+    var alertInfo: Observable<(title: String, message: String)> { get set }
+    var alertWithRetryInfo: Observable<String> { get set }
     func getCategoryTitle() -> String
     func getCategory() -> Category
     func searchITunes(searchTerm: String, filter: String)
@@ -23,21 +27,20 @@ protocol HomePresenterProtocol: AnyObject {
     func didTapOnTableCell(dataKind: ResponseDataKind, model: ApiResult)
 }
 
-class HomePresenter: HomePresenterProtocol {
-    private weak var view: HomeViewProtocol?
+class HomeViewModel: HomeViewModelProtocol {
     private let searchService: SearchServiceProtocol?
     private let firebaseService: FirebaseServiceProtocol?
     private var coreDataService: CoreDataServiceProtocol?
     private var router: HomeRouterProtocol?
-    private var dataSource: [ApiResult] = []
-    private var category = Category.all
+    var category: Observable<Category> = Observable(value: Category.all)
+    var dataSource: Observable<[ApiResult]> = Observable(value: [])
+    var alertInfo: Observable<(title: String, message: String)> = Observable(value: (title: "", message: ""))
+    var alertWithRetryInfo: Observable<String> = Observable(value: "")
 
-    init(view: HomeViewProtocol,
-         searchService: SearchServiceProtocol,
+    init(searchService: SearchServiceProtocol,
          firebaseService: FirebaseServiceProtocol,
          coreDataService: CoreDataServiceProtocol,
          router: HomeRouterProtocol) {
-        self.view = view
         self.searchService = searchService
         self.firebaseService = firebaseService
         self.coreDataService = coreDataService
@@ -51,11 +54,11 @@ class HomePresenter: HomePresenterProtocol {
             switch result {
             case let .success(response):
                 self.fetchDataFromResponse(response: response)
-                self.view?.updateSearchResults()
             case let .failure(error):
                 if !(error == .networkLoss) {
                     let alertMessage = self.getErrorMessage(error: error)
-                    self.view?.showAlert(title: R.string.localizable.alertErrorTitle(), message: alertMessage)
+                    self.setAlertInfo(title: R.string.localizable.alertErrorTitle(),
+                                      message: alertMessage)
                 } else {
                     self.handleNetworkLoss()
                 }
@@ -66,22 +69,22 @@ class HomePresenter: HomePresenterProtocol {
     private func fetchDataFromResponse(response: Response) {
         coreDataService?.deleteAllResults()
         let results = response.results
-        for result in results {
-            print(result)
-            addResultToDataSource(result: result)
-            coreDataService?.saveResult(apiResult: result)
-        }
+        let dataSource = addResultsToDataSource(results: results)
+        self.dataSource.value = dataSource
         if dataSource.isEmpty {
             let title = R.string.localizable.homeNoDataAlertTitle()
             let message = R.string.localizable.homeNoDataAlertMessage()
-            view?.showAlert(title: title, message: message)
+            setAlertInfo(title: title, message: message)
         }
     }
 
-    private func addResultToDataSource(result: ApiResult) {
-        if !result.isInsufficient {
-            dataSource.append(result)
+    private func addResultsToDataSource(results: [ApiResult]) -> [ApiResult] {
+        var dataSource: [ApiResult] = []
+        for result in results where !result.isInsufficient {
+                dataSource.append(result)
+                coreDataService?.saveResult(apiResult: result)
         }
+        return dataSource
     }
 
     private func handleNetworkLoss() {
@@ -90,7 +93,7 @@ class HomePresenter: HomePresenterProtocol {
             case .reachedRetryLimit:
                 self.getResultsFromCoreData()
             case .notReachedRetryLimit:
-                self.view?.showAlertWithRetry(message: "Please, check your internet connection")
+                self.setAlertWithRetryInfo(message: R.string.localizable.homeCheckConnectionAlertMessage())
             }
         }
     }
@@ -121,35 +124,33 @@ class HomePresenter: HomePresenterProtocol {
 
     func getResultsFromCoreData() {
         coreDataService?.fetchResults { results in
-            self.dataSource = results ?? []
-            self.view?.updateSearchResults()
+            self.dataSource.value = results ?? []
         }
     }
 
     func getResult(indexPath: IndexPath) -> ApiResult {
-        dataSource[indexPath.row]
+        dataSource.value[indexPath.row]
     }
 
     func getNumberOfResults() -> Int {
-        dataSource.count
+        dataSource.value.count
     }
 
     func getCategoryTitle() -> String {
-        category.description
+        category.value.description
     }
 
     func getCategory() -> Category {
-        category
+        category.value
     }
 
     func getFilterParameter() -> String {
-        category.rawValue
+        category.value.rawValue
     }
 
     func clearOldResults() {
-        if !dataSource.isEmpty {
-            dataSource = []
-            view?.updateSearchResults()
+        if !(dataSource.value.isEmpty) {
+            dataSource.value = []
         }
     }
 
@@ -158,7 +159,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func didTapOnCategoryView(categoryChosed _: Category) {
-        router?.navigateToCategory(selectedCategory: category, delegate: self)
+        router?.navigateToCategory(selectedCategory: category.value, delegate: self)
     }
 
     func didTapLogOutButton() {
@@ -168,19 +169,26 @@ class HomePresenter: HomePresenterProtocol {
         if firebaseService.logOut() {
             router?.navigateToAuth()
         } else {
-            view?.showAlert(title: R.string.localizable.alertErrorTitle(),
-                            message: R.string.localizable.homeLogOutFailedAlertMessage())
+            setAlertInfo(title: R.string.localizable.alertErrorTitle(),
+                         message: R.string.localizable.homeLogOutFailedAlertMessage())
         }
     }
 
     func didTapOnSettingsBarButton() {
         router?.navigateToSettings()
     }
+
+    func setAlertInfo(title: String, message: String) {
+        alertInfo.value = (title: title, message: message)
+    }
+
+    func setAlertWithRetryInfo(message: String) {
+        alertWithRetryInfo.value = message
+    }
 }
 
-extension HomePresenter: CategoryPresenterDelegate {
-    func fetchCategory(_: CategoryPresenter, category: Category) {
-        self.category = category
-        view?.updateCategory(category: category.description)
+extension HomeViewModel: CategoryViewModelDelegate {
+    func fetchCategory(_: CategoryViewModel, category: Category) {
+        self.category.value = category
     }
 }

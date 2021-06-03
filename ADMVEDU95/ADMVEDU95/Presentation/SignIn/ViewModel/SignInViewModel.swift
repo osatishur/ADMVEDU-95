@@ -8,26 +8,28 @@
 import FirebaseAuth
 import Foundation
 
-protocol SignInPresenterProtocol: AnyObject {
+protocol SignInViewModelProtocol: AnyObject {
+    var errorText: Observable<String> { get set }
+    var isErrorTextHidden: Observable<Bool> { get set }
     func signIn(email: String, password: String, repeatPassword: String)
     func didTapSignInButton()
     func navigateToHome()
 }
 
-class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
-    private weak var view: SignInViewProtocol?
+class SignInViewModel: BaseAuthPresenter, SignInViewModelProtocol {
     private var router: AuthRouterProtocol?
+    var errorText: Observable<String> = Observable(value: "")
+    var isErrorTextHidden: Observable<Bool> = Observable(value: true)
 
-    init(view: SignInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
+    init(firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
         super.init(firebaseService: firebaseService)
-        self.view = view
         self.router = router
     }
 
     func signIn(email: String, password: String, repeatPassword: String) {
         if password != repeatPassword {
-            view?.setErrorLabelText(text: R.string.localizable.signInPasswordsMatchErrorText())
-            view?.setErrorLabelHidden(isHidden: false)
+            self.setErrorText(text: R.string.localizable.signInPasswordsMatchErrorText())
+            self.setIsErrorTextHidden(isHidden: false)
         } else {
             createUser(email: email, password: password)
         }
@@ -46,11 +48,11 @@ class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
                 self.navigateToHome()
             case let .failure(error):
                 let errorText = self.getAuthErrorText(error: error)
-                self.view?.setErrorLabelText(text: errorText)
-                self.view?.setErrorLabelHidden(isHidden: false)
+                self.setErrorText(text: errorText)
+                self.setIsErrorTextHidden(isHidden: false)
             case .success(false):
-                self.view?.setErrorLabelText(text: R.string.localizable.errorUnknownErrorText())
-                self.view?.setErrorLabelHidden(isHidden: false)
+                self.setErrorText(text: R.string.localizable.errorUnknownErrorText())
+                self.setIsErrorTextHidden(isHidden: false)
             }
         }
     }
@@ -61,5 +63,13 @@ class SignInPresenter: BaseAuthPresenter, SignInPresenterProtocol {
 
     func navigateToHome() {
         router?.navigateToHome()
+    }
+
+    func setErrorText(text: String) {
+        self.errorText.value = text
+    }
+
+    func setIsErrorTextHidden(isHidden: Bool) {
+        self.isErrorTextHidden.value = isHidden
     }
 }

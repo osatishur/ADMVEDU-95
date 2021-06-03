@@ -12,7 +12,7 @@ protocol CategoryViewProtocol: AnyObject {}
 class CategoryViewController: UIViewController, CategoryViewProtocol {
     @IBOutlet private var tableView: UITableView!
 
-    var presenter: CategoryPresenterProtocol?
+    var viewModel: CategoryViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,24 +28,27 @@ class CategoryViewController: UIViewController, CategoryViewProtocol {
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        presenter?.numberOfCategories() ?? .zero
+        viewModel?.numberOfCategories() ?? .zero
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = viewModel else {
+            return UITableViewCell()
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath)
-        let category = presenter?.getCategoryTitle(indexPath: indexPath)
-        let selectedCategory = presenter?.getSelectedCategoryTitle()
-        cell.textLabel?.text = category
-        cell.accessoryType = category == selectedCategory ? .checkmark : .none
+        let categoryDescription = viewModel.getCategoryTitle(row: indexPath.row)
+        let isCategoryMathced = viewModel.isCategoryMatched(row: indexPath.row)
+        cell.textLabel?.text = categoryDescription
+        cell.accessoryType = isCategoryMathced ? .checkmark : .none
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let presenter = presenter else {
+        guard let viewModel = viewModel else {
             return
         }
-        let category = presenter.getCategory(indexPath: indexPath)
-        presenter.onCellSelected(category: category)
+        let category = viewModel.getCategory(row: indexPath.row)
+        viewModel.onCellSelected(category: category)
     }
 }

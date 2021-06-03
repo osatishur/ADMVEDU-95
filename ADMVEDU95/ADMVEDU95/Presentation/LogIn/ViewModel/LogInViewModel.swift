@@ -8,20 +8,22 @@
 import FirebaseAuth
 import Foundation
 
-protocol LogInPresenterProtocol: AnyObject {
+protocol LogInViewModelProtocol: AnyObject {
+    var errorText: Observable<String> { get set }
+    var isErrorTextHidden: Observable<Bool> { get set }
     func logIn(email: String, password: String)
     func navigateToSignIn()
     func navigateToResetPassword()
     func navigateToHome()
 }
 
-class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
-    private weak var view: LogInViewProtocol?
+class LogInViewModel: BaseAuthPresenter, LogInViewModelProtocol {
     private var router: AuthRouterProtocol?
+    var errorText: Observable<String> = Observable(value: "")
+    var isErrorTextHidden: Observable<Bool> = Observable(value: true)
 
-    init(view: LogInViewProtocol, firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
+    init(firebaseService: FirebaseServiceProtocol, router: AuthRouterProtocol) {
         super.init(firebaseService: firebaseService)
-        self.view = view
         self.router = router
     }
 
@@ -38,11 +40,11 @@ class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
                 self.navigateToHome()
             case let .failure(error):
                 let errorText = self.getAuthErrorText(error: error)
-                self.view?.setErrorLabelText(text: errorText)
-                self.view?.setErrorLabelHidden(isHidden: false)
+                self.setErrorText(text: errorText)
+                self.setIsErrorTextHidden(isHidden: false)
             case .success(false):
-                self.view?.setErrorLabelText(text: R.string.localizable.errorUnknownErrorText())
-                self.view?.setErrorLabelHidden(isHidden: false)
+                self.setErrorText(text: R.string.localizable.errorUnknownErrorText())
+                self.setIsErrorTextHidden(isHidden: false)
             }
         }
     }
@@ -57,5 +59,13 @@ class LogInPresenter: BaseAuthPresenter, LogInPresenterProtocol {
 
     func navigateToHome() {
         router?.navigateToHome()
+    }
+
+    func setErrorText(text: String) {
+        self.errorText.value = text
+    }
+
+    func setIsErrorTextHidden(isHidden: Bool) {
+        self.isErrorTextHidden.value = isHidden
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeRouterProtocol: MainRouterProtocol {
-    func navigateToCategory(selectedCategory: Category, delegate: CategoryPresenterDelegate)
+    func navigateToCategory(selectedCategory: Category, delegate: CategoryViewModelDelegate)
     func navigateToDetail(dataKind: ResponseDataKind, model: ApiResult)
     func navigateToAuth()
     func navigateToSettings()
@@ -40,7 +40,7 @@ class HomeRouter: HomeRouterProtocol {
         navigationController.viewControllers = [homeViewController]
     }
 
-    func navigateToCategory(selectedCategory: Category, delegate: CategoryPresenterDelegate) {
+    func navigateToCategory(selectedCategory: Category, delegate: CategoryViewModelDelegate) {
         guard let navigationController = navigationController,
               let categoryViewController = builder?.createCategoryView(selectedCategory: selectedCategory,
                                                                        delegate: delegate,

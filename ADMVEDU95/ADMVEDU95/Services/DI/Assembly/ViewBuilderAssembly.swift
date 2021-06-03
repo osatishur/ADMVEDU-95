@@ -41,12 +41,11 @@ class ViewBuilderAssembly: Assembly {
                 return service
             }()
             let view = HomeViewController()
-            let presenter = HomePresenter(view: view,
-                                          searchService: searchService,
+            let viewModel = HomeViewModel(searchService: searchService,
                                           firebaseService: firebaseService,
                                           coreDataService: coreDataService,
                                           router: router)
-            view.presenter = presenter
+            view.viewModel = viewModel
             return view
         }.inObjectScope(.container)
     }
@@ -71,16 +70,13 @@ class ViewBuilderAssembly: Assembly {
     private func assembleCategoryView(container: Container) {
         container.register(CategoryViewProtocol.self) { (_,
                                                          selectedCategory: Category,
-                                                         delegate: CategoryPresenterDelegate,
+                                                         delegate: CategoryViewModelDelegate,
                                                          router: HomeRouterProtocol) in
             let view = CategoryViewController()
-            let presenter = CategoryPresenter(view: view,
-                                              selectedCategory: selectedCategory,
-                                              delegate: delegate,
-                                              router: router)
-            view.presenter = presenter
+            let viewModel = CategoryViewModel(selectedCategory: selectedCategory, delegate: delegate, router: router)
+            view.viewModel = viewModel
             return view
-        }.inObjectScope(.container)
+        }
     }
 
     private func assembleSettingsView(container: Container) {
@@ -98,10 +94,8 @@ class ViewBuilderAssembly: Assembly {
     private func assembleSignInView(container: Container, firebaseService: FirebaseServiceProtocol) {
         container.register(SignInViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = SignInViewController()
-            let presenter = SignInPresenter(view: view,
-                                            firebaseService: firebaseService,
-                                            router: router)
-            view.presenter = presenter
+            let viewModel = SignInViewModel(firebaseService: firebaseService, router: router)
+            view.viewModel = viewModel
             return view
         }.inObjectScope(.container)
     }
@@ -109,10 +103,8 @@ class ViewBuilderAssembly: Assembly {
     private func assembleLogInView(container: Container, firebaseService: FirebaseServiceProtocol) {
         container.register(LogInViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = LoginViewController()
-            let presenter = LogInPresenter(view: view,
-                                           firebaseService: firebaseService,
-                                           router: router)
-            view.presenter = presenter
+            let viewModel = LogInViewModel(firebaseService: firebaseService, router: router)
+            view.viewModel = viewModel
             return view
         }.inObjectScope(.container)
     }
@@ -120,10 +112,8 @@ class ViewBuilderAssembly: Assembly {
     private func assembleResetPasswordView(container: Container, firebaseService: FirebaseServiceProtocol) {
         container.register(ResetPasswordViewProtocol.self) { (_, router: AuthRouterProtocol) in
             let view = ResetPasswordViewController()
-            let presenter = ResetPasswordPresenter(view: view,
-                                                   firebaseService: firebaseService,
-                                                   router: router)
-            view.presenter = presenter
+            let viewModel = ResetPasswordViewModel(firebaseService: firebaseService, router: router)
+            view.viewModel = viewModel
             return view
         }.inObjectScope(.container)
     }

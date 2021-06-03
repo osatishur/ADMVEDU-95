@@ -22,11 +22,17 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
     @IBOutlet private var logInButton: AuthButton!
     @IBOutlet private var forgotPasswordButton: UIButton!
 
-    var presenter: LogInPresenterProtocol?
+    var viewModel: LogInViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        viewModel?.isErrorTextHidden.bind({ [weak self] value in
+            self?.setErrorLabelHidden(isHidden: value ?? true)
+        })
+        viewModel?.errorText.bind({ [weak self] value in
+            self?.setErrorLabelText(text: value ?? "")
+        })
     }
 
     private func setupLayout() {
@@ -46,15 +52,15 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
         else {
             return
         }
-        presenter?.logIn(email: email, password: password)
+        viewModel?.logIn(email: email, password: password)
     }
 
     @IBAction private func didTapForgorPasswordButton(_: Any) {
-        presenter?.navigateToResetPassword()
+        viewModel?.navigateToResetPassword()
     }
 
     @IBAction private func didTapBottomButton(_: Any) {
-        presenter?.navigateToSignIn()
+        viewModel?.navigateToSignIn()
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {
@@ -65,10 +71,11 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 
 extension LoginViewController: LogInViewProtocol {
     func setErrorLabelText(text: String) {
-        errorLabel.text = text
+        print(1111)
+            self.errorLabel.text = text
     }
 
     func setErrorLabelHidden(isHidden: Bool) {
-        errorLabel.isHidden = isHidden
+            self.errorLabel.isHidden = isHidden
     }
 }

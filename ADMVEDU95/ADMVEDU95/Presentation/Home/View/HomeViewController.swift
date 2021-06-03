@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
 
     // MARK: Properties
 
-    var presenter: HomePresenterProtocol?
+    var viewModel: HomeViewModelProtocol?
 
     // MARK: Life cycle
 
@@ -30,7 +30,20 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         setupSearchBar()
-        presenter?.getResultsFromCoreData()
+        viewModel?.getResultsFromCoreData()
+        viewModel?.dataSource.bind({ [weak self] _ in
+            self?.updateSearchResults()
+        })
+        viewModel?.category.bind({ [weak self] value in
+            self?.updateCategory(category: value?.description ?? "")
+        })
+        viewModel?.alertInfo.bind({ [weak self] value in
+            self?.showAlert(title: value?.title ?? "",
+                            message: value?.message ?? "")
+        })
+        viewModel?.alertWithRetryInfo.bind({ [weak self] value in
+            self?.showAlertWithRetry(message: value ?? "")
+        })
     }
 
     // MARK: Setup Layout
@@ -55,10 +68,10 @@ class HomeViewController: UIViewController {
     }
 
     private func setupCategoryView() {
-        guard let presenter = presenter else {
+        guard let viewModel = viewModel else {
             return
         }
-        categoryView.configureView(categoryTitle: presenter.getCategoryTitle().localized())
+        categoryView.configureView(categoryTitle: viewModel.getCategoryTitle().localized())
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(goToCategories))
         categoryView.isUserInteractionEnabled = true
@@ -81,22 +94,22 @@ class HomeViewController: UIViewController {
 
     @objc
     private func goToCategories() {
-        guard let presenter = presenter else {
+        guard let viewModel = viewModel else {
             return
         }
-        presenter.didTapOnCategoryView(categoryChosed: presenter.getCategory())
+        viewModel.didTapOnCategoryView(categoryChosed: viewModel.getCategory())
     }
 
     // MARK: log out method
 
     @objc
     private func logoutUser() {
-        presenter?.didTapLogOutButton()
+        viewModel?.didTapLogOutButton()
     }
 
     @objc
     private func goToSettings() {
-        presenter?.didTapOnSettingsBarButton()
+        viewModel?.didTapOnSettingsBarButton()
     }
 }
 
@@ -105,11 +118,11 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text,
-              let presenter = presenter
+              let viewModel = viewModel
         else {
             return
         }
-        presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
+        viewModel.searchITunes(searchTerm: searchTerm, filter: viewModel.getFilterParameter())
         searchBar.endEditing(true)
     }
 }
@@ -118,11 +131,10 @@ extension HomeViewController: HomeViewProtocol {
     func showAlertWithRetry(message: String) {
         showAlertWithRetry(message: message) {
             guard let searchTerm = self.searchBar.text,
-                  let presenter = self.presenter
-            else {
+                  let viewModel = self.viewModel else {
                 return
             }
-            presenter.searchITunes(searchTerm: searchTerm, filter: presenter.getFilterParameter())
+            viewModel.searchITunes(searchTerm: searchTerm, filter: viewModel.getFilterParameter())
         }
     }
 

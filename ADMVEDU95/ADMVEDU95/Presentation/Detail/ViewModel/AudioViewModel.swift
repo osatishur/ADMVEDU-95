@@ -6,9 +6,7 @@
 //
 
 import Foundation
-
 import AVKit
-import Foundation
 
 class AudioViewModel: DetailViewModel {
     private enum Constants {

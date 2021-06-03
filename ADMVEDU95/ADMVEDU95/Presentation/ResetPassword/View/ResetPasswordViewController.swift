@@ -9,8 +9,6 @@ import FirebaseAuth
 import UIKit
 
 protocol ResetPasswordViewProtocol: AnyObject {
-    func successRequest()
-    func handleAuthError(_ error: Error, alertTitle: String)
     func showAlert(title: String, message: String)
 }
 
@@ -19,12 +17,16 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private var emailTextField: AuthTextField!
     @IBOutlet private var sendButton: AuthButton!
 
-    var presenter: ResetPasswordPresenter?
+    var viewModel: ResetPasswordViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupViews()
+        viewModel?.alertInfo.bind({ [weak self] value in
+            self?.showAlert(title: value?.title ?? "",
+                            message: value?.message ?? "")
+        })
     }
 
     private func setupNavigationBar() {
@@ -40,7 +42,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text else {
             return
         }
-        presenter?.requestRecovery(email: email)
+        viewModel?.requestRecovery(email: email)
     }
 
     func textFieldShouldReturn(_: UITextField) -> Bool {
@@ -50,16 +52,6 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension ResetPasswordViewController: ResetPasswordViewProtocol {
-    func successRequest() {
-        presenter?.navigateToLogIn()
-    }
-
-    func handleAuthError(_ error: Error, alertTitle: String) {
-        if let errorCode = AuthErrorCode(rawValue: error._code) {
-            showAlert(titleMessage: alertTitle, message: errorCode.errorMessage.localized())
-        }
-    }
-
     func showAlert(title: String, message: String) {
         DispatchQueue.main.async {
             self.showAlert(titleMessage: title, message: message)

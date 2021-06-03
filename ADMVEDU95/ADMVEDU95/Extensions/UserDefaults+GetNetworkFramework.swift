@@ -27,7 +27,7 @@ extension UserDefaults {
             return .alamofire
         }
     }
-    
+
     static func setNetworkFramework(framework: NetworkFrameworkSelected) {
         self.standard.setValue(framework.rawValue, forKey: Keys.networkFrameworkKey.description)
     }

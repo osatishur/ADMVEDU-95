@@ -13,7 +13,7 @@ protocol BuilderProtocol {
                           model: ApiResult,
                           router: HomeRouterProtocol) -> UIViewController
     func createCategoryView(selectedCategory: Category,
-                            delegate: CategoryPresenterDelegate,
+                            delegate: CategoryViewModelDelegate,
                             router: HomeRouterProtocol) -> UIViewController
     func createSettingsView(router: HomeRouterProtocol) -> UIViewController
     func createSignInView(router: AuthRouterProtocol) -> UIViewController
@@ -42,7 +42,7 @@ class ViewBuilder: BuilderProtocol {
     }
 
     func createCategoryView(selectedCategory: Category,
-                            delegate: CategoryPresenterDelegate,
+                            delegate: CategoryViewModelDelegate,
                             router: HomeRouterProtocol) -> UIViewController {
         let view = dependencyAssembler.resolve(CategoryViewProtocol.self, arguments: selectedCategory, delegate, router)
         guard let view = view as? UIViewController else {
