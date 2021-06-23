@@ -55,7 +55,8 @@ class HomeRouter: HomeRouterProtocol {
               let detailViewController = builder?.createDetailView(dataKind: dataKind, model: model, router: self) else {
             return
         }
-        navigationController.pushViewController(detailViewController, animated: true)
+        navigationController.topViewController?.present(detailViewController, animated: true)
+        //navigationController.pushViewController(detailViewController, animated: true)
     }
 
     func navigateToSettings() {

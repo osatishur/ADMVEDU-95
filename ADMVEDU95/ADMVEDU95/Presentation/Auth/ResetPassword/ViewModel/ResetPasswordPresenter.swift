@@ -14,7 +14,7 @@ protocol ResetPasswordViewModelProtocol: AnyObject {
     func navigateToLogIn()
 }
 
-class ResetPasswordViewModel: BaseAuthPresenter, ResetPasswordViewModelProtocol {
+class ResetPasswordViewModel: BaseAuthViewModel, ResetPasswordViewModelProtocol {
     private var router: AuthRouterProtocol?
     var alertInfo: Observable<(title: String, message: String)> = Observable(value: (title: "", message: ""))
 

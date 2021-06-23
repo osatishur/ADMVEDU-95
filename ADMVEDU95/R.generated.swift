@@ -191,12 +191,14 @@ struct R: Rswift.Validatable {
 
   /// This `R.nib` struct is generated, and contains static references to 12 nibs.
   struct nib {
-    /// Nib `AudioDetailView`.
-    static let audioDetailView = _R.nib._AudioDetailView()
     /// Nib `CategoryViewController`.
     static let categoryViewController = _R.nib._CategoryViewController()
     /// Nib `CategoryView`.
     static let categoryView = _R.nib._CategoryView()
+    /// Nib `DetailAudioViewController`.
+    static let detailAudioViewController = _R.nib._DetailAudioViewController()
+    /// Nib `DetailVideoViewController`.
+    static let detailVideoViewController = _R.nib._DetailVideoViewController()
     /// Nib `HomeViewController`.
     static let homeViewController = _R.nib._HomeViewController()
     /// Nib `LoginViewController`.
@@ -213,16 +215,6 @@ struct R: Rswift.Validatable {
     static let settingsViewController = _R.nib._SettingsViewController()
     /// Nib `SignInViewController`.
     static let signInViewController = _R.nib._SignInViewController()
-    /// Nib `VideoDetailView`.
-    static let videoDetailView = _R.nib._VideoDetailView()
-
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "AudioDetailView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.audioDetailView) instead")
-    static func audioDetailView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.audioDetailView)
-    }
-    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "CategoryView", in: bundle)`
@@ -237,6 +229,22 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.categoryViewController) instead")
     static func categoryViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.categoryViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DetailAudioViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.detailAudioViewController) instead")
+    static func detailAudioViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.detailAudioViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DetailVideoViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.detailVideoViewController) instead")
+    static func detailVideoViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.detailVideoViewController)
     }
     #endif
 
@@ -304,24 +312,20 @@ struct R: Rswift.Validatable {
     }
     #endif
 
-    #if os(iOS) || os(tvOS)
-    /// `UINib(name: "VideoDetailView", in: bundle)`
-    @available(*, deprecated, message: "Use UINib(resource: R.nib.videoDetailView) instead")
-    static func videoDetailView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.videoDetailView)
-    }
-    #endif
-
-    static func audioDetailView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.audioDetailView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-    }
-
     static func categoryView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.categoryView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     static func categoryViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.categoryViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func detailAudioViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.detailAudioViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func detailVideoViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.detailVideoViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     static func homeViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
@@ -354,10 +358,6 @@ struct R: Rswift.Validatable {
 
     static func signInViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.signInViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-    }
-
-    static func videoDetailView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-      return R.nib.videoDetailView.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     fileprivate init() {}
@@ -1582,24 +1582,7 @@ struct _R: Rswift.Validatable {
   #if os(iOS) || os(tvOS)
   struct nib: Rswift.Validatable {
     static func validate() throws {
-      try _AudioDetailView.validate()
-    }
-
-    struct _AudioDetailView: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "AudioDetailView"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-
-      static func validate() throws {
-        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "play.fill") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'play.fill' is used in nib 'AudioDetailView', but couldn't be loaded.") } }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
-      }
-
-      fileprivate init() {}
+      try _DetailAudioViewController.validate()
     }
 
     struct _CategoryView: Rswift.NibResourceType {
@@ -1616,6 +1599,34 @@ struct _R: Rswift.Validatable {
     struct _CategoryViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "CategoryViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _DetailAudioViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "DetailAudioViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "play.fill") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'play.fill' is used in nib 'DetailAudioViewController', but couldn't be loaded.") } }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _DetailVideoViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "DetailVideoViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -1707,17 +1718,6 @@ struct _R: Rswift.Validatable {
     struct _SignInViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "SignInViewController"
-
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-
-      fileprivate init() {}
-    }
-
-    struct _VideoDetailView: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "VideoDetailView"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView

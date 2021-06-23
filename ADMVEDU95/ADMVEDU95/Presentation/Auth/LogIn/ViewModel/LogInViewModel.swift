@@ -1,5 +1,5 @@
 //
-//  SignInPresenter.swift
+//  LogInPresenter.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 28.04.2021.
@@ -8,15 +8,16 @@
 import FirebaseAuth
 import Foundation
 
-protocol SignInViewModelProtocol: AnyObject {
+protocol LogInViewModelProtocol: AnyObject {
     var errorText: Observable<String> { get set }
     var isErrorTextHidden: Observable<Bool> { get set }
-    func signIn(email: String, password: String, repeatPassword: String)
-    func didTapSignInButton()
+    func logIn(email: String, password: String)
+    func navigateToSignIn()
+    func navigateToResetPassword()
     func navigateToHome()
 }
 
-class SignInViewModel: BaseAuthPresenter, SignInViewModelProtocol {
+class LogInViewModel: BaseAuthViewModel, LogInViewModelProtocol {
     private var router: AuthRouterProtocol?
     var errorText: Observable<String> = Observable(value: "")
     var isErrorTextHidden: Observable<Bool> = Observable(value: true)
@@ -26,20 +27,11 @@ class SignInViewModel: BaseAuthPresenter, SignInViewModelProtocol {
         self.router = router
     }
 
-    func signIn(email: String, password: String, repeatPassword: String) {
-        if password != repeatPassword {
-            self.setErrorText(text: R.string.localizable.signInPasswordsMatchErrorText())
-            self.setIsErrorTextHidden(isHidden: false)
-        } else {
-            createUser(email: email, password: password)
-        }
-    }
-
-    private func createUser(email: String, password: String) {
+    func logIn(email: String, password: String) {
         guard let firebaseService = firebaseService else {
             return
         }
-        firebaseService.createUser(email: email, password: password) { [weak self] result in
+        firebaseService.logIn(email: email, pass: password) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -57,8 +49,12 @@ class SignInViewModel: BaseAuthPresenter, SignInViewModelProtocol {
         }
     }
 
-    func didTapSignInButton() {
-        router?.popToLogIn()
+    func navigateToResetPassword() {
+        router?.navigateToResetPassword()
+    }
+
+    func navigateToSignIn() {
+        router?.navigateToSignIn()
     }
 
     func navigateToHome() {

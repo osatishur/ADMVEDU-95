@@ -48,8 +48,7 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 
     @IBAction private func didTapLogInButton(_: Any) {
         guard let email = emailTextField.text,
-              let password = passwordTextField.text
-        else {
+              let password = passwordTextField.text else {
             return
         }
         viewModel?.logIn(email: email, password: password)
@@ -71,8 +70,7 @@ class LoginViewController: BaseAuthViewController, UITextFieldDelegate {
 
 extension LoginViewController: LogInViewProtocol {
     func setErrorLabelText(text: String) {
-        print(1111)
-            self.errorLabel.text = text
+        self.errorLabel.text = text
     }
 
     func setErrorLabelHidden(isHidden: Bool) {

@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-class BaseAuthPresenter {
+class BaseAuthViewModel {
     let firebaseService: FirebaseServiceProtocol?
 
     init(firebaseService: FirebaseServiceProtocol) {

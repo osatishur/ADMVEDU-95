@@ -1,5 +1,5 @@
 //
-//  LogInPresenter.swift
+//  SignInPresenter.swift
 //  ADMVEDU95
 //
 //  Created by Satishur, Oleg on 28.04.2021.
@@ -8,16 +8,15 @@
 import FirebaseAuth
 import Foundation
 
-protocol LogInViewModelProtocol: AnyObject {
+protocol SignInViewModelProtocol: AnyObject {
     var errorText: Observable<String> { get set }
     var isErrorTextHidden: Observable<Bool> { get set }
-    func logIn(email: String, password: String)
-    func navigateToSignIn()
-    func navigateToResetPassword()
+    func signIn(email: String, password: String, repeatPassword: String)
+    func didTapSignInButton()
     func navigateToHome()
 }
 
-class LogInViewModel: BaseAuthPresenter, LogInViewModelProtocol {
+class SignInViewModel: BaseAuthViewModel, SignInViewModelProtocol {
     private var router: AuthRouterProtocol?
     var errorText: Observable<String> = Observable(value: "")
     var isErrorTextHidden: Observable<Bool> = Observable(value: true)
@@ -27,11 +26,20 @@ class LogInViewModel: BaseAuthPresenter, LogInViewModelProtocol {
         self.router = router
     }
 
-    func logIn(email: String, password: String) {
+    func signIn(email: String, password: String, repeatPassword: String) {
+        if password != repeatPassword {
+            self.setErrorText(text: R.string.localizable.signInPasswordsMatchErrorText())
+            self.setIsErrorTextHidden(isHidden: false)
+        } else {
+            createUser(email: email, password: password)
+        }
+    }
+
+    private func createUser(email: String, password: String) {
         guard let firebaseService = firebaseService else {
             return
         }
-        firebaseService.logIn(email: email, pass: password) { [weak self] result in
+        firebaseService.createUser(email: email, password: password) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -49,12 +57,8 @@ class LogInViewModel: BaseAuthPresenter, LogInViewModelProtocol {
         }
     }
 
-    func navigateToResetPassword() {
-        router?.navigateToResetPassword()
-    }
-
-    func navigateToSignIn() {
-        router?.navigateToSignIn()
+    func didTapSignInButton() {
+        router?.popToLogIn()
     }
 
     func navigateToHome() {

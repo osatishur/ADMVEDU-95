@@ -55,15 +55,17 @@ class ViewBuilderAssembly: Assembly {
                                                        dataKind: ResponseDataKind,
                                                        model: ApiResult,
                                                        router: HomeRouterProtocol) in
-            let viewController = DetailViewController()
-            let viewModel: DetailViewModel
             if dataKind == .song {
-                viewModel = AudioViewModel(model: model, router: router)
+                let view = DetailAudioViewController()
+                let viewModel = AudioViewModel(model: model, router: router)
+                view.viewModel = viewModel
+                return view
             } else {
-                viewModel = VideoViewModel(model: model, router: router)
+                let view = DetailVideoViewController()
+                let viewModel = VideoViewModel(model: model, router: router)
+                view.viewModel = viewModel
+                return view
             }
-            viewController.viewModel = viewModel
-            return viewController
         }
     }
 
